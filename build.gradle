@@ -1,0 +1,89 @@
+group 'cn.com.hvit'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'war'
+
+sourceCompatibility = 1.7
+
+repositories {
+
+//    maven {url 'http://192.168.2.123:8081/nexus/content/repositories/hvit/'}
+//    maven {url 'http://192.168.2.123:8081/nexus/content/repositories/central/'}
+//    maven {url 'http://192.168.2.123:8081/nexus/content/repositories/codelds/'}
+
+        maven { url 'http://120.55.65.150:8081/nexus/content/repositories/thirdparty/' }
+    maven { url 'http://120.55.65.150:8081/nexus/content/repositories/proxycodelds/' }
+        maven { url 'http://120.55.65.150:8081/nexus/content/repositories/central/' }
+        maven { url 'http://120.55.65.150:8081/nexus/content/repositories/proxycodelds/' }
+        maven { url 'http://120.55.65.150:8081/nexus/content/repositories/apache-snapshots/' }
+        maven { url 'http://maven.oschina.net/content/groups/public/' }
+        mavenCentral()
+
+        maven { url 'http://maven.springframework.org/release' }
+        maven { url 'http://maven.springframework.org/milestone' }
+        maven { url 'http://maven.springframework.org/snapshot' }
+        maven { url 'http://download.java.net/maven/2' }
+        maven { url 'http://download.java.net/maven/2' }
+        maven { url 'https://code.lds.org/nexus/content/groups/main-repo' }
+        maven { url 'http://www.mvnrepository.com/artifact' }
+        maven { url 'http://repo1.maven.org/maven2' }
+        maven { url 'http://oss.sonatype.org/content/repositories/releases' }
+        maven { url 'http://repository.sonatype.org/content/groups/public' }
+        maven { url 'http://mirrors.ibiblio.org/pub/mirrors/maven2/org/acegisecurity' }
+
+    }
+dependencies {
+    compile "org.springframework:spring-core:$springVersion"
+        compile "org.springframework:spring-oxm:$springVersion"
+        compile "org.springframework:spring-tx:$springVersion"
+        compile "org.springframework:spring-aop:$springVersion"
+        compile "org.springframework:spring-webmvc:$springVersion"
+        compile "org.springframework:spring-jdbc:$springVersion"
+        compile "org.springframework:spring-context-support:$springVersion"
+        compile "org.springframework:spring-test:$springVersion"
+
+          compile "org.springframework.security:spring-security-config:$springSecurityVersion"
+  compile "org.springframework.security:spring-security-web:$springSecurityVersion"
+
+      compile "org.springframework.ldap:spring-ldap-core:2.0.1.RELEASE"
+
+        compile "org.mybatis:mybatis:$mybatisVersion"
+        compile "org.mybatis:mybatis-spring:1.2.2"
+        compile "mysql:mysql-connector-java:5.1.29"
+        compile "com.oracle:ojdbc6:11.2.0.3"
+        compile "com.h2database:h2:$h2Version"
+        compile "org.hibernate:hibernate-validator:$hibernateValidatorVersion"
+
+        compile "com.alibaba:druid:1.0.2"
+        compile "org.codehaus.jackson:jackson-mapper-asl:1.9.13"
+        compile "com.fasterxml.jackson.core:jackson-core:2.7.5"
+        compile "com.fasterxml.jackson.core:jackson-databind:2.7.5"
+
+        compile "org.hibernate:hibernate-validator:$hibernateValidatorVersion"
+        compile "org.apache.commons:commons-lang3:$commonsLangVersion"
+        compile "commons-beanutils:commons-beanutils-core:1.8.3"
+
+        compile "log4j:log4j:$log4jVersion"
+        compile "org.slf4j:slf4j-api:$slf4jVersion"
+        compile "org.slf4j:slf4j-log4j12:$slf4jVersion"
+
+        compile "org.apache.poi:poi:3.9"
+        compile "org.apache.poi:poi-ooxml:3.9"
+
+    compile "cn.com.hvit:kon:1.9-release"
+
+        //compile "org.thymeleaf:thymeleaf-spring4:$thymeleafVersion"
+
+        //compile "javax.servlet:jstl:$jstlVersion"
+
+        providedCompile "javax.servlet:javax.servlet-api:$servletApiVersion"
+        //providedCompile "javax.servlet.jsp:jsp-api:$jspApiVersion"
+        //providedCompile "javax.el:javax.el-api:$jspElVersion"
+
+        compile "junit:junit:$junitVersion"
+        compile 'org.quartz-scheduler:quartz:2.2.3'
+        testCompile "org.springframework:spring-test:$springVersion"
+        testCompile "org.mockito:mockito-core:$mockitoVersion"
+        testCompile "org.hamcrest:hamcrest-library:$hamcrestVersion"
+}
