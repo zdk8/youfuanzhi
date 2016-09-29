@@ -1,0 +1,16 @@
+[{"nodetype":"1","description":"系统管理","rbflag":"1","isParent":"true","functionid":"LzMZzw0cvT7DLQAQH29i3A5obNmKHrgE",
+  "parent":"businessmenu","urlpath":null,"functiondesc":null,"name":"系统管理","value":"xitongguanli","type":"1","leaf":false,
+  "state":"closed","param2":null,"title":"系统管理","auflag":"1","active":null,"id":"LzMZzw0cvT7DLQAQH29i3A5obNmKHrgE","orderno":0,
+  "developer":null,"location":"xitongguanli","param1":null,"log":"1","createdate":null,"owner":null,"text":"系统管理","bsdigest":null},
+  {"nodetype":"0","description":"调查者信息管理","rbflag":"1","isParent":"false",
+
+    "functionid":"1c39c1733eab4017b12035af5bed74a4","parent":"businessmenu","urlpath":null,"functiondesc":null,
+    "name":"老人信息查询","value":"mz.OldinfoQuery","type":"1","leaf":true,"state":"open","param2":"1","title":"老人信息查询",
+    "auflag":"1","active":null,"id":"1c39c1733eab4017b12035af5bed74a4","orderno":1,"developer":"1","location":"mz.OldinfoQuery",
+    "param1":"1","log":"1","createdate":null,"owner":null,"text":"老人信息查询","bsdigest":null},
+
+  {"nodetype":"0","description":"语音管理","rbflag":"1","isParent":"false","functionid":"5e317937c25949d2b38f074943ce9446","parent":"businessmenu","urlpath":null,"functiondesc":null,"name":"老人联系人管理","value":"mz.Concatsinfo","type":"1","leaf":true,"state":"open","param2":"1","title":"老人联系人管理","auflag":"1","active":null,"id":"5e317937c25949d2b38f074943ce9446","orderno":1,"developer":"1","location":"mz.Concatsinfo","param1":"1","log":"1","createdate":null,"owner":null,"text":"老人联系人管理","bsdigest":null},{"nodetype":"0","description":"图片管理","rbflag":"1","isParent":"false","functionid":"37ff8c9ce16f4258b4ae048f40ae30ca","parent":"businessmenu","urlpath":null,"functiondesc":null,"name":"图片管理","value":"mz.Photoinfo","type":"1","leaf":true,"state":"open","param2":"1","title":"图片管理","auflag":"1","active":null,"id":"37ff8c9ce16f4258b4ae048f40ae30ca","orderno":1,"developer":"1","location":"mz.Photoinfo","param1":"1","log":"1","createdate":null,"owner":null,"text":"图片管理","bsdigest":null},{"nodetype":"0","description":"采集信息管理","rbflag":"1","isParent":"false","functionid":"bd9011e9568f49e6b218160161bef412","parent":"businessmenu","urlpath":null,
+	"functiondesc":null,"name":"老人信息管理","value":"mz.Oldinfo","type":"1","leaf":true,
+	"state":"open","param2":"1","title":"老人信息管理","auflag":"1","active":null,
+	"id":"bd9011e9568f49e6b218160161bef412","orderno":1,"developer":"1","location":"mz.Oldinfo",
+	"param1":"1","log":"1","createdate":null,"owner":null,"text":"老人信息管理","bsdigest":null}]

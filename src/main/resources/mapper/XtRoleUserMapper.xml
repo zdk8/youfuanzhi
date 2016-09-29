@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hvit.workspace.dao.XtRoleUserMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hvit.workspace.model.XtRoleUser" >
+    <id column="ROLEUSERID" property="roleuserid" jdbcType="DECIMAL" />
+    <result column="ROLEID" property="roleid" jdbcType="DECIMAL" />
+    <result column="USERID" property="userid" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ROLEUSERID, ROLEID, USERID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from XT_ROLEUSER
+    where ROLEUSERID = #{roleuserid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from XT_ROLEUSER
+    where ROLEUSERID = #{roleuserid,jdbcType=DECIMAL}
+  </delete>
+
+  <delete id="deleteByUserId" parameterType="java.lang.Integer" >
+    delete from XT_ROLEUSER
+    where userid = #{userid,jdbcType=DECIMAL}
+  </delete>
+
+  <insert id="insert" parameterType="cn.com.hvit.workspace.model.XtRoleUser" >
+    <selectKey  resultType="int" order="BEFORE" keyProperty="roleuserid">
+          select SEQ_XT_ROLEUSER.nextval from dual
+    </selectKey>
+    insert into XT_ROLEUSER (ROLEUSERID, ROLEID, USERID
+      )
+    values (#{roleuserid,jdbcType=DECIMAL}, #{roleid,jdbcType=DECIMAL}, #{userid,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.hvit.workspace.model.XtRoleUser" >
+    insert into XT_ROLEUSER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="roleuserid != null" >
+        ROLEUSERID,
+      </if>
+      <if test="roleid != null" >
+        ROLEID,
+      </if>
+      <if test="userid != null" >
+        USERID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="roleuserid != null" >
+        #{roleuserid,jdbcType=DECIMAL},
+      </if>
+      <if test="roleid != null" >
+        #{roleid,jdbcType=DECIMAL},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.hvit.workspace.model.XtRoleUser" >
+    update XT_ROLEUSER
+    <set >
+      <if test="roleid != null" >
+        ROLEID = #{roleid,jdbcType=DECIMAL},
+      </if>
+      <if test="userid != null" >
+        USERID = #{userid,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where ROLEUSERID = #{roleuserid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.hvit.workspace.model.XtRoleUser" >
+    update XT_ROLEUSER
+    set ROLEID = #{roleid,jdbcType=DECIMAL},
+      USERID = #{userid,jdbcType=DECIMAL}
+    where ROLEUSERID = #{roleuserid,jdbcType=DECIMAL}
+  </update>
+</mapper>
