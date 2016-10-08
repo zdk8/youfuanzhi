@@ -50,7 +50,7 @@
 
     require(['jquery', 'jeasyui', 'cj'], function ($, jeasyui, cj) {
         //配置库的前半部分url
-        cj.configModulePrefix("http://192.168.2.166:3000/hvit-front-framework/");
+        cj.configModulePrefix(HvitFrontFWPrefix+"hvit-front-framework/");
         //绑定按钮工具到cj上
         require([cj.getModuleJs('widget/MakeButton')], function (btn) {
             cj.button = btn;

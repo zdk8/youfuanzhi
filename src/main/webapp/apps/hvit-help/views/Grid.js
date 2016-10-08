@@ -51,7 +51,7 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                 var dg = MakeDG.make(local.find('.easyui-datagrid-noauto'),
                     {mydelete: mydelete, update: view, view: view},
                     {
-                        url: 'http://192.168.2.166:3000/eers/nine-table',
+                        url: HvitFrontFWPrefix+ 'eers/nine-table',
                         toolbar: tb
                     }
                 );

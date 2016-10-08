@@ -12,7 +12,7 @@
 
     <link rel="stylesheet" type="text/css" href="http://120.55.65.150/wp/jquery-easyui-1.4.5/themes/default/easyui.css">
 
-    <link rel="stylesheet" type="text/css" href="http://192.168.2.166:3000/css/home.css"/>
+    <link rel="stylesheet" type="text/css" href="http://192.168.2.123:3000/css/home.css"/>
 
     <script>
         <!--兼容windows无console的情况-->
@@ -147,7 +147,10 @@
 </html>
 
 
-
-<script src="http://192.168.2.166:3000/hvit-front-framework/baseConfig.js"></script>
-<script src="http://192.168.2.166:3000/hvit-front-framework/require.js"
-        data-main="apps/hvit-help/app.js?v=1" bb="1468464346238"></script>
+<script>
+    //重要的设置
+    HvitFrontFWPrefix = "http://192.168.2.123:3000/";
+</script>
+<script src="http://192.168.2.123:3000/hvit-front-framework/baseConfig.js"></script>
+<script src="http://192.168.2.123:3000/hvit-front-framework/require.js"
+        data-main="apps/hvit-help/app.js?v=1"></script>
