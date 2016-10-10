@@ -5,10 +5,10 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>
 
     <!--拦截器-->
-<!--    <plugins>
-        <plugin interceptor="cn.springmvc.util.PageHelper">
+    <plugins>
+        <plugin interceptor="cn.com.hvit.framework.kon.util.PageHelper">
         </plugin>
-    </plugins>-->
+    </plugins>
 
     <!-- 映射map -->
     <mappers>

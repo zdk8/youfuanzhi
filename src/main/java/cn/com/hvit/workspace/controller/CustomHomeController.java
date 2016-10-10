@@ -19,5 +19,13 @@ public class CustomHomeController {
         return "custom-home";
     }
 
+        /*
+    websocket1界面
+     */
+    @RequestMapping(value={"/custom-websocket1"},method = RequestMethod.GET)
+    public String websocket1(){
+        return "custom-websocket1";
+    }
+
 
 }

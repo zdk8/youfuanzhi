@@ -71,8 +71,13 @@ dependencies {
         compile "org.apache.poi:poi:3.9"
         compile "org.apache.poi:poi-ooxml:3.9"
 
-    compile "cn.com.hvit:kon:2.0.2-release"
-    compile "cn.com.hvit:system-manager:2.0.2-release"
+            compile("org.springframework:spring-websocket:$springVersion")
+        compile("org.springframework:spring-messaging:$springVersion")
+
+
+    compile "cn.com.hvit:kon:2.0.3-release"
+    compile "cn.com.hvit:system-manager:2.0.3-release"
+    compile "cn.com.hvit:enumeration:2.0.3-release"
 
         //compile "org.thymeleaf:thymeleaf-spring4:$thymeleafVersion"
 

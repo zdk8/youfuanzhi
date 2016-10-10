@@ -17,7 +17,57 @@
     http://www.springframework.org/schema/util
     http://www.springframework.org/schema/util/spring-util-3.2.xsd">
 
-    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
+
+
+    <bean id="frameworkdataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
+          destroy-method="close" >
+        <property name="driverClassName">
+            <value>${framework.jdbc_driverClassName}</value>
+        </property>
+        <property name="url">
+            <value>${framework.jdbc_url}</value>
+        </property>
+        <property name="username">
+            <value>${framework.jdbc_username}</value>
+        </property>
+        <property name="password">
+            <value>${framework.jdbc_password}</value>
+        </property>
+        <!-- 连接池最大使用连接数 -->
+        <property name="maxActive">
+            <value>20</value>
+        </property>
+        <!-- 初始化连接大小 -->
+        <property name="initialSize">
+            <value>1</value>
+        </property>
+        <!-- 获取连接最大等待时间 -->
+        <property name="maxWait">
+            <value>60000</value>
+        </property>
+        <!-- 连接池最大空闲 -->
+        <property name="maxIdle">
+            <value>20</value>
+        </property>
+        <!-- 连接池最小空闲 -->
+        <property name="minIdle">
+            <value>3</value>
+        </property>
+        <!-- 自动清除无用连接 -->
+        <property name="removeAbandoned">
+            <value>true</value>
+        </property>
+        <!-- 清除无用连接的等待时间 -->
+        <property name="removeAbandonedTimeout">
+            <value>180</value>
+        </property>
+        <!-- 连接属性 -->
+        <property name="connectionProperties">
+            <value>clientEncoding=UTF-8</value>
+        </property>
+    </bean>
+
+    <bean id="shuangYongdataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
           destroy-method="close" >
         <property name="driverClassName">
             <value>${jdbc_driverClassName}</value>
@@ -43,6 +93,10 @@
         <property name="maxWait">
             <value>60000</value>
         </property>
+        <!-- 连接池最大空闲 -->
+        <property name="maxIdle">
+            <value>20</value>
+        </property>
         <!-- 连接池最小空闲 -->
         <property name="minIdle">
             <value>3</value>
@@ -59,6 +113,218 @@
         <property name="connectionProperties">
             <value>clientEncoding=UTF-8</value>
         </property>
+    </bean>
+
+    <bean id="olddataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
+          destroy-method="close" >
+        <property name="driverClassName">
+            <value>${old.jdbc_driverClassName}</value>
+        </property>
+        <property name="url">
+            <value>${old.jdbc_url}</value>
+        </property>
+        <property name="username">
+            <value>${old.jdbc_username}</value>
+        </property>
+        <property name="password">
+            <value>${old.jdbc_password}</value>
+        </property>
+        <!-- 连接池最大使用连接数 -->
+        <property name="maxActive">
+            <value>20</value>
+        </property>
+        <!-- 初始化连接大小 -->
+        <property name="initialSize">
+            <value>1</value>
+        </property>
+        <!-- 获取连接最大等待时间 -->
+        <property name="maxWait">
+            <value>60000</value>
+        </property>
+        <!-- 连接池最大空闲 -->
+        <property name="maxIdle">
+            <value>20</value>
+        </property>
+        <!-- 连接池最小空闲 -->
+        <property name="minIdle">
+            <value>3</value>
+        </property>
+        <!-- 自动清除无用连接 -->
+        <property name="removeAbandoned">
+            <value>true</value>
+        </property>
+        <!-- 清除无用连接的等待时间 -->
+        <property name="removeAbandonedTimeout">
+            <value>180</value>
+        </property>
+        <!-- 连接属性 -->
+        <property name="connectionProperties">
+            <value>clientEncoding=UTF-8</value>
+        </property>
+    </bean>
+
+    <bean id="jcfxdataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
+          destroy-method="close" >
+        <property name="driverClassName">
+            <value>${jcfx.jdbc_driverClassName}</value>
+        </property>
+        <property name="url">
+            <value>${jcfx.jdbc_url}</value>
+        </property>
+        <property name="username">
+            <value>${jcfx.jdbc_username}</value>
+        </property>
+        <property name="password">
+            <value>${jcfx.jdbc_password}</value>
+        </property>
+        <!-- 连接池最大使用连接数 -->
+        <property name="maxActive">
+            <value>20</value>
+        </property>
+        <!-- 初始化连接大小 -->
+        <property name="initialSize">
+            <value>1</value>
+        </property>
+        <!-- 获取连接最大等待时间 -->
+        <property name="maxWait">
+            <value>60000</value>
+        </property>
+        <!-- 连接池最大空闲 -->
+        <property name="maxIdle">
+            <value>20</value>
+        </property>
+        <!-- 连接池最小空闲 -->
+        <property name="minIdle">
+            <value>3</value>
+        </property>
+        <!-- 自动清除无用连接 -->
+        <property name="removeAbandoned">
+            <value>true</value>
+        </property>
+        <!-- 清除无用连接的等待时间 -->
+        <property name="removeAbandonedTimeout">
+            <value>180</value>
+        </property>
+        <!-- 连接属性 -->
+        <property name="connectionProperties">
+            <value>clientEncoding=UTF-8</value>
+        </property>
+    </bean>
+    <!--海盐基本信息数据库-->
+    <bean id="hyjbdataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
+          destroy-method="close" >
+        <property name="driverClassName">
+            <value>${hyjb.jdbc_driverClassName}</value>
+        </property>
+        <property name="url">
+            <value>${hyjb.jdbc_url}</value>
+        </property>
+        <property name="username">
+            <value>${hyjb.jdbc_username}</value>
+        </property>
+        <property name="password">
+            <value>${hyjb.jdbc_password}</value>
+        </property>
+        <!-- 连接池最大使用连接数 -->
+        <property name="maxActive">
+            <value>20</value>
+        </property>
+        <!-- 初始化连接大小 -->
+        <property name="initialSize">
+            <value>1</value>
+        </property>
+        <!-- 获取连接最大等待时间 -->
+        <property name="maxWait">
+            <value>60000</value>
+        </property>
+        <!-- 连接池最大空闲 -->
+        <property name="maxIdle">
+            <value>20</value>
+        </property>
+        <!-- 连接池最小空闲 -->
+        <property name="minIdle">
+            <value>3</value>
+        </property>
+        <!-- 自动清除无用连接 -->
+        <property name="removeAbandoned">
+            <value>true</value>
+        </property>
+        <!-- 清除无用连接的等待时间 -->
+        <property name="removeAbandonedTimeout">
+            <value>180</value>
+        </property>
+        <!-- 连接属性 -->
+        <property name="connectionProperties">
+            <value>clientEncoding=UTF-8</value>
+        </property>
+    </bean>
+
+    <!-- 固定资产信息数据库-->
+    <bean id="assetsdataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
+          destroy-method="close" >
+        <property name="driverClassName">
+            <value>${gdzc.jdbc_driverClassName}</value>
+        </property>
+        <property name="url">
+            <value>${gdzc.jdbc_url}</value>
+        </property>
+        <property name="username">
+            <value>${gdzc.jdbc_username}</value>
+        </property>
+        <property name="password">
+            <value>${gdzc.jdbc_password}</value>
+        </property>
+        <!-- 连接池最大使用连接数 -->
+        <property name="maxActive">
+            <value>20</value>
+        </property>
+        <!-- 初始化连接大小 -->
+        <property name="initialSize">
+            <value>1</value>
+        </property>
+        <!-- 获取连接最大等待时间 -->
+        <property name="maxWait">
+            <value>60000</value>
+        </property>
+        <!-- 连接池最大空闲 -->
+        <property name="maxIdle">
+            <value>20</value>
+        </property>
+        <!-- 连接池最小空闲 -->
+        <property name="minIdle">
+            <value>3</value>
+        </property>
+        <!-- 自动清除无用连接 -->
+        <property name="removeAbandoned">
+            <value>true</value>
+        </property>
+        <!-- 清除无用连接的等待时间 -->
+        <property name="removeAbandonedTimeout">
+            <value>180</value>
+        </property>
+        <!-- 连接属性 -->
+        <property name="connectionProperties">
+            <value>clientEncoding=UTF-8</value>
+        </property>
+    </bean>
+
+    <bean id="dataSource" class="cn.com.hvit.framework.kon.util.DynamicDataSource">
+        <property name="targetDataSources">
+            <map key-type="java.lang.String">
+                <entry value-ref="frameworkdataSource" key="frameworkdataSource"></entry>
+                <entry value-ref="shuangYongdataSource" key="shuangYongdataSource"></entry>
+                <entry value-ref="olddataSource" key="olddataSource"></entry>
+                <entry value-ref="jcfxdataSource" key="jcfxdataSource"></entry>
+                <entry value-ref="hyjbdataSource" key="hyjbdataSource"></entry>
+                <entry value-ref="assetsdataSource" key="assetsdataSource"></entry>
+
+            </map>
+        </property>
+        <!-- 默认使用ds1的数据源 -->
+
+        <!-- 样板代码中使用，实际使用可替换一面一行 -->
+        <property name="defaultTargetDataSource" ref="frameworkdataSource"></property>
+        <!--<property name="defaultTargetDataSource" ref="jcfxdataSource"></property>-->
     </bean>
 
     <!-- mybatis文件配置，扫描所有mapper文件 -->
@@ -80,6 +346,7 @@
           p:dataSource-ref="dataSource"/>
 
 
-    <!-- 打开事务注解支持 -->
+    <!-- 启用对事务注解的支持 -->
     <tx:annotation-driven transaction-manager="transactionManager" />
+
 </beans>

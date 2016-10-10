@@ -14,5 +14,6 @@
     <context:component-scan base-package="cn.com.hvit.workspace.controller"/>
     <context:component-scan base-package="cn.com.hvit.workspace.service"/>
     <context:component-scan base-package="cn.com.hvit.workspace.web"/>
+    <context:component-scan base-package="cn.com.hvit.workspace.config"/>
 
 </beans>

@@ -21,7 +21,7 @@
         , urlArgs: function (id, url) {
             var args = 'v=0';
             var prefixPath = baseUrl;
-            if (true || url.substr(0, prefixPath.length) == prefixPath) {
+            if (!true || url.substr(0, prefixPath.length) == prefixPath) {
                 args = '?v=2' + new Date().getTime();
                 return args;
             }

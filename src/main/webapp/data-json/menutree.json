@@ -117,7 +117,7 @@
   },
    {
     "nodetype": "0",
-    "description": "websocket和兼容",
+    "description": "websocket",
     "rbflag": "1",
     "isParent": "false",
     "functionid": "5e317937c25949d2b38f074943ce9446",
@@ -144,6 +144,38 @@
     "text": "websocket",
     "bsdigest": null
   },
+  {
+    "nodetype": "0",
+    "description": "上传",
+    "rbflag": "1",
+    "isParent": "false",
+    "functionid": "xxxxxxxxx937c25949d2b38f074943ce9446",
+    "parent": "businessmenu",
+    "urlpath": null,
+    "functiondesc": null,
+    "name": "websocket",
+    "value": "views.Upload",
+    "type": "1",
+    "leaf": true,
+    "state": "open",
+    "param2": "1",
+    "title": "上传",
+    "auflag": "1",
+    "active": null,
+    "id": "xxxxxxxxx937c25949d2b38f074943ce9446",
+    "orderno": 1,
+    "developer": "1",
+    "location": "views.Upload",
+    "param1": "1",
+    "log": "1",
+    "createdate": null,
+    "owner": null,
+    "text": "上传",
+    "bsdigest": null
+  },
+
+
+
   {
     "nodetype": "0",
     "description": "按钮",
