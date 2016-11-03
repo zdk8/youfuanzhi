@@ -67,7 +67,7 @@
         </property>
     </bean>
 
-    <bean id="shuangYongdataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
+ <!--   <bean id="shuangYongdataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
           destroy-method="close" >
         <property name="driverClassName">
             <value>${jdbc_driverClassName}</value>
@@ -81,35 +81,35 @@
         <property name="password">
             <value>${jdbc_password}</value>
         </property>
-        <!-- 连接池最大使用连接数 -->
+        &lt;!&ndash; 连接池最大使用连接数 &ndash;&gt;
         <property name="maxActive">
             <value>20</value>
         </property>
-        <!-- 初始化连接大小 -->
+        &lt;!&ndash; 初始化连接大小 &ndash;&gt;
         <property name="initialSize">
             <value>1</value>
         </property>
-        <!-- 获取连接最大等待时间 -->
+        &lt;!&ndash; 获取连接最大等待时间 &ndash;&gt;
         <property name="maxWait">
             <value>60000</value>
         </property>
-        <!-- 连接池最大空闲 -->
+        &lt;!&ndash; 连接池最大空闲 &ndash;&gt;
         <property name="maxIdle">
             <value>20</value>
         </property>
-        <!-- 连接池最小空闲 -->
+        &lt;!&ndash; 连接池最小空闲 &ndash;&gt;
         <property name="minIdle">
             <value>3</value>
         </property>
-        <!-- 自动清除无用连接 -->
+        &lt;!&ndash; 自动清除无用连接 &ndash;&gt;
         <property name="removeAbandoned">
             <value>true</value>
         </property>
-        <!-- 清除无用连接的等待时间 -->
+        &lt;!&ndash; 清除无用连接的等待时间 &ndash;&gt;
         <property name="removeAbandonedTimeout">
             <value>180</value>
         </property>
-        <!-- 连接属性 -->
+        &lt;!&ndash; 连接属性 &ndash;&gt;
         <property name="connectionProperties">
             <value>clientEncoding=UTF-8</value>
         </property>
@@ -129,35 +129,35 @@
         <property name="password">
             <value>${old.jdbc_password}</value>
         </property>
-        <!-- 连接池最大使用连接数 -->
+        &lt;!&ndash; 连接池最大使用连接数 &ndash;&gt;
         <property name="maxActive">
             <value>20</value>
         </property>
-        <!-- 初始化连接大小 -->
+        &lt;!&ndash; 初始化连接大小 &ndash;&gt;
         <property name="initialSize">
             <value>1</value>
         </property>
-        <!-- 获取连接最大等待时间 -->
+        &lt;!&ndash; 获取连接最大等待时间 &ndash;&gt;
         <property name="maxWait">
             <value>60000</value>
         </property>
-        <!-- 连接池最大空闲 -->
+        &lt;!&ndash; 连接池最大空闲 &ndash;&gt;
         <property name="maxIdle">
             <value>20</value>
         </property>
-        <!-- 连接池最小空闲 -->
+        &lt;!&ndash; 连接池最小空闲 &ndash;&gt;
         <property name="minIdle">
             <value>3</value>
         </property>
-        <!-- 自动清除无用连接 -->
+        &lt;!&ndash; 自动清除无用连接 &ndash;&gt;
         <property name="removeAbandoned">
             <value>true</value>
         </property>
-        <!-- 清除无用连接的等待时间 -->
+        &lt;!&ndash; 清除无用连接的等待时间 &ndash;&gt;
         <property name="removeAbandonedTimeout">
             <value>180</value>
         </property>
-        <!-- 连接属性 -->
+        &lt;!&ndash; 连接属性 &ndash;&gt;
         <property name="connectionProperties">
             <value>clientEncoding=UTF-8</value>
         </property>
@@ -177,40 +177,40 @@
         <property name="password">
             <value>${jcfx.jdbc_password}</value>
         </property>
-        <!-- 连接池最大使用连接数 -->
+        &lt;!&ndash; 连接池最大使用连接数 &ndash;&gt;
         <property name="maxActive">
             <value>20</value>
         </property>
-        <!-- 初始化连接大小 -->
+        &lt;!&ndash; 初始化连接大小 &ndash;&gt;
         <property name="initialSize">
             <value>1</value>
         </property>
-        <!-- 获取连接最大等待时间 -->
+        &lt;!&ndash; 获取连接最大等待时间 &ndash;&gt;
         <property name="maxWait">
             <value>60000</value>
         </property>
-        <!-- 连接池最大空闲 -->
+        &lt;!&ndash; 连接池最大空闲 &ndash;&gt;
         <property name="maxIdle">
             <value>20</value>
         </property>
-        <!-- 连接池最小空闲 -->
+        &lt;!&ndash; 连接池最小空闲 &ndash;&gt;
         <property name="minIdle">
             <value>3</value>
         </property>
-        <!-- 自动清除无用连接 -->
+        &lt;!&ndash; 自动清除无用连接 &ndash;&gt;
         <property name="removeAbandoned">
             <value>true</value>
         </property>
-        <!-- 清除无用连接的等待时间 -->
+        &lt;!&ndash; 清除无用连接的等待时间 &ndash;&gt;
         <property name="removeAbandonedTimeout">
             <value>180</value>
         </property>
-        <!-- 连接属性 -->
+        &lt;!&ndash; 连接属性 &ndash;&gt;
         <property name="connectionProperties">
             <value>clientEncoding=UTF-8</value>
         </property>
     </bean>
-    <!--海盐基本信息数据库-->
+    &lt;!&ndash;海盐基本信息数据库&ndash;&gt;
     <bean id="hyjbdataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
           destroy-method="close" >
         <property name="driverClassName">
@@ -225,41 +225,41 @@
         <property name="password">
             <value>${hyjb.jdbc_password}</value>
         </property>
-        <!-- 连接池最大使用连接数 -->
+        &lt;!&ndash; 连接池最大使用连接数 &ndash;&gt;
         <property name="maxActive">
             <value>20</value>
         </property>
-        <!-- 初始化连接大小 -->
+        &lt;!&ndash; 初始化连接大小 &ndash;&gt;
         <property name="initialSize">
             <value>1</value>
         </property>
-        <!-- 获取连接最大等待时间 -->
+        &lt;!&ndash; 获取连接最大等待时间 &ndash;&gt;
         <property name="maxWait">
             <value>60000</value>
         </property>
-        <!-- 连接池最大空闲 -->
+        &lt;!&ndash; 连接池最大空闲 &ndash;&gt;
         <property name="maxIdle">
             <value>20</value>
         </property>
-        <!-- 连接池最小空闲 -->
+        &lt;!&ndash; 连接池最小空闲 &ndash;&gt;
         <property name="minIdle">
             <value>3</value>
         </property>
-        <!-- 自动清除无用连接 -->
+        &lt;!&ndash; 自动清除无用连接 &ndash;&gt;
         <property name="removeAbandoned">
             <value>true</value>
         </property>
-        <!-- 清除无用连接的等待时间 -->
+        &lt;!&ndash; 清除无用连接的等待时间 &ndash;&gt;
         <property name="removeAbandonedTimeout">
             <value>180</value>
         </property>
-        <!-- 连接属性 -->
+        &lt;!&ndash; 连接属性 &ndash;&gt;
         <property name="connectionProperties">
             <value>clientEncoding=UTF-8</value>
         </property>
     </bean>
 
-    <!-- 固定资产信息数据库-->
+    &lt;!&ndash; 固定资产信息数据库&ndash;&gt;
     <bean id="assetsdataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
           destroy-method="close" >
         <property name="driverClassName">
@@ -274,49 +274,49 @@
         <property name="password">
             <value>${gdzc.jdbc_password}</value>
         </property>
-        <!-- 连接池最大使用连接数 -->
+        &lt;!&ndash; 连接池最大使用连接数 &ndash;&gt;
         <property name="maxActive">
             <value>20</value>
         </property>
-        <!-- 初始化连接大小 -->
+        &lt;!&ndash; 初始化连接大小 &ndash;&gt;
         <property name="initialSize">
             <value>1</value>
         </property>
-        <!-- 获取连接最大等待时间 -->
+        &lt;!&ndash; 获取连接最大等待时间 &ndash;&gt;
         <property name="maxWait">
             <value>60000</value>
         </property>
-        <!-- 连接池最大空闲 -->
+        &lt;!&ndash; 连接池最大空闲 &ndash;&gt;
         <property name="maxIdle">
             <value>20</value>
         </property>
-        <!-- 连接池最小空闲 -->
+        &lt;!&ndash; 连接池最小空闲 &ndash;&gt;
         <property name="minIdle">
             <value>3</value>
         </property>
-        <!-- 自动清除无用连接 -->
+        &lt;!&ndash; 自动清除无用连接 &ndash;&gt;
         <property name="removeAbandoned">
             <value>true</value>
         </property>
-        <!-- 清除无用连接的等待时间 -->
+        &lt;!&ndash; 清除无用连接的等待时间 &ndash;&gt;
         <property name="removeAbandonedTimeout">
             <value>180</value>
         </property>
-        <!-- 连接属性 -->
+        &lt;!&ndash; 连接属性 &ndash;&gt;
         <property name="connectionProperties">
             <value>clientEncoding=UTF-8</value>
         </property>
-    </bean>
+    </bean>-->
 
     <bean id="dataSource" class="cn.com.hvit.framework.kon.util.DynamicDataSource">
         <property name="targetDataSources">
             <map key-type="java.lang.String">
                 <entry value-ref="frameworkdataSource" key="frameworkdataSource"></entry>
-                <entry value-ref="shuangYongdataSource" key="shuangYongdataSource"></entry>
+            <!--    <entry value-ref="shuangYongdataSource" key="shuangYongdataSource"></entry>
                 <entry value-ref="olddataSource" key="olddataSource"></entry>
                 <entry value-ref="jcfxdataSource" key="jcfxdataSource"></entry>
                 <entry value-ref="hyjbdataSource" key="hyjbdataSource"></entry>
-                <entry value-ref="assetsdataSource" key="assetsdataSource"></entry>
+                <entry value-ref="assetsdataSource" key="assetsdataSource"></entry>-->
 
             </map>
         </property>
