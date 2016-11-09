@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hvit.workspace.dao.Ls_UserMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hvit.workspace.model.Ls_User" >
+    <id column="USERID" property="userid" jdbcType="DECIMAL" />
+    <result column="USERACCOUNT" property="useraccount" jdbcType="VARCHAR" />
+    <result column="USERPWD" property="userpwd" jdbcType="VARCHAR" />
+    <result column="USERNAME" property="username" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    USERID, USERACCOUNT, USERPWD, USERNAME
+  </sql>
+  <select id="userLogin" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List" />
+    FROM ls_user
+    WHERE useraccount = #{0} and userpwd = #{1}
+  </select>
+</mapper>
