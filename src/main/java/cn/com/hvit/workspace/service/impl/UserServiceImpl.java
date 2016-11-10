@@ -12,10 +12,20 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements IUserService {
     @Autowired
-    private Ls_UserMapper ls_userMapper;
+    private Ls_UserMapper userMapper;
 
     @Override
     public Ls_User userLogin(String useraccount, String userpwd) {
-        return ls_userMapper.userLogin(useraccount,userpwd);
+        return userMapper.userLogin(useraccount,userpwd);
+    }
+
+    @Override
+    public Ls_User getUserByName(String useraccount) {
+        return userMapper.getUserByName(useraccount);
+    }
+
+    @Override
+    public void addUser(Ls_User user) {
+        userMapper.addUser(user);
     }
 }

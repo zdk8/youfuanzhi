@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hvit.workspace.dao.Ls_LogMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hvit.workspace.model.Ls_Log" >
+    <id column="LOGID" property="logid" jdbcType="DECIMAL" />
+    <result column="USERID" property="userid" jdbcType="DECIMAL" />
+    <result column="LOGCONTENT" property="logcontent" jdbcType="VARCHAR" />
+    <result column="LOGTIME" property="logtime" jdbcType="TIMESTAMP" />
+    <result column="LOGTYPE" property="logtype" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    LOGID, USERID, LOGCONTENT, LOGTIME, LOGTYPE
+  </sql>
+  <select id="getLogs" resultMap="BaseResultMap">
+     SELECT <include refid="Base_Column_List" />
+     FROM ls_log
+  </select>
+  <insert id="insertLog" parameterType="cn.com.hvit.workspace.model.Ls_Log" >
+    insert into LS_LOG
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="logid != null" >
+        LOGID,
+      </if>
+      <if test="userid != null" >
+        USERID,
+      </if>
+      <if test="logcontent != null" >
+        LOGCONTENT,
+      </if>
+      <if test="logtime != null" >
+        LOGTIME,
+      </if>
+      <if test="logtype != null" >
+        LOGTYPE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="logid != null" >
+        #{logid,jdbcType=DECIMAL},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=DECIMAL},
+      </if>
+      <if test="logcontent != null" >
+        #{logcontent,jdbcType=VARCHAR},
+      </if>
+      <if test="logtime != null" >
+        #{logtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logtype != null" >
+        #{logtype,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

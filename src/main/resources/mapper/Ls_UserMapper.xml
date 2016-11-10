@@ -15,4 +15,40 @@
     FROM ls_user
     WHERE useraccount = #{0} and userpwd = #{1}
   </select>
+  <select id="getUserByName" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List" />
+    FROM ls_user
+    WHERE useraccount = #{0}
+  </select>
+  <insert id="addUser" parameterType="cn.com.hvit.workspace.model.Ls_User" >
+    insert into LS_USER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        USERID,
+      </if>
+      <if test="useraccount != null" >
+        USERACCOUNT,
+      </if>
+      <if test="userpwd != null" >
+        USERPWD,
+      </if>
+      <if test="username != null" >
+        USERNAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        #{userid,jdbcType=DECIMAL},
+      </if>
+      <if test="useraccount != null" >
+        #{useraccount,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwd != null" >
+        #{userpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
 </mapper>
