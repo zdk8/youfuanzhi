@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hvit.workspace.dao.Ls_BlastMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hvit.workspace.model.Ls_Blast" >
+    <result column="B_ID" property="bId" jdbcType="DECIMAL" />
+    <result column="BLASTTIME" property="blasttime" jdbcType="TIMESTAMP" />
+    <result column="DISTANCE" property="distance" jdbcType="DECIMAL" />
+    <result column="BLASTWAY" property="blastway" jdbcType="VARCHAR" />
+    <result column="DESCRIPTION" property="description" jdbcType="VARCHAR" />
+    <result column="APPLYUNIT" property="applyunit" jdbcType="VARCHAR" />
+    <result column="CONTACTWAY" property="contactway" jdbcType="VARCHAR" />
+    <result column="WEIGHT" property="weight" jdbcType="DECIMAL" />
+    <result column="APPLICANT" property="applicant" jdbcType="VARCHAR" />
+    <result column="FORMDATE" property="formdate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <insert id="insert" parameterType="cn.com.hvit.workspace.model.Ls_Blast" >
+    insert into LS_BLAST (B_ID, BLASTTIME, DISTANCE, 
+      BLASTWAY, DESCRIPTION, APPLYUNIT, 
+      CONTACTWAY, WEIGHT, APPLICANT, 
+      FORMDATE)
+    values (#{bId,jdbcType=DECIMAL}, #{blasttime,jdbcType=TIMESTAMP}, #{distance,jdbcType=DECIMAL}, 
+      #{blastway,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{applyunit,jdbcType=VARCHAR}, 
+      #{contactway,jdbcType=VARCHAR}, #{weight,jdbcType=DECIMAL}, #{applicant,jdbcType=VARCHAR}, 
+      #{formdate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.hvit.workspace.model.Ls_Blast" >
+    insert into LS_BLAST
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bId != null" >
+        B_ID,
+      </if>
+      <if test="blasttime != null" >
+        BLASTTIME,
+      </if>
+      <if test="distance != null" >
+        DISTANCE,
+      </if>
+      <if test="blastway != null" >
+        BLASTWAY,
+      </if>
+      <if test="description != null" >
+        DESCRIPTION,
+      </if>
+      <if test="applyunit != null" >
+        APPLYUNIT,
+      </if>
+      <if test="contactway != null" >
+        CONTACTWAY,
+      </if>
+      <if test="weight != null" >
+        WEIGHT,
+      </if>
+      <if test="applicant != null" >
+        APPLICANT,
+      </if>
+      <if test="formdate != null" >
+        FORMDATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bId != null" >
+        #{bId,jdbcType=DECIMAL},
+      </if>
+      <if test="blasttime != null" >
+        #{blasttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="distance != null" >
+        #{distance,jdbcType=DECIMAL},
+      </if>
+      <if test="blastway != null" >
+        #{blastway,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="applyunit != null" >
+        #{applyunit,jdbcType=VARCHAR},
+      </if>
+      <if test="contactway != null" >
+        #{contactway,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null" >
+        #{weight,jdbcType=DECIMAL},
+      </if>
+      <if test="applicant != null" >
+        #{applicant,jdbcType=VARCHAR},
+      </if>
+      <if test="formdate != null" >
+        #{formdate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>
