@@ -3,10 +3,15 @@
 <html>
 <head>
 
-    <title>Quick Start - Leaflet</title>
+    <title>丽水市防震减灾公共服务信息系统二期</title>
 
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="http://120.55.65.150/wp/jquery-easyui-1.4.5/themes/default/easyui.css">
+
+    <link rel="stylesheet" type="text/css" href="http://hvit.in.server:3000/css/home.css"/>
+
 
     <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
     <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico"/>
@@ -14,6 +19,47 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/leaflet/1.0.1/leaflet.css"/>
     <script src="//cdn.bootcss.com/leaflet/1.0.1/leaflet.js"></script>
 
+
+    <script>
+        <!--兼容windows无console的情况-->
+        if (window.console && window.console.log) {
+        } else {
+            window.console = {};
+            window.console.log = function () {
+            };
+        }
+        var vecIndexOf = function (v, elt) {
+            var len = v.length;
+            ;
+            for (var from = 0; from < len; from++) {
+                if (v[from] === elt)
+                    return from;
+            }
+            return -1;
+        }
+
+        var global = {route: {}};
+        var my_test_mg = !true;
+        var proxyUrl = function (yls) {
+            return window.location.origin + '/proxyapi?yls=' + yls;
+        };
+        var App = {
+            nav: function () {
+            },
+            isTest: my_test_mg,
+            wrapUrl: function (url) {
+                return (my_test_mg ? "test-" : "") + url
+            },
+            WrapIdAttribute: function (id) {
+                return (my_test_mg ? "_id" : id)
+            },
+            tab: null,
+            map:null
+        };
+        var Iconfig;
+        var global={};
+
+    </script>
 
     <style>
         html, body {
@@ -44,14 +90,17 @@
         .btnStyle {
             border: 1px solid green;
         }
+
+        #header{
+            height:50px;
+        }
     </style>
 
 
 </head>
 <body>
-
-<div class="span9" style="height:100%">
-    <div id="map-wrapper">
+<div id="header"> Ikke rutesat: </div>
+<div id="map-wrapper">
         <div id="mapid"></div>
         <div id="button-wrapper">
             <input type="button" id="Btn1" value="Btn1" class="btnStyle span3"/>
@@ -59,8 +108,6 @@
             <input type="button" id="Btn3" value="Btn3" class="btnStyle span3"/>
         </div>
     </div>
-    <span id="studentsCount" class="lblStyle span3"> Ikke rutesat: </span>
-</div>
 <script>
 
     var latlng = null;
@@ -133,3 +180,10 @@
 
 </body>
 </html>
+<script>
+    //重要的设置
+    HvitFrontFWPrefix = "http://hvit.in.server:3000/";
+</script>
+<script src="http://hvit.in.server:3000/hvit-front-framework/baseConfig.js"></script>
+<script src="http://hvit.in.server:3000/hvit-front-framework/require.js"
+        data-main="apps/lishui2qi/app.js?v=1"></script>
