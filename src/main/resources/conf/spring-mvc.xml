@@ -33,7 +33,37 @@
         </property>
     </bean>
 
-
+    <!-- 工作的bean -->
+    <bean id="myJob" class="cn.com.hvit.workspace.controller.TestController" />
+    <!-- job的配置开始 -->
+    <bean id="myJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+         <property name="targetObject" >
+             <ref bean="myJob" />
+         </property>
+        <property name="targetMethod">
+            <value>test</value>
+        </property>
+        <property name="concurrent">
+            <value>false</value>
+        </property>
+    </bean>
+    <!-- 调度的配置开始-->
+    <bean id="crontestJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail">
+            <ref bean="myJobDetail"></ref>
+        </property>
+        <property name="cronExpression">
+            <value>0 0/1 * * * ?</value>
+        </property>
+    </bean>
+    <!-- 启动触发器的配置开始  lazy-init: true:不执行   false:执行-->
+    <bean name="startQuertz" lazy-init="true" autowire="no" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="crontestJobTrigger"></ref>
+            </list>
+        </property>
+    </bean>
 
     <mvc:interceptors>
         <bean class="cn.com.hvit.framework.kon.util.SessionInterceptor" />
