@@ -1,3 +1,163 @@
-body{
-    color:red;
+html, body {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
 }
+
+#map-wrapper {
+    width: 100%;
+    height: 500px;
+    position: relative;
+}
+
+#button-wrapper {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    background: orange;
+    z-index: 999;
+}
+
+#mapid {
+    height: 100%;
+}
+
+.btnStyle {
+    border: 1px solid green;
+}
+
+#header {
+    background: #129be2;
+}
+#header,#header-center,#project-name,#header-menu-wrapper,#header-menu,#project-name span{
+    height: 50px;
+}
+
+#project-name span {
+    line-height: 50px;
+    font-size: 20px;
+    color: white;
+}
+
+
+#project-name{
+    float: left;
+}
+#header-menu-wrapper{
+    float: right;
+}
+
+#header-menu{
+        font-size: 12px;
+    color: white;
+}
+#header-menu > span{
+        line-height: 50px;
+}
+
+
+#header-center {
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+#header-triangle-down{
+    cursor: pointer;
+}
+
+
+#header-more-menu{
+    position: absolute;
+    z-index: 999;
+    /*background: rgba(103, 92, 231, 0.59);*/
+    background: #129be2;
+    display: none;
+    left:-100px;
+    top:30px;
+
+    padding:10px 0;
+}
+
+
+
+/*头部样式结束×××××××××××××××××××××××××××××××××××*/
+
+
+#header-more-menu > ul,  #header-more-menu  li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+#header-more-menu  li,#header-more-menu  a{
+    width: 120px;
+    height: 35px;
+    display: inline-block;
+}
+#header-more-menu span {
+    height: 35px;
+    line-height: 35px;
+    background-repeat: no-repeat;
+}
+#header-more-menu img{
+    margin-bottom: -4px;
+    margin-left: 20px;
+    margin-right: 5px;
+}
+#header-more-menu  a{
+    cursor: pointer;
+}
+#header-more-menu  a:hover{
+    background: #1486c1;
+}
+
+/*更多菜单结束*/
+
+
+#map-menu-wrapper {
+    z-index: 999;
+    position: absolute;
+    bottom: 30px;
+    left: 15px;
+}
+
+ul#map-menu, ul#map-menu ul, ul#map-menu li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+ul#map-menu {
+    padding-top: 10px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+}
+
+ul#map-menu li.dir {
+    margin-top: 20px;
+}
+
+ul#map-menu li.leaf {
+    margin-top: 15px;
+}
+
+ul#map-menu > li:first-child {
+    margin-top: 0px;
+}
+
+ul#map-menu li a {
+    width: 130px;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    margin-bottom: 3px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+ul#map-menu li a:hover {
+    background-color: #0f99f0;
+}
+
+
