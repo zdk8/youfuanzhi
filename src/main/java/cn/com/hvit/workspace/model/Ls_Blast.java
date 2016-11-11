@@ -24,6 +24,8 @@ public class Ls_Blast {
 
     private Date formdate;
 
+    private String isdel;
+
     public BigDecimal getbId() {
         return bId;
     }
@@ -102,5 +104,13 @@ public class Ls_Blast {
 
     public void setFormdate(Date formdate) {
         this.formdate = formdate;
+    }
+
+    public String getIsdel() {
+        return isdel;
+    }
+
+    public void setIsdel(String isdel) {
+        this.isdel = isdel;
     }
 }

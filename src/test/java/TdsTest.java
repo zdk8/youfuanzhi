@@ -10,6 +10,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -48,10 +49,17 @@ public class TdsTest {
     @Test
     public void testBlast(){
         Ls_Blast blast = new Ls_Blast();
-        blast.setApplicant("blast");
-        blast.setApplyunit("hvit");
-        blast.setWeight(BigDecimal.valueOf(100));
-        blastService.addBlast(blast);
-        System.out.println("success add");
+        blast.setApplicant("blast2");
+        blast.setApplyunit("hvit2");
+        blast.setWeight(BigDecimal.valueOf(200));
+        blast.setbId(BigDecimal.valueOf(21));
+//        blastService.addBlast(blast);
+//        System.out.println("success add");
+//        blastService.updateBlast(blast);
+        System.out.println("update success");
+
+        PageHelper.Page<Ls_Blast> blasts = blastService.getBlastByCond(1, 10,new HashMap<String, Object>());
+        System.out.println(blasts.getResults().size());
+
     }
 }

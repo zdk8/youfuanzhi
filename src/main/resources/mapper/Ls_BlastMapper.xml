@@ -13,6 +13,21 @@
     <result column="APPLICANT" property="applicant" jdbcType="VARCHAR" />
     <result column="FORMDATE" property="formdate" jdbcType="TIMESTAMP" />
   </resultMap>
+  <sql id="Base_Column_List" >
+    B_ID, BLASTTIME, DISTANCE, BLASTWAY, DESCRIPTION, APPLYUNIT, CONTACTWAY, WEIGHT, APPLICANT, FORMDATE
+  </sql>
+  <select id="getBlastByCond" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from LS_BLAST
+    WHERE isdel is NULL
+    <if test="blastway !=null">
+      AND BLASTWAY LIKE CONCAT('%',CONCAT(#{blastway},'%'))
+    </if>
+    <if test="applyunit != null">
+      AND APPLYUNIT  LIKE CONCAT('%',CONCAT(#{applyunit},'%'))
+    </if>
+  </select>
   <insert id="addBlast" parameterType="cn.com.hvit.workspace.model.Ls_Blast" >
     insert into LS_BLAST
     <trim prefix="(" suffix=")" suffixOverrides="," >
@@ -80,4 +95,37 @@
       </if>
     </trim>
   </insert>
+  <update id="updateBlast" parameterType="cn.com.hvit.workspace.model.Ls_Blast">
+    update LS_BLAST
+    <set>
+      <if test="blasttime != null" >
+        blasttime = #{blasttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="distance != null" >
+        distance = #{distance,jdbcType=DECIMAL},
+      </if>
+      <if test="blastway != null" >
+        blastway = #{blastway,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="applyunit != null" >
+        applyunit = #{applyunit,jdbcType=VARCHAR},
+      </if>
+      <if test="contactway != null" >
+        contactway = #{contactway,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null" >
+        weight = #{weight,jdbcType=DECIMAL},
+      </if>
+      <if test="applicant != null" >
+        applicant = #{applicant,jdbcType=VARCHAR},
+      </if>
+      <if test="formdate != null" >
+        formdate = #{formdate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where B_ID = #{bId,jdbcType=DECIMAL}
+  </update>
 </mapper>
