@@ -1,5 +1,7 @@
 import cn.com.hvit.framework.kon.util.PageHelper;
+import cn.com.hvit.workspace.model.Ls_Blast;
 import cn.com.hvit.workspace.model.Ls_Log;
+import cn.com.hvit.workspace.service.IBlastService;
 import cn.com.hvit.workspace.service.ILogService;
 import cn.com.hvit.workspace.service.IUserService;
 import org.junit.Before;
@@ -16,12 +18,14 @@ import java.util.List;
 public class TdsTest {
     private IUserService userService;
     private ILogService logService;
+    private IBlastService blastService;
 
     @Before
     public void before(){
         ApplicationContext context = new ClassPathXmlApplicationContext("classpath:conf/spring.xml","classpath:conf/spring-mybatis.xml");
         userService = (IUserService) context.getBean("userServiceImpl");
         logService = (ILogService) context.getBean("logServiceImpl");
+        blastService = (IBlastService) context.getBean("blastServiceImpl");
     }
 
     @Test
@@ -39,5 +43,15 @@ public class TdsTest {
 //        List logs = logService.getLogs();
         PageHelper.Page<Ls_Log> logs = logService.getLogs(1, 10);
         System.out.println(logs.getResults().size());
+    }
+
+    @Test
+    public void testBlast(){
+        Ls_Blast blast = new Ls_Blast();
+        blast.setApplicant("blast");
+        blast.setApplyunit("hvit");
+        blast.setWeight(BigDecimal.valueOf(100));
+        blastService.addBlast(blast);
+        System.out.println("success add");
     }
 }

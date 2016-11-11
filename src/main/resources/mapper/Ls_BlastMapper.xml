@@ -13,17 +13,7 @@
     <result column="APPLICANT" property="applicant" jdbcType="VARCHAR" />
     <result column="FORMDATE" property="formdate" jdbcType="TIMESTAMP" />
   </resultMap>
-  <insert id="insert" parameterType="cn.com.hvit.workspace.model.Ls_Blast" >
-    insert into LS_BLAST (B_ID, BLASTTIME, DISTANCE, 
-      BLASTWAY, DESCRIPTION, APPLYUNIT, 
-      CONTACTWAY, WEIGHT, APPLICANT, 
-      FORMDATE)
-    values (#{bId,jdbcType=DECIMAL}, #{blasttime,jdbcType=TIMESTAMP}, #{distance,jdbcType=DECIMAL}, 
-      #{blastway,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{applyunit,jdbcType=VARCHAR}, 
-      #{contactway,jdbcType=VARCHAR}, #{weight,jdbcType=DECIMAL}, #{applicant,jdbcType=VARCHAR}, 
-      #{formdate,jdbcType=TIMESTAMP})
-  </insert>
-  <insert id="insertSelective" parameterType="cn.com.hvit.workspace.model.Ls_Blast" >
+  <insert id="addBlast" parameterType="cn.com.hvit.workspace.model.Ls_Blast" >
     insert into LS_BLAST
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="bId != null" >
