@@ -1,6 +1,6 @@
 package cn.com.hvit.workspace.controller;
 
-import cn.com.hvit.workspace.model.Ls_Log;
+
 import cn.com.hvit.workspace.model.Ls_User;
 import cn.com.hvit.workspace.service.ILogService;
 import cn.com.hvit.workspace.service.IUserService;
@@ -38,7 +38,8 @@ public class UserLoginController {
      * @return 登录结果
      */
     @ResponseBody
-    @RequestMapping(value = "/login", method = {RequestMethod.PUT, RequestMethod.POST})
+    @RequestMapping(value = "/login", method = {RequestMethod.GET, RequestMethod.POST})
+//    @SystemLog(module = "用户管理",methods = "用户登录")
     public Map<String, Object> userLogin(@RequestParam String useraccount, @RequestParam String userpwd, HttpServletRequest request, HttpServletResponse response) {
         Map<String, Object> userMap = new HashMap<String, Object>();
         Ls_User getUser = userService.userLogin(useraccount, userpwd);
@@ -47,13 +48,13 @@ public class UserLoginController {
             //保存登录结果
             userMap.put("success", true);
             userMap.put("message", getUser);
-//            request.getSession().setAttribute("user", getUser);//将用户信息添加到session中
+            request.getSession().setAttribute("user", getUser);//将用户信息添加到session中
 //            //将登录信息添加到日志表中
 //            Ls_Log log = new Ls_Log();
 //            log.setUserid(getUser.getUserid());
 //            log.setLogcontent(getUser.getUsername()+"登录系统");
 //            logService.addLog(log);
-            CommonCode.addLog(request,"登录系统");//增加日志信息
+//            CommonCode.addLog(request,"登录系统");//增加日志信息
             return userMap;
         } else {
             userMap.put("success", false);
@@ -69,7 +70,7 @@ public class UserLoginController {
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/logout", method = {RequestMethod.PUT, RequestMethod.POST})
+    @RequestMapping(value = "/logout", method = {RequestMethod.GET, RequestMethod.POST})
     public Map<String, Object> userLoginOut(HttpServletRequest request, HttpServletResponse response) {
         Map<String,Object> logoutMap = new HashMap<String, Object>();
 

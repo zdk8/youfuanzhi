@@ -2,13 +2,10 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
   xmlns:p="http://www.springframework.org/schema/p"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:context="http://www.springframework.org/schema/context"
   xmlns:mvc="http://www.springframework.org/schema/mvc"
   xsi:schemaLocation="
     http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
-    http://www.springframework.org/schema/context
-    http://www.springframework.org/schema/context/spring-context-3.2.xsd
     http://www.springframework.org/schema/mvc
     http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
 
@@ -34,36 +31,47 @@
     </bean>
 
     <!-- 工作的bean -->
-    <bean id="myJob" class="cn.com.hvit.workspace.controller.TestController" />
-    <!-- job的配置开始 -->
-    <bean id="myJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
-         <property name="targetObject" >
-             <ref bean="myJob" />
-         </property>
-        <property name="targetMethod">
-            <value>test</value>
-        </property>
-        <property name="concurrent">
-            <value>false</value>
-        </property>
-    </bean>
-    <!-- 调度的配置开始-->
-    <bean id="crontestJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
-        <property name="jobDetail">
-            <ref bean="myJobDetail"></ref>
-        </property>
-        <property name="cronExpression">
-            <value>0 0/1 * * * ?</value>
-        </property>
-    </bean>
-    <!-- 启动触发器的配置开始  lazy-init: true:不执行   false:执行-->
-    <bean name="startQuertz" lazy-init="true" autowire="no" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
-        <property name="triggers">
-            <list>
-                <ref bean="crontestJobTrigger"></ref>
-            </list>
-        </property>
-    </bean>
+    <!--<bean id="myJob" class="cn.com.hvit.workspace.controller.TestController" />-->
+    <!--&lt;!&ndash; job的配置开始 &ndash;&gt;-->
+    <!--<bean id="myJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">-->
+         <!--<property name="targetObject" >-->
+             <!--<ref bean="myJob" />-->
+         <!--</property>-->
+        <!--<property name="targetMethod">-->
+            <!--<value>test</value>-->
+        <!--</property>-->
+        <!--<property name="concurrent">-->
+            <!--<value>false</value>-->
+        <!--</property>-->
+    <!--</bean>-->
+    <!--&lt;!&ndash; 调度的配置开始&ndash;&gt;-->
+    <!--<bean id="crontestJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">-->
+        <!--<property name="jobDetail">-->
+            <!--<ref bean="myJobDetail"></ref>-->
+        <!--</property>-->
+        <!--<property name="cronExpression">-->
+            <!--<value>0 0/1 * * * ?</value>-->
+        <!--</property>-->
+    <!--</bean>-->
+    <!--&lt;!&ndash; 启动触发器的配置开始  lazy-init: true:不执行   false:执行&ndash;&gt;-->
+    <!--<bean name="startQuertz" lazy-init="true" autowire="no" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">-->
+        <!--<property name="triggers">-->
+            <!--<list>-->
+                <!--<ref bean="crontestJobTrigger"></ref>-->
+            <!--</list>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+    <!-- 定时器注解 -->
+    <!--<task:annotation-driven />-->
+    <!--<context:annotation-config/>-->
+    <!-- 扫描文件定时包，这里是"cn.springmvc.*" -->
+    <!--<context:component-scan base-package="cn.com.hvit.workspace.*">-->
+    <!--<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>-->
+    <!--</context:component-scan>-->
+
+    <!--<task:annotation-driven scheduler="taskScheduler" mode="proxy"/>-->
+    <!--<task:scheduler id="taskScheduler" pool-size="10"/>-->
 
     <mvc:interceptors>
         <bean class="cn.com.hvit.framework.kon.util.SessionInterceptor" />

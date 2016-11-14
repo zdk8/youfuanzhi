@@ -4,6 +4,7 @@ import cn.com.hvit.framework.kon.util.PageHelper;
 import cn.com.hvit.workspace.model.Ls_Blast;
 import cn.com.hvit.workspace.service.IBlastService;
 import cn.com.hvit.workspace.util.CommonCode;
+import cn.com.hvit.workspace.util.log.SystemLog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -93,6 +94,7 @@ public class BlastController {
      */
     @ResponseBody
     @RequestMapping(value = "/getblast", method = {RequestMethod.GET,RequestMethod.POST})
+    @SystemLog(module = "用户管理",methods = "查询爆破信息")
     public HashMap<String, Object> getBlast(@RequestParam int page, @RequestParam int rows, HttpServletRequest request, HttpServletResponse response){
         HashMap<String,Object> blastMap = new HashMap<String,Object>();
         HashMap<String,Object> condMap = new HashMap<String,Object>();

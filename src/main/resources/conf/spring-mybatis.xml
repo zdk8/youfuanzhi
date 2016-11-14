@@ -17,7 +17,9 @@
     http://www.springframework.org/schema/util
     http://www.springframework.org/schema/util/spring-util-3.2.xsd">
 
-
+    <!-- aop 日志 -->
+    <aop:aspectj-autoproxy proxy-target-class="true" />
+    <bean id="logAopAction" class="cn.com.hvit.workspace.util.log.LogAopAction" />
 
     <bean id="frameworkdataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
           destroy-method="close" >
@@ -109,5 +111,7 @@
 
     <!-- 启用对事务注解的支持 -->
     <tx:annotation-driven transaction-manager="transactionManager" />
+
+
 
 </beans>

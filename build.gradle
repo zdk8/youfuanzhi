@@ -42,6 +42,8 @@ dependencies {
         compile "org.springframework:spring-jdbc:$springVersion"
         compile "org.springframework:spring-context-support:$springVersion"
         compile "org.springframework:spring-test:$springVersion"
+    compile "org.aspectj:aspectjrt:1.8.9"
+    compile "org.aspectj:aspectjweaver:1.8.9"
 
           compile "org.springframework.security:spring-security-config:$springSecurityVersion"
   compile "org.springframework.security:spring-security-web:$springSecurityVersion"
