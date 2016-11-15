@@ -1,4 +1,4 @@
-package cn.com.hvit.workspace.controller;
+package cn.com.hvit.workspace.controller.aopController;
 
 import cn.com.hvit.framework.kon.util.PageHelper;
 import cn.com.hvit.workspace.model.Ls_Blast;

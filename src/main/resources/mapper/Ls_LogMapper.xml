@@ -7,9 +7,10 @@
     <result column="LOGCONTENT" property="logcontent" jdbcType="VARCHAR" />
     <result column="LOGTIME" property="logtime" jdbcType="TIMESTAMP" />
     <result column="LOGTYPE" property="logtype" jdbcType="VARCHAR" />
+    <result column="CLIENTIP" property="clientip" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-  LOGID, USERID, LOGCONTENT, LOGTIME, LOGTYPE
+  LOGID, USERID, LOGCONTENT, LOGTIME, LOGTYPE ,CLIENTIP
 </sql>
   <select id="getLogs" resultMap="BaseResultMap">
      SELECT <include refid="Base_Column_List" />
@@ -33,6 +34,9 @@
       <if test="logtype != null" >
         LOGTYPE,
       </if>
+      <if test="clientip != null" >
+        CLIENTIP,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="logid != null" >
@@ -49,6 +53,9 @@
       </if>
       <if test="logtype != null" >
         #{logtype,jdbcType=VARCHAR},
+      </if>
+      <if test="clientip != null" >
+        #{clientip,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>

@@ -4,6 +4,7 @@ import cn.com.hvit.workspace.model.Ls_Log;
 import cn.com.hvit.workspace.model.Ls_User;
 
 import cn.com.hvit.workspace.service.ILogService;
+import cn.com.hvit.workspace.util.CommonCode;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Around;
@@ -29,7 +30,7 @@ public class LogAopAction {
     private ILogService logService;
 
     //配置切入点
-    @Pointcut("execution(* cn.com.hvit.workspace.controller..*.*(..))")
+    @Pointcut("execution(* cn.com.hvit.workspace.controller.aopController..*.*(..))")
     private void controllerAspect(){}
 
     @Around("controllerAspect()")
@@ -47,6 +48,9 @@ public class LogAopAction {
         String time = new SimpleDateFormat("YYYY-MM-dd HH:mm;ss").format(new Date());
 
         //获取系统ip
+        CommonCode code = new CommonCode();
+        String clientIP = code.getClientIp(request);
+        log.setClientip(clientIP);
 
         //方法通知前获取时间，  为什么要记录这个时间呢？当然是用来计算模块执行时间的
         long start = System.currentTimeMillis();

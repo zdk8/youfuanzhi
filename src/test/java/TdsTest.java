@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.math.BigDecimal;
 import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -40,11 +41,17 @@ public class TdsTest {
         blastService = (IBlastService) context.getBean("blastServiceImpl");
     }
 
+    /**
+     * 登录测试
+     */
     @Test
     public void testUserLogin(){
         System.out.println(userService.getUserByName("aaa").getUseraccount());
     }
 
+    /**
+     * 日志测试
+     */
     @Test
     public void testLog(){
         Ls_Log log = new Ls_Log();
@@ -57,6 +64,9 @@ public class TdsTest {
 //        System.out.println(logs.getResults().size());
     }
 
+    /**
+     * 爆破信息测试
+     */
     @Test
     public void testBlast(){
         Ls_Blast blast = new Ls_Blast();
@@ -74,7 +84,9 @@ public class TdsTest {
 
     }
 
-
+    /**
+     * ip连接测试
+     */
     @Test
     public void testPing(){
         //第一种方法:Jdk1.5的InetAddresss,代码简单。 测试时间为1000时，能ping通的ip也会返回false
@@ -103,6 +115,10 @@ public class TdsTest {
 
     }
 
+    /**
+     * 短信发送测试
+     * @throws Exception
+     */
     @Test
     public void testSendMessage() throws Exception{
         HttpClient client = new HttpClient();
@@ -122,6 +138,14 @@ public class TdsTest {
         System.out.println(result);
 
         post.releaseConnection();
+    }
+
+    /**
+     * 获取客户端ip测试
+     */
+    @Test
+    public void getIP(){
+
     }
 
 }
