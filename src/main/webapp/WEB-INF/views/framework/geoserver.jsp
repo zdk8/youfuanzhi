@@ -1,4 +1,6 @@
+<%@ page import="cn.com.hvit.workspace.model.Ls_User" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<% Ls_User user=(Ls_User) request.getAttribute("user");%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -73,7 +75,8 @@
             <div id="header-menu">
                 <span id="current-time">2011-11-11 12:12:12</span>
                 <span>欢迎您！</span>
-                <span id="current-user-name">张三</span>
+                <span id="current-user-name" style="cursor: pointer;"
+                      isLogined="<%= (user!=null)%>"><%= user==null?"未登录":user.getUsername()%></span>
                 <img style="max-height: 2em;margin-bottom: -1px;" src="images/user.png">
                 <div style="display: inline-block;position: relative;">
                     <img id="header-triangle-down" style="max-height: 2em;margin-bottom: -1px;" src="images/向下箭头.png">
