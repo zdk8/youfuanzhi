@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -54,6 +56,7 @@ public class UserLoginController {
             Ls_Log log = new Ls_Log();
             log.setUserid(getUser.getUserid());
             log.setLogcontent(getUser.getUsername()+"登录系统");
+            log.setClientip(new CommonCode().getClientIp(request));
             logService.addLog(log);
 //            CommonCode.addLog(request,"登录系统");//增加日志信息
             return userMap;
@@ -74,7 +77,6 @@ public class UserLoginController {
     @RequestMapping(value = "/logout", method = {RequestMethod.GET, RequestMethod.POST})
     public Map<String, Object> userLoginOut(HttpServletRequest request, HttpServletResponse response) {
         Map<String,Object> logoutMap = new HashMap<String, Object>();
-
 //        Ls_User user = (Ls_User) request.getSession().getAttribute("user");           //获取session中用户信息
 //        //将注销信息添加到日志表中
 //        Ls_Log log = new Ls_Log();
@@ -86,7 +88,7 @@ public class UserLoginController {
 
         request.getSession().removeAttribute("user");//注销session中用户信息
         logoutMap.put("success",true);
-        logoutMap.put("message" , "注销成功");
+        logoutMap.put("message" , "注销成功" + request.getRemoteAddr() );
 
         return logoutMap;
     }
@@ -143,4 +145,16 @@ public class UserLoginController {
             return userMap;
         }
     }
+
+
+    @ResponseBody
+    @RequestMapping(value = "/urltest", method = {RequestMethod.GET,RequestMethod.POST})
+    public Map<String, Object> testURL(HttpServletRequest request, HttpServletResponse response){
+        Map<String,Object> userMap = new HashMap<String,Object>();
+
+        userMap.put("success",true);
+        userMap.put("message","接口测试");
+        return userMap;
+    }
+
 }

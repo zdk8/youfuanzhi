@@ -14,6 +14,8 @@ public class Ls_Log {
 
     private String logtype;
 
+    private String clientip;
+
     public BigDecimal getLogid() {
         return logid;
     }
@@ -52,5 +54,13 @@ public class Ls_Log {
 
     public void setLogtype(String logtype) {
         this.logtype = logtype == null ? null : logtype.trim();
+    }
+
+    public String getClientip() {
+        return clientip;
+    }
+
+    public void setClientip(String clientip) {
+        this.clientip = clientip;
     }
 }
