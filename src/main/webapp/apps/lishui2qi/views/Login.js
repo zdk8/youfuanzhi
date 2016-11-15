@@ -7,7 +7,12 @@ define(['jqueryform'],function () {
                     var results = $.parseJSON(xhr.responseText);
                     
                     require(['Message'],function (message) {
-                        message.show(results);
+                        if(message.success==true) {
+                            message.show("登录成功");
+                        }else{
+                            message.show("登录失败");
+                        }
+
                     });
 
                 }

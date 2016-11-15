@@ -1,6 +1,6 @@
 <%@ page import="cn.com.hvit.workspace.model.Ls_User" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<% Ls_User user=(Ls_User) request.getAttribute("user");%>
+<% Ls_User user=(Ls_User) session.getAttribute("user");%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,6 +22,12 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/leaflet/1.0.1/leaflet.css"/>
     <%--<script src="//cdn.bootcss.com/leaflet/1.0.1/leaflet.js"></script>--%>
 
+    <style>
+        .leaflet-control-tuli{
+            /*background-color: red;
+            border:1px solid black;*/
+        }
+    </style>
 
     <script>
         <!--兼容windows无console的情况-->
@@ -82,8 +88,8 @@
                     <img id="header-triangle-down" style="max-height: 2em;margin-bottom: -1px;" src="images/向下箭头.png">
                     <div id="header-more-menu">
                         <ul>
-                            <li><a><img src="images/icons/设置.png"><span>账户设置</span></a></li>
-                            <li><a><img src="images/icons/退出.png"><span>退出登录</span></a></li>
+                            <li><a id="account-setting"><img src="images/icons/设置.png"><span>账户设置</span></a></li>
+                            <li><a id="logout"><img src="images/icons/退出.png"><span>退出登录</span></a></li>
                         </ul>
                     </div>
                 </div>

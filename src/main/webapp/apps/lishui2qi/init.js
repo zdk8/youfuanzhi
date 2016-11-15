@@ -1,10 +1,19 @@
-define(['underscore'], function (_) {
+define(['underscore','leaflet-plugins/TuLi'], function (_,TuLi) {
 
 
     return function () {
 
         var latlng = null;
-        var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+        var myMap = L.map('mapid', {
+            zoomControl: false
+        }).setView([51.505, -0.09], 13);
+
+        var zoomControl=L.control.zoom({
+            position: 'bottomleft'
+        }).addTo(myMap);
+        //myMap.addControl(zoomControl);
+
+        L.control.tuli().addTo(myMap);
 
         L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw', {
             maxZoom: 18,
@@ -12,22 +21,22 @@ define(['underscore'], function (_) {
             '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
             'Imagery © <a href="http://mapbox.com">Mapbox</a>',
             id: 'mapbox.streets'
-        }).addTo(mymap);
+        }).addTo(myMap);
 
-        L.marker([51.5, -0.09]).addTo(mymap);
+        L.marker([51.5, -0.09]).addTo(myMap);
 
         L.circle([51.508, -0.11], {
             color: 'red',
             fillColor: '#f03',
             fillOpacity: 0.5,
             radius: 500
-        }).addTo(mymap);
+        }).addTo(myMap);
 
         L.polygon([
             [51.509, -0.08],
             [51.503, -0.06],
             [51.51, -0.047]
-        ]).addTo(mymap);
+        ]).addTo(myMap);
 
         //add event
 
@@ -39,10 +48,10 @@ define(['underscore'], function (_) {
             popup
                 .setLatLng(e.latlng)
                 .setContent("You clicked the map at " + e.latlng.toString())
-                .openOn(mymap);
+                .openOn(myMap);
         }
 
-        mymap.on('click', onMapClick);
+        myMap.on('click', onMapClick);
 
 
         //按钮事件
@@ -107,13 +116,13 @@ define(['underscore'], function (_) {
             }
         });
 
-        $moreMenu=$('#header-more-menu');
-        $moreMenu.find('a').bind('click',function () {
+        $moreMenu = $('#header-more-menu');
+        $moreMenu.find('a').bind('click', function () {
             console.log(this);
         });
 
+        //清除三角形的弹出界面
         $(window).bind('click', function (e) {
-
             if (isShow) {
                 if ($(e.target).attr('id') == "header-triangle-down") {
                     return;
@@ -121,24 +130,29 @@ define(['underscore'], function (_) {
                     $('#header-more-menu').hide();
                     isShow = false;
                 }
-
             }
         });
 
-
-        $('#current-user-name').bind('click',function () {
-           if($(this).attr('isLogined')=='false'){
-               require([cj.getModuleJs('widget/DispatcherPanel')], function (DispatcherPanel) {
-                var module = 'views/Login';
-                DispatcherPanel.open('text!' + module + '.htm', module, {
-                    title: "登录",
-                    ptype: DispatcherPanel.PANELLAYER
+        //点击当前用户名，如果未登录，则进行弹出登录界面
+        $('#current-user-name').bind('click', function () {
+            if ($(this).attr('isLogined') == 'false') {
+                require([cj.getModuleJs('widget/DispatcherPanel')], function (DispatcherPanel) {
+                    var module = 'views/Login';
+                    DispatcherPanel.open('text!' + module + '.htm', module, {
+                        title: "登录",
+                        ptype: DispatcherPanel.PANELLAYER
+                    });
                 });
-            });
-           }else {
-               alert('已登录');
-           }
+            } else {
+                alert('已登录');
+            }
+        });
 
+        //注销
+        $('#logout').bind('click', function () {
+            $.get('logout', function () {
+                document.href = 'framework_geoserver';
+            })
         });
     }
 });
