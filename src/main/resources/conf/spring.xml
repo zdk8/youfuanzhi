@@ -23,10 +23,11 @@
 
     <!-- 扫描文件定时包，这里是"cn.springmvc.*" -->
     <!--<context:component-scan base-package="cn.com.hvit.workspace.*">-->
-    <!--<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>-->
+        <!--<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>-->
     <!--</context:component-scan>-->
 
-    <!--<task:annotation-driven scheduler="taskScheduler" mode="proxy"/>-->
     <!--<task:scheduler id="taskScheduler" pool-size="10"/>-->
+    <!--<task:annotation-driven scheduler="taskScheduler" mode="proxy"/>-->
+
 
 </beans>

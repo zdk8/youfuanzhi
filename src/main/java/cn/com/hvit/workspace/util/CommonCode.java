@@ -45,7 +45,7 @@ public class CommonCode {
         Runtime r = Runtime.getRuntime();
         String pingCommand = "ping " + ipAddress + " -n " + pingTime + " -w " +timeout;
         try {
-            System.out.println(pingCommand);
+//            System.out.println(pingCommand);
             Process p = r.exec(pingCommand);
             if (p == null){
                 return false;

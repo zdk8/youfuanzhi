@@ -4,6 +4,11 @@ import cn.com.hvit.workspace.model.Ls_Log;
 import cn.com.hvit.workspace.service.IBlastService;
 import cn.com.hvit.workspace.service.ILogService;
 import cn.com.hvit.workspace.service.IUserService;
+import cn.com.hvit.workspace.util.CommonCode;
+import org.apache.commons.httpclient.Header;
+import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.NameValuePair;
+import org.apache.commons.httpclient.methods.PostMethod;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -69,43 +74,6 @@ public class TdsTest {
 
     }
 
-    public boolean ping(String ipAddress,int pingTime, int timeout){
-        BufferedReader in = null;
-        Runtime r = Runtime.getRuntime();
-        String pingCommand = "ping " + ipAddress + " -n " + pingTime + " -w " +timeout;
-        try {
-            System.out.println(pingCommand);
-            Process p = r.exec(pingCommand);
-            if (p == null){
-                return false;
-            }
-            in = new BufferedReader(new InputStreamReader(p.getInputStream()));
-            int connectecCount = 0;
-            String line = null;
-            while((line = in.readLine()) !=null){
-                connectecCount += getCheckResult(line);
-            }
-            return connectecCount == pingTime;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }finally {
-            try {
-                in.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    private int getCheckResult(String line) {
-        Pattern pattern = Pattern.compile("(\\d+ms)(\\s+)(TTL=\\d+)", Pattern.CASE_INSENSITIVE);
-        Matcher matcher = pattern.matcher(line);
-        while (matcher.find()){
-            return 1;
-        }
-        return 0;
-    }
 
     @Test
     public void testPing(){
@@ -129,8 +97,31 @@ public class TdsTest {
 //            e.printStackTrace();
 //        }
         //也是使用java调用控制台的ping命令，这个比较可靠，还通用，使用起来方便：传入个ip，设置ping的次数和超时，就可以根据返回值来判断是否ping通。
-        System.out.println(ping("192.168.1.141",1,1));
+        CommonCode code = new CommonCode();
+        System.out.println(code.ping("192.168.1.142",1,1));
 
 
     }
+
+    @Test
+    public void testSendMessage() throws Exception{
+        HttpClient client = new HttpClient();
+        PostMethod post = new PostMethod("http://sms.webchinese.cn/web_api/");
+        post.addRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=gbk");
+        NameValuePair[] data = {new NameValuePair("Uid","kanontds"),new NameValuePair("Key","短信密钥"),new NameValuePair("smsMob","13185019135"),new NameValuePair("smsText","经过国际认证你是个大SB")};
+        post.setRequestBody(data);
+
+        client.executeMethod(post);
+        Header[] headers = post.getRequestHeaders();
+        int statusCode = post.getStatusCode();
+        System.out.println("statusCode:" + statusCode);
+        for (Header h : headers){
+            System.out.println(h.toString());
+        }
+        String result = new String(post.getResponseBodyAsString().getBytes("gbk"));
+        System.out.println(result);
+
+        post.releaseConnection();
+    }
+
 }
