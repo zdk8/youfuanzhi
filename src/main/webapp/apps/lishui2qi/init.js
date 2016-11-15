@@ -124,5 +124,21 @@ define(['underscore'], function (_) {
 
             }
         });
+
+
+        $('#current-user-name').bind('click',function () {
+           if($(this).attr('isLogined')=='false'){
+               require([cj.getModuleJs('widget/DispatcherPanel')], function (DispatcherPanel) {
+                var module = 'views/Login';
+                DispatcherPanel.open('text!' + module + '.htm', module, {
+                    title: "登录",
+                    ptype: DispatcherPanel.PANELLAYER
+                });
+            });
+           }else {
+               alert('已登录');
+           }
+
+        });
     }
 });
