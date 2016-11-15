@@ -17,15 +17,13 @@ import java.util.regex.Pattern;
  */
 public class CommonCode {
 
-    @Autowired
-    private static ILogService logService;
 
     /**
      * 日志增加的静态方法，（未实现单例）
      * @param request
      * @param message
      */
-    public static void addLog(HttpServletRequest request, String message){
+    public void addLog(ILogService logService,HttpServletRequest request, String message){
         Ls_User user = (Ls_User) request.getSession().getAttribute("user");
         Ls_Log log = new Ls_Log();
         log.setUserid(user.getUserid());

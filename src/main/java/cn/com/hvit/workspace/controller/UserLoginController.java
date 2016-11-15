@@ -1,6 +1,7 @@
 package cn.com.hvit.workspace.controller;
 
 
+import cn.com.hvit.workspace.model.Ls_Log;
 import cn.com.hvit.workspace.model.Ls_User;
 import cn.com.hvit.workspace.service.ILogService;
 import cn.com.hvit.workspace.service.IUserService;
@@ -49,11 +50,11 @@ public class UserLoginController {
             userMap.put("success", true);
             userMap.put("message", getUser);
             request.getSession().setAttribute("user", getUser);//将用户信息添加到session中
-//            //将登录信息添加到日志表中
-//            Ls_Log log = new Ls_Log();
-//            log.setUserid(getUser.getUserid());
-//            log.setLogcontent(getUser.getUsername()+"登录系统");
-//            logService.addLog(log);
+            //将登录信息添加到日志表中
+            Ls_Log log = new Ls_Log();
+            log.setUserid(getUser.getUserid());
+            log.setLogcontent(getUser.getUsername()+"登录系统");
+            logService.addLog(log);
 //            CommonCode.addLog(request,"登录系统");//增加日志信息
             return userMap;
         } else {
@@ -80,7 +81,8 @@ public class UserLoginController {
 //        log.setUserid(user.getUserid());
 //        log.setLogcontent(user.getUsername()+"注销登录");
 //        logService.addLog(log);
-        CommonCode.addLog(request,"注销登录");//增加日志信息
+        CommonCode code = new CommonCode();
+        code.addLog(logService,request,"注销登录");//增加日志信息
 
         request.getSession().removeAttribute("user");//注销session中用户信息
         logoutMap.put("success",true);
@@ -108,7 +110,7 @@ public class UserLoginController {
             return userMap;
         }else {
             userService.addUser(user);
-            CommonCode.addLog(request,"新增用户");//增加日志信息
+//            CommonCode.addLog(request,"新增用户");//增加日志信息
             userMap.put("success",true);
             userMap.put("message","新用户增加成功");
             return userMap;
@@ -135,7 +137,7 @@ public class UserLoginController {
             return userMap;
         }else {
             userService.addUser(user);
-            CommonCode.addLog(request,"更新用户");//增加日志信息
+//            CommonCode.addLog(request,"更新用户");//增加日志信息
             userMap.put("success",true);
             userMap.put("message","用户更新成功");
             return userMap;

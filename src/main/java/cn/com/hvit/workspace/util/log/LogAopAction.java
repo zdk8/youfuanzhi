@@ -38,8 +38,8 @@ public class LogAopAction {
         Ls_Log log = new Ls_Log();
         //
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-        if(request != null){
-            Ls_User user = (Ls_User) request.getSession().getAttribute("user");
+        Ls_User user = (Ls_User) request.getSession().getAttribute("user");
+        if(null != user){
             String name = user.getUseraccount();
             log.setUserid(user.getUserid());
         }

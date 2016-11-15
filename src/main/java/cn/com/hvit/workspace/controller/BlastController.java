@@ -39,7 +39,7 @@ public class BlastController {
     public Map<String, Object> addBlast(Ls_Blast blast, HttpServletRequest request, HttpServletResponse response){
         Map<String,Object> userMap = new HashMap<String,Object>();
         blastService.addBlast(blast);
-        CommonCode.addLog(request,"新增爆破信息");             //日志信息增加
+//        CommonCode.addLog(request,"新增爆破信息");             //日志信息增加
         userMap.put("success",true);
         userMap.put("message","爆破信息新增成功");
         return userMap;
@@ -57,7 +57,7 @@ public class BlastController {
     public Map<String, Object> updateBlast(Ls_Blast blast, HttpServletRequest request, HttpServletResponse response){
         Map<String,Object> userMap = new HashMap<String,Object>();
         blastService.updateBlast(blast);
-        CommonCode.addLog(request,"更新爆破信息");         //日志信息增加
+//        CommonCode.addLog(request,"更新爆破信息");         //日志信息增加
         userMap.put("success",true);
         userMap.put("message","爆破信息更新成功");
         return userMap;
@@ -78,7 +78,7 @@ public class BlastController {
         blast.setIsdel("1");
         blast.setbId(BigDecimal.valueOf(b_id));
         blastService.updateBlast(blast);                  //更新爆破删除标识信息
-        CommonCode.addLog(request,"删除爆破信息");         //日志信息增加
+//        CommonCode.addLog(request,"删除爆破信息");         //日志信息增加
         userMap.put("success",true);
         userMap.put("message","爆破信息删除成功");
         return userMap;

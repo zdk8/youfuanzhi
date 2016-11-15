@@ -9,8 +9,8 @@
     <result column="LOGTYPE" property="logtype" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    LOGID, USERID, LOGCONTENT, LOGTIME, LOGTYPE
-  </sql>
+  LOGID, USERID, LOGCONTENT, LOGTIME, LOGTYPE
+</sql>
   <select id="getLogs" resultMap="BaseResultMap">
      SELECT <include refid="Base_Column_List" />
      FROM ls_log

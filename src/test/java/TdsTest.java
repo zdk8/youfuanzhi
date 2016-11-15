@@ -47,14 +47,14 @@ public class TdsTest {
 
     @Test
     public void testLog(){
-//        Ls_Log log = new Ls_Log();
-//        log.setUserid(BigDecimal.valueOf(2));
-//        log.setLogcontent("test log");
-//        logService.addLog(log);
+        Ls_Log log = new Ls_Log();
+        log.setUserid(BigDecimal.valueOf(2));
+        log.setLogcontent("test log");
+        logService.addLog(log);
 //        System.out.println(111);
 //        List logs = logService.getLogs();
-        PageHelper.Page<Ls_Log> logs = logService.getLogs(1, 10);
-        System.out.println(logs.getResults().size());
+//        PageHelper.Page<Ls_Log> logs = logService.getLogs(1, 10);
+//        System.out.println(logs.getResults().size());
     }
 
     @Test

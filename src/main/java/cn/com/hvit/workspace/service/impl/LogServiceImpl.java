@@ -18,6 +18,7 @@ public class LogServiceImpl implements ILogService {
 
     @Override
     public void addLog(Ls_Log log) {
+        System.out.println("LLLLLLLLLLLLL" + log.getUserid());
          logMapper.insertLog(log);
     }
 
