@@ -79,7 +79,7 @@
         </div>
         <div id="header-menu-wrapper">
             <div id="header-menu">
-                <span id="current-time">2011-11-11 12:12:12</span>
+                <span id="current-time"></span>
                 <span>欢迎您！</span>
                 <span id="current-user-name" style="cursor: pointer;"
                       isLogined="<%= (user!=null)%>"><%= user==null?"未登录":user.getUsername()%></span>

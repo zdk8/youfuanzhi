@@ -151,8 +151,17 @@ define(['underscore','leaflet-plugins/TuLi'], function (_,TuLi) {
         //注销
         $('#logout').bind('click', function () {
             $.get('logout', function () {
-                document.href = 'framework_geoserver';
+                document.location.href = 'framework_geoserver';
             })
         });
+
+        var $currentTime = $('#current-time');
+        var flashTime=function () {
+            var date=new Date();
+            var currentTimeString=date.getFullYear()+'-'+date.getMonth()+'-'+date.getDate()+' '+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds();
+            $currentTime.text(currentTimeString);
+        };
+        window.setInterval(flashTime,1000);
+
     }
 });

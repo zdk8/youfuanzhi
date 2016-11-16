@@ -4,11 +4,12 @@ define(['jqueryform'],function () {
            local.find('form').ajaxForm({
                 complete: function (xhr) {
                     //status.html(xhr.responseText);
-                    var results = $.parseJSON(xhr.responseText);
+                    var result = $.parseJSON(xhr.responseText);
                     
                     require(['Message'],function (message) {
-                        if(message.success==true) {
+                        if(result.success==true) {
                             message.show("登录成功");
+                            document.location.href="framework_geoserver"
                         }else{
                             message.show("登录失败");
                         }
