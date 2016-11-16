@@ -14,7 +14,8 @@
     }
 
     //覆盖
-    baseConfig.paths['jquery']='http://cdn.bootcss.com/jquery/3.1.1/jquery.min';
+    //baseConfig.paths['jquery']='http://cdn.bootcss.com/jquery/3.1.1/jquery.min';
+    baseConfig.paths['jquery']='../../js/libs/jquery/3.1.1/jquery.min';
     //添加地图库leaflet
     baseConfig.paths['leaflet']='http://cdn.bootcss.com/leaflet/1.0.1/leaflet';
 
@@ -28,7 +29,10 @@
         , urlArgs: function (id, url) {
             var args = 'v=0';
             var prefixPath = baseUrl;
-            if (!true || url.substr(0, prefixPath.length) == prefixPath) {
+            if (url.substr(0, prefixPath.length) == prefixPath) {
+                if(url.indexOf('..')>0){
+                    return '';
+                }
                 args = '?v=2' + new Date().getTime();
                 return args;
             }

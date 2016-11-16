@@ -21,7 +21,7 @@ define([cj.getModuleJs('model/BzModel'),'underscore'],
              model: Menu
            });
            var Menus = new MenuList;
-           var template_htm='<a class="dir leaf"><%=title%></a>';
+           var template_htm='<a class="dir leaf text"><%=title%> <span class="ckeckbox"></span></a>';
            var MenuView = Backbone.View.extend({
              tagName: "li",
              className:'inactives',

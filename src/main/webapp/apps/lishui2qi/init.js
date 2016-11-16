@@ -6,7 +6,7 @@ define(['underscore','leaflet-plugins/TuLi'], function (_,TuLi) {
         var latlng = null;
         var myMap = L.map('mapid', {
             zoomControl: false
-        }).setView([51.505, -0.09], 13);
+        }).setView([75.58366, 119.91749], 13);
 
         var zoomControl=L.control.zoom({
             position: 'bottomleft'
@@ -15,17 +15,23 @@ define(['underscore','leaflet-plugins/TuLi'], function (_,TuLi) {
 
         L.control.tuli().addTo(myMap);
 
-        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw', {
+        var mapurl1='http://t0.tianditu.com/vec_c/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=vec&STYLE=default&TILEMATRIXSET=c&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}';
+        //mapurl1='https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw';
+        L.tileLayer(mapurl1, {
             maxZoom: 18,
-            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-            '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-            'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+            attribution: '地图数据 &copy; <a href="#">丽水</a> 贡献, ' +
+            '<a href="#">地震局</a>, ' +
+            'admin © <a href="#">lishui</a>',
             id: 'mapbox.streets'
         }).addTo(myMap);
 
-        L.marker([51.5, -0.09]).addTo(myMap);
+        var mapurl2='http://t0.tianditu.com/cva_c/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cva&STYLE=default&TILEMATRIXSET=c&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}';
+        L.tileLayer(mapurl2, {maxZoom: 18}).addTo(myMap);
 
-        L.circle([51.508, -0.11], {
+
+        L.marker([75.58366, 119.91749]).addTo(myMap);
+
+        L.circle([75.58366, 119.91749], {
             color: 'red',
             fillColor: '#f03',
             fillOpacity: 0.5,
@@ -33,9 +39,9 @@ define(['underscore','leaflet-plugins/TuLi'], function (_,TuLi) {
         }).addTo(myMap);
 
         L.polygon([
-            [51.509, -0.08],
-            [51.503, -0.06],
-            [51.51, -0.047]
+            [75.509, 119.98],
+            [75.503, 119.96],
+            [75.51, 119.947]
         ]).addTo(myMap);
 
         //add event
@@ -163,5 +169,53 @@ define(['underscore','leaflet-plugins/TuLi'], function (_,TuLi) {
         };
         window.setInterval(flashTime,1000);
 
+
+        //历史地震信息
+        $('#history-earthquake').bind('click',function () {
+
+        });
+
+        //台站列表
+        $('#station-dg-wrapper').show();
+        $('#station-dg').datagrid({
+            fit:true,
+            fitColumns:true,
+            url:'data-json/test/datagrid_data1.json'
+        });
+        
+        
+        //水库列表
+        require(['text!views/ShuiKuList-template.htm'],function (htm) {
+            var tpl = _.template(htm);
+            $.get('data-json/test/datagrid_data1.json',function (resp) {
+                $('#shuiku-list').append(tpl({children: resp.rows}));
+            })
+        });
+
+        //expand panel
+        var $hander=$('#earth-panel-hander>div');
+        var $epanel = $('#earth-panel');
+        $hander.bind('click',function () {
+           if($epanel.is(":hidden")){
+               $epanel.show('slow');
+               $hander.removeClass('down');
+           }else{
+               $epanel.hide('slow');
+               $hander.addClass('down');
+           }
+        });
+
+        //快速菜单
+        require(['text!views/FastMenu-template.htm'],function (htm) {
+            var menuList=[{name:'A'},{name:'A'},{name:'A'},{name:'A'}];
+            var tpl = _.template(htm);
+            $('#lishui-map-button').append(tpl({children: menuList}));
+            $('#lishui-map-button a.text').each(function () {
+               $(this).bind('click',function () {
+                   $(this).siblings('.text').removeClass('selected');
+                   $(this).addClass('selected');
+               })
+            });
+        });
     }
 });
