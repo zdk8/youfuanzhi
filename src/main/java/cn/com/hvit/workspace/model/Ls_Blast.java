@@ -1,11 +1,13 @@
 package cn.com.hvit.workspace.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
 public class Ls_Blast {
     private BigDecimal bId;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date blasttime;
 
     private BigDecimal distance;
@@ -21,7 +23,7 @@ public class Ls_Blast {
     private BigDecimal weight;
 
     private String applicant;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date formdate;
 
     private String isdel;

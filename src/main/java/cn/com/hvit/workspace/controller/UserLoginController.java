@@ -157,4 +157,9 @@ public class UserLoginController {
         return userMap;
     }
 
+    @RequestMapping(value = {"/testjkpage"}, method = RequestMethod.GET)
+    public String home() {
+        return "testjkpage";
+    }
+
 }
