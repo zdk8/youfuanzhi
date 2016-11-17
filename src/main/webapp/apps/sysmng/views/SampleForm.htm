@@ -1,0 +1,50 @@
+<div>
+    <form method="post" name="oldinfo">
+        <input type="hidden" name="oldid">
+        <input type="hidden" name="dvcode">
+        <table cellpadding="4" cellspacing="1" class="form-table">
+            <tr>
+
+                <td class="my-form-label">姓名</td>
+                <td><input class="my-form-input" name="title1"
+                           data-options="required:true,validType:{'maxLength':['25']}"></td>
+                <td class="my-form-label">性别</td>
+                <td><input class="my-form-input easyui-combobox" name="oldsex"
+                           data-options="required:false,data:cj.getEnum('enu007'),panelHeight:'auto',readonly:true">
+                </td>
+                <td class="my-form-label">出生日期</td>
+                <td><input class="my-form-input" name="title2"
+                           data-options="required:false,validType:{'maxLength':['25']},readonly:true"></td>
+            </tr>
+            <tr>
+                <td class="my-form-label">身份证号码</td>
+                <td><input class="my-form-input" name="title3" opt="oldcardnum"
+                           data-options="required:true,validType:{'maxLength':['18']}">
+                </td>
+                <td class="my-form-label">联系电话</td>
+                <td><input class="my-form-input" name="title4"
+                           data-options="required:true,validType:{'maxLength':['11']}"></td>
+                <td class="my-form-label">籍贯</td>
+                <td><input class="my-form-input" name="title5"
+                           data-options="required:false,validType:{'maxLength':['50']}"></td>
+            </tr>
+
+            <tr>
+                <td class="my-form-label">户籍所在地</td>
+                <td><input class="my-form-input" name="title6"
+                           data-options="required:false,validType:{'maxLength':['50']}"></td>
+                <td class="my-form-label">民族</td>
+                <td><input class="my-form-input easyui-combobox" name="title7"
+                           data-options="required:false,data:cj.getEnum('enu027'),panelHeight:200"></td>
+                <td class="my-form-label">政治面貌</td>
+                <td><input class="my-form-input easyui-combobox" name="title8"
+                           data-options="required:false,data:cj.getEnum('enu040'),panelHeight:'auto'"></td>
+            </tr>
+
+
+        </table>
+    </form>
+</div>
+
+
+<div class="hvit-form-bottom-tool-bar" btns="cj.button.Mo(['close','关闭'],['save','保存','save'])"></div>

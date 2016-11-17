@@ -1,0 +1,63 @@
+<div>
+    <form method="post">
+        <table cellpadding="4" cellspacing="1" class="form-table" style="width:400px;">
+            <tbody>
+            <tr>
+                <td class="my-form-label">申请爆破单位 :</td>
+                <td><input type="text" name="applyunit" class="input-text">
+                </td>
+            </tr>
+            <tr>
+                <td class="my-form-label">爆破时间 :</td>
+                <td><input type="text" opt="blasttime" name="blasttime" class="easyui-datetimebox easyui-validatebox"
+                           data-options="required:true">
+
+                </td>
+            </tr>
+
+            <tr>
+                <td class="my-form-label">离台站的距离（米） :</td>
+                <td><input type="text" name="distance" class="input-text easyui-validatebox"
+                           data-options="required:true"></td>
+            </tr>
+            <tr>
+                <td class="my-form-label">爆破方法 :</td>
+                <td><input type="text" name="blastway" class="input-text easyui-validatebox"
+                           data-options="required:true"></td>
+            </tr>
+
+            <tr>
+                <td class="my-form-label">联系方式 :</td>
+                <td><input type="text" name="contactway" class="input-text">
+                </td>
+            </tr>
+
+            <tr>
+                <td class="my-form-label">炸药用量 :</td>
+                <td><input type="text" name="weight" class="input-text">
+                </td>
+            </tr>
+            <tr>
+                <td class="my-form-label">填表人 :</td>
+                <td><input type="text" name="applicant" class="input-text">
+                </td>
+            </tr>
+
+            <tr>
+                <td class="my-form-label">填表时间 :</td>
+                <td><input type="text" opt="formdate" name="formdate" class="easyui-datetimebox">
+                </td>
+            </tr>
+            <tr>
+                <td class="my-form-label">描述 :</td>
+                <td><textarea style="width: 243px;height: 72px;"  name="description" ></textarea>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+    </form>
+</div>
+
+
+<div class="hvit-form-bottom-tool-bar" btns="cj.button.Mo(['close','关闭'],['save','保存','save'])"></div>

@@ -1,0 +1,46 @@
+<div>
+    <form name="attachment" action="eers/attachment" method="post" enctype="multipart/form-data">
+        <table cellpadding="4" cellspacing="1" class="form-table" style="width:400px;">
+            <tbody>
+
+            <tr>
+                <td colspan="2">
+                    <input type="file" name="myfile" multiple>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+    </form>
+    <form name="normal" method="post">
+        <table cellpadding="4" cellspacing="1" class="form-table" style="width:400px;">
+            <tbody>
+            <tr>
+                <td class="my-form-label">联系方式 :</td>
+                <td><input type="text" name="contactway" class="input-text">
+                </td>
+            </tr>
+
+            <tr>
+                <td class="my-form-label">炸药用量 :</td>
+                <td><input type="text" name="weight" class="input-text">
+                </td>
+            </tr>
+            <tr>
+                <td class="my-form-label">填表人 :</td>
+                <td><input type="text" name="applicant" class="input-text">
+                </td>
+            </tr>
+
+            <tr>
+                <td class="my-form-label">填表时间 :</td>
+                <td><input type="text" opt="formdate" name="formdate" class="easyui-datetimebox">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+
+
+<div class="hvit-form-bottom-tool-bar" btns="cj.button.Mo(['close','关闭'],['save','保存','save'])"></div>
