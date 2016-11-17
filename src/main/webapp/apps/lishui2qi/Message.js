@@ -10,7 +10,7 @@ define([], function () {
 
     return {
         show: function (text) {
-            $.messager.alert(text);
+            $.messager.alert("提示",text);
         }
     }
 });

@@ -1,6 +1,6 @@
 <%@ page import="cn.com.hvit.workspace.model.Ls_User" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<% Ls_User user=(Ls_User) request.getAttribute("user");%>
+<% Ls_User user = (Ls_User) session.getAttribute("user");%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +10,8 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" type="text/css" href="http://120.55.65.150/wp/jquery-easyui-1.4.5/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css"
+          href="http://hvit.in.server:3000/js/jquery-easyui-1.5/themes/default/easyui.css">
 
     <link rel="stylesheet" type="text/css" href="http://hvit.in.server:3000/css/home.css"/>
     <link rel="stylesheet" type="text/css" href="css/main.css"/>
@@ -22,6 +23,12 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/leaflet/1.0.1/leaflet.css"/>
     <%--<script src="//cdn.bootcss.com/leaflet/1.0.1/leaflet.js"></script>--%>
 
+    <style>
+        .leaflet-control-tuli {
+            /*background-color: red;
+            border:1px solid black;*/
+        }
+    </style>
 
     <script>
         <!--兼容windows无console的情况-->
@@ -69,21 +76,21 @@
 <div id="header">
     <div id="header-center">
         <div id="project-name">
-            <span>丽水市防震减灾公共服务信息系统</span>
+            <a href="framework_geoserver"><span>丽水市防震减灾公共服务信息系统</span></a>
         </div>
         <div id="header-menu-wrapper">
             <div id="header-menu">
-                <span id="current-time">2011-11-11 12:12:12</span>
+                <span id="current-time"></span>
                 <span>欢迎您！</span>
                 <span id="current-user-name" style="cursor: pointer;"
-                      isLogined="<%= (user!=null)%>"><%= user==null?"未登录":user.getUsername()%></span>
+                      isLogined="<%= (user!=null)%>"><%= user == null ? "未登录" : user.getUsername()%></span>
                 <img style="max-height: 2em;margin-bottom: -1px;" src="images/user.png">
                 <div style="display: inline-block;position: relative;">
                     <img id="header-triangle-down" style="max-height: 2em;margin-bottom: -1px;" src="images/向下箭头.png">
                     <div id="header-more-menu">
                         <ul>
-                            <li><a><img src="images/icons/设置.png"><span>账户设置</span></a></li>
-                            <li><a><img src="images/icons/退出.png"><span>退出登录</span></a></li>
+                            <li><a id="account-setting"><img src="images/icons/设置.png"><span>账户设置</span></a></li>
+                            <li><a id="logout"><img src="images/icons/退出.png"><span>退出登录</span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -93,17 +100,54 @@
 </div>
 <div id="map-wrapper">
     <div id="mapid"></div>
-    <div id="button-wrapper">
-        <input type="button" id="Btn1" value="Btn1" class="btnStyle span3"/>
-        <input type="button" id="Btn2" value="Btn2" class="btnStyle span3"/>
-        <input type="button" id="Btn3" value="Btn3" class="btnStyle span3"/>
+    <div id="lishui-map-button">
     </div>
 </div>
 
 <div id="map-menu-wrapper">
+    <div>图例</div>
     <ul id="map-menu"></ul>
 </div>
+<div id="earth-panel-wrapper">
+    <div id="earth-panel">
+        <div class="ep-title">
+            <span class="title">地震信息</span>
+            <a class="btn">历史地震</a>
+        </div>
+        <div class="ep-body">
+            <div id="history-earthquake">历史地震历史地震<br>历史地震历史地震历史地震历史地震历史地震历史地震<br>历史地震历史地震历史地震</div>
+        </div>
+        <div class="ep-title">
+            <span class="title">台站信息</span>
+            <a class="btn">运行日志</a>
+        </div>
+        <div class="ep-body">
+            <div id="station-dg-wrapper">
+                <table id="station-dg"
+                       data-options="pagination:true,method:'get'">
+                    <thead>
+                    <tr>
+                        <th data-options="field:'itemid',width:80">台站名称</th>
+                        <th data-options="field:'productid',width:80">状态</th>
+                        <th data-options="field:'listprice',width:80,align:'right'">其他</th>
+                        <th data-options="field:'unitcost',width:80,align:'right'">操作</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <div class="ep-title">
+            <span class="title">水库信息</span>
+        </div>
+        <div class="ep-body">
+            <div id="shuiku-list"></div>
+        </div>
+    </div>
 
+    <div id="earth-panel-hander">
+        <div></div>
+    </div>
+</div>
 
 </body>
 </html>

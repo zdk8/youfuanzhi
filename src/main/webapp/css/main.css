@@ -11,26 +11,15 @@ html, body {
     position: relative;
 }
 
-#button-wrapper {
-    position: absolute;
-    bottom: 10px;
-    width: 100%;
-    background: orange;
-    z-index: 999;
-}
-
 #mapid {
     height: 100%;
-}
-
-.btnStyle {
-    border: 1px solid green;
 }
 
 #header {
     background: #129be2;
 }
-#header,#header-center,#project-name,#header-menu-wrapper,#header-menu,#project-name span{
+
+#header, #header-center, #project-name, #header-menu-wrapper, #header-menu, #project-name span {
     height: 50px;
 }
 
@@ -40,85 +29,101 @@ html, body {
     color: white;
 }
 
+#project-name > a {
+    text-decoration: none;
+}
 
-#project-name{
+#project-name {
     float: left;
 }
-#header-menu-wrapper{
+
+#header-menu-wrapper {
     float: right;
 }
 
-#header-menu{
-        font-size: 12px;
+#header-menu {
+    font-size: 12px;
     color: white;
 }
-#header-menu > span{
-        line-height: 50px;
-}
 
+#header-menu > span {
+    line-height: 50px;
+}
 
 #header-center {
     margin-left: 40px;
     margin-right: 40px;
 }
 
-#header-triangle-down{
+#header-triangle-down {
     cursor: pointer;
 }
 
-
-#header-more-menu{
+#header-more-menu {
     position: absolute;
     z-index: 999;
     /*background: rgba(103, 92, 231, 0.59);*/
     background: #129be2;
     display: none;
-    left:-100px;
-    top:30px;
+    left: -100px;
+    top: 30px;
 
-    padding:10px 0;
+    padding: 10px 0;
 }
-
-
 
 /*头部样式结束×××××××××××××××××××××××××××××××××××*/
 
-
-#header-more-menu > ul,  #header-more-menu  li {
+#header-more-menu > ul, #header-more-menu li {
     padding: 0;
     margin: 0;
     list-style: none;
 }
-#header-more-menu  li,#header-more-menu  a{
+
+#header-more-menu li, #header-more-menu a {
     width: 120px;
     height: 35px;
     display: inline-block;
 }
+
 #header-more-menu span {
     height: 35px;
     line-height: 35px;
     background-repeat: no-repeat;
 }
-#header-more-menu img{
+
+#header-more-menu img {
     margin-bottom: -4px;
     margin-left: 20px;
     margin-right: 5px;
 }
-#header-more-menu  a{
+
+#header-more-menu a {
     cursor: pointer;
 }
-#header-more-menu  a:hover{
+
+#header-more-menu a:hover {
     background: #1486c1;
 }
 
 /*更多菜单结束*/
 
-
 #map-menu-wrapper {
     z-index: 999;
     position: absolute;
-    bottom: 30px;
-    left: 15px;
+    background-color: white;
+    display: none;
+    bottom: 2px;
+    left: 40px;
+    padding: 0 2px;
+}
+
+#map-menu-wrapper > div {
+    background-color: #f5f5f5;
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+    padding-left: 20px;
+    color: blue;
 }
 
 ul#map-menu, ul#map-menu ul, ul#map-menu li {
@@ -129,8 +134,6 @@ ul#map-menu, ul#map-menu ul, ul#map-menu li {
 
 ul#map-menu {
     padding-top: 10px;
-    background: rgba(0, 0, 0, 0.4);
-    border-radius: 10px;
 }
 
 ul#map-menu li.dir {
@@ -138,26 +141,177 @@ ul#map-menu li.dir {
 }
 
 ul#map-menu li.leaf {
-    margin-top: 15px;
+    margin-top: 2px;
+    height: 26px;
 }
 
 ul#map-menu > li:first-child {
     margin-top: 0px;
 }
 
-ul#map-menu li a {
-    width: 130px;
-    margin: 0 auto;
+ul#map-menu li a.text {
+    padding-left: 20px;
+    height: 26px;
+    line-height: 26px;
+    width: 90px;
     display: block;
-    text-align: center;
-    margin-bottom: 3px;
-    color: white;
-    font-size: 14px;
+    color: black;
+    font-size: 12px;
     cursor: pointer;
 }
 
-ul#map-menu li a:hover {
-    background-color: #0f99f0;
+ul#map-menu li a.text:hover {
+    background-color: #f0e9f0;
 }
 
 
+ul#map-menu span.checkbox{
+    margin-top:4px;
+    width:17px;
+    height: 17px;
+    display: inline-block;
+    float: right;
+    margin-right: 10px;
+    background: url(../images/icons/未选中.png) no-repeat;
+}
+ul#map-menu span.checkbox.selected{
+    background: url(../images/icons/选中.png) no-repeat;
+}
+/*图例图层面板 地图菜单 结束*/
+
+#earth-panel-wrapper {
+    z-index: 900;
+    position: fixed;
+    min-height: 20px;
+    right: 20px;
+    top: 70px;
+    width: 300px;
+    overflow-y: auto;
+}
+
+#earth-panel {
+    background: white;
+    border: 1px solid #e6e6e6;
+    padding: 2px;
+    box-shadow: 0 2px 5px #a9a9a9;
+    margin-right: 2px;
+}
+
+.ep-title {
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #e6e6e6;
+    height: 35px;
+    padding: 0 10px;
+}
+
+.ep-title .title {
+    height: 35px;
+    line-height: 35px;
+    font-size: 12px;
+}
+
+.ep-title .title {
+    color: #129be2;
+}
+
+.ep-title .btn {
+    font-size: 10px;
+    background-color: white;
+    color: #666666;
+    float: right;
+    border-radius: 4px;
+    width: 60px;
+    height: 18px;
+    line-height: 18px;
+    text-align: center;
+    margin-top: 9px;
+    cursor: pointer;
+}
+
+.ep-body {
+    min-height: 50px;
+}
+
+#history-earthquake {
+    padding: 30px 20px;
+    font-size: 10px;
+    color: #333;
+    line-height: 20px;
+}
+
+#station-dg-wrapper {
+    height: 200px;
+    display: none;
+}
+
+#shuiku-list {
+    min-height: 100px;
+    max-height: 200px;
+    overflow: scroll;
+    overflow-x: hidden;
+    font-size: 12px;
+}
+
+#earth-panel-hander {
+    width: 100%;
+}
+
+#earth-panel-hander > div {
+    margin: 0 auto;
+    width: 40px;
+    height: 20px;
+    background-color: white;
+    cursor: pointer;
+    background-size: 40px 20px;
+    background: url(../images/icons/pull.png) no-repeat;
+}
+
+#earth-panel-hander > div.down {
+    background: url(../images/icons/down.png) no-repeat;
+}
+
+/*右侧面板结束*/
+
+#lishui-map-button {
+    position: absolute;
+    z-index: 999;
+    left: 20px;
+    top: 20px;
+}
+
+#lishui-map-button > div {
+    font-size: 14px;
+    background-color: white;
+    box-shadow: 0 2px 5px #a9a9a9;
+}
+
+#lishui-map-button a.text {
+    cursor: pointer;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 15px;
+    width: 80px;
+    margin: 5px 10px;
+    text-align: center;
+    display: inline-block;
+    border-width: 1px;
+    border-style: solid;
+    border-color: white;
+}
+
+#lishui-map-button a.text:hover {
+    background-color: #f5eb93;
+    border-color: #f5eb93;
+}
+
+#lishui-map-button a.text.selected {
+    background-color: #f59436;
+    border-color: #f59436;
+    color: white;
+}
+
+#lishui-map-button a:last-child {
+    display: none;
+}
+
+/*左上角菜单结束*/
