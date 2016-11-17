@@ -111,7 +111,7 @@ html, body {
     z-index: 999;
     position: absolute;
     background-color: white;
-    /*display: none;*/
+    display: none;
     bottom: 2px;
     left: 40px;
     padding: 0 2px;
@@ -153,7 +153,7 @@ ul#map-menu li a.text {
     padding-left: 20px;
     height: 26px;
     line-height: 26px;
-    width: 130px;
+    width: 90px;
     display: block;
     color: black;
     font-size: 12px;
@@ -161,15 +161,21 @@ ul#map-menu li a.text {
 }
 
 ul#map-menu li a.text:hover {
-    background-color: #9fa9f0;
+    background-color: #f0e9f0;
 }
 
 
 ul#map-menu span.checkbox{
-    width:20px;
-    height: 20px;
-    border: 1px solid red;
+    margin-top:4px;
+    width:17px;
+    height: 17px;
     display: inline-block;
+    float: right;
+    margin-right: 10px;
+    background: url(../images/icons/未选中.png) no-repeat;
+}
+ul#map-menu span.checkbox.selected{
+    background: url(../images/icons/选中.png) no-repeat;
 }
 /*图例图层面板 地图菜单 结束*/
 
