@@ -56,8 +56,9 @@ public class BlastController {
     @ResponseBody
     @RequestMapping(value = "/updateblast", method = {RequestMethod.GET,RequestMethod.POST})
     @SystemLog(module = "用户管理",methods = "更新爆破信息")
-    public Map<String, Object> updateBlast(Ls_Blast blast, HttpServletRequest request, HttpServletResponse response){
+    public Map<String, Object> updateBlast(Ls_Blast blast,@RequestParam int b_id, HttpServletRequest request, HttpServletResponse response){
         Map<String,Object> userMap = new HashMap<String,Object>();
+        blast.setbId(BigDecimal.valueOf(b_id));
         blastService.updateBlast(blast);
 //        CommonCode.addLog(request,"更新爆破信息");         //日志信息增加
         userMap.put("success",true);

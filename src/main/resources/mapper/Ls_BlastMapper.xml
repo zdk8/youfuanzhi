@@ -27,6 +27,7 @@
     <if test="applyunit != null">
       AND APPLYUNIT  LIKE CONCAT('%',CONCAT(#{applyunit},'%'))
     </if>
+    ORDER BY b_id DESC
   </select>
   <insert id="addBlast" parameterType="cn.com.hvit.workspace.model.Ls_Blast" >
     insert into LS_BLAST
@@ -124,6 +125,9 @@
       </if>
       <if test="formdate != null" >
         formdate = #{formdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isdel != null" >
+        isdel = #{isdel,jdbcType=VARCHAR},
       </if>
     </set>
     where B_ID = #{bId,jdbcType=DECIMAL}
