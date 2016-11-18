@@ -70,7 +70,8 @@ html, body {
 
     padding: 10px 0;
 }
-#header-more-menu a{
+
+#header-more-menu a {
     text-decoration: none;
     color: white;
 }
@@ -168,19 +169,20 @@ ul#map-menu li a.text:hover {
     background-color: #f0e9f0;
 }
 
-
-ul#map-menu span.checkbox{
-    margin-top:4px;
-    width:17px;
+ul#map-menu span.checkbox {
+    margin-top: 4px;
+    width: 17px;
     height: 17px;
     display: inline-block;
     float: right;
     margin-right: 10px;
     background: url(../images/icons/未选中.png) no-repeat;
 }
-ul#map-menu span.checkbox.selected{
+
+ul#map-menu span.checkbox.selected {
     background: url(../images/icons/选中.png) no-repeat;
 }
+
 /*图例图层面板 地图菜单 结束*/
 
 #earth-panel-wrapper {
@@ -246,6 +248,10 @@ ul#map-menu span.checkbox.selected{
 #station-dg-wrapper {
     height: 200px;
     display: none;
+    padding-bottom: 2px;
+}
+#station-dg-wrapper .panel-body {
+    border-width: 0
 }
 
 #shuiku-list {
@@ -319,3 +325,11 @@ ul#map-menu span.checkbox.selected{
 }
 
 /*左上角菜单结束*/
+
+.icon-update{
+    background: url(../images/icons/编辑.png) no-repeat;
+}
+.icon-trash{
+    background: url(../images/icons/删除.png) no-repeat;
+}
+/*表格操作图标*/

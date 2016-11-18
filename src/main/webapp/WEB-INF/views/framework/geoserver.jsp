@@ -126,13 +126,14 @@
         <div class="ep-body">
             <div id="station-dg-wrapper">
                 <table id="station-dg"
-                       data-options="pagination:true,method:'get'">
+                       data-options="method:'get'">
                     <thead>
                     <tr>
                         <th data-options="field:'itemid',width:80">台站名称</th>
                         <th data-options="field:'productid',width:80">状态</th>
-                        <th data-options="field:'listprice',width:80,align:'right'">其他</th>
-                        <th data-options="field:'unitcost',width:80,align:'right'">操作</th>
+                        <th data-options="field:'listprice',width:80,align:'center'">其他</th>
+                        <th data-options="field:'unitcost',width:80,align:'center',
+                        formatter:cj.button.OnlyIconFormatter(['update','编辑','update'],['mydelete','删除','trash'])">快捷操作</th>
                     </tr>
                     </thead>
                 </table>

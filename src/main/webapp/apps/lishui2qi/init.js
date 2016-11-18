@@ -36,7 +36,7 @@ define(['underscore','leaflet-plugins/TuLi'], function (_,TuLi) {
             fillColor: '#f03',
             fillOpacity: 0.5,
             radius: 500
-        }).addTo(myMap);
+        })//.addTo(myMap);
 
         L.polygon([
             [75.509, 119.98],
@@ -176,12 +176,10 @@ define(['underscore','leaflet-plugins/TuLi'], function (_,TuLi) {
         });
 
         //台站列表
-        $('#station-dg-wrapper').show();
-        $('#station-dg').datagrid({
-            fit:true,
-            fitColumns:true,
-            url:'data-json/test/datagrid_data1.json'
+        require(['views/StationQuery'],function (js) {
+            js.render();
         });
+
         
         
         //水库列表

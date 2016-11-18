@@ -1,3 +1,13 @@
 td.my-form-label{
     width: 90px;
 }
+
+
+
+.icon-update{
+    background: url(../images/icons/编辑.png) no-repeat;
+}
+.icon-trash{
+    background: url(../images/icons/删除.png) no-repeat;
+}
+/*表格操作图标*/
