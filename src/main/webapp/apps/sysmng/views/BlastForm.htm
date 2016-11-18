@@ -1,5 +1,6 @@
 <div>
     <form method="post">
+        <input type="hidden" name="b_id">
         <table cellpadding="4" cellspacing="1" class="form-table" style="width:400px;">
             <tbody>
             <tr>
@@ -9,7 +10,7 @@
             </tr>
             <tr>
                 <td class="my-form-label">爆破时间 :</td>
-                <td><input type="text" opt="blasttime" name="blasttime" class="easyui-datetimebox easyui-validatebox"
+                <td><input type="text" opt="blasttime" name="blasttime" class="easyui-datetimebox"
                            data-options="required:true">
 
                 </td>
@@ -18,12 +19,12 @@
             <tr>
                 <td class="my-form-label">离台站的距离（米） :</td>
                 <td><input type="text" name="distance" class="input-text easyui-validatebox"
-                           data-options="required:true"></td>
+                           data-options="required:true,validType:'isNumber'"></td>
             </tr>
             <tr>
                 <td class="my-form-label">爆破方法 :</td>
-                <td><input type="text" name="blastway" class="input-text easyui-validatebox"
-                           data-options="required:true"></td>
+                <td><input type="text" name="blastway" class="input-text easyui-combobox"
+                           data-options="required:true,data:cj.getEnum('blastway'),panelHeight:'auto'"></td>
             </tr>
 
             <tr>

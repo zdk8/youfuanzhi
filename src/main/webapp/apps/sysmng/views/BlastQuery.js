@@ -1,16 +1,12 @@
 define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'), 'backbone'],
     function (MakeDG, DispatcherPanel, Backbone) {
-        var OldinfoModel = Backbone.Model.extend({
-            urlRoot: 'eers/oldinfo',
-            idAttribute: "oldid"
-        });
 
         var mydelete = function (record, datagrid) {
-            $.messager.confirm('确认', '您真的要删除此用户吗?', function (r) {
+            $.messager.confirm('确认', '您真的要删除此备案信息吗?<br>' + record.applyunit, function (r) {
                 if (r) {
                     $.ajax({
-                        url: 'eers/oldinfo/' + record.oldid,
-                        type: 'delete',
+                        url: 'delblast?b_id=' + record.bId,
+                        type: 'get',
                         success: function () {
                             $.messager.show({
                                 title: '提示',
@@ -29,20 +25,18 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                     })
                 }
             });
-
-        }
+        };
 
         var view = function (record, dg) {
-            DispatcherPanel.open('text!views/SampleForm.htm', 'views/SampleForm',
+            DispatcherPanel.open('text!views/BlastForm.htm', 'views/BlastForm',
                 {
-                    ptype: 0, title: '查看: ' ,
+                    ptype: DispatcherPanel.PANELLAYER,
+                    title: '更新 爆破备案',
                     record: record,
                     dg: dg,
-                    cacheFn: function () {
-                        return "helloworld";
-                    }
+                    height: 480
                 });
-        }
+        };
 
 
         var module = {
@@ -51,7 +45,7 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                 var dg = MakeDG.make(local.find('.easyui-datagrid-noauto'),
                     {mydelete: mydelete, update: view, view: view},
                     {
-                        url: HvitFrontFWPrefix+ 'eers/nine-table',
+                        url: 'getblast',
                         toolbar: tb
                     }
                 );
@@ -60,11 +54,11 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                 _.each(['applicant', 'applyunit'], function (item) {
                     tb.find('.easyui-textbox[opt=' + item + ']').textbox({
                         onChange: function (newValue, oldValue) {
-                            dg.datagrid('reload',{
-                             intelligentsearch:[
-                             {name:item,operate:"like",value:"%"+newValue+"%"}
-                             ]
-                             });
+                            dg.datagrid('reload', {
+                                intelligentsearch: [
+                                    {name: item, operate: "like", value: "%" + newValue + "%"}
+                                ]
+                            });
                             tb.find('a[action=search]').trigger('click');
                         }
                     })
@@ -98,8 +92,8 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                     DispatcherPanel.open('text!views/BlastForm.htm', 'views/BlastForm',
                         {
                             ptype: DispatcherPanel.PANELLAYER,
-                            width:600,
-                            height:480,
+                            width: 600,
+                            height: 480,
                             title: '新增 爆破备案',
                             dg: dg
                         });

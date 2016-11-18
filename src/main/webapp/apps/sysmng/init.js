@@ -1,4 +1,4 @@
-define(['jeasyui','jeasyui_zh_CN','cj'],function(jeasyui,jeasyui_zh_CN,cj){
+define(['jeasyui','jeasyui_zh_CN','cj','myvalidate'],function(jeasyui,jeasyui_zh_CN,cj,myvalidate){
 
 
 
