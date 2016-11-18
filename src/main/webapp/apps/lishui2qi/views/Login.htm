@@ -1,8 +1,26 @@
 <div>
     <form action="login" method="post">
-        用户名:<input name="useraccount" value="admin"><br>
-        密码:<input name="userpwd" value="123456"><br>
-        <input type="submit" value="登录"><br>
-        <span opt="login-status"></span>
+        <input type="hidden" name="b_id">
+        <table cellpadding="4" cellspacing="1" class="form-table" style="width:400px;">
+            <tbody>
+            <tr>
+                <td class="my-form-label">用户名 :</td>
+                <td><input type="text" name="useraccount" class="input-text" value="admin">
+                </td>
+            </tr>
+            <tr>
+                <td class="my-form-label">密码 :</td>
+                <td><input name="userpwd" class="easyui-passwordbox" value="123456">
+
+                </td>
+            </tr>
+            <tr>
+                <td class="my-form-label"></td>
+                <td>
+                    <input type="submit" value="登录">
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </form>
 </div>

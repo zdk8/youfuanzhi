@@ -146,6 +146,7 @@ define(['underscore','leaflet-plugins/TuLi'], function (_,TuLi) {
                     var module = 'views/Login';
                     DispatcherPanel.open('text!' + module + '.htm', module, {
                         title: "登录",
+                        height:200,
                         ptype: DispatcherPanel.PANELLAYER
                     });
                 });
