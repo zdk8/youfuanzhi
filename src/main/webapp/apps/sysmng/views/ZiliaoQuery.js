@@ -100,7 +100,7 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                             ptype: DispatcherPanel.PANELLAYER,
                             width:600,
                             height:300,
-                            title: '新增 爆破备案',
+                            title: '新增 资料',
                             dg: dg
                         });
                 });

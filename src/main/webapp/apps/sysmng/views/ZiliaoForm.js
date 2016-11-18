@@ -6,25 +6,18 @@ define(['jqueryform'], function () {
             var record = cb.params.record;
             var saveOrUpdateUrl = 'addblast';
 
-            poplocal.find('form[name=attachment]').ajaxForm({
-                    complete: function (xhr) {
-                        var results = $.parseJSON(xhr.responseText);
-                        console.log(results);
-                    }
-                });
 
-            if (record) {
-                saveOrUpdateUrl = 'updateblast';
-            }
-            $(submitbtn).bind('click', function () {
+            var attachmentResults = [];//附件结果表
 
-                /*poplocal.find('form[name=normal]').form('submit', {
+            var normalSubmit=function () {
+                poplocal.find('form[name=normal]').form('submit', {
                     url: saveOrUpdateUrl,
                     onSubmit: function (param) {
                         var isValid = $(this).form('validate');
                         if (!isValid) {
                             $.messager.progress('close');
                         }
+                        param.attachments=JSON.stringify(attachmentResults);
                         return isValid;
                     },
                     success: function (data) {
@@ -36,7 +29,24 @@ define(['jqueryform'], function () {
                             $.messager.alert('提示', '<p>表单验证失败</p><p>请核实数据再进行提交操作</p>', 'error');
                         }
                     }
-                });*/
+                });
+            };
+            var attachmentForm=poplocal.find('form[name=attachment]').ajaxForm({
+                    complete: function (xhr) {
+                        attachmentResults = $.parseJSON(xhr.responseText);
+                        if(attachmentResults.length>0) {
+                            normalSubmit();
+                        }
+                        console.log(attachmentResults);
+                    }
+                });
+
+            if (record) {
+                saveOrUpdateUrl = 'updateblast';
+            }
+            $(submitbtn).bind('click', function () {
+                attachmentForm.submit();
+
 
             });
 
