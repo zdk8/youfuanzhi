@@ -19,6 +19,7 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                                     bottom: ''
                                 }
                             });
+                            datagrid.datagrid('reload');
                         }, error: function () {
                             $.messager.alert('错误', '操作失败', 'error');
                         }
@@ -77,7 +78,7 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                         searchParams.push({name: 'applyunit', operate: "like", value: "%" + applyunit + "%"});
                     }
                     return searchParams;
-                }
+                };
 
                 //点击查询
                 tb.find('a[action=search]').bind('click', function () {

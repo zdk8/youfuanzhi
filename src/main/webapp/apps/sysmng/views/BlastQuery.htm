@@ -9,16 +9,16 @@
                        pagination:true">
     <thead>
     <tr>
-        <th data-options="field:'applicant',width:60"> 填表人</th>
+        <th data-options="field:'applyunit',width:90"> 申请爆破单位</th>
+        <th data-options="field:'applicant',width:30"> 填表人</th>
         <th data-options="field:'weight',width:30"> 炸药用量</th>
         <th data-options="field:'contactway',width:60"> 联系方式</th>
-        <th data-options="field:'applyunit',width:30"> 申请爆破单位</th>
         <th data-options="field:'description',width:60"> 描述</th>
         <th data-options="field:'blastway',width:60,formatter:cj.enumFormatter('blastway')"> 爆破方法</th>
         <th data-options="field:'distance',width:30"> 离台站的距离</th>
         <th data-options="field:'blasttime',width:60,formatter:cj.dateFormatter()"> 爆破时间</th>
         <th data-options="field:'ooo',width:100,align:'center',fixed:true,
-                            formatter:cj.button.RoundTextFormatter(['mydelete','删除','trash'],['update','编辑','update'])">
+                            formatter:cj.button.OnlyIconFormatter(['mydelete','删除','trash'],['update','编辑','update'])">
             操作
         </th>
     </tr>
