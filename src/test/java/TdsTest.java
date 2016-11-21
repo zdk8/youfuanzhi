@@ -69,18 +69,20 @@ public class TdsTest {
      */
     @Test
     public void testBlast(){
-        Ls_Blast blast = new Ls_Blast();
-        blast.setApplicant("blast2");
-        blast.setApplyunit("hvit2");
-        blast.setWeight(BigDecimal.valueOf(200));
-        blast.setbId(BigDecimal.valueOf(21));
+//        Ls_Blast blast = new Ls_Blast();
+//        blast.setApplicant("blast2");
+//        blast.setApplyunit("hvit2");
+//        blast.setWeight(BigDecimal.valueOf(200));
+//        blast.setbId(BigDecimal.valueOf(21));
 //        blastService.addBlast(blast);
 //        System.out.println("success add");
 //        blastService.updateBlast(blast);
-        System.out.println("update success");
-
-        PageHelper.Page<Ls_Blast> blasts = blastService.getBlastByCond(1, 10,new HashMap<String, Object>());
-        System.out.println(blasts.getResults().size());
+//        System.out.println("update success");
+        HashMap<String,Object> condMap = new HashMap<>();
+        condMap.put("applicant","spider");
+        condMap.put("applyunit","11' or 1=1 or 1='1");
+        PageHelper.Page<Ls_Blast> blasts = blastService.getBlastByCond(1, 10,condMap);
+        System.out.println(blasts.getTotal());
 
     }
 

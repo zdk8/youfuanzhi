@@ -13,5 +13,5 @@ public interface IBlastService {
 
     void updateBlast(Ls_Blast blast);
 
-    PageHelper.Page<Ls_Blast> getBlastByCond(int page, int rows, HashMap<String, Object> condMap);
+    PageHelper.Page<Ls_Blast> getBlastByCond(int page, int rows, HashMap<String, Object> conds);
 }

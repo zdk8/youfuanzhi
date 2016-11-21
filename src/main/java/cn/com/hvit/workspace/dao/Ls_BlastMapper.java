@@ -2,6 +2,7 @@ package cn.com.hvit.workspace.dao;
 
 import cn.com.hvit.workspace.model.Ls_Blast;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 
@@ -11,5 +12,5 @@ public interface Ls_BlastMapper {
 
     void updateBlast(Ls_Blast blast);
 
-    List getBlastByCond(Map<String, Object> condMap);
+    List getBlastByCond(HashMap<String, Object> conds);
 }
