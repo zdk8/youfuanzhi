@@ -102,15 +102,14 @@ public class BlastController {
     public HashMap<String, Object> getBlast(@RequestParam int page, @RequestParam int rows, HttpServletRequest request, HttpServletResponse response){
         HashMap<String,Object> blastMap = new HashMap<String,Object>();
         HashMap<String,Object> condMap = new HashMap<String,Object>();
-        //获取查询条件
-        String blastway = request.getParameter("blastway");
-        String applyunit = request.getParameter("applyunit");
-        condMap.put("blastway",blastway);
-        condMap.put("applyunit",applyunit);
-
+        CommonCode code = new CommonCode();
+        condMap = code.condMap(request);
         PageHelper.Page<Ls_Blast> orginfo = blastService.getBlastByCond(page, rows,condMap);
         blastMap.put("total",orginfo.getTotal());
         blastMap.put("rows",orginfo.getResults());
         return blastMap;
     }
+
+
+
 }

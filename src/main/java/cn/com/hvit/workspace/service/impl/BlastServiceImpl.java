@@ -30,9 +30,9 @@ public class BlastServiceImpl implements IBlastService{
     }
 
     @Override
-    public PageHelper.Page<Ls_Blast> getBlastByCond(int page, int rows, HashMap<String, Object> condMap) {
+    public PageHelper.Page<Ls_Blast> getBlastByCond(int page, int rows, HashMap<String, Object> conds) {
         PageHelper.startPage(page,rows);
-        blastMapper.getBlastByCond(condMap);
+        blastMapper.getBlastByCond(conds);
         return PageHelper.endPage();
     }
 }

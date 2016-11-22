@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -79,7 +80,11 @@ public class CommonCode {
         return 0;
     }
 
-
+    /**
+     * 获取访问客户端的ip地址
+     * @param request
+     * @return
+     */
     public String getClientIp(HttpServletRequest request){
         String ipAddress = null;
         //ipAddress = this.getRequest().getRemoteAddr();
@@ -112,5 +117,20 @@ public class CommonCode {
             }
         }
         return ipAddress;
+    }
+
+
+    public HashMap<String,Object> condMap(HttpServletRequest request){
+        HashMap<String,Object> condMap = new HashMap<String,Object>();
+        int i = 0;
+        String checktj = request.getParameter("intelligentsearch[" + i + "][name]");            //获取第一个字段名
+        while(checktj != null){
+            String name =  request.getParameter("intelligentsearch[" + i + "][name]");          //获取字段名
+            String value =  request.getParameter("intelligentsearch[" + i + "][value]");        //获取字段信息
+            condMap.put(name,value);                                                            //将字段信息和值存入条件的Map中
+            i++;
+            checktj = request.getParameter("intelligentsearch[" + i + "][name]");              //查找下一个字段信息
+        }
+        return condMap;
     }
 }

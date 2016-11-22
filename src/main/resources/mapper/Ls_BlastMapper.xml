@@ -17,15 +17,20 @@
     B_ID, BLASTTIME, DISTANCE, BLASTWAY, DESCRIPTION, APPLYUNIT, CONTACTWAY, WEIGHT, APPLICANT, FORMDATE
   </sql>
   <select id="getBlastByCond" parameterType="java.util.HashMap" resultMap="BaseResultMap">
-    select
+    <!--select-->
+    <!--<include refid="Base_Column_List" />-->
+    <!--from LS_BLAST-->
+    <!--WHERE isdel is NULL ${conds}-->
+    <!--ORDER BY b_id DESC-->
+    SELECT
     <include refid="Base_Column_List" />
     from LS_BLAST
     WHERE isdel is NULL
-    <if test="blastway !=null">
-      AND BLASTWAY LIKE CONCAT('%',CONCAT(#{blastway},'%'))
+    <if test="applicant != null">
+      and applicant like CONCAT('%',CONCAT (#{applicant},'%'))
     </if>
     <if test="applyunit != null">
-      AND APPLYUNIT  LIKE CONCAT('%',CONCAT(#{applyunit},'%'))
+      and applyunit like CONCAT('%',CONCAT (#{applyunit},'%'))
     </if>
     ORDER BY b_id DESC
   </select>
