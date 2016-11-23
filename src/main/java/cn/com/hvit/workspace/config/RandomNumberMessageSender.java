@@ -5,6 +5,9 @@ import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+/**
+ * 定时推送随机数据
+ */
 @Component
 public class RandomNumberMessageSender {
 
@@ -15,8 +18,9 @@ public class RandomNumberMessageSender {
     this.messaging = messaging;
   }
   
-  @Scheduled(fixedRate=10000)
+  @Scheduled(fixedRate=100000)
   public void sendRandomNumber() {
+    System.out.println("每100秒向前台推送随机数字");
     Shout random = new Shout();
     random.setMessage("Random # : " + (Math.random() * 100));
     messaging.convertAndSend("/topic/marco", random);
