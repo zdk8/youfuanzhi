@@ -119,7 +119,11 @@ public class CommonCode {
         return ipAddress;
     }
 
-
+    /**
+     * 查询列表条件封装,前端提交的name和数据库中的一致
+     * @param request
+     * @return
+     */
     public HashMap<String,Object> condMap(HttpServletRequest request){
         HashMap<String,Object> condMap = new HashMap<String,Object>();
         int i = 0;

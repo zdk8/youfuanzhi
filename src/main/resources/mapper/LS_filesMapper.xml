@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hvit.workspace.dao.LS_filesMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hvit.workspace.model.LS_files" >
+    <result column="FID" property="fid" jdbcType="DECIMAL" />
+    <result column="FILENAME" property="filename" jdbcType="VARCHAR" />
+    <result column="FILEPATH" property="filepath" jdbcType="VARCHAR" />
+    <result column="FILESIZE" property="filesize" jdbcType="VARCHAR" />
+    <result column="LOADDATE" property="loaddate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    FID, FILENAME, FILEPATH, FILESIZE, LOADDATE
+  </sql>
+  <insert id="insert" parameterType="cn.com.hvit.workspace.model.LS_files" >
+    insert into LS_FILES (FID, FILENAME, FILEPATH, 
+      FILESIZE, LOADDATE)
+    values (#{fid,jdbcType=DECIMAL}, #{filename,jdbcType=VARCHAR}, #{filepath,jdbcType=VARCHAR}, 
+      #{filesize,jdbcType=VARCHAR}, #{loaddate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.hvit.workspace.model.LS_files" >
+    insert into LS_FILES
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fid != null" >
+        FID,
+      </if>
+      <if test="filename != null" >
+        FILENAME,
+      </if>
+      <if test="filepath != null" >
+        FILEPATH,
+      </if>
+      <if test="filesize != null" >
+        FILESIZE,
+      </if>
+      <if test="loaddate != null" >
+        LOADDATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fid != null" >
+        #{fid,jdbcType=DECIMAL},
+      </if>
+      <if test="filename != null" >
+        #{filename,jdbcType=VARCHAR},
+      </if>
+      <if test="filepath != null" >
+        #{filepath,jdbcType=VARCHAR},
+      </if>
+      <if test="filesize != null" >
+        #{filesize,jdbcType=VARCHAR},
+      </if>
+      <if test="loaddate != null" >
+        #{loaddate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="getfilesbycond" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    from LS_FILES
+    WHERE
+    <if test="filename != null">
+      filename like CONCAT('%',CONCAT (#{filename},'%'))
+    </if>
+    ORDER BY fid DESC
+  </select>
+</mapper>
