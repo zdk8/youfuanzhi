@@ -14,6 +14,8 @@ public class LS_files {
 
     private Date loaddate;
 
+    private String originname;
+
     public BigDecimal getFid() {
         return fid;
     }
@@ -52,5 +54,13 @@ public class LS_files {
 
     public void setLoaddate(Date loaddate) {
         this.loaddate = loaddate;
+    }
+
+    public String getOriginname() {
+        return originname;
+    }
+
+    public void setOriginname(String originname) {
+        this.originname = originname;
     }
 }

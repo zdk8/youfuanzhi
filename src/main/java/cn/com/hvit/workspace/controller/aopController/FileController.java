@@ -4,6 +4,7 @@ import cn.com.hvit.framework.kon.util.AttachmentNameBean;
 import cn.com.hvit.framework.kon.util.PageHelper;
 import cn.com.hvit.workspace.model.LS_files;
 import cn.com.hvit.workspace.service.IFileService;
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -41,7 +42,7 @@ public class FileController {
                 System.out.println("文件未上传");
             }else {
                 String originName = file.getOriginalFilename();
-                AttachmentNameBean nameBean = new AttachmentNameBean();
+                AttachmentNameBean nameBean = new AttachmentNameBean(originName);
                 try {
                     file.transferTo(new File(nameBean.getAbsolutePath()));
                 } catch (IOException e) {
@@ -49,9 +50,9 @@ public class FileController {
                 }
 
                 LS_files files = new LS_files();
-
-                files.setFilename( nameBean.getOriginFileName());
-                files.setFilepath(nameBean.getNewFileNamePrefix() + nameBean.getNewFileName());
+                files.setOriginname(originName);
+                files.setFilename( nameBean.getNewFileName());
+                files.setFilepath("filedownload/" + nameBean.getNewFileNamePrefix() + nameBean.getNewFileName());
                 files.setFilesize(String.valueOf(file.getSize()));
                 fileService.addFile(files);
             }
@@ -61,7 +62,7 @@ public class FileController {
         return userMap;
     }
 
-    @RequestMapping(value = "/filedownload", method = {RequestMethod.GET,RequestMethod.POST})
+    @RequestMapping(value = "/filedownload/{filename:.+}", method = {RequestMethod.GET,RequestMethod.POST})
     public ResponseEntity download(@PathVariable String filename, HttpServletRequest request) throws IOException {
         File file = new File(AttachmentNameBean.getAbsolutePath(filename));
         HttpHeaders headers = new HttpHeaders();
