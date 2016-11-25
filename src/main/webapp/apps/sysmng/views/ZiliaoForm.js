@@ -23,8 +23,8 @@ define(['jqueryform'], function () {
                     success: function (data) {
                         var obj = JSON.parse(data);
                         if (obj.success) {
-                            local.trigger('MyClose');
                             //refreshGrid();
+                            local.trigger('MyClose');
                         } else {
                             $.messager.alert('提示', '<p>表单验证失败</p><p>请核实数据再进行提交操作</p>', 'error');
                         }
@@ -34,10 +34,23 @@ define(['jqueryform'], function () {
             var attachmentForm=poplocal.find('form[name=attachment]').ajaxForm({
                     complete: function (xhr) {
                         attachmentResults = $.parseJSON(xhr.responseText);
-                        if(attachmentResults.length>0) {
-                            normalSubmit();
+                        if(attachmentResults.success==true) {
+                            //normalSubmit();
+                            local.trigger('MyClose');
+                             $.messager.show({
+                                title: '提示',
+                                msg: '操作成功',
+                                showType: 'show',
+                                timeout: 1000,
+                                style: {
+                                    right: '',
+                                    bottom: ''
+                                }
+                            });
+                        }else{
+                            $.messager.alert('提示', '<p>上传失败</p>', 'error');
                         }
-                        console.log(attachmentResults);
+
                     }
                 });
 
@@ -46,8 +59,6 @@ define(['jqueryform'], function () {
             }
             $(submitbtn).bind('click', function () {
                 attachmentForm.submit();
-
-
             });
 
             poplocal.find('form[name=normal]').form('load', record);

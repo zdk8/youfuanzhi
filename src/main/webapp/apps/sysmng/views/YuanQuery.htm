@@ -1,0 +1,44 @@
+<table class="easyui-datagrid-noauto"
+       data-options="
+                       method:'get',
+                       border:false,
+                       fit:true,fitColumns:true,
+                       pageSize:15,
+                       pageList:[10,20],
+                       singleSelect:true,
+                       pagination:true">
+    <thead>
+    <tr>
+ <th data-options="field:'level',width:60,formatter:function(v,r,i){
+          return v+'级';
+          }">预案级别</th>
+        <th data-options="field:'loaddate',width:60,formatter:cj.dateFormatter()"> 时间</th>
+        <th data-options="field:'status',width:60,formatter:function(v,r,i){
+           if(v==1){
+             return '<a>已启动</a>';
+           }
+          return '未启动';
+        }"> 启动状态</th>
+        <th data-options="field:'ziliao_lianxiren',width:60,align:'center',formatter:
+        cj.button.RoundTextFormatter(['ziliao','资料','ziliao'],['lianxiren','联系人','lianxiren'])"> 管理</th>
+
+        <th data-options="field:'ooo',width:100,align:'center',fixed:true,
+                            formatter:cj.button.RoundTextFormatter(['startup','启动','startup'],['jiechu','解除','jiechu'])">
+            操作
+        </th>
+    </tr>
+    </thead>
+</table>
+<div tb="toolbar" class="my-toolbar">
+    <label class="my-tool-label">填表人</label>
+    <input class="easyui-textbox" type="text" opt="applicant" data-options="width:100,prompt:''">
+
+    <label class="my-tool-label">申请爆破单位</label>
+    <input class="easyui-textbox" type="text" opt="applyunit" data-options="width:100,prompt:''">
+
+    <a action="search" class="tool-search">搜索</a>
+    <a action="new-layer" class="tool-add">+新增资料</a>
+    <a id="yuan-status"></a>
+    <a style="float:right;margin-right:20px;" class="easyui-linkbutton" iconCls="panel-tool-close"
+       plain="true" action="close"></a>
+</div>
