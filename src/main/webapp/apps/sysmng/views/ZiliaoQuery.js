@@ -51,7 +51,7 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                 var dg = MakeDG.make(local.find('.easyui-datagrid-noauto'),
                     {mydelete: mydelete, update: view, view: view},
                     {
-                        url: HvitFrontFWPrefix+ 'eers/nine-table',
+                        url: 'getfiles',
                         toolbar: tb
                     }
                 );
@@ -68,7 +68,7 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                             tb.find('a[action=search]').trigger('click');
                         }
                     })
-                })
+                });
 
 
                 var getSearchParams = function () {
@@ -83,7 +83,7 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                         searchParams.push({name: 'applyunit', operate: "like", value: "%" + applyunit + "%"});
                     }
                     return searchParams;
-                }
+                };
 
                 //点击查询
                 tb.find('a[action=search]').bind('click', function () {

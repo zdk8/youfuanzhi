@@ -9,16 +9,22 @@
                        pagination:true">
     <thead>
     <tr>
-        <th data-options="field:'applicant',width:60"> 文件管理</th>
-        <th data-options="field:'weight',width:30"> 炸药用量</th>
-        <th data-options="field:'contactway',width:60"> 联系方式</th>
-        <th data-options="field:'applyunit',width:30"> 申请爆破单位</th>
-        <th data-options="field:'description',width:60"> 描述</th>
-        <th data-options="field:'blastway',width:60"> 爆破方法</th>
-        <th data-options="field:'distance',width:30"> 离台站的距离</th>
-        <th data-options="field:'blasttime',width:60,formatter:cj.dateFormatter()"> 爆破时间</th>
+ <th data-options="field:'filename',width:60,formatter:function(v,r,i){
+          return '<a target=_blank href='+r.filename+'>'+v+'</a>';
+          }">	文件名</th>
+ <th data-options="field:'filesize',width:20,formatter:function(v,r,i){
+             var size=v;
+             if(size<1024){return size+'B';}
+             else if(size<1024*1024){return (size/1024).toFixed(2)+'KB';}
+             else if(size<1024*1024*1024){return (size/(1024*1024)).toFixed(2)+'MB';}
+             else {return (size/(1024*1024*1024)).toFixed(2)+'GB';}
+          }">	大小</th>
+          <th data-options="field:'filepath',width:120,formatter:function(v,r,i){
+          return '<a target=_blank href='+v+'?dlname='+r.filename+'>下载</a>';
+          }">	下载</th>
+        <th data-options="field:'loaddate',width:60,formatter:cj.dateFormatter()"> 时间</th>
         <th data-options="field:'ooo',width:100,align:'center',fixed:true,
-                            formatter:cj.button.RoundTextFormatter(['mydelete','删除','trash'],['update','编辑','update'])">
+                            formatter:cj.button.RoundTextFormatter(['mydelete','删除','trash'])">
             操作
         </th>
     </tr>
