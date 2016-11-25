@@ -1,11 +1,6 @@
 import cn.com.hvit.framework.kon.util.PageHelper;
-import cn.com.hvit.workspace.model.LS_files;
-import cn.com.hvit.workspace.model.Ls_Blast;
-import cn.com.hvit.workspace.model.Ls_Log;
-import cn.com.hvit.workspace.service.IBlastService;
-import cn.com.hvit.workspace.service.IFileService;
-import cn.com.hvit.workspace.service.ILogService;
-import cn.com.hvit.workspace.service.IUserService;
+import cn.com.hvit.workspace.model.*;
+import cn.com.hvit.workspace.service.*;
 import cn.com.hvit.workspace.util.CommonCode;
 import org.apache.commons.httpclient.Header;
 import org.apache.commons.httpclient.HttpClient;
@@ -21,8 +16,11 @@ import javax.swing.*;
 import java.io.*;
 import java.math.BigDecimal;
 import java.net.*;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -34,6 +32,7 @@ public class TdsTest {
     private ILogService logService;
     private IBlastService blastService;
     private IFileService fileService;
+    private IResponseService responseService;
 
     @Before
     public void before(){
@@ -42,6 +41,7 @@ public class TdsTest {
         logService = (ILogService) context.getBean("logServiceImpl");
         blastService = (IBlastService) context.getBean("blastServiceImpl");
         fileService = (IFileService) context.getBean("fileServiceImpl");
+        responseService = (IResponseService) context.getBean("responseServiceImpl");
     }
 
     /**
@@ -87,6 +87,32 @@ public class TdsTest {
         PageHelper.Page<Ls_Blast> blasts = blastService.getBlastByCond(1, 10,condMap);
         System.out.println(blasts.getTotal());
 
+    }
+
+    /**
+     * 地震响应
+     */
+    @Test
+    public void responseTest(){
+//        ls_responsemessage message = new ls_responsemessage();
+//        message.setDepartment("市政府");
+//        message.setDutycontent("贯彻市指挥部的指示和部署，协调有关县级人民政府、指挥部成员单位之间、地震现场指挥部以及各级地震救援队伍的应急工作。特别重大或重大地震灾害时，承担市指挥部办公室职责。");
+//        message.setContact("陈重,钟建安");
+//        message.setPosition("副市长,副秘书长");
+//        message.setPhone("632453");
+//        message.setRmlevel("1,2,3,4");
+//        message.setYjid(BigDecimal.valueOf(21));
+//        responseService.addEarthMessage(message);
+
+//        ls_earthquakeresponse response = new ls_earthquakeresponse();
+//        response.setYjname("丽水地震应急预案");
+//        response.setYjpath("D://丽水地震应急预案.doc");
+//        responseService.addEarthquake(response);
+        Map<String,Object> responseMap = new HashMap<String,Object>();
+        responseMap.put("yjid",21);
+        responseMap.put("rmlevel","1");
+        List message = responseService.getResponsebyid(responseMap);
+        System.out.println(message.size());
     }
 
     @Test
@@ -152,6 +178,18 @@ public class TdsTest {
 
         post.releaseConnection();
     }
+
+    @Test
+    public void testSendMessage106() throws IOException {
+        String tel = "18358158536";
+        String msg = "[地震应急响应]XX地发生3级地震，根据应急响应，请XXXXXXXXX";
+
+        CommonCode code = new CommonCode();
+
+        code.sendmsg2(tel,msg);
+
+    }
+
 
     /**
      * 获取服务器上的文件

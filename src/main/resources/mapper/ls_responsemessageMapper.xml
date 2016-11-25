@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hvit.workspace.dao.ls_responsemessageMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hvit.workspace.model.ls_responsemessage" >
+    <result column="RMID" property="rmid" jdbcType="DECIMAL" />
+    <result column="DEPARTMENT" property="department" jdbcType="VARCHAR" />
+    <result column="DUTYCONTENT" property="dutycontent" jdbcType="VARCHAR" />
+    <result column="CONTACT" property="contact" jdbcType="VARCHAR" />
+    <result column="POSITION" property="position" jdbcType="VARCHAR" />
+    <result column="PHONE" property="phone" jdbcType="VARCHAR" />
+    <result column="TELEPHONE" property="telephone" jdbcType="VARCHAR" />
+    <result column="RMLEVEL" property="rmlevel" jdbcType="VARCHAR" />
+    <result column="YJID" property="yjid" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    RMID, DEPARTMENT, DUTYCONTENT, CONTACT, POSITION,PHONE,TELEPHONE,RMLEVEL,YJID
+  </sql>
+  <insert id="insert" parameterType="cn.com.hvit.workspace.model.ls_responsemessage" >
+    insert into LS_RESPONSEMESSAGE (RMID, DEPARTMENT, DUTYCONTENT, 
+      CONTACT, POSITION, PHONE, 
+      TELEPHONE, RMLEVEL, YJID
+      )
+    values (#{rmid,jdbcType=DECIMAL}, #{department,jdbcType=VARCHAR}, #{dutycontent,jdbcType=VARCHAR}, 
+      #{contact,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{telephone,jdbcType=VARCHAR}, #{rmlevel,jdbcType=VARCHAR}, #{yjid,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.hvit.workspace.model.ls_responsemessage" >
+    insert into LS_RESPONSEMESSAGE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rmid != null" >
+        RMID,
+      </if>
+      <if test="department != null" >
+        DEPARTMENT,
+      </if>
+      <if test="dutycontent != null" >
+        DUTYCONTENT,
+      </if>
+      <if test="contact != null" >
+        CONTACT,
+      </if>
+      <if test="position != null" >
+        POSITION,
+      </if>
+      <if test="phone != null" >
+        PHONE,
+      </if>
+      <if test="telephone != null" >
+        TELEPHONE,
+      </if>
+      <if test="rmlevel != null" >
+        RMLEVEL,
+      </if>
+      <if test="yjid != null" >
+        YJID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rmid != null" >
+        #{rmid,jdbcType=DECIMAL},
+      </if>
+      <if test="department != null" >
+        #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="dutycontent != null" >
+        #{dutycontent,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null" >
+        #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null" >
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="rmlevel != null" >
+        #{rmlevel,jdbcType=VARCHAR},
+      </if>
+      <if test="yjid != null" >
+        #{yjid,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updatemessage" parameterType="cn.com.hvit.workspace.model.ls_responsemessage" >
+    UPDATE LS_RESPONSEMESSAGE
+    <set>
+      <if test="department != null" >
+        department = #{department,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dutycontent != null" >
+        dutycontent = #{dutycontent,jdbcType=DECIMAL},
+      </if>
+      <if test="contact != null" >
+        contact = #{contact,jdbcType=DECIMAL},
+      </if>
+      <if test="position != null" >
+        position = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="rmlevel != null" >
+        rmlevel = #{rmlevel,jdbcType=VARCHAR},
+      </if>
+      <if test="yjid != null" >
+        yjid = #{yjid,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where rmid = #{rmid,jdbcType=DECIMAL}
+  </update>
+  <select id="getMessagebyid" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from LS_RESPONSEMESSAGE
+    where YJID = #{yjid} and rmlevel like CONCAT('%',CONCAT(#{rmlevel},'%'))
+  </select>
+</mapper>

@@ -32,7 +32,7 @@ public class FileController {
     IFileService fileService;
 
     @ResponseBody
-    @RequestMapping(value = "/fileload",method = {RequestMethod.GET,RequestMethod.POST})
+    @RequestMapping(value = "/fileupload",method = {RequestMethod.GET,RequestMethod.POST})
     public Map<String, Object> fileupload(@RequestParam MultipartFile[] myfile){
         Map<String,Object> userMap = new HashMap<String,Object>();
         List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
@@ -49,8 +49,9 @@ public class FileController {
                 }
 
                 LS_files files = new LS_files();
-                files.setFilename(nameBean.getNewFileName());
-                files.setFilepath(nameBean.getAbsolutePath());
+
+                files.setFilename( nameBean.getOriginFileName());
+                files.setFilepath(nameBean.getNewFileNamePrefix() + nameBean.getNewFileName());
                 files.setFilesize(String.valueOf(file.getSize()));
                 fileService.addFile(files);
             }

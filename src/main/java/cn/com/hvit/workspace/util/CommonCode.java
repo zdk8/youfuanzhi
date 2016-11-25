@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
+import java.io.UnsupportedEncodingException;
+import java.net.*;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -137,4 +139,97 @@ public class CommonCode {
         }
         return condMap;
     }
+
+
+
+    /**
+     * 发送信息
+     * @param tel
+     * @param msg
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    public void sendmsg(String tel,String msg) throws IOException, NoSuchAlgorithmException {
+        StringBuffer sb = new StringBuffer("http://api.106msg.com/TXTJK.aspx?");
+        sb.append("type=send&ua=66770284");
+        sb.append("&pwd="+mmd5("HVIT123"));
+        sb.append("&gwid=30");
+        sb.append("&mobile="+tel);
+        sb.append("&msg="+ URLEncoder.encode(msg,"GB2312"));
+        URL url = new URL(sb.toString());
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestMethod("POST");
+        BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
+        String inputline = in.readLine();
+        System.out.println(inputline);
+
+    }
+
+    private static final char HEX_DIGITS[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
+    public static String toHexString(byte[] b) { //String to byte
+        StringBuilder sb = new StringBuilder(b.length * 2);
+        for (int i = 0; i < b.length; i++) {
+            sb.append(HEX_DIGITS[(b[i] & 0xf0) >>> 4]);
+            sb.append(HEX_DIGITS[b[i] & 0x0f]);
+        }
+        return sb.toString();
+    }
+    public String mmd5(String s) throws NoSuchAlgorithmException {
+        try { // Create MD5 Hash
+            MessageDigest digest = MessageDigest.getInstance("MD5");
+            digest.update(s.getBytes());
+            byte messageDigest[] = digest.digest();
+            System.out.println(toHexString(messageDigest));
+            return toHexString(messageDigest); }
+        catch (NoSuchAlgorithmException e)
+        { e.printStackTrace(); } return "";
+    }
+
+
+    public void sendmsg2(String tel,String msg) throws IOException {
+
+        // 创建StringBuffer对象用来操作字符串
+        StringBuffer sb = new StringBuffer("http://api.106msg.com/TXTJK.aspx?");
+
+        // 向StringBuffer追加用户名
+        sb.append("type=send&ua=66770284");
+
+        // 向StringBuffer追加密码
+        try {
+            sb.append("&pwd=" + mmd5("HVIT123"));
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+
+        // 向StringBuffer追加网关id
+        sb.append("&gwid=30");
+
+        // 向StringBuffer追加手机号码
+        sb.append("&mobile=" + tel);
+
+        // 向StringBuffer追加消息内容转URL标准码
+        sb.append("&msg="+URLEncoder.encode(msg,"GB2312"));
+
+        // 创建url对象
+        URL url = new URL(sb.toString());
+
+        // 打开url连接
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+
+        // 设置url请求方式 ‘get’ 或者 ‘post’
+        connection.setRequestMethod("POST");
+
+        // 发送
+        BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
+
+        // 返回发送结果
+        String inputline = in.readLine();
+
+        // 返回结果为‘100’ 发送成功
+        System.out.println(inputline);
+    }
+
+
+
+
 }

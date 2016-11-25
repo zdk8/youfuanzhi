@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hvit.workspace.dao.ls_earthquakeresponseMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hvit.workspace.model.ls_earthquakeresponse" >
+    <result column="YJID" property="yjid" jdbcType="DECIMAL" />
+    <result column="YJNAME" property="yjname" jdbcType="VARCHAR" />
+    <result column="YJPATH" property="yjpath" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="cn.com.hvit.workspace.model.ls_earthquakeresponse" >
+    insert into LS_EARTHQUAKERESPONSE (YJID, YJNAME, YJPATH
+      )
+    values (#{yjid,jdbcType=DECIMAL}, #{yjname,jdbcType=VARCHAR}, #{yjpath,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.hvit.workspace.model.ls_earthquakeresponse" >
+    insert into LS_EARTHQUAKERESPONSE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="yjid != null" >
+        YJID,
+      </if>
+      <if test="yjname != null" >
+        YJNAME,
+      </if>
+      <if test="yjpath != null" >
+        YJPATH,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="yjid != null" >
+        #{yjid,jdbcType=DECIMAL},
+      </if>
+      <if test="yjname != null" >
+        #{yjname,jdbcType=VARCHAR},
+      </if>
+      <if test="yjpath != null" >
+        #{yjpath,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateEarthquake" parameterType="cn.com.hvit.workspace.model.ls_earthquakeresponse">
+    UPDATE LS_EARTHQUAKERESPONSE
+    <set>
+      <if test="yjname != null" >
+        yjname = #{yjname,jdbcType=TIMESTAMP},
+      </if>
+      <if test="yjpath != null" >
+        yjpath = #{yjpath,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where yjid = #{yjid,jdbcType=DECIMAL}
+  </update>
+</mapper>
