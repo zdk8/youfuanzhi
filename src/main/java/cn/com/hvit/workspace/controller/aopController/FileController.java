@@ -91,6 +91,7 @@ public class FileController {
         return new ResponseEntity(FileCopyUtils.copyToByteArray(file),headers, HttpStatus.OK);
     }
 
+    @ResponseBody
     @RequestMapping(value = "/getfiles" ,method = {RequestMethod.GET,RequestMethod.POST})
     public HashMap<String, Object> getFiles(@RequestParam int page, @RequestParam int rows, HttpServletRequest request, HttpServletResponse response){
         HashMap<String,Object> fileMap = new HashMap<String,Object>();
