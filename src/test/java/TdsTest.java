@@ -118,7 +118,7 @@ public class TdsTest {
     @Test
     public void testfiles(){
         HashMap<String,Object> condMap = new HashMap<>();
-        condMap.put("filename","aaa");
+//        condMap.put("filename","png");
         PageHelper.Page<LS_files> files = fileService.getfilesbycond(1, 10,condMap);
         System.out.println(files.getTotal());
     }

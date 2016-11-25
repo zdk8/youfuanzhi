@@ -65,10 +65,11 @@
     SELECT
     <include refid="Base_Column_List" />
     from LS_FILES
-    WHERE
-    <if test="filename != null">
-      filename like CONCAT('%',CONCAT (#{filename},'%'))
-    </if>
+    <where>
+      <if test="filename != null">
+        filename like CONCAT('%',CONCAT (#{filename},'%'))
+      </if>
+    </where>
     ORDER BY fid DESC
   </select>
 </mapper>
