@@ -1,15 +1,19 @@
 package cn.com.hvit.workspace.util;
 
+import cn.com.hvit.framework.kon.util.AttachmentNameBean;
 import cn.com.hvit.workspace.model.Ls_Log;
 import cn.com.hvit.workspace.model.Ls_User;
 import cn.com.hvit.workspace.service.ILogService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.net.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -227,6 +231,36 @@ public class CommonCode {
 
         // 返回结果为‘100’ 发送成功
         System.out.println(inputline);
+    }
+
+
+
+    public ResponseEntity filedownload(@PathVariable String filename, HttpServletRequest request) throws IOException {
+        File file = new File(AttachmentNameBean.getAbsolutePath(filename));
+        HttpHeaders headers = new HttpHeaders();
+        if (request.getParameterMap().containsKey("dlname")){
+            String dlname = request.getParameter("dlname");
+            if (dlname == null || dlname.trim().length() == 0){
+                dlname = filename;
+            }
+            dlname = new String(dlname.getBytes("utf-8"),"iso8859-1");
+            headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+            headers.setContentDispositionFormData("attachment",dlname);
+        } else if (filename.contains(".")) {
+            String suffix = filename.substring(filename.lastIndexOf(".") + 1);
+            switch (suffix.toUpperCase()){
+                case "JPG":
+                case "JPEG":
+                case "PNG":
+                    headers.setContentType(MediaType.parseMediaType("image/" + suffix));
+                    break;
+                default:
+                    headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+                    headers.setContentDispositionFormData("attachment",new String(filename.getBytes("utf-8"),"iso8859-1"));
+                    break;
+            }
+        }
+        return new ResponseEntity(FileCopyUtils.copyToByteArray(file),headers, HttpStatus.OK);
     }
 
 

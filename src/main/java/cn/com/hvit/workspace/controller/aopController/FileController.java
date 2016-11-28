@@ -4,6 +4,7 @@ import cn.com.hvit.framework.kon.util.AttachmentNameBean;
 import cn.com.hvit.framework.kon.util.PageHelper;
 import cn.com.hvit.workspace.model.LS_files;
 import cn.com.hvit.workspace.service.IFileService;
+import cn.com.hvit.workspace.util.CommonCode;
 import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -32,6 +33,11 @@ public class FileController {
     @Autowired
     IFileService fileService;
 
+    /**
+     * 文件上传并保存文件信息
+     * @param myfile
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/fileupload",method = {RequestMethod.GET,RequestMethod.POST})
     public Map<String, Object> fileupload(@RequestParam MultipartFile[] myfile){
@@ -62,35 +68,27 @@ public class FileController {
         return userMap;
     }
 
+    /**
+     * 文件下载
+     * @param filename
+     * @param request
+     * @return
+     * @throws IOException
+     */
     @RequestMapping(value = "/filedownload/{filename:.+}", method = {RequestMethod.GET,RequestMethod.POST})
     public ResponseEntity download(@PathVariable String filename, HttpServletRequest request) throws IOException {
-        File file = new File(AttachmentNameBean.getAbsolutePath(filename));
-        HttpHeaders headers = new HttpHeaders();
-        if (request.getParameterMap().containsKey("dlname")){
-            String dlname = request.getParameter("dlname");
-            if (dlname == null || dlname.trim().length() == 0){
-                dlname = filename;
-            }
-            dlname = new String(dlname.getBytes("utf-8"),"iso8859-1");
-            headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-            headers.setContentDispositionFormData("attachment",dlname);
-        } else if (filename.contains(".")) {
-            String suffix = filename.substring(filename.lastIndexOf(".") + 1);
-            switch (suffix.toUpperCase()){
-                case "JPG":
-                case "JPEG":
-                case "PNG":
-                    headers.setContentType(MediaType.parseMediaType("image/" + suffix));
-                    break;
-                default:
-                    headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-                    headers.setContentDispositionFormData("attachment",new String(filename.getBytes("utf-8"),"iso8859-1"));
-                    break;
-            }
-        }
-        return new ResponseEntity(FileCopyUtils.copyToByteArray(file),headers, HttpStatus.OK);
+        CommonCode code = new CommonCode();
+        return code.filedownload(filename,request);
     }
 
+    /**
+     * 文件信息查询
+     * @param page
+     * @param rows
+     * @param request
+     * @param response
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/getfiles" ,method = {RequestMethod.GET,RequestMethod.POST})
     public HashMap<String, Object> getFiles(@RequestParam int page, @RequestParam int rows, HttpServletRequest request, HttpServletResponse response){
