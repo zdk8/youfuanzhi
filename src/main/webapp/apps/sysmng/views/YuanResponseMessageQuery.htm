@@ -11,7 +11,7 @@
 
     <tr>
  <th data-options="field:'department',width:60">部门</th>
-        <th data-options="field:'dutycontent',width:60,formatter:cj.dateFormatter()"> 响应内容</th>
+        <th data-options="field:'dutycontent',width:60,formatter2222:cj.dateFormatter()"> 响应内容</th>
         <th data-options="field:'contact',width:60"> 联系人</th>
         <th data-options="field:'position',width:60,align:'center'"> 职务</th>
         <th data-options="field:'phone',width:60,align:'center'"> 联系电话</th>
@@ -34,6 +34,12 @@
 
     <a action="search" class="tool-search">搜索</a>
     <a action="new-layer" class="tool-add">+新增</a>
+    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    <label class="my-tool-label">级别</label>
+      <input class="easyui-combobox" type="text" opt="rmlevel"
+             data-options="width:100,prompt:'',data:cj.getEnum('rmlevel'),panelHeight:'auto'">
+    <a action="startup" class="tool-add">启动</a>
+    <a action="jiechu" class="tool-add">解除</a>
     <a id="yuan-status"></a>
     <a style="float:right;margin-right:20px;" class="easyui-linkbutton" iconCls="panel-tool-close"
        plain="true" action="close"></a>
