@@ -13,4 +13,7 @@ public interface ls_earthquakeresponseMapper {
     void updateEarthquake(ls_earthquakeresponse earthquake);
 
     List getResponseByCond(HashMap<String, Object> condMap);
+
+    List getEarthResponse();
+
 }

@@ -29,6 +29,12 @@
     </where>
     ORDER BY rmid DESC
   </select>
+  <select id="getMessagebylevel" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from LS_RESPONSEMESSAGE
+    where rmlevel like CONCAT('%',CONCAT(#{rmlevel},'%'))
+  </select>
   <insert id="insert" parameterType="cn.com.hvit.workspace.model.ls_responsemessage" >
     insert into LS_RESPONSEMESSAGE (RMID, DEPARTMENT, DUTYCONTENT, 
       CONTACT, POSITION, PHONE, 
@@ -130,10 +136,8 @@
     </set>
     where rmid = #{rmid,jdbcType=DECIMAL}
   </update>
-  <select id="getMessagebylevel" parameterType="java.util.HashMap" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from LS_RESPONSEMESSAGE
-    where rmlevel like CONCAT('%',CONCAT(#{rmlevel},'%'))
-  </select>
+
+  <delete id="deleteEarthMsg" parameterType="java.util.HashMap">
+      DELETE from LS_RESPONSEMESSAGE where rmid = #{rmid}
+  </delete>
 </mapper>

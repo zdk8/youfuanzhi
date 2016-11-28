@@ -44,6 +44,14 @@ public class TdsTest {
         responseService = (IResponseService) context.getBean("responseServiceImpl");
     }
 
+
+    @Test
+    public void TestJava(){
+        ls_responsemessage msg = new ls_responsemessage();
+        msg.setTelephone("18358158536");
+        System.out.println(msg.getTelephone() == "18358158536");
+    }
+
     /**
      * 登录测试
      */
@@ -118,10 +126,18 @@ public class TdsTest {
 //        PageHelper.Page<ls_earthquakeresponse> earthquake = responseService.getresponseByCond(1, 10, null);
 //        System.out.println(earthquake.getTotal());
 
-        HashMap<String,Object> responsemsgMap = new HashMap<String,Object>();
-        responsemsgMap.put("yjid",21);
-        PageHelper.Page<ls_responsemessage> respMsg = responseService.getEarthmsgByid(1, 10, responsemsgMap);
-        System.out.println(respMsg.getTotal());
+//        HashMap<String,Object> responsemsgMap = new HashMap<String,Object>();
+//        responsemsgMap.put("yjid",21);
+//        PageHelper.Page<ls_responsemessage> respMsg = responseService.getEarthmsgByid(1, 10, responsemsgMap);
+//        System.out.println(respMsg.getTotal());
+
+//        List earthResponse = responseService.getEarthResponse();
+//        System.out.println(earthResponse.size());
+
+        HashMap<String,Object> msgMap = new HashMap<String,Object>();
+        msgMap.put("rmid",26);
+        responseService.deleteEarthMsg(msgMap);
+        System.out.println("delete");
     }
 
     @Test

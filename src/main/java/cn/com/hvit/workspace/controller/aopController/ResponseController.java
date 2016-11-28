@@ -63,24 +63,17 @@ public class ResponseController {
     }
 
     /**
-     * 应急响应信息查询
-     * @param page
-     * @param rows
+     * 应急响应信息查询 (数据一条，不进行分页查询)
      * @param request
      * @param response
      * @return
      */
     @ResponseBody
     @RequestMapping(value = "/getearthquake",method = {RequestMethod.GET,RequestMethod.POST})
-    public HashMap<String, Object> getBlast(@RequestParam int page, @RequestParam int rows, HttpServletRequest request, HttpServletResponse response){
+    public List getBlast(HttpServletRequest request, HttpServletResponse response){
         HashMap<String,Object> blastMap = new HashMap<String,Object>();
-        HashMap<String,Object> condMap = new HashMap<String,Object>();
-        CommonCode code = new CommonCode();
-        condMap = code.condMap(request);
-        PageHelper.Page<ls_earthquakeresponse> orginfo = responseService.getresponseByCond(page, rows,condMap);
-        blastMap.put("total",orginfo.getTotal());
-        blastMap.put("rows",orginfo.getResults());
-        return blastMap;
+        List earthResponse = responseService.getEarthResponse();
+        return earthResponse;
     }
 
     /**
@@ -135,6 +128,25 @@ public class ResponseController {
         PageHelper.Page<ls_responsemessage> msginfo = responseService.getEarthmsgByid(page,rows,condMap);
         earthmsgMap.put("total",msginfo.getTotal());
         earthmsgMap.put("rows",msginfo.getResults());
+        return earthmsgMap;
+    }
+
+    /**
+     * 根据id删除应急响应消息
+     * @param rmid
+     * @param request
+     * @param response
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/delearthmsg" , method = {RequestMethod.GET,RequestMethod.POST})
+    public HashMap<String,Object> delEarthMsg(@RequestParam int rmid,HttpServletRequest request,HttpServletResponse response){
+        HashMap<String,Object> earthmsgMap = new HashMap<String,Object>();
+        HashMap<String,Object> condMap = new HashMap<String ,Object>();
+        condMap.put("rmid",rmid);
+        responseService.deleteEarthMsg(condMap);
+        earthmsgMap.put("success",true);
+        earthmsgMap.put("message","应急响应消息删除成功");
         return earthmsgMap;
     }
 

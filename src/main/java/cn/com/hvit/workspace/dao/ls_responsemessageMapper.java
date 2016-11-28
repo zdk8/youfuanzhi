@@ -16,4 +16,6 @@ public interface ls_responsemessageMapper {
     List getMessagebylevel(Map level);
 
     List getEarthmsgByyjid(HashMap<String, Object> condMap);
+
+    void deleteEarthMsg(HashMap<String, Object> condMap);
 }

@@ -27,4 +27,9 @@ public interface IResponseService {
     PageHelper.Page<ls_responsemessage> getEarthmsgByid(int page, int rows, HashMap<String, Object> condMap);
 
     void setResponseStatus(String start);
+
+    List getEarthResponse();
+
+    void deleteEarthMsg(HashMap<String, Object> condMap);
+
 }

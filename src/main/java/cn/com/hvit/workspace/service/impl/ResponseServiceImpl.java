@@ -71,4 +71,14 @@ public class ResponseServiceImpl implements IResponseService {
         responseStatus.setYjid(BigDecimal.valueOf(21));
         earthquakeresponse.updateEarthquake(responseStatus);
     }
+
+    @Override
+    public List getEarthResponse() {
+        return earthquakeresponse.getEarthResponse();
+    }
+
+    @Override
+    public void deleteEarthMsg(HashMap<String, Object> condMap) {
+        responsemessage.deleteEarthMsg(condMap);
+    }
 }
