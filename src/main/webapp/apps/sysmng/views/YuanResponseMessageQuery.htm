@@ -19,7 +19,7 @@
         <th data-options="field:'rmlevel',width:60,align:'center'"> 应急响应级别</th>
 
         <th data-options="field:'ooo',width:100,align:'center',fixed:true,
-                            formatter:cj.button.RoundTextFormatter(['startup','编辑','startup'])">
+                            formatter:cj.button.RoundTextFormatter(['update','编辑','update'],['mydelete','删除','mydelete'])">
             操作
         </th>
     </tr>
@@ -40,6 +40,8 @@
              data-options="width:100,prompt:'',data:cj.getEnum('rmlevel'),panelHeight:'auto'">
     <a action="startup" class="tool-add">启动</a>
     <a action="jiechu" class="tool-add">解除</a>
+    <a action="yuan-file-upload" class="tool-add">+预案文件上传</a>
+    <a opt="yuan-download"></a>
     <a id="yuan-status"></a>
     <a style="float:right;margin-right:20px;" class="easyui-linkbutton" iconCls="panel-tool-close"
        plain="true" action="close"></a>

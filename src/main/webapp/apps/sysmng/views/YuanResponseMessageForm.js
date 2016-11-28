@@ -6,6 +6,7 @@ define([], function () {
             var poplocal = local;
             var submitbtn = local.find('[action=save]');
             var record = cb.params.record;
+            var dg=cb.params.datagrid;
 
             var saveOrUpdateUrl = 'addearthmessage';
             if (record) {
@@ -24,6 +25,9 @@ define([], function () {
                     },
                     success: function (data) {
                         var obj = JSON.parse(data);
+                        if(dg) {
+                            dg.datagrid('reload');
+                        }
                         if (obj.success) {
                             local.trigger('MyClose');
                             cb.params.dg.datagrid('reload');
@@ -35,14 +39,6 @@ define([], function () {
                 })
             });
 
-            record = {
-                department: 'ok',
-                contact: '11000',
-                position: 'caption',
-                phone: 12349876,
-                telephone: '88412743782',
-                dutycontent: '1873489ureiuweru'
-            };
 
             if (record) {
                 record = $.extend({}, record);
