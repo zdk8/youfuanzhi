@@ -9,8 +9,8 @@
                        pagination:true">
     <thead>
     <tr>
- <th data-options="field:'filename',width:60,formatter:function(v,r,i){
-          return '<a target=_blank href='+r.filename+'>'+v+'</a>';
+ <th data-options="field:'originname',width:60,formatter:function(v,r,i){
+          return '<a target=_blank href=&quot;'+r.filepath+'&quot;>'+v+'</a>';
           }">	文件名</th>
  <th data-options="field:'filesize',width:20,formatter:function(v,r,i){
              var size=v;
@@ -20,7 +20,7 @@
              else {return (size/(1024*1024*1024)).toFixed(2)+'GB';}
           }">	大小</th>
           <th data-options="field:'filepath',width:120,formatter:function(v,r,i){
-          return '<a target=_blank href='+v+'?dlname='+r.filename+'>下载</a>';
+          return '<a target=_blank href=&quot;'+v+'?dlname='+r.originname+'&quot;>下载</a>';
           }">	下载</th>
         <th data-options="field:'loaddate',width:60,formatter:cj.dateFormatter()"> 时间</th>
         <th data-options="field:'ooo',width:100,align:'center',fixed:true,
@@ -31,11 +31,8 @@
     </thead>
 </table>
 <div tb="toolbar" class="my-toolbar">
-    <label class="my-tool-label">填表人</label>
-    <input class="easyui-textbox" type="text" opt="applicant" data-options="width:100,prompt:''">
-
-    <label class="my-tool-label">申请爆破单位</label>
-    <input class="easyui-textbox" type="text" opt="applyunit" data-options="width:100,prompt:''">
+    <label class="my-tool-label">文件名</label>
+    <input class="easyui-textbox" type="text" opt="originname" data-options="width:100,prompt:''">
 
     <a action="search" class="tool-search">搜索</a>
     <a action="new-layer" class="tool-add">+新增资料</a>
