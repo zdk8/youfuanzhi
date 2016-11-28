@@ -1,17 +1,16 @@
 define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'), 'backbone'],
     function (MakeDG, DispatcherPanel, Backbone) {
-        var OldinfoModel = Backbone.Model.extend({
-            urlRoot: 'eers/oldinfo',
-            idAttribute: "oldid"
-        });
 
         var mydelete = function (record, datagrid) {
-            $.messager.confirm('确认', '您真的要删除此用户吗?', function (r) {
+            $.messager.confirm('确认', '您真的要删除此消息吗?', function (r) {
                 if (r) {
                     $.ajax({
-                        url: 'eers/oldinfo/' + record.oldid,
-                        type: 'delete',
+                        url: 'delearthmsg',
+                        data:{rmid:record.rmid},
+                        type: 'post',
                         success: function () {
+
+                            datagrid.datagrid('reload');
                             $.messager.show({
                                 title: '提示',
                                 msg: '操作成功',
@@ -19,7 +18,6 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                                 timeout: 500,
                                 style: {
                                     right: '',
-                                    //top:document.body.scrollTop+document.documentElement.scrollTop,
                                     bottom: ''
                                 }
                             });
@@ -30,19 +28,19 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                 }
             });
 
-        }
+        };
 
         var view = function (record, dg) {
-            DispatcherPanel.open('text!views/SampleForm.htm', 'views/SampleForm',
+            DispatcherPanel.open('text!views/YuanResponseMessageForm.htm', 'views/YuanResponseMessageForm',
                 {
                     ptype: 0, title: '查看: ' ,
                     record: record,
                     dg: dg,
-                    cacheFn: function () {
+                    cacheFn22: function () {
                         return "helloworld";
                     }
                 });
-        }
+        };
 
 
         var module = {
@@ -212,9 +210,24 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                     if(resp[0]['yjstatus']=='start'){
                         startup_jiechuStatusChange(true);
                     }
+
+                    var $download=tb.find('a[opt=yuan-download]');
+                    $download.attr('href',resp[0]['yjpath']);
+                    $download.text('下载');
+                    
                 });
 
 
+                tb.find('a[action=yuan-file-upload]').bind('click',function () {
+                    DispatcherPanel.open('text!views/YuanFileForm.htm', 'views/YuanFileForm',
+                        {
+                            ptype: DispatcherPanel.PANELLAYER,
+                            width:600,
+                            height:300,
+                            title: '新增 预案资料',
+                            dg: dg
+                        });
+                });
 
             }
         };
