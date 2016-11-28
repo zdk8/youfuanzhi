@@ -10,7 +10,7 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                 if (r) {
                     $.ajax({
                         url: 'responsestart',
-                        data: {rmlevel:record.level,yjid:21},
+                        data: {level:record.level,yjid:21},
                         type: 'post',
                         success: function () {
                             $.messager.show({
