@@ -15,6 +15,20 @@
   <sql id="Base_Column_List">
     RMID, DEPARTMENT, DUTYCONTENT, CONTACT, POSITION,PHONE,TELEPHONE,RMLEVEL,YJID
   </sql>
+  <select id="getEarthmsgByyjid" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    from LS_RESPONSEMESSAGE
+    <where>
+      <if test="department != null">
+        and department like CONCAT('%',CONCAT (#{department},'%'))
+      </if>
+      <if test="contact != null">
+        and contact like CONCAT('%',CONCAT (#{contact},'%'))
+      </if>
+    </where>
+    ORDER BY rmid DESC
+  </select>
   <insert id="insert" parameterType="cn.com.hvit.workspace.model.ls_responsemessage" >
     insert into LS_RESPONSEMESSAGE (RMID, DEPARTMENT, DUTYCONTENT, 
       CONTACT, POSITION, PHONE, 
@@ -116,10 +130,10 @@
     </set>
     where rmid = #{rmid,jdbcType=DECIMAL}
   </update>
-  <select id="getMessagebyid" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+  <select id="getMessagebylevel" parameterType="java.util.HashMap" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from LS_RESPONSEMESSAGE
-    where YJID = #{yjid} and rmlevel like CONCAT('%',CONCAT(#{rmlevel},'%'))
+    where rmlevel like CONCAT('%',CONCAT(#{rmlevel},'%'))
   </select>
 </mapper>

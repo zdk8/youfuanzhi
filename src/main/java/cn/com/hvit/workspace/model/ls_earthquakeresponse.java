@@ -9,6 +9,8 @@ public class ls_earthquakeresponse {
 
     private String yjpath;
 
+    private String yjstatus;
+
     public BigDecimal getYjid() {
         return yjid;
     }
@@ -31,5 +33,13 @@ public class ls_earthquakeresponse {
 
     public void setYjpath(String yjpath) {
         this.yjpath = yjpath == null ? null : yjpath.trim();
+    }
+
+    public String getYjstatus() {
+        return yjstatus;
+    }
+
+    public void setYjstatus(String yjstatus) {
+        this.yjstatus = yjstatus;
     }
 }

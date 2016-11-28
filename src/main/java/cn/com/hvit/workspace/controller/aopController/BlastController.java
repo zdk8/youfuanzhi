@@ -36,7 +36,7 @@ public class BlastController {
      */
     @ResponseBody
     @RequestMapping(value = "/addblast" ,method = {RequestMethod.GET,RequestMethod.POST})
-    @SystemLog(module = "用户管理",methods = "新增爆破信息")
+//    @SystemLog(module = "用户管理",methods = "新增爆破信息")
     public Map<String, Object> addBlast(Ls_Blast blast, HttpServletRequest request, HttpServletResponse response){
         Map<String,Object> userMap = new HashMap<String,Object>();
         blastService.addBlast(blast);
@@ -55,7 +55,7 @@ public class BlastController {
      */
     @ResponseBody
     @RequestMapping(value = "/updateblast", method = {RequestMethod.GET,RequestMethod.POST})
-    @SystemLog(module = "用户管理",methods = "更新爆破信息")
+//    @SystemLog(module = "用户管理",methods = "更新爆破信息")
     public Map<String, Object> updateBlast(Ls_Blast blast,@RequestParam int b_id, HttpServletRequest request, HttpServletResponse response){
         Map<String,Object> userMap = new HashMap<String,Object>();
         blast.setbId(BigDecimal.valueOf(b_id));
@@ -75,7 +75,7 @@ public class BlastController {
      */
     @ResponseBody
     @RequestMapping(value = "/delblast", method = {RequestMethod.GET,RequestMethod.POST})
-    @SystemLog(module = "用户管理",methods = "删除爆破信息")
+//    @SystemLog(module = "用户管理",methods = "删除爆破信息")
     public Map<String, Object> deleteBlast(@RequestParam int b_id, HttpServletRequest request, HttpServletResponse response){
         Map<String,Object> userMap = new HashMap<String,Object>();
         Ls_Blast blast = new Ls_Blast();
@@ -98,7 +98,7 @@ public class BlastController {
      */
     @ResponseBody
     @RequestMapping(value = "/getblast", method = {RequestMethod.GET,RequestMethod.POST})
-    @SystemLog(module = "用户管理",methods = "查询爆破信息")
+//    @SystemLog(module = "用户管理",methods = "查询爆破信息")
     public HashMap<String, Object> getBlast(@RequestParam int page, @RequestParam int rows, HttpServletRequest request, HttpServletResponse response){
         HashMap<String,Object> blastMap = new HashMap<String,Object>();
         HashMap<String,Object> condMap = new HashMap<String,Object>();

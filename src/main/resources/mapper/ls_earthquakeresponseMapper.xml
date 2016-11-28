@@ -5,11 +5,31 @@
     <result column="YJID" property="yjid" jdbcType="DECIMAL" />
     <result column="YJNAME" property="yjname" jdbcType="VARCHAR" />
     <result column="YJPATH" property="yjpath" jdbcType="VARCHAR" />
+    <result column="YJSTATUS" property="yjstatus" jdbcType="VARCHAR" />
   </resultMap>
+  <sql id="Base_Column_List" >
+    YJID, YJNAME, YJPATH ,YJSTATUS
+  </sql>
+  <select id="getResponseByCond" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+    <!--select-->
+    <!--<include refid="Base_Column_List" />-->
+    <!--from LS_BLAST-->
+    <!--WHERE isdel is NULL ${conds}-->
+    <!--ORDER BY b_id DESC-->
+    SELECT
+    <include refid="Base_Column_List" />
+    from LS_EARTHQUAKERESPONSE
+    <where>
+      <if test="yjname != null">
+        yjname like CONCAT('%',CONCAT (#{yjname},'%'))
+      </if>
+    </where>
+    ORDER BY yjid DESC
+  </select>
   <insert id="insert" parameterType="cn.com.hvit.workspace.model.ls_earthquakeresponse" >
-    insert into LS_EARTHQUAKERESPONSE (YJID, YJNAME, YJPATH
+    insert into LS_EARTHQUAKERESPONSE (YJID, YJNAME, YJPATH ,YJSTATUS
       )
-    values (#{yjid,jdbcType=DECIMAL}, #{yjname,jdbcType=VARCHAR}, #{yjpath,jdbcType=VARCHAR}
+    values (#{yjid,jdbcType=DECIMAL}, #{yjname,jdbcType=VARCHAR}, #{yjpath,jdbcType=VARCHAR}, #{yjstatus,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="cn.com.hvit.workspace.model.ls_earthquakeresponse" >
@@ -24,6 +44,9 @@
       <if test="yjpath != null" >
         YJPATH,
       </if>
+      <if test="yjstatus != null" >
+        YJSTATUS,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="yjid != null" >
@@ -35,6 +58,9 @@
       <if test="yjpath != null" >
         #{yjpath,jdbcType=VARCHAR},
       </if>
+      <if test="yjstatus != null" >
+        #{yjstatus,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
   <update id="updateEarthquake" parameterType="cn.com.hvit.workspace.model.ls_earthquakeresponse">
@@ -45,6 +71,9 @@
       </if>
       <if test="yjpath != null" >
         yjpath = #{yjpath,jdbcType=DECIMAL},
+      </if>
+      <if test="yjstatus != null" >
+        yjstatus = #{yjstatus,jdbcType=DECIMAL},
       </if>
     </set>
     where yjid = #{yjid,jdbcType=DECIMAL}

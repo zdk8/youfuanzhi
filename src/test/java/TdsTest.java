@@ -108,11 +108,20 @@ public class TdsTest {
 //        response.setYjname("丽水地震应急预案");
 //        response.setYjpath("D://丽水地震应急预案.doc");
 //        responseService.addEarthquake(response);
-        Map<String,Object> responseMap = new HashMap<String,Object>();
-        responseMap.put("yjid",21);
-        responseMap.put("rmlevel","1");
-        List message = responseService.getResponsebyid(responseMap);
-        System.out.println(message.size());
+
+//        Map<String,Object> responseMap = new HashMap<String,Object>();
+//        responseMap.put("yjid",21);
+//        responseMap.put("rmlevel","1");
+//        List message = responseService.getResponsebyid(responseMap);
+//        System.out.println(message.size());
+
+//        PageHelper.Page<ls_earthquakeresponse> earthquake = responseService.getresponseByCond(1, 10, null);
+//        System.out.println(earthquake.getTotal());
+
+        HashMap<String,Object> responsemsgMap = new HashMap<String,Object>();
+        responsemsgMap.put("yjid",21);
+        PageHelper.Page<ls_responsemessage> respMsg = responseService.getEarthmsgByid(1, 10, responsemsgMap);
+        System.out.println(respMsg.getTotal());
     }
 
     @Test

@@ -1,8 +1,10 @@
 package cn.com.hvit.workspace.service;
 
+import cn.com.hvit.framework.kon.util.PageHelper;
 import cn.com.hvit.workspace.model.ls_earthquakeresponse;
 import cn.com.hvit.workspace.model.ls_responsemessage;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,5 +20,11 @@ public interface IResponseService {
 
     void updateEarthmessage(ls_responsemessage message);
 
-    List getResponsebyid(Map responseMap);
+    List getResponsebylevel(Map responseMap);
+
+    PageHelper.Page<ls_earthquakeresponse> getresponseByCond(int page, int rows, HashMap<String, Object> condMap);
+
+    PageHelper.Page<ls_responsemessage> getEarthmsgByid(int page, int rows, HashMap<String, Object> condMap);
+
+    void setResponseStatus(String start);
 }
