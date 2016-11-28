@@ -6,10 +6,14 @@ define(['jqueryform'], function () {
             var record = cb.params.record;
             var saveOrUpdateUrl = 'addblast';
             var attachmentResults = [];//附件结果表
+            var fileUploadCallback=cb.params.fileUploadCallback;
             var attachmentForm=poplocal.find('form[name=attachment]').ajaxForm({
                     complete: function (xhr) {
                         attachmentResults = $.parseJSON(xhr.responseText);
                         if(attachmentResults.success==true) {
+                            if(fileUploadCallback){
+                                fileUploadCallback();
+                            }
                             local.trigger('MyClose');
                              $.messager.show({
                                 title: '提示',
