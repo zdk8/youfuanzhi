@@ -168,8 +168,8 @@ public class ResponseController {
         for (int i = 0 ; i<message.size(); i++) {
            if (message.get(i).getTelephone() != null){
                try {
-                   if (message.get(i).getTelephone() == "18358158536") {                                   //测试阶段使用特定电话进行测试，发送一条后退出
-                       code.sendmsg2(message.get(i).getTelephone(),"[丽水地震响应]" + message.get(i).getContact());
+                   if ("18358158536".equals(message.get(i).getTelephone())) {                                   //测试阶段使用特定电话进行测试，发送一条后退出
+                       code.sendmsg2(message.get(i).getTelephone(),"[丽水地震"+level+"应急响应]" + message.get(i).getDepartment() + message.get(i).getContact() + message.get(i).getDutycontent());
                        break;
                    }
                } catch (IOException e) {
