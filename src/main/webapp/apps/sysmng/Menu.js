@@ -43,6 +43,8 @@ define([cj.getModuleJs('model/BzModel'),'underscore'],
              },
              clickLeaf:function(event){
                event.stopPropagation();
+               this.$el.siblings().removeClass('menu-li-selected');
+               this.$el.addClass('menu-li-selected');
                clickFn(this.model.toJSON());
              },
              clickDir:function(){
@@ -53,7 +55,6 @@ define([cj.getModuleJs('model/BzModel'),'underscore'],
                  }else{
                    this.$('ul').show();
                  }
-                 console.log(9999)
                  return;
                }
                var Menus2 = new MenuList;

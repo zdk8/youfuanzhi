@@ -5,13 +5,12 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
             idAttribute: "oldid"
         });
 
-        var startup = function (record, datagrid) {
-            $.messager.confirm('确认', '您真的要启动预案吗?', function (r) {
+        var mydelete = function (record, datagrid) {
+            $.messager.confirm('确认', '您真的要删除此用户吗?', function (r) {
                 if (r) {
                     $.ajax({
-                        url: 'responsestart',
-                        data: {rmlevel:record.level,yjid:21},
-                        type: 'post',
+                        url: 'eers/oldinfo/' + record.oldid,
+                        type: 'delete',
                         success: function () {
                             $.messager.show({
                                 title: '提示',
@@ -27,7 +26,7 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                         }, error: function () {
                             $.messager.alert('错误', '操作失败', 'error');
                         }
-                    });
+                    })
                 }
             });
 
@@ -52,7 +51,7 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                 var $yuanStatus=$('#yuan-status');
                 var startNumber=0;
                 var dg = MakeDG.make(local.find('.easyui-datagrid-noauto'),
-                    {startup: startup, update: view, view: view},
+                    {mydelete: mydelete, update: view, view: view},
                     {
                         url: 'apps/sysmng/data/yuan-list.json',
                         rowStyler: function (index, row) {
@@ -79,7 +78,7 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                 );
 
 
-                _.each(['applicant', 'applyunit'], function (item) {
+                _.each(['contact', 'telephone'], function (item) {
                     tb.find('.easyui-textbox[opt=' + item + ']').textbox({
                         onChange: function (newValue, oldValue) {
                             dg.datagrid('reload',{
@@ -95,14 +94,14 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
 
                 var getSearchParams = function () {
                     var searchParams = [];
-                    var applicant = tb.find('[opt=applicant]').textbox('getValue');
-                    if (applicant) {
-                        searchParams.push({name: 'applicant', operate: "like", value: "%" + applicant + "%"});
+                    var contact = tb.find('[opt=contact]').textbox('getValue');
+                    if (contact) {
+                        searchParams.push({name: 'contact', operate: "like", value: "%" + contact + "%"});
                     }
 
-                    var applyunit = tb.find('[opt=applyunit]').textbox('getValue');
-                    if (applyunit) {
-                        searchParams.push({name: 'applyunit', operate: "like", value: "%" + applyunit + "%"});
+                    var telephone = tb.find('[opt=telephone]').textbox('getValue');
+                    if (telephone) {
+                        searchParams.push({name: 'telephone', operate: "like", value: "%" + telephone + "%"});
                     }
                     return searchParams;
                 };
@@ -117,12 +116,11 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
 
                 //新增层式
                 tb.find('a[action=new-layer]').bind('click', function () {
-                    DispatcherPanel.open('text!views/ZiliaoForm.htm', 'views/ZiliaoForm',
+                    DispatcherPanel.open('text!views/YuanResponseMessageForm.htm', 'views/YuanResponseMessageForm',
                         {
-                            ptype: DispatcherPanel.PANELLAYER,
+                            ptype: DispatcherPanel.PANELINLINE,
                             width:600,
-                            height:300,
-                            title: '新增 资料',
+                            title: '新增',
                             dg: dg
                         });
                 });

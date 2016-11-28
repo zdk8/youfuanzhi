@@ -1,17 +1,14 @@
 define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'), 'backbone'],
     function (MakeDG, DispatcherPanel, Backbone) {
-        var OldinfoModel = Backbone.Model.extend({
-            urlRoot: 'eers/oldinfo',
-            idAttribute: "oldid"
-        });
 
         var mydelete = function (record, datagrid) {
-            $.messager.confirm('确认', '您真的要删除此用户吗?', function (r) {
+            $.messager.confirm('确认', '您真的要删除该资料吗?', function (r) {
                 if (r) {
                     $.ajax({
-                        url: 'eers/oldinfo/' + record.oldid,
+                        url: 'delete-ziliao',
                         type: 'delete',
                         success: function () {
+                            
                             $.messager.show({
                                 title: '提示',
                                 msg: '操作成功',
@@ -19,11 +16,11 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                                 timeout: 500,
                                 style: {
                                     right: '',
-                                    //top:document.body.scrollTop+document.documentElement.scrollTop,
                                     bottom: ''
                                 }
                             });
                         }, error: function () {
+                            alert('后台接口未实现');
                             $.messager.alert('错误', '操作失败', 'error');
                         }
                     })
@@ -57,7 +54,7 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                 );
 
 
-                _.each(['applicant', 'applyunit'], function (item) {
+                _.each(['originname', 'applyunit'], function (item) {
                     tb.find('.easyui-textbox[opt=' + item + ']').textbox({
                         onChange: function (newValue, oldValue) {
                             dg.datagrid('reload',{
@@ -73,14 +70,9 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
 
                 var getSearchParams = function () {
                     var searchParams = [];
-                    var applicant = tb.find('[opt=applicant]').textbox('getValue');
-                    if (applicant) {
-                        searchParams.push({name: 'applicant', operate: "like", value: "%" + applicant + "%"});
-                    }
-
-                    var applyunit = tb.find('[opt=applyunit]').textbox('getValue');
-                    if (applyunit) {
-                        searchParams.push({name: 'applyunit', operate: "like", value: "%" + applyunit + "%"});
+                    var originname = tb.find('[opt=originname]').textbox('getValue');
+                    if (originname) {
+                        searchParams.push({name: 'originname', operate: "like", value: "%" + originname + "%"});
                     }
                     return searchParams;
                 };

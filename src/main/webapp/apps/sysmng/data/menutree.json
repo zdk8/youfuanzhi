@@ -60,6 +60,36 @@
     "bsdigest": null
   }
 ,
+    {
+    "nodetype": "0",
+    "description": "预案响应信息",
+    "rbflag": "1",
+    "isParent": "false",
+    "functionid": "xxxxxxxxx937c25YuaRsponssgeQery949d2b38f074943ce9446",
+    "parent": "businessmenu",
+    "urlpath": null,
+    "functiondesc": null,
+    "name": "websocket",
+    "value": "views.YuanResponseMessageQuery",
+    "type": "1",
+    "leaf": true,
+    "state": "open",
+    "param2": "1",
+    "title": "预案响应信息",
+    "auflag": "1",
+    "active": null,
+    "id": "xxxxxxxxx937c25YuaRsponssgeQery949d2b38f074943ce9446",
+    "orderno": 1,
+    "developer": "1",
+    "location": "views.YuanResponseMessageQuery",
+    "param1": "1",
+    "log": "1",
+    "createdate": null,
+    "owner": null,
+    "text": "预案响应信息",
+    "bsdigest": null
+  }
+,
   {
     "nodetype": "0",
     "description": "爆破备案",

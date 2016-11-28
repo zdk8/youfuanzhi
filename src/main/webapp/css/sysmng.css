@@ -10,4 +10,8 @@ td.my-form-label{
 .icon-trash{
     background: url(../images/icons/删除.png) no-repeat;
 }
+
+#main-menu-tree2 li.menu-li-selected>a.leaf{
+    color:orange;
+}
 /*表格操作图标*/

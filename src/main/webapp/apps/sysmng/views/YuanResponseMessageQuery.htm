@@ -1,0 +1,40 @@
+<table class="easyui-datagrid-noauto"
+       data-options="
+                       method:'get',
+                       border:false,
+                       fit:true,fitColumns:true,
+                       pageSize:15,
+                       pageList:[10,20],
+                       singleSelect:true,
+                       pagination:true">
+    <thead>
+
+    <tr>
+ <th data-options="field:'department',width:60">部门</th>
+        <th data-options="field:'dutycontent',width:60,formatter:cj.dateFormatter()"> 响应内容</th>
+        <th data-options="field:'contact',width:60"> 联系人</th>
+        <th data-options="field:'position',width:60,align:'center'"> 职务</th>
+        <th data-options="field:'phone',width:60,align:'center'"> 联系电话</th>
+        <th data-options="field:'telephone',width:60,align:'center'"> 手机号</th>
+        <th data-options="field:'rmlevel',width:60,align:'center'"> 应急响应级别</th>
+
+        <th data-options="field:'ooo',width:100,align:'center',fixed:true,
+                            formatter:cj.button.RoundTextFormatter(['startup','编辑','startup'])">
+            操作
+        </th>
+    </tr>
+    </thead>
+</table>
+<div tb="toolbar" class="my-toolbar">
+    <label class="my-tool-label">联系人</label>
+    <input class="easyui-textbox" type="text" opt="contact" data-options="width:100,prompt:''">
+
+    <label class="my-tool-label">手机号</label>
+    <input class="easyui-textbox" type="text" opt="telephone" data-options="width:100,prompt:''">
+
+    <a action="search" class="tool-search">搜索</a>
+    <a action="new-layer" class="tool-add">+新增</a>
+    <a id="yuan-status"></a>
+    <a style="float:right;margin-right:20px;" class="easyui-linkbutton" iconCls="panel-tool-close"
+       plain="true" action="close"></a>
+</div>

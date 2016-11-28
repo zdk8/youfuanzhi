@@ -1,4 +1,10 @@
 [
+
+  {"enumeratetype":"rmlevel","enumeratevalue":"1","enumeratelabel":"1级"},
+  {"enumeratetype":"rmlevel","enumeratevalue":"2","enumeratelabel":"2级"},
+  {"enumeratetype":"rmlevel","enumeratevalue":"3","enumeratelabel":"3级"},
+  {"enumeratetype":"rmlevel","enumeratevalue":"4","enumeratelabel":"4级"},
+
   {"enumeratetype":"blastway","enumeratevalue":"1","enumeratelabel":"扩壶爆破"},
   {"enumeratetype":"blastway","enumeratevalue":"2","enumeratelabel":"深度爆破"},
   {"enumeratetype":"blastway","enumeratevalue":"3","enumeratelabel":"日常爆破"},
