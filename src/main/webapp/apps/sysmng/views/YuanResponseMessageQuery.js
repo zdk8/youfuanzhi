@@ -212,20 +212,27 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                     }
 
                     var $download=tb.find('a[opt=yuan-download]');
-                    $download.attr('href',resp[0]['yjpath']);
+                    $download.attr('href',resp[0]['yjpath']+'?dlname='+resp[0]['yjpath'].split('/')[1]);
                     $download.text('下载');
                     
                 });
 
 
-                tb.find('a[action=yuan-file-upload]').bind('click',function () {
+                tb.find('a[action=yuan-file-upload]').bind('click', function () {
                     DispatcherPanel.open('text!views/YuanFileForm.htm', 'views/YuanFileForm',
                         {
                             ptype: DispatcherPanel.PANELLAYER,
-                            width:600,
-                            height:300,
+                            width: 600,
+                            height: 300,
                             title: '新增 预案资料',
-                            dg: dg
+                            dg: dg,
+                            fileUploadCallback: function () {
+                                $.get('getearthquake', function (resp) {
+                                    var $download = tb.find('a[opt=yuan-download]');
+                                    $download.attr('href', resp[0]['yjpath'] + '?dlname=' + resp[0]['yjpath'].split('/')[1]);
+                                    $download.text('下载');
+                                });
+                            }
                         });
                 });
 
