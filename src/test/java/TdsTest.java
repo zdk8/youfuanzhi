@@ -1,3 +1,4 @@
+import cn.com.hvit.framework.kon.util.DataSourceContextHolder;
 import cn.com.hvit.framework.kon.util.PageHelper;
 import cn.com.hvit.workspace.model.*;
 import cn.com.hvit.workspace.service.*;
@@ -151,6 +152,14 @@ public class TdsTest {
         System.out.println(provincefiles.getTotal());
 
     }
+
+//    @Test
+//    public void testPoint(){
+//        HashMap<String,Object> condMap = new HashMap<>();
+////        DataSourceContextHolder.setDbType("yjxydataSource");
+//        PageHelper.Page<Pointinfo> provincefiles = ponitService.getPonitByconds(1, 10, condMap);
+//        System.out.println(provincefiles.getTotal());
+//    }
 
     /**
      * ip连接测试
