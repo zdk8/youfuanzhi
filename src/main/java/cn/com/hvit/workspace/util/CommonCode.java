@@ -28,7 +28,7 @@ public class CommonCode {
 
 
     /**
-     * 日志增加的静态方法，（未实现单例）
+     * 日志增加的方法，（未实现单例）
      * @param request
      * @param message
      */
@@ -189,7 +189,12 @@ public class CommonCode {
         { e.printStackTrace(); } return "";
     }
 
-
+    /**
+     * 106msg平台发送短信
+     * @param tel
+     * @param msg
+     * @throws IOException
+     */
     public void sendmsg2(String tel,String msg) throws IOException {
 
         // 创建StringBuffer对象用来操作字符串
@@ -234,6 +239,13 @@ public class CommonCode {
     }
 
 
+    /**
+     * 文件下载
+     * @param filename
+     * @param request
+     * @return
+     * @throws IOException
+     */
 
     public ResponseEntity filedownload(@PathVariable String filename, HttpServletRequest request) throws IOException {
         File file = new File(AttachmentNameBean.getAbsolutePath(filename));
@@ -264,6 +276,36 @@ public class CommonCode {
     }
 
 
-
+    public ResponseEntity filedownload2(@PathVariable String filename, HttpServletRequest request,String winPath) throws IOException {
+//        String ATTACHMENTDIRNAME="c:/Downloads/upload/";
+//        winPath = "\\\\192.168.1.142\\lishuigxtest\\"+winPath;
+        String filePath =winPath + filename.replaceFirst("-", "/").replaceFirst("-", "/").replaceFirst("-", "/");
+//        File file2 = new File(AttachmentNameBean.getAbsolutePath(filename));
+        File file = new File(filePath);
+        HttpHeaders headers = new HttpHeaders();
+        if (request.getParameterMap().containsKey("dlname")){
+            String dlname = request.getParameter("dlname");
+            if (dlname == null || dlname.trim().length() == 0){
+                dlname = filename;
+            }
+            dlname = new String(dlname.getBytes("utf-8"),"iso8859-1");
+            headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+            headers.setContentDispositionFormData("attachment",dlname);
+        } else if (filename.contains(".")) {
+            String suffix = filename.substring(filename.lastIndexOf(".") + 1);
+            switch (suffix.toUpperCase()){
+                case "JPG":
+                case "JPEG":
+                case "PNG":
+                    headers.setContentType(MediaType.parseMediaType("image/" + suffix));
+                    break;
+                default:
+                    headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+                    headers.setContentDispositionFormData("attachment",new String(filename.getBytes("utf-8"),"iso8859-1"));
+                    break;
+            }
+        }
+        return new ResponseEntity(FileCopyUtils.copyToByteArray(file),headers, HttpStatus.OK);
+    }
 
 }

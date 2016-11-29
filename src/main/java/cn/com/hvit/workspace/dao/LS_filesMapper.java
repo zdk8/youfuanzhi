@@ -12,4 +12,5 @@ public interface LS_filesMapper {
 
     List getfilesbycond(HashMap<String, Object> condMap);
 
+    List getprovincefilesbycond(HashMap<String, Object> condMap);
 }
