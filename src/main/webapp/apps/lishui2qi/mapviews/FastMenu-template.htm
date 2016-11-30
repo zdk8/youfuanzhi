@@ -1,0 +1,6 @@
+<div>
+    <% _.each(children,function(item,index){ %>
+    <a class="text" action="<%= item.action%>"><span ><%= (index+1)+'.'+item.name %></span></a>
+    <a>|</a>
+    <% }) %>
+</div>
