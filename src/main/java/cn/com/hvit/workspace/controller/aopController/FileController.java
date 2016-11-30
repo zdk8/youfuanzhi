@@ -112,8 +112,8 @@ public class FileController {
      * @throws IOException
      */
     @RequestMapping(value = "/{filename:.+}", method = {RequestMethod.GET,RequestMethod.POST})
-    public ResponseEntity windownload(@PathVariable String filename,@RequestParam String filePath, HttpServletRequest request) throws IOException {
-        String winPath = "\\\\192.168.1.142\\lishuigxtest\\"+filePath;
+    public ResponseEntity windownload(@PathVariable String filename,@RequestParam String filepath, HttpServletRequest request) throws IOException {
+        String winPath = "\\\\192.168.1.142\\lishuigxtest\\"+filepath;
         CommonCode code = new CommonCode();
         return code.filedownload2(filename,request,winPath);
     }

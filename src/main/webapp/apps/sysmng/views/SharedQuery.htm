@@ -1,0 +1,30 @@
+<table class="easyui-datagrid-noauto"
+       data-options="
+                       method:'get',
+                       border:false,
+                       fit:true,fitColumns:true,
+                       pageSize:15,
+                       pageList:[10,20],
+                       singleSelect:true,
+                       pagination:true">
+    <thead>
+    <tr>
+ <th data-options="field:'originname',width:60,formatter:function(v,r,i){
+          return v;
+          }">	文件名</th>
+          <th data-options="field:'storname',width:120,formatter:function(v,r,i){
+          return '<a target=_blank href=&quot;'+v+'?filepath='+r.filepath+'&quot;>下载</a>';
+          }">	下载</th>
+
+    </tr>
+    </thead>
+</table>
+<div tb="toolbar" class="my-toolbar">
+    <label class="my-tool-label">文件名</label>
+    <input class="easyui-textbox" type="text" opt="originname" data-options="width:100,prompt:''">
+
+    <a action="search" class="tool-search">搜索</a>
+    <!--<a action="new-layer" class="tool-add">+新增资料</a>-->
+    <a style="float:right;margin-right:20px;" class="easyui-linkbutton" iconCls="panel-tool-close"
+       plain="true" action="close"></a>
+</div>
