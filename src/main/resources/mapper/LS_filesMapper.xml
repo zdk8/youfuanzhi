@@ -72,4 +72,14 @@
     </where>
     ORDER BY fid DESC
   </select>
+  <select id="getprovincefilesbycond" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+     SELECT
+     r.resourcename AS "originname",r.resourcepath AS "filepath",r.storename AS "storname"
+     FROM RESOURCEINFO r
+     <where>
+       <if test="filename != null">
+          r.resourcename  like CONCAT('%',CONCAT (#{filename},'%'))
+       </if>
+     </where>
+  </select>
 </mapper>

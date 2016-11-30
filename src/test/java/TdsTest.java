@@ -1,3 +1,4 @@
+import cn.com.hvit.framework.kon.util.DataSourceContextHolder;
 import cn.com.hvit.framework.kon.util.PageHelper;
 import cn.com.hvit.workspace.model.*;
 import cn.com.hvit.workspace.service.*;
@@ -143,10 +144,22 @@ public class TdsTest {
     @Test
     public void testfiles(){
         HashMap<String,Object> condMap = new HashMap<>();
-        condMap.put("filename","PNG");
-        PageHelper.Page<LS_files> files = fileService.getfilesbycond(1, 10,condMap);
-        System.out.println(files.getTotal());
+//        condMap.put("filename","PNG");
+//        PageHelper.Page<LS_files> files = fileService.getfilesbycond(1, 10,condMap);
+//        System.out.println(files.getTotal());
+
+        PageHelper.Page<LS_files> provincefiles = fileService.getprovincefilesbycond(1, 10, condMap);
+        System.out.println(provincefiles.getTotal());
+
     }
+
+//    @Test
+//    public void testPoint(){
+//        HashMap<String,Object> condMap = new HashMap<>();
+////        DataSourceContextHolder.setDbType("yjxydataSource");
+//        PageHelper.Page<Pointinfo> provincefiles = ponitService.getPonitByconds(1, 10, condMap);
+//        System.out.println(provincefiles.getTotal());
+//    }
 
     /**
      * ip连接测试
@@ -217,7 +230,7 @@ public class TdsTest {
 
 
     /**
-     * 获取服务器上的文件
+     * 获取服务器上的文件（URL）
      */
     @Test
     public void getFile(){

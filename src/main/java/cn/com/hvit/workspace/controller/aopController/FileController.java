@@ -103,4 +103,41 @@ public class FileController {
         fileMap.put("rows",filesinfo.getResults());
         return fileMap;
     }
+
+    /**
+     * 文件下载（服务器共享文件夹）
+     * @param filename
+     * @param request
+     * @return
+     * @throws IOException
+     */
+    @RequestMapping(value = "/{filename:.+}", method = {RequestMethod.GET,RequestMethod.POST})
+    public ResponseEntity windownload(@PathVariable String filename,@RequestParam String filePath, HttpServletRequest request) throws IOException {
+        String winPath = "\\\\192.168.1.142\\lishuigxtest\\"+filePath;
+        CommonCode code = new CommonCode();
+        return code.filedownload2(filename,request,winPath);
+    }
+
+    /**
+     * 文件查询（省厅，通过数据库表同步，查本地数据库表）
+     * @param page
+     * @param rows
+     * @param request
+     * @param response
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/getprovincefiles" ,method = {RequestMethod.GET,RequestMethod.POST})
+    public HashMap<String, Object> getShengFiles(@RequestParam int page, @RequestParam int rows, HttpServletRequest request, HttpServletResponse response){
+        HashMap<String,Object> fileMap = new HashMap<String,Object>();
+        HashMap<String,Object> condMap = new HashMap<String,Object>();
+//        CommonCode code = new CommonCode();
+//        condMap = code.condMap(request);
+        String filename = request.getParameter("filename");
+        condMap.put("filename",filename);
+        PageHelper.Page<LS_files> filesinfo = fileService.getprovincefilesbycond(page, rows,condMap);
+        fileMap.put("total",filesinfo.getTotal());
+        fileMap.put("rows",filesinfo.getResults());
+        return fileMap;
+    }
 }

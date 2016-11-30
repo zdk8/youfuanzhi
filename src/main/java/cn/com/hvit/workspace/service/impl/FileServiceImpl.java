@@ -28,4 +28,11 @@ public class FileServiceImpl implements IFileService {
         filesMapper.getfilesbycond(condMap);
         return PageHelper.endPage();
     }
+
+    @Override
+    public PageHelper.Page<LS_files> getprovincefilesbycond(int page, int rows, HashMap<String, Object> condMap) {
+        PageHelper.startPage(page,rows);
+        filesMapper.getprovincefilesbycond(condMap);
+        return PageHelper.endPage();
+    }
 }
