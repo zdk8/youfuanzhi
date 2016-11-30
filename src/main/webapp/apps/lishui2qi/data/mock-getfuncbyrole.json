@@ -1,5 +1,22 @@
 {
-
+  "地图插件": [
+    {
+      "sortnum": 2,
+      "imgcss": "1",
+      "value": "小地图",
+      "pid": 72,
+      "text": "小地图",
+      "id": 73
+    },
+    {
+      "sortnum": 2,
+      "imgcss": "1",
+      "value": "地图全屏",
+      "pid": 72,
+      "text": "地图全屏",
+      "id": 74
+    }
+  ],
   "默认加载图层": [
     {
       "sortnum": 2,
@@ -10,16 +27,50 @@
       "id": 70
     }
   ],
+  "图层编辑": [
+    {
+      "sortnum": 2,
+      "imgcss": "1",
+      "value": "社会团体",
+      "pid": 68,
+      "text": "社会团体edit",
+      "id": 154
+    },
+    {
+      "sortnum": 2,
+      "imgcss": "1",
+      "value": "民办非企业单位",
+      "pid": 68,
+      "text": "民办非企业单位edit",
+      "id": 157
+    },
+    {
+      "sortnum": 2,
+      "imgcss": "1",
+      "value": "村",
+      "pid": 68,
+      "text": "村edit",
+      "id": 173
+    }
+  ],
 
   "底图": [
 
     {
       "sortnum": 2,
-      "imgcss": "{\"type\":\"tile\",\"level\":[2,20],\"resources\":[\r\n[{\"level\":[6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],\"url\":\"http://t0.tianditu.com/vec_c/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=vec&STYLE=default&TILEMATRIXSET=c&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}\"}],\r\n[{\"level\":[6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],\"url\":\"http://t0.tianditu.com/cva_c/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cva&STYLE=default&TILEMATRIXSET=c&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}\"}],\r\n[{\"level\":[2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],\"url\":\"http://t0.tianditu.com/vec_c/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=vec&STYLE=default&TILEMATRIXSET=c&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}\"},{\"level\":[10,11,12,13,14,15,16,17,18,19,20],\"url\":\"http://172.24.156.22:6080/arcgis/rest/services/DY_Vector/MapServer/WMTS/tile/1.0.0/DY_Vector/default/TileMatrixSet0/{z}/{y}/{x}.png\"}\r\n],\r\n[{\"level\":[2,3,4,5,6,7,8,9],\"url\":\"http://t0.tianditu.com/cva_c/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cva&STYLE=default&TILEMATRIXSET=c&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}\"}]\r\n]}",
+      "imgcss": "{\"type\":\"tile\",\"level\":[2,20],\"resources\":[\r\n[{\"level\":[10,11,12,13,14,15,16,17],\"url\":\"http://t0.tianditu.com/vec_c/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=vec&STYLE=default&TILEMATRIXSET=c&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}\"}],\r\n[{\"level\":[10,11,12,13,14,15,16,17],\"url\":\"http://t0.tianditu.com/cva_c/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cva&STYLE=default&TILEMATRIXSET=c&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}\"}],\r\n[{\"level\":[2,3,4,5,6,7,8,9],\"url\":\"http://t0.tianditu.com/vec_c/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=vec&STYLE=default&TILEMATRIXSET=c&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}\"},{\"level\":[10,11,12,13,14,15,16,17,18,19,20],\"url\":\"http://172.24.156.22:6080/arcgis/rest/services/DY_Vector/MapServer/WMTS/tile/1.0.0/DY_Vector/default/TileMatrixSet0/{z}/{y}/{x}.png\"}\r\n],\r\n[{\"level\":[2,3,4,5,6,7,8,9],\"url\":\"http://t0.tianditu.com/cva_c/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cva&STYLE=default&TILEMATRIXSET=c&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}\"}]\r\n]}",
       "value": "",
       "pid": 21,
       "text": "天地图地图",
       "id": 22
+    },
+    {
+      "sortnum": 2,
+      "imgcss": "{\"type\":\"tile\",\"level\":[2,17],\"resources\":[\r\n[{\"level\":[18,19,20],\"url\":\"http://172.24.156.22:6080/arcgis/rest/services/01%E4%B8%9C%E9%98%B3%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE/DY_RasterMap/MapServer/WMTS/tile/1.0.0/01东阳基础数据_DY_RasterMap/default/TileMatrixSet0/{z}/{y}/{x}.png\"},{\"level\":[2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17],\"url\":\"http://t0.tianditu.cn/img_c/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=c&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}\"}],[{\"level\":[2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17],\"url\":\"http://t0.tianditu.com/cva_c/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cva&STYLE=default&TILEMATRIXSET=c&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}\"}]\r\n]}",
+      "value": "",
+      "pid": 21,
+      "text": "天地图影像图",
+      "id": 24
     }
   ]
 }

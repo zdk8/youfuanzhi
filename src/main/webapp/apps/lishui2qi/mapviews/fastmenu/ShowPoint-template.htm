@@ -1,0 +1,55 @@
+<div>
+    <table cellpadding="4" cellspacing="1" class="form-table" style="width:300px;">
+        <tbody>
+        <tr>
+            <td class="my-form-label">采集名称:</td>
+            <td>
+                <%=pointname%>
+            </td>
+        </tr>
+        <tr>
+            <td class="my-form-label">位置 :</td>
+            <td><%=pointlocation%>
+            </td>
+        </tr>
+        <tr>
+            <td class="my-form-label">经纬度 :</td>
+            <td>
+                <%=pointlon %>,<%=pointlat%>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="my-form-label">采集时间:</td>
+            <td>
+                <%=new Date(pointtime).pattern('yyyy-MM-dd HH:mm:ss')%>
+            </td>
+        </tr>
+        <tr>
+            <td class="my-form-label">组名:</td>
+            <td>
+                <%=pointgroup%>
+            </td>
+        </tr>
+        <tr>
+            <td class="my-form-label">成员:</td>
+            <td>
+                <%=pointperson%>
+            </td>
+        </tr>
+        <tr>
+            <td class="my-form-label">级别:</td>
+            <td>
+                <%=pointintensity%>
+            </td>
+        </tr>
+        <tr>
+            <td class="my-form-label">简述:</td>
+            <td>
+                <%=pointcontent%>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>

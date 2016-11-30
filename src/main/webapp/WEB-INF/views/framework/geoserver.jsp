@@ -20,13 +20,26 @@
     <%--<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>--%>
     <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico"/>
 
-    <link rel="stylesheet" href="//cdn.bootcss.com/leaflet/1.0.1/leaflet.css"/>
+    <link rel="stylesheet" href="js/libs/leafletjs/leaflet.css"/>
     <%--<script src="//cdn.bootcss.com/leaflet/1.0.1/leaflet.js"></script>--%>
 
     <style>
         .leaflet-control-tuli {
             /*background-color: red;
             border:1px solid black;*/
+        }
+
+        .leaflet-control-layers-toggle {
+            background-image: url(images/layers.png);
+            width: 36px;
+            height: 36px;
+        }
+.leaflet-control-layers label {
+    margin-left: 1.5em;
+}
+
+        .leaflet-control-layers-base input.menu{
+            display: none;
         }
     </style>
 
@@ -49,26 +62,7 @@
         }
 
         var global = {route: {}};
-        var my_test_mg = !true;
-        var proxyUrl = function (yls) {
-            return window.location.origin + '/proxyapi?yls=' + yls;
-        };
-        var App = {
-            nav: function () {
-            },
-            isTest: my_test_mg,
-            wrapUrl: function (url) {
-                return (my_test_mg ? "test-" : "") + url
-            },
-            WrapIdAttribute: function (id) {
-                return (my_test_mg ? "_id" : id)
-            },
-            tab: null,
-            map: null
-        };
-        var Iconfig;
-        var global = {};
-
+        var myMap;
     </script>
 
 </head>

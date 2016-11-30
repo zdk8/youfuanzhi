@@ -18,7 +18,7 @@
     baseConfig.paths['jquery']='../../js/libs/jquery/3.1.1/jquery.min';
     //添加地图库leaflet
     //baseConfig.paths['leaflet']='http://cdn.bootcss.com/leaflet/1.0.1/leaflet';
-    baseConfig.paths['leaflet']='http://192.168.3.102:8080/dymap-java/js/leaflet';
+    baseConfig.paths['leaflet']='../../js/libs/leafletjs/leaflet';
 
     //以上为固定写法，复制即可。
 

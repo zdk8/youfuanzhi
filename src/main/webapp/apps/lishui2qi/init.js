@@ -1,8 +1,10 @@
-define(['underscore', 'mapviews/initMap2'], function (_) {
+define(['underscore', 'mapviews/initMap'], function (_,initMap) {
 
 
     return function () {
 
+        //初始化地图
+        initMap.create();
 
 
         //按钮事件
