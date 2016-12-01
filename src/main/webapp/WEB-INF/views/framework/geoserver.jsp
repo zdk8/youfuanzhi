@@ -36,7 +36,7 @@
         }
 
         /*去除自定义的关闭按钮,原先在无tab的tab中是有用 的，现在使用window自己的关闭*/
-        div.window-thinborder .my-toolbar span.panel-tool-close{
+        div.window-thinborder .my-toolbar a.easyui-linkbutton[action="close"]{
             display: none;
         }
 .leaflet-control-layers label {
