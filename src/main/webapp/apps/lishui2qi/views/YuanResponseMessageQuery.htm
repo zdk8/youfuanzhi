@@ -32,6 +32,10 @@
     <label class="my-tool-label">手机号</label>
     <input class="easyui-textbox" type="text" opt="telephone" data-options="width:100,prompt:''">
 
+    <label class="my-tool-label">级别</label>
+    <input class="easyui-combobox"  opt="rmlevel-search"
+           data-options="data:cj.getEnum('rmlevel'),panelHeight:'auto',multiple:true,multiline:false,width:100,prompt:''">
+
     <a action="search" class="tool-search">搜索</a>
     <a action="new-layer" class="tool-add">+新增</a>
     <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>

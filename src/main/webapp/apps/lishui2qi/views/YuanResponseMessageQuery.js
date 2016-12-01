@@ -65,7 +65,6 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                             }
                         },
                         afterLoadSuccessCallback:function () {
-                            DD=local;
                             local.find('li[action="jiechu"]').hide()
                             if($yuanStatus.attr('status')=='startup'){
                                 local.find('li[action="startup"]').hide();
@@ -80,6 +79,7 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                 _.each(['contact', 'telephone'], function (item) {
                     tb.find('.easyui-textbox[opt=' + item + ']').textbox({
                         onChange: function (newValue, oldValue) {
+                            console.log('changed:' + newValue);
                             dg.datagrid('reload',{
                              intelligentsearch:[
                              {name:item,operate:"like",value:"%"+newValue+"%"}
@@ -102,11 +102,18 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                     if (telephone) {
                         searchParams.push({name: 'telephone', operate: "like", value: "%" + telephone + "%"});
                     }
+                    
+                    var rmlevel = tb.find('[opt=rmlevel-search]').combobox('getValues');
+                    if (rmlevel) {
+                        searchParams.push({name: 'rmlevel', operate: "=", value:  rmlevel + ""});
+                    }
                     return searchParams;
                 };
 
                 //点击查询
                 tb.find('a[action=search]').bind('click', function () {
+                    console.log('clicked');
+                    DD=dg;
                     dg.datagrid('reload', {
                         intelligentsearch: getSearchParams()
                     });

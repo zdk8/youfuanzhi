@@ -26,7 +26,7 @@ define(['text!mapviews/FastMenu-template.htm',
                     {
                         ptype: DispatcherPanel.PANELLAYER,
                         title: textName,
-                        width:900,
+                        width:930,
                         height: 480
                     });
             }
