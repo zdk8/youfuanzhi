@@ -33,7 +33,8 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
         var view = function (record, dg) {
             DispatcherPanel.open('text!views/YuanResponseMessageForm.htm', 'views/YuanResponseMessageForm',
                 {
-                    ptype: 0, title: '查看: ' ,
+                    ptype: DispatcherPanel.PANELLAYER,
+                    title: '查看: ' ,
                     record: record,
                     dg: dg,
                     cacheFn22: function () {
