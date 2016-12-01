@@ -1,4 +1,5 @@
-define(['underscore', 'mapviews/initMap'], function (_,initMap) {
+define(['jeasyui','jeasyui_zh_CN','cj','underscore', 'mapviews/initMap'],
+    function (jeasyui, jeasyui_zh_CN, cj,_,initMap) {
 
 
     return function () {

@@ -3,22 +3,27 @@
                        method:'get',
                        border:false,
                        fit:true,fitColumns:true,
-                       pageSize:15,
-                       pageList:[10,20],
+                       pageSize:cj.getPageSize(),
+                       pageList:cj.getPageList(),
                        singleSelect:true,
                        pagination:true">
     <thead>
     <tr>
-        <th data-options="field:'applyunit',width:90"> 申请爆破单位</th>
-        <th data-options="field:'applicant',width:30"> 填表人</th>
-        <th data-options="field:'weight',width:30"> 炸药用量</th>
-        <th data-options="field:'contactway',width:60"> 联系方式</th>
-        <th data-options="field:'description',width:60"> 描述</th>
-        <th data-options="field:'blastway',width:60,formatter:cj.enumFormatter('blastway')"> 爆破方法</th>
-        <th data-options="field:'distance',width:30"> 离台站的距离</th>
-        <th data-options="field:'blasttime',width:60,formatter:cj.dateFormatter()"> 爆破时间</th>
+ <th data-options="field:'level',width:60,formatter:function(v,r,i){
+          return v+'级';
+          }">预案级别</th>
+        <th data-options="field:'loaddate',width:60,formatter:cj.dateFormatter()"> 时间</th>
+        <th data-options="field:'status',width:60,formatter:function(v,r,i){
+           if(v==1){
+             return '<a>已启动</a>';
+           }
+          return '未启动';
+        }"> 启动状态</th>
+        <th data-options="field:'ziliao_lianxiren',width:60,align:'center',formatter:
+        cj.button.RoundTextFormatter(['ziliao','资料','ziliao'],['lianxiren','联系人','lianxiren'])"> 管理</th>
+
         <th data-options="field:'ooo',width:100,align:'center',fixed:true,
-                            formatter:cj.button.OnlyIconFormatter(['mydelete','删除','trash'],['update','编辑','update'])">
+                            formatter:cj.button.RoundTextFormatter(['startup','启动','startup'],['jiechu','解除','jiechu'])">
             操作
         </th>
     </tr>
@@ -32,7 +37,8 @@
     <input class="easyui-textbox" type="text" opt="applyunit" data-options="width:100,prompt:''">
 
     <a action="search" class="tool-search">搜索</a>
-    <a action="new-layer" class="tool-add">+新增爆破备案</a>
+    <a action="new-layer" class="tool-add">+新增资料</a>
+    <a id="yuan-status"></a>
     <a style="float:right;margin-right:20px;" class="easyui-linkbutton" iconCls="panel-tool-close"
        plain="true" action="close"></a>
 </div>

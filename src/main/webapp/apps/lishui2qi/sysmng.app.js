@@ -14,7 +14,7 @@
     //以上为固定写法，复制即可。
 
     //配置基本相对路径和缓存设置
-    var baseUrl = 'apps/sysmng/';
+    var baseUrl = 'apps/lishui2qi/';
     var options = {
         baseUrl: baseUrl
         //,urlArgs: "dc_=sqwork" //+  (new Date()).getTime()
@@ -55,8 +55,16 @@
         require([cj.getModuleJs('widget/MakeButton')], function (btn) {
             cj.button = btn;
         });
+                //设置分页参数
+        cj['getPageSize']=function () {
+            return 15;
+        };
+        cj['getPageList'] = function () {
+            return [10, 15, 30, 50];
+        };
+        
         $('body').layout();
-        require(['init'], function (Init) {
+        require(['sysmng.init'], function (Init) {
             new Init();
         })
     });

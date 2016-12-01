@@ -67,6 +67,14 @@
         require([cj.getModuleJs('widget/MakeButton')], function (btn) {
             cj.button = btn;
         });
+        //设置分页参数
+        cj['getPageSize']=function () {
+            return 15;
+        };
+        cj['getPageList'] = function () {
+            return [10, 15, 30, 50];
+        };
+
         $('body').layout();
         require(['init'], function (Init) {
             new Init();

@@ -154,4 +154,4 @@
 </script>
 <script src="http://hvit.in.server:3000/hvit-front-framework/baseConfig.js"></script>
 <script src="http://hvit.in.server:3000/hvit-front-framework/require.js"
-        data-main="apps/hvit-help/app.js?v=1"></script>
+        data-main="apps/hvit-help/sysmng.app.js?v=1"></script>

@@ -34,6 +34,11 @@
             width: 36px;
             height: 36px;
         }
+
+        /*去除自定义的关闭按钮,原先在无tab的tab中是有用 的，现在使用window自己的关闭*/
+        div.window-thinborder .my-toolbar span.panel-tool-close{
+            display: none;
+        }
 .leaflet-control-layers label {
     margin-left: 1.5em;
 }
@@ -151,6 +156,9 @@
 <script>
     //重要的设置
     HvitFrontFWPrefix = "http://hvit.in.server:3000/";
+    getPageSize=function () {
+        return [10, 15, 20];
+    }
 </script>
 <script src="http://hvit.in.server:3000/hvit-front-framework/baseConfig.js"></script>
 <script src="http://hvit.in.server:3000/hvit-front-framework/require.js"

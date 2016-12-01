@@ -1,4 +1,4 @@
-define(['jeasyui','jeasyui_zh_CN','cj','myvalidate'],function(jeasyui,jeasyui_zh_CN,cj,myvalidate){
+define(['jeasyui','jeasyui_zh_CN','cj','./myvalidate'],function(jeasyui, jeasyui_zh_CN, cj, myvalidate){
 
 
 
@@ -17,7 +17,7 @@ define(['jeasyui','jeasyui_zh_CN','cj','myvalidate'],function(jeasyui,jeasyui_zh
     });
 
     if($('#main-menu-tree2').length){
-        require(['Menu',cj.getModuleJs('widget/DispatcherPanel')],function(Menu,js){
+        require(['./Menu',cj.getModuleJs('widget/DispatcherPanel')],function(Menu, js){
             Menu.render($('#main-menu-tree2'), function (node) {
                 var module = node.location.replace(".", "/");
                 if (/manager\//.test(module)) {

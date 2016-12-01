@@ -54,7 +54,7 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                 var dg = MakeDG.make(local.find('.easyui-datagrid-noauto'),
                     {startup: startup, update: view, view: view},
                     {
-                        url: 'apps/sysmng/data/yuan-list.json',
+                        url: 'apps/lishui2qi/data/yuan-list.json',
                         rowStyler: function (index, row) {
                             if (row.status ==1) {
                                 return 'background-color:#6293BB;color:rgb(179, 47, 47);';
