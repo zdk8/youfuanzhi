@@ -8,6 +8,7 @@ define(['jqueryform'],function () {
                     require(['Message'],function (message) {
                         if(result.success==true) {
                             message.show("设置成功");
+                            local.trigger('MyClose');
                         }else{
                             message.show("设置失败");
                         }
