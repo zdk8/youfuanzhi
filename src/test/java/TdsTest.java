@@ -48,9 +48,11 @@ public class TdsTest {
 
     @Test
     public void TestJava(){
-        ls_responsemessage msg = new ls_responsemessage();
-        msg.setTelephone("18358158536");
-        System.out.println(msg.getTelephone() == "18358158536");
+//        ls_responsemessage msg = new ls_responsemessage();
+//        msg.setTelephone("18358158536");
+//        System.out.println(msg.getTelephone() == "18358158536");
+
+
     }
 
     /**
@@ -148,8 +150,12 @@ public class TdsTest {
 //        PageHelper.Page<LS_files> files = fileService.getfilesbycond(1, 10,condMap);
 //        System.out.println(files.getTotal());
 
-        PageHelper.Page<LS_files> provincefiles = fileService.getprovincefilesbycond(1, 10, condMap);
-        System.out.println(provincefiles.getTotal());
+//        PageHelper.Page<LS_files> provincefiles = fileService.getprovincefilesbycond(1, 10, condMap);
+//        System.out.println(provincefiles.getTotal());
+
+        condMap.put("fid",36);
+        fileService.deleteFileByid(condMap);
+        System.out.println("delete files");
 
     }
 

@@ -17,4 +17,6 @@ public interface IFileService {
     PageHelper.Page<LS_files> getfilesbycond(int page, int rows, HashMap<String, Object> condMap);
 
     PageHelper.Page<LS_files> getprovincefilesbycond(int page, int rows, HashMap<String, Object> condMap);
+
+    void deleteFileByid(HashMap<String, Object> condMap);
 }

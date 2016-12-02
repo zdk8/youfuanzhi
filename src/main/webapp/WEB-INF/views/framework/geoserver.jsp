@@ -3,7 +3,7 @@
 <% Ls_User user = (Ls_User) session.getAttribute("user");%>
 <% boolean dev=true;%>
 <% String devText=dev?"":"";%>
-<% String hvitFrontFWPrefix=dev?"http://192.168.3.102:3000/":"http://10.33.44.22:8080/hvit-front/";%>
+<% String hvitFrontFWPrefix=dev?"http://120.55.65.150:8080/hvit-front/":"http://10.33.44.22:8080/hvit-front/";%>
 <!DOCTYPE html>
 <html>
 <head>

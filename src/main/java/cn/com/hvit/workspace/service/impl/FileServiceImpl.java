@@ -35,4 +35,9 @@ public class FileServiceImpl implements IFileService {
         filesMapper.getprovincefilesbycond(condMap);
         return PageHelper.endPage();
     }
+
+    @Override
+    public void deleteFileByid(HashMap<String, Object> condMap) {
+        filesMapper.deleteFileByid(condMap);
+    }
 }

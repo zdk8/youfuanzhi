@@ -66,19 +66,22 @@
     <include refid="Base_Column_List" />
     from LS_FILES
     <where>
-      <if test="filename != null">
-        filename like CONCAT('%',CONCAT (#{filename},'%'))
+      <if test="originname != null">
+        originname like CONCAT('%',CONCAT (#{originname},'%'))
       </if>
     </where>
     ORDER BY fid DESC
   </select>
+  <delete id="deleteFileByid">
+     delete from LS_FILES where fid = #{fid}
+  </delete>
   <select id="getprovincefilesbycond" parameterType="java.util.HashMap" resultType="java.util.HashMap">
      SELECT
      r.resourcename AS "originname",r.resourcepath AS "filepath",r.storename AS "storname"
      FROM RESOURCEINFO r
      <where>
-       <if test="filename != null">
-          r.resourcename  like CONCAT('%',CONCAT (#{filename},'%'))
+       <if test="originname != null">
+          r.resourcename  like CONCAT('%',CONCAT (#{originname},'%'))
        </if>
      </where>
   </select>

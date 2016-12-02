@@ -41,7 +41,7 @@ public class FileController {
     @ResponseBody
     @RequestMapping(value = "/fileupload",method = {RequestMethod.GET,RequestMethod.POST})
     public Map<String, Object> fileupload(@RequestParam MultipartFile[] myfile){
-        Map<String,Object> userMap = new HashMap<String,Object>();
+        Map<String,Object> resultMap = new HashMap<String,Object>();
         List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
         for (MultipartFile file : myfile){
             if (file.isEmpty()){
@@ -63,9 +63,9 @@ public class FileController {
                 fileService.addFile(files);
             }
         }
-        userMap.put("success",true);
-        userMap.put("message","爆破信息删除成功");
-        return userMap;
+        resultMap.put("success",true);
+        resultMap.put("message","文件上传成功");
+        return resultMap;
     }
 
     /**
@@ -94,14 +94,26 @@ public class FileController {
     public HashMap<String, Object> getFiles(@RequestParam int page, @RequestParam int rows, HttpServletRequest request, HttpServletResponse response){
         HashMap<String,Object> fileMap = new HashMap<String,Object>();
         HashMap<String,Object> condMap = new HashMap<String,Object>();
-//        CommonCode code = new CommonCode();
-//        condMap = code.condMap(request);
-        String filename = request.getParameter("filename");
-        condMap.put("filename",filename);
+        CommonCode code = new CommonCode();
+        condMap = code.condMap(request);
+//        String filename = request.getParameter("filename");
+//        condMap.put("filename",filename);
         PageHelper.Page<LS_files> filesinfo = fileService.getfilesbycond(page, rows,condMap);
         fileMap.put("total",filesinfo.getTotal());
         fileMap.put("rows",filesinfo.getResults());
         return fileMap;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/delete-ziliao", method = {RequestMethod.GET,RequestMethod.POST})
+    public HashMap<String, Object> deleteFiles(@RequestParam int fid, HttpServletRequest request, HttpServletResponse response){
+        HashMap<String,Object> resultMap = new HashMap<String,Object>();
+        HashMap<String,Object> condMap = new HashMap<String,Object>();
+        condMap.put("fid",fid);
+        fileService.deleteFileByid(condMap);
+        resultMap.put("success",true);
+        resultMap.put("message","文件删除成功");
+        return  resultMap;
     }
 
     /**
@@ -114,6 +126,7 @@ public class FileController {
     @RequestMapping(value = "/{filename:.+}", method = {RequestMethod.GET,RequestMethod.POST})
     public ResponseEntity windownload(@PathVariable String filename,@RequestParam String filepath, HttpServletRequest request) throws IOException {
         String winPath = "\\\\192.168.1.142\\lishuigxtest\\"+filepath;
+//        String winPath = "\\\\10.33.253.40\\upload\\"+filepath;
         CommonCode code = new CommonCode();
         return code.filedownload2(filename,request,winPath);
     }
@@ -131,10 +144,10 @@ public class FileController {
     public HashMap<String, Object> getShengFiles(@RequestParam int page, @RequestParam int rows, HttpServletRequest request, HttpServletResponse response){
         HashMap<String,Object> fileMap = new HashMap<String,Object>();
         HashMap<String,Object> condMap = new HashMap<String,Object>();
-//        CommonCode code = new CommonCode();
-//        condMap = code.condMap(request);
-        String filename = request.getParameter("filename");
-        condMap.put("filename",filename);
+        CommonCode code = new CommonCode();
+        condMap = code.condMap(request);
+//        String filename = request.getParameter("filename");
+//        condMap.put("filename",filename);
         PageHelper.Page<LS_files> filesinfo = fileService.getprovincefilesbycond(page, rows,condMap);
         fileMap.put("total",filesinfo.getTotal());
         fileMap.put("rows",filesinfo.getResults());

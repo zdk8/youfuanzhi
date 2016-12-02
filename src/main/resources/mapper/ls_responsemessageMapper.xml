@@ -26,6 +26,9 @@
       <if test="contact != null">
         and contact like CONCAT('%',CONCAT (#{contact},'%'))
       </if>
+      <if test="rmlevel != null">
+        and rmlevel like CONCAT('%',CONCAT (#{rmlevel},'%'))
+      </if>
     </where>
     ORDER BY rmid DESC
   </select>
