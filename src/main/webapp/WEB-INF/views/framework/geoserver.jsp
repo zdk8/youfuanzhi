@@ -1,6 +1,9 @@
 <%@ page import="cn.com.hvit.workspace.model.Ls_User" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <% Ls_User user = (Ls_User) session.getAttribute("user");%>
+<% boolean dev=!true;%>
+<% String devText=dev?"":"";%>
+<% String hvitFrontFWPrefix=dev?"http://192.168.3.102:3000/":"http://120.55.65.150:8080/hvit-front/";%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,9 +14,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css"
-          href="http://hvit.in.server:3000/js/jquery-easyui-1.5/themes/default/easyui.css">
+          href="<%=hvitFrontFWPrefix%>js/jquery-easyui-1.5/themes/default/easyui.css">
 
-    <link rel="stylesheet" type="text/css" href="http://hvit.in.server:3000/css/home.css"/>
+    <link rel="stylesheet" type="text/css" href="<%=hvitFrontFWPrefix%>css/home.css"/>
     <link rel="stylesheet" type="text/css" href="css/main.css"/>
 
 
@@ -75,7 +78,7 @@
 <div id="header">
     <div id="header-center">
         <div id="project-name">
-            <a href="framework_geoserver"><span>丽水市防震减灾公共服务信息系统</span></a>
+            <a href="framework_geoserver"><span>丽水市防震减灾公共服务信息系统<%=devText%></span></a>
         </div>
         <div id="header-menu-wrapper">
             <div id="header-menu">
@@ -88,9 +91,9 @@
                     <img id="header-triangle-down" style="max-height: 2em;margin-bottom: -1px;" src="images/向下箭头.png">
                     <div id="header-more-menu">
                         <ul>
-                            <li><a href="framework_sysmng" target="_blank"
-                                   id="sysmng"><img src="images/icons/设置.png"><span>系统管理</span></a></li>
-                            <li><a id="account-setting"><img src="images/icons/设置.png"><span>账户设置</span></a></li>
+                            <%--<li><a href="framework_sysmng" target="_blank"
+                                   id="sysmng"><img src="images/icons/设置.png"><span>系统管理</span></a></li>--%>
+                            <li><a id="persont-setting"><img src="images/icons/设置.png"><span>账户设置</span></a></li>
                             <li><a id="logout"><img src="images/icons/退出.png"><span>退出登录</span></a></li>
                         </ul>
                     </div>
@@ -155,11 +158,11 @@
 </html>
 <script>
     //重要的设置
-    HvitFrontFWPrefix = "http://hvit.in.server:3000/";
+    HvitFrontFWPrefix = "<%=hvitFrontFWPrefix%>";
     getPageSize=function () {
         return [10, 15, 20];
     }
 </script>
-<script src="http://hvit.in.server:3000/hvit-front-framework/baseConfig.js"></script>
-<script src="http://hvit.in.server:3000/hvit-front-framework/require.js"
+<script src="<%=hvitFrontFWPrefix%>hvit-front-framework/baseConfig.js"></script>
+<script src="<%=hvitFrontFWPrefix%>hvit-front-framework/require.js"
         data-main="apps/lishui2qi/app.js?v=1"></script>

@@ -109,6 +109,17 @@ define(['jeasyui','jeasyui_zh_CN','cj','underscore', 'mapviews/initMap'],
                 document.location.href = 'framework_geoserver';
             })
         });
+        //帐户设置
+        $('#persont-setting').bind('click', function () {
+            require([cj.getModuleJs('widget/DispatcherPanel')], function (DispatcherPanel) {
+                    var module = 'mapviews/PersonSetting';
+                    DispatcherPanel.open('text!' + module + '.htm', module, {
+                        title: "帐户设置",
+                        height: 200,
+                        ptype: DispatcherPanel.PANELLAYER
+                    });
+                });
+        });
 
         var $currentTime = $('#current-time');
         var flashTime = function () {
