@@ -12,14 +12,14 @@
  <th data-options="field:'originname',width:60,formatter:function(v,r,i){
           return '<a target=_blank href=&quot;'+r.filepath+'&quot;>'+v+'</a>';
           }">	文件名</th>
- <th data-options="field:'filesize',width:20,formatter:function(v,r,i){
+ <th data-options="field:'filesize',width:60,formatter:function(v,r,i){
              var size=v;
              if(size<1024){return size+'B';}
              else if(size<1024*1024){return (size/1024).toFixed(2)+'KB';}
              else if(size<1024*1024*1024){return (size/(1024*1024)).toFixed(2)+'MB';}
              else {return (size/(1024*1024*1024)).toFixed(2)+'GB';}
           }">	大小</th>
-          <th data-options="field:'filepath',width:120,formatter:function(v,r,i){
+          <th data-options="field:'filepath',width:60,formatter:function(v,r,i){
           return '<a target=_blank href=&quot;'+v+'?dlname='+r.originname+'&quot;>下载</a>';
           }">	下载</th>
         <th data-options="field:'loaddate',width:60,formatter:cj.dateFormatter()"> 时间</th>

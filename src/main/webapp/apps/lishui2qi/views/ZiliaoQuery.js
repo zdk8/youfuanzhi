@@ -6,9 +6,12 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                 if (r) {
                     $.ajax({
                         url: 'delete-ziliao',
-                        type: 'delete',
+                        type: 'post',
+                        data:{
+                            fid:record.fid
+                        },
                         success: function () {
-                            
+                            datagrid.datagrid('reload');
                             $.messager.show({
                                 title: '提示',
                                 msg: '操作成功',
@@ -20,7 +23,6 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                                 }
                             });
                         }, error: function () {
-                            alert('后台接口未实现');
                             $.messager.alert('错误', '操作失败', 'error');
                         }
                     })
@@ -39,7 +41,7 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                         return "helloworld";
                     }
                 });
-        }
+        };
 
 
         var module = {

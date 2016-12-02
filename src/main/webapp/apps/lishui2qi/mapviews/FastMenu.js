@@ -16,6 +16,17 @@ define(['text!mapviews/FastMenu-template.htm',
 
             var actionName = $(this).attr('action');
             var textName = $(this).text();
+            var winWidth=1000;
+            if(actionName=='YuanResponseMessageQuery'){
+                winWidth=1000;
+            }else if(actionName=='BlastQuery') {
+                winWidth=800;
+            }else if(actionName=='ZiliaoQuery') {
+                winWidth=800;
+            }else if(actionName=='SharedQuery') {
+                winWidth=500;
+            }
+
             //根据触发不同的action加载不同的js，并调用start
             if (actionName == 'ShowPoint') {
                 require(['mapviews/fastmenu/' +actionName], function (action) {
@@ -26,7 +37,7 @@ define(['text!mapviews/FastMenu-template.htm',
                     {
                         ptype: DispatcherPanel.PANELLAYER,
                         title: textName,
-                        width:930,
+                        width:winWidth,
                         height: 480
                     });
             }
