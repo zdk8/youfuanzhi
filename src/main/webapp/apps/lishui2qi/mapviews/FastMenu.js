@@ -6,7 +6,8 @@ define(['text!mapviews/FastMenu-template.htm',
         {name: '爆破备案', action: 'BlastQuery'},
         {name: '资料上传下载', action: 'ZiliaoQuery'},
         {name: '应急数据共享', action: 'SharedQuery'},
-        {name: '采集信息', action: 'ShowPoint'}];
+        {name: '采集信息', action: 'ShowPoint'},
+        {name: '指挥体系', action: 'WorkFlow',title:'丽水市抗震救灾组织指挥体系框架图'}];
     var tpl = _.template(htm);
     $('#lishui-map-button').append(tpl({children: menuList}));
     $('#lishui-map-button a.text').each(function () {
@@ -16,7 +17,9 @@ define(['text!mapviews/FastMenu-template.htm',
 
             var actionName = $(this).attr('action');
             var textName = $(this).text();
+            var titleName = $(this).attr('titleName');
             var winWidth=1000;
+            var winHeight=0;
             if(actionName=='YuanResponseMessageQuery'){
                 winWidth=1000;
             }else if(actionName=='BlastQuery') {
@@ -25,6 +28,9 @@ define(['text!mapviews/FastMenu-template.htm',
                 winWidth=800;
             }else if(actionName=='SharedQuery') {
                 winWidth=500;
+            }else if(actionName=='WorkFlow') {
+                winWidth=1024;
+                winHeight=600;
             }
 
             //根据触发不同的action加载不同的js，并调用start
@@ -36,9 +42,9 @@ define(['text!mapviews/FastMenu-template.htm',
                 DispatcherPanel.open('text!views/'+actionName+'.htm', 'views/'+actionName,
                     {
                         ptype: DispatcherPanel.PANELLAYER,
-                        title: textName,
+                        title: titleName||textName,
                         width:winWidth,
-                        height: 480
+                        height: winHeight||480
                     });
             }
 
