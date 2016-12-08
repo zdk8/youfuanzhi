@@ -172,6 +172,8 @@ public class SystemManagerController {
         return resultMap;
     }
 
+
+
     @ResponseBody
     @RequestMapping(value = "sys/query-user-by-regionid", method = {RequestMethod.GET})
     public List getuserbyregionid(@RequestParam(value = "node",required = false) String regionid,

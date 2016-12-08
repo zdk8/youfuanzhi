@@ -1,0 +1,43 @@
+<div>
+   <form method="post">
+            <input type="hidden" name="userid">
+            <input type="hidden" name="deptid">
+            <input type="hidden" name="regionid" value="330100">
+            <input type="hidden" name="useful" value="1">
+            <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+                <tbody>
+                <tr>
+                    <th width="80">用户名称 :</th>
+                    <td><input type="text" name="username" id="name" class="input-text easyui-validatebox"
+                    data-options="required:true">
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>登录名 :</th>
+                    <td><input type="text" name="loginname" class="input-text easyui-validatebox"
+                    data-options="required:true"></td>
+                </tr>
+                <tr>
+                    <th>密码 :</th>
+                    <td><input type="password" name="passwd" class="input-text easyui-validatebox"
+                    data-options="required:true"></td>
+                </tr>
+                <tr>
+                    <th>号码 :</th>
+                    <td><input type="text" name="telephone" class="input-text" >
+                    </td>
+                </tr>
+                <tr>
+                    <th>部门 :</th>
+                    <td><input type="text" name="dept" class="input-text" >
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+</div>
+
+
+<div class="hvit-form-bottom-tool-bar" btns="cj.button.Mo(['close','关闭'],['save','保存','save'])"></div>
