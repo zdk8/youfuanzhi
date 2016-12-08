@@ -20,14 +20,7 @@ define(['jeasyui','jeasyui_zh_CN','cj'],function(jeasyui,jeasyui_zh_CN,cj){
         require(['Menu',cj.getModuleJs('widget/DispatcherPanel')],function(Menu,js){
             Menu.render($('#main-menu-tree2'), function (node) {
                 var module = node.location.replace(".", "/");
-                if (/manager\//.test(module)) {
-                    //系统管理功能的模块，加载外部的
-                    js.open(cj.getModuleTemplate(module+'.htm'),cj.getModuleJs(module) , {title: node.title, ptype: 0});
-                } else {
-                    js.open('text!' + module + '.htm', module, {title: node.title, ptype: 0});
-                }
-
-
+                js.open('text!' + module + '.htm', module, {title: node.title, ptype: 0});
             })
         });
     }

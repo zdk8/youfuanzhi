@@ -1,0 +1,43 @@
+<div class="easyui-layout"  data-options="fit:true">
+    <div opt="combodt" data-options="region:'center'">
+
+
+
+    </div>
+    <div opt="combo" data-options="region:'west',lines:true" style="width:600px;">
+        <table class="easyui-datagrid-noauto"
+               data-options="
+               method:'post',
+               fit:true,
+               fitColumns:true,
+               border:false,
+               rownumbers:true,
+              pageSize:cj.getDataGridAttr('pageSize'),
+               pageList:cj.getDataGridAttr('pageList'),
+               singleSelect:true,
+               pagination:true">
+            <thead>
+            <tr>
+                <th data-options="field:'ro',width:100,align:'center',
+                formatter:cj.button.RoundTextFormatter(['update','更新','update'])">操作</th>
+                <th data-options="field:'aaa100',width:100,align:'center',formatter:function(value,rowData,rowIndex)
+            {
+                var str='<div></div>';
+                str=$(str).append('<a action=&quot;codetype&quot;>'+value+'</a>');
+                return str.html();
+            }">代码类别</th>
+                <th data-options="field:'aaa101',width:100,align:'center'">类别名称</th>
+                <th data-options="field:'aaa104',width:100,align:'center'">可维护标志</th>
+            </tr>
+            </thead>
+        </table>
+
+        <div tb>
+            <label class="gray7">搜索条件:</label>
+            <input class="easyui-searchbox" data-options="prompt:'名称',iconCls:'icon-log'"
+                   type="keyword" style="width:200px" >
+            <span class="searchbtn" >&nbsp;</span>
+            <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" action="add">添加</a>
+        </div>
+    </div>
+</div>

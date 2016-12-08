@@ -1,0 +1,99 @@
+<div class="easyui-layout"  data-options="fit:true">
+    <div data-options="region:'center'" style="padding:20px" data-options="fit:true">
+        <form method="post">
+        <div class="weboxbuttons"><ul></ul></div>
+        <input type="hidden" name="functionid">
+            <div class="d-content" style="max-height: 579px; overflow: auto; height: auto;">
+                <div class="dialog_content">
+                    <form id="info_form" action="test?a=edit&amp;m=mechanism"
+                          method="post">
+                        <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+                            <tbody>
+                            <tr>
+                                <th width="80">地址 :</th>
+                                <td><input type="text" name="location" id="name" class="input-text" size="50">
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <th width="80">节点类型 :</th>
+                                <td>
+                                    <select name="nodetype">
+                                        <option value="0" >叶子</option>
+                                        <option value="1" selected="selected">节点</option>
+                                        <option value="2">按钮</option>
+                                        <option value="3">文件功能</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>功能类型 :</th>
+                                <td>
+                                    <select name="type">
+                                        <option value="1" selected="selected">组件</option>
+                                        <option value="0">链接(iframe/url)</option>
+                                    </select>
+                                </td>
+                            </tr>
+
+
+
+                            <tr>
+                                <th>中文名 :</th>
+                                <td><input type="text" name="title" class="input-text"></td>
+                            </tr>
+                            <tr>
+                                <th>父节点 :</th>
+                                <td><input type="text" name="parent" class="input-text" size="30"></td>
+                            </tr>
+                            <tr>
+                                <th>序号 :</th>
+                                <td><input type="text" name="orderno" class="input-text"></td>
+                            </tr>
+
+
+                            <tr>
+                                <th>描述 :</th>
+                                <td><input type="text" name="description" class="input-text" size="30"></td>
+                            </tr>
+
+
+
+                            <tr  style="display: none">
+                                <td class="formtdtext">是否日志:</td>
+                                <td><input  type="text" name="log" value="1"></td>
+                                <td class="formtdtext">开发者:</td>
+                                <td><input  type="text" name="developer" value="1" ></td>
+
+                            </tr>
+                            <tr  style="display: none">
+                                <td class="formtdtext">审核标志:</td>
+                                <td><input  type="text"  name="auflag" ></td>
+                                <td class="formtdtext">回退:</td>
+                                <td><input class="easyui-validatebox"  type="text"  name="rbflag" data-options="required:true" value="1"></td>
+
+
+                            </tr>
+                            <tr id="functionParam1" style="display: none">
+                                <th>参数1:</th>
+                                <td><input type="text" name="param1" class="input-text" size="30" ></td>
+                            </tr>
+                            <tr  style="display: none">
+                                <td class="formtdtext">参数2:</td>
+                                <td><input type="text" name="param2" value="1"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </div>
+
+        </form>
+    </div>
+    <div data-options="region:'west',lines:true" style="width:300px;">
+        <div><span>&nbsp;</span><a opt="log"  style="height: 20px;width: 100px"></a></div>
+        <a opt="expandAll">展开所有</a>
+        <a opt="collapseAll">收缩所有</a>
+        <ul opt="functiontree"></ul>
+    </div>
+</div>

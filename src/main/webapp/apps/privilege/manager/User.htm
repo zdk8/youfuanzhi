@@ -1,0 +1,34 @@
+<table class="easyui-datagrid-noauto"
+               data-options="
+               method:'post',
+               fit:true,
+               border:false,
+               rownumbers:true,
+               fitColumns:true,
+              pageSize:cj.getDataGridAttr('pageSize'),
+               pageList:cj.getDataGridAttr('pageList'),
+               singleSelect:true,
+               pagination:true">
+            <thead>
+            <tr>
+                <th data-options="field:'loginname',width:100,align:'center',formatter:function(v,r,i)
+            {
+                var str='<div></div>';
+                str=$(str).append('<a action=&quot;view&quot;>'+r.loginname+'</a>');
+                return str.html();
+                }">loginname</th>
+                <th data-options="field:'username',width:120,align:'center'">姓名</th>
+                <th data-options="field:'telephone',width:120,align:'center'">手机</th>
+                <th data-options="field:'dept',width:50,align:'left'">部门</th>
+                <th data-options="field:'createdate',width:100,align:'center',formatter:cj.dateFormatter(),hidden:true">创建时间</th>
+                <th data-options="field:'delete',width:50,align:'center',
+                                  formatter:cj.button.MoFormatter(['delete','删除'],['addrole','添加角色'])">操作</th>
+            </tr>
+            </thead>
+        </table>
+
+        <div tb>
+            <input class="easyui-searchbox" data-options="prompt:'搜索姓名',iconCls:'icon-log'"
+                   type="keyword" style="width:200px" >
+           <a opt="adduser" class="easyui-linkbutton">新增用户</a>
+        </div>

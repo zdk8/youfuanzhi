@@ -40,6 +40,7 @@ public interface SystemManagerService {
 
     List getUserByRegionId(String regionid);
 
+
     List getRoles();
 
     List getRoles(Integer userid, String rolename);
