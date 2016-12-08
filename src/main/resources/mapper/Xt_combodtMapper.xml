@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.hvit.workspace.dao.Xt_combodtMapper">
+  <resultMap id="BaseResultMap" type="cn.com.hvit.workspace.model.Xt_combodt">
+    <result column="AAZ093" jdbcType="DECIMAL" property="aaz093" />
+    <result column="AAA100" jdbcType="VARCHAR" property="aaa100" />
+    <result column="AAA102" jdbcType="VARCHAR" property="aaa102" />
+    <result column="AAA103" jdbcType="VARCHAR" property="aaa103" />
+    <result column="AAA105" jdbcType="VARCHAR" property="aaa105" />
+    <result column="AAE100" jdbcType="VARCHAR" property="aae100" />
+    <result column="AAA104" jdbcType="VARCHAR" property="aaa104" />
+    <result column="PRSENO" jdbcType="DECIMAL" property="prseno" />
+  </resultMap>
+  <insert id="insert" parameterType="cn.com.hvit.workspace.model.Xt_combodt">
+    insert into XT_COMBODT (AAZ093, AAA100, AAA102, 
+      AAA103, AAA105, AAE100, 
+      AAA104, PRSENO)
+    values (#{aaz093,jdbcType=DECIMAL}, #{aaa100,jdbcType=VARCHAR}, #{aaa102,jdbcType=VARCHAR}, 
+      #{aaa103,jdbcType=VARCHAR}, #{aaa105,jdbcType=VARCHAR}, #{aae100,jdbcType=VARCHAR}, 
+      #{aaa104,jdbcType=VARCHAR}, #{prseno,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.hvit.workspace.model.Xt_combodt">
+    insert into XT_COMBODT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="aaz093 != null">
+        AAZ093,
+      </if>
+      <if test="aaa100 != null">
+        AAA100,
+      </if>
+      <if test="aaa102 != null">
+        AAA102,
+      </if>
+      <if test="aaa103 != null">
+        AAA103,
+      </if>
+      <if test="aaa105 != null">
+        AAA105,
+      </if>
+      <if test="aae100 != null">
+        AAE100,
+      </if>
+      <if test="aaa104 != null">
+        AAA104,
+      </if>
+      <if test="prseno != null">
+        PRSENO,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="aaz093 != null">
+        #{aaz093,jdbcType=DECIMAL},
+      </if>
+      <if test="aaa100 != null">
+        #{aaa100,jdbcType=VARCHAR},
+      </if>
+      <if test="aaa102 != null">
+        #{aaa102,jdbcType=VARCHAR},
+      </if>
+      <if test="aaa103 != null">
+        #{aaa103,jdbcType=VARCHAR},
+      </if>
+      <if test="aaa105 != null">
+        #{aaa105,jdbcType=VARCHAR},
+      </if>
+      <if test="aae100 != null">
+        #{aae100,jdbcType=VARCHAR},
+      </if>
+      <if test="aaa104 != null">
+        #{aaa104,jdbcType=VARCHAR},
+      </if>
+      <if test="prseno != null">
+        #{prseno,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+    <select id="selectXt_combodts" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select *
+    from Xt_combodt
+  </select>
+</mapper>
