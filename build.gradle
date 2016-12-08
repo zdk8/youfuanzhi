@@ -84,7 +84,7 @@ dependencies {
 
 
     compile "cn.com.hvit:kon:2.1.2-release"
-    compile "cn.com.hvit:system-manager:2.1.2-release"
+    //compile "cn.com.hvit:system-manager:2.1.2-release"
     compile "cn.com.hvit:enumeration:2.1.2-release"
 
         //compile "org.thymeleaf:thymeleaf-spring4:$thymeleafVersion"

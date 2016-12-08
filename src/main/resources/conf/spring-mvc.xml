@@ -31,7 +31,7 @@
     </bean>
 
     <!-- 工作的bean -->
-    <!--<bean id="myJob" class="cn.com.hvit.workspace.controller.TestController" />-->
+    <!--<bean id="myJob" class="cn.com.hvit.cn.com.hvit.workspace.controller.TestController" />-->
     <!--&lt;!&ndash; job的配置开始 &ndash;&gt;-->
     <!--<bean id="myJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">-->
          <!--<property name="targetObject" >-->
