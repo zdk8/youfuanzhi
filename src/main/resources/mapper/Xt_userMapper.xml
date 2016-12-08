@@ -265,16 +265,6 @@
         AND passwd = #{passwd}
     </if>
   </where>
-
-  </select>
-
-  <select id="selectXt_userById" parameterType="int" resultMap="cn.com.hvit.workspace.model.Xt_user">
-    select
-    <include refid="Base_Column_List" />
-    from XT_USER
-       <where>
-         USERID = #{userid,jdbcType=DECIMAL}
-  </where>
   </select>
 
 </mapper>
