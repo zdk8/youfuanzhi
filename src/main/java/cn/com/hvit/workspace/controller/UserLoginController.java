@@ -3,6 +3,8 @@ package cn.com.hvit.workspace.controller;
 
 import cn.com.hvit.workspace.model.Ls_Log;
 import cn.com.hvit.workspace.model.Ls_User;
+import cn.com.hvit.workspace.model.UserXt;
+import cn.com.hvit.workspace.model.Xt_user;
 import cn.com.hvit.workspace.service.ILogService;
 import cn.com.hvit.workspace.service.IUserService;
 import cn.com.hvit.workspace.util.CommonCode;
@@ -45,24 +47,37 @@ public class UserLoginController {
 //    @SystemLog(module = "用户管理",methods = "用户登录")
     public Map<String, Object> userLogin(@RequestParam String useraccount, @RequestParam String userpwd, HttpServletRequest request, HttpServletResponse response) {
         Map<String, Object> userMap = new HashMap<String, Object>();
-        Ls_User getUser = userService.userLogin(useraccount, userpwd);
+//        Ls_User getUser = userService.userLogin(useraccount, userpwd);
+//
+//        if (getUser != null) {
+//            //保存登录结果
+//            userMap.put("success", true);
+//            userMap.put("message", getUser);
+//            request.getSession().setAttribute("user", getUser);//将用户信息添加到session中
+//            //将登录信息添加到日志表中
+//            Ls_Log log = new Ls_Log();
+//            log.setUserid(getUser.getUserid());
+//            log.setLogcontent(getUser.getUsername()+"登录系统");
+//            log.setClientip(new CommonCode().getClientIp(request));
+//            logService.addLog(log);
+////            CommonCode.addLog(request,"登录系统");//增加日志信息
+//            return userMap;
+//        } else {
+//            userMap.put("success", false);
+//            userMap.put("message", getUser);
+//            return userMap;
+//        }
 
-        if (getUser != null) {
+        UserXt xtUser = userService.userxtLogin(useraccount, userpwd);
+        if (xtUser != null){
             //保存登录结果
             userMap.put("success", true);
-            userMap.put("message", getUser);
-            request.getSession().setAttribute("user", getUser);//将用户信息添加到session中
-            //将登录信息添加到日志表中
-            Ls_Log log = new Ls_Log();
-            log.setUserid(getUser.getUserid());
-            log.setLogcontent(getUser.getUsername()+"登录系统");
-            log.setClientip(new CommonCode().getClientIp(request));
-            logService.addLog(log);
-//            CommonCode.addLog(request,"登录系统");//增加日志信息
+            userMap.put("message", xtUser);
+            request.getSession().setAttribute("user", xtUser);//将用户信息添加到session中
             return userMap;
-        } else {
+        }else {
             userMap.put("success", false);
-            userMap.put("message", getUser);
+            userMap.put("message", xtUser);
             return userMap;
         }
     }
