@@ -4,7 +4,8 @@ define([], function () {
 
     $(document).ajaxComplete(function (event,jqXHR,ajaxOptions) {
         if(jqXHR.status>=400){
-            $.messager.alert("warring",jqXHR.status);
+            //$.messager.alert("警告",'服务器异常，状态码为：'+jqXHR.status);
+            console.log("警告"+'服务器异常，状态码为：'+jqXHR.status);
         }
     });
 
