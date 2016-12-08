@@ -28,6 +28,8 @@ public class Ls_Blast {
 
     private String isdel;
 
+    private String regionid;
+
     public BigDecimal getbId() {
         return bId;
     }
@@ -114,5 +116,13 @@ public class Ls_Blast {
 
     public void setIsdel(String isdel) {
         this.isdel = isdel;
+    }
+
+    public String getRegionid() {
+        return regionid;
+    }
+
+    public void setRegionid(String regionid) {
+        this.regionid = regionid;
     }
 }

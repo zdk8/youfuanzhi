@@ -1,10 +1,8 @@
 package cn.com.hvit.workspace.controller;
 
 
-import cn.com.hvit.workspace.model.Ls_Log;
 import cn.com.hvit.workspace.model.Ls_User;
 import cn.com.hvit.workspace.model.UserXt;
-import cn.com.hvit.workspace.model.Xt_user;
 import cn.com.hvit.workspace.service.ILogService;
 import cn.com.hvit.workspace.service.IUserService;
 import cn.com.hvit.workspace.util.CommonCode;
@@ -17,8 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -137,14 +133,21 @@ public class UserLoginController {
 
     /**
      * 用户信息更新，判断新输入的用户名是否存在
-     * @param user
+     * @param userid
      * @param request
      * @param response
      * @return
      */
     @ResponseBody
+    @RequestMapping(value = "/getuserbyid", method = {RequestMethod.GET,RequestMethod.POST})
+    public UserXt updateUser(@RequestParam int userid, HttpServletRequest request, HttpServletResponse response){
+        UserXt userXt = userService.getUserByid(userid);
+        return userXt;
+    }
+
+    @ResponseBody
     @RequestMapping(value = "/updateuser", method = {RequestMethod.GET,RequestMethod.POST})
-    public Map<String, Object> updateUser(Ls_User user, HttpServletRequest request, HttpServletResponse response){
+    public Map<String, Object> getUserByid(Ls_User user, HttpServletRequest request, HttpServletResponse response){
         Map<String,Object> userMap = new HashMap<String,Object>();
 
         Ls_User checkUser = userService.getUserByName(user.getUseraccount());

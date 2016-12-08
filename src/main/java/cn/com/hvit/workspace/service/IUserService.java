@@ -14,4 +14,7 @@ public interface IUserService {
     UserXt userxtLogin(String useraccount,String userpwd);
 
     void addUser(Ls_User user);
+
+    UserXt getUserByid(int userid);
+
 }

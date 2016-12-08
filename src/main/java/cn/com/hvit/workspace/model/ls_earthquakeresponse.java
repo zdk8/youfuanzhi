@@ -11,6 +11,16 @@ public class ls_earthquakeresponse {
 
     private String yjstatus;
 
+    private String regionid;
+
+    public String getRegionid() {
+        return regionid;
+    }
+
+    public void setRegionid(String regionid) {
+        this.regionid = regionid;
+    }
+
     public BigDecimal getYjid() {
         return yjid;
     }
