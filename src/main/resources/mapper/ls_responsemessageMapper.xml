@@ -29,6 +29,9 @@
       <if test="rmlevel != null">
         and rmlevel like CONCAT('%',CONCAT (#{rmlevel},'%'))
       </if>
+      <if test="telephone != null">
+        and telephone like CONCAT('%',CONCAT (#{telephone},'%'))
+      </if>
     </where>
     ORDER BY rmid DESC
   </select>

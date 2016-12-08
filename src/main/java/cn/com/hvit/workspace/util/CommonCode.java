@@ -17,6 +17,7 @@ import java.io.*;
 import java.net.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -84,6 +85,17 @@ public class CommonCode {
             return 1;
         }
         return 0;
+    }
+
+
+    public String stringSort(String str,String sort){
+        String result = "";
+        String[] split = str.split(sort);
+        Arrays.sort(split);
+        for (String str1 : split){
+            result = result + str1 + sort;
+        }
+        return result;
     }
 
     /**

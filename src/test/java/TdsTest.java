@@ -15,10 +15,12 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import javax.swing.*;
 import java.io.*;
+import java.lang.reflect.Array;
 import java.math.BigDecimal;
 import java.net.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -52,6 +54,14 @@ public class TdsTest {
 //        msg.setTelephone("18358158536");
 //        System.out.println(msg.getTelephone() == "18358158536");
 
+         String str = "1,3,4,2";
+        String result = "";
+        String[] split = str.split(",");
+        Arrays.sort(split);
+        for (String str1 : split){
+            result = result + str1 + ",";
+        }
+        System.out.println(result);
 
     }
 
