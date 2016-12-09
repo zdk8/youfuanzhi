@@ -16,8 +16,8 @@ define([cj.getModuleJs('model/BzModel'),'underscore'],
 
            var MenuList = Backbone.Collection.extend({
              //url:'menutree',
-             //url:'allmenutree',
-             url:'data-json/menutree.json',
+             url:'menutree',
+             //url:'data-json/menutree.json',
              model: Menu
            });
            var Menus = new MenuList;
