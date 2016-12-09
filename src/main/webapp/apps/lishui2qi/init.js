@@ -110,6 +110,19 @@ define(['jeasyui','jeasyui_zh_CN','cj','underscore', 'mapviews/initMap'],
             })
         });
         //帐户设置
+        $('#sysmng').bind('click', function () {
+            require([cj.getModuleJs('widget/DispatcherPanel')], function (DispatcherPanel) {
+                    var module = 'manager/DivisionUser';
+                    DispatcherPanel.open('text!' + module + '.htm', module, {
+                        title: "用户与权限设置",
+                        height: 500,
+                        width:800,
+                        ptype: DispatcherPanel.PANELLAYER
+                    });
+                });
+        });
+
+        //系统设置
         $('#persont-setting').bind('click', function () {
             require([cj.getModuleJs('widget/DispatcherPanel')], function (DispatcherPanel) {
                     var module = 'mapviews/PersonSetting';

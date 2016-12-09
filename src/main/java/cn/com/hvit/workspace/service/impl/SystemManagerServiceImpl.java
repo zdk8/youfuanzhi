@@ -2,6 +2,7 @@ package cn.com.hvit.workspace.service.impl;
 
 
 import cn.com.hvit.framework.kon.util.KeyLowerMapUtil;
+import cn.com.hvit.workspace.config.Shout;
 import cn.com.hvit.workspace.dao.*;
 import cn.com.hvit.workspace.model.*;
 import cn.com.hvit.workspace.service.SystemManagerService;
@@ -153,16 +154,17 @@ public class SystemManagerServiceImpl implements SystemManagerService {
 
     @Override
     public void saveUser(XtUser user) {
-        if (user.getUserid() != null && user.getUserid().trim().length() != 0) {
-            userMapper.updateByPrimaryKey(user);
-        } else {
-            userMapper.insert(user);
-        }
+        userMapper.insert(user);
+    }
+
+    @Override
+    public void updateUser(XtUser user) {
+        userMapper.updateByPrimaryKeySelective(user);
     }
 
     @Override
     public void deleteUserById(String userid) {
-        userMapper.deleteByPrimaryKey(userid);
+        userMapper.deleteByPrimaryKey(Short.valueOf(userid));
     }
 
     @Override

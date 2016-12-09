@@ -14,7 +14,7 @@
     //以上为固定写法，复制即可。
 
     //配置基本相对路径和缓存设置
-    var baseUrl = 'apps/privilege/';
+    var baseUrl = 'apps/lishui2qi/';
     var options = {
         baseUrl: baseUrl
         //,urlArgs: "dc_=sqwork" //+  (new Date()).getTime()
@@ -64,7 +64,7 @@
         };
         
         $('body').layout();
-        require(['init'], function (Init) {
+        require(['privilege.init'], function (Init) {
             new Init();
         })
     });

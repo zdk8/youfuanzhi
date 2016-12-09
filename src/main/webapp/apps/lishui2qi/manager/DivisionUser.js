@@ -14,11 +14,35 @@ cj.getModuleJs('BackendInterfaceList')], function (MakeDG, DispatcherPanel,Backe
             var refreshGrid = function () {
                 localDataGrid.datagrid('reload');
             };
+
             var deleteUserInfo = function (record) {
-                $.post('deluserbyid', {id: record.userid}, function (data) {
-                    refreshGrid();
-                }, 'json');
+                $.messager.confirm('确认', '您真的要删除此用户吗?', function (r) {
+                    if (r) {
+                        $.ajax({
+                            url: 'sys/delete-user',
+                            data: {id: record.userid},
+                            type: 'post',
+                            success: function () {
+
+                                refreshGrid();
+                                $.messager.show({
+                                    title: '提示',
+                                    msg: '操作成功',
+                                    showType: 'show',
+                                    timeout: 500,
+                                    style: {
+                                        right: '',
+                                        bottom: ''
+                                    }
+                                });
+                            }, error: function () {
+                                $.messager.alert('错误', '操作失败', 'error');
+                            }
+                        })
+                    }
+                });
             };
+
             var addUser = function (record) {
                 DispatcherPanel.open('text!manager/DivisionUserForm.htm',
                     'manager/DivisionUserForm',

@@ -36,6 +36,8 @@ public interface SystemManagerService {
 
     void saveUser(XtUser user);
 
+    void updateUser(XtUser user);
+
     void deleteUserById(String userid);
 
     List getUserByRegionId(String regionid);
