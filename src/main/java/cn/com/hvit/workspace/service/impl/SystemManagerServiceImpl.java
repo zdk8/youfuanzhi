@@ -5,6 +5,7 @@ import cn.com.hvit.framework.kon.util.KeyLowerMapUtil;
 import cn.com.hvit.workspace.dao.*;
 import cn.com.hvit.workspace.model.*;
 import cn.com.hvit.workspace.service.SystemManagerService;
+import org.apache.commons.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -212,6 +213,8 @@ public class SystemManagerServiceImpl implements SystemManagerService {
         List<Map> list=parse2LowerList(xtRoleMapper.selectPrivilegesByRole(params));
 
         for (Map item : list) {
+            System.out.println(item.get("checked"));
+
             if (item.get("leaf").equals("true")) {
                 item.put("leaf", true);
                 item.put("state", "open");

@@ -24,16 +24,16 @@ define([cj.getModuleJs('BackendInterfaceList')], function (BackendInterfaceList)
             $functiontree = local.find('[opt=functiontree]').tree({
                 checkbox: true,
                 url: BackendInterfaceList.getUrl('query-grant-menu-tree').get('url'),
+                //url:'data-json/test-checked-tree.json',
                 animate: true,
                 dnd: true,
                 onBeforeLoad: function (node, param) {
-                    param.roleid = currentroleid
+                    param.roleid = currentroleid;
                 }
             });
 
             function getChecked() {
-                var nodes = $functiontree.tree('getChecked', ['checked', 'indeterminate']);
-                ;
+                var nodes = $functiontree.tree('getChecked', ['checked'/*,'indeterminate'*/]);
                 var s = [];
                 for (var i = 0; i < nodes.length; i++) {
                     if (vecIndexOf(s, nodes[i].functionid) < 0) {

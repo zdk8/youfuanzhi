@@ -219,7 +219,12 @@ public class SystemManagerController {
     public List grantmenutree(@RequestParam(value = "id",required = false) String functionid,
                               @RequestParam(value = "roleid",required = true) Integer roleid,
                                       HttpServletRequest request, HttpServletResponse response) throws Exception {
-        return systemManagerService.selectPrivilegesByRole(roleid, functionid);
+        List<Map> list=systemManagerService.selectPrivilegesByRole(roleid, functionid);
+
+        for (Map map : list) {
+            System.out.println(map);
+        }
+        return list;
     }
 
 
