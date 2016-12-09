@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,15 +26,34 @@ public class SystemManagerController {
 
     @ResponseBody
     @RequestMapping(value = "sys/query-division-tree", method = {RequestMethod.GET, RequestMethod.POST})
-    public List getDivisionByGetOrPost(@RequestParam(value="node",required = false) String node,
+    public Object getDivisionByGetOrPost(@RequestParam(value="node",required = false) String node,
                                        @RequestParam(value="id",required = false) String id,
                                  HttpServletRequest request, HttpServletResponse response) throws Exception {
         if (node == null) {
             node = id;
         }
+
+        /* 默认 000000 浙江省 ,331100 丽水市 */
         if (node == null) {
-            node = "000000";
+            node = "330000";
+            //{"dvrank":2,"state":"closed","id":"331100","text":"丽水市","dvname":"丽水市","leaf":true,"totalname":"丽水市","dvcode":"331100"}
+            //默认请求返回丽水一条信息，前台需要
+            Map lishuisheeInfo=new HashMap();
+            lishuisheeInfo.put("dvrank", 2);
+            lishuisheeInfo.put("state", "closed");
+            lishuisheeInfo.put("id", "331100");
+            lishuisheeInfo.put("text","丽水市");
+            lishuisheeInfo.put("dvname","丽水市");
+            lishuisheeInfo.put("totalname","丽水市");
+            lishuisheeInfo.put("dvcode","331100");
+            lishuisheeInfo.put("leaf",true);
+
+            List list=new ArrayList();
+            list.add(lishuisheeInfo);
+            return list;
         }
+
+
         return systemManagerService.getSubDivisions(node);
     }
 
