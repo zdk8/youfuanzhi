@@ -73,8 +73,8 @@ public class TdsTest {
 //        System.out.println(userService.getUserByName("aaa").getUseraccount());
 //        UserXt xtUser = userService.userxtLogin("zmp", "hvit");
 //        System.out.println(xtUser.getLoginname());
-        UserXt userXt = userService.getUserByid(610);
-        System.out.println(userXt.getLoginname());
+        //UserXt userXt = userService.getUserByid(610);
+        //System.out.println(userXt.getLoginname());
     }
 
     /**
