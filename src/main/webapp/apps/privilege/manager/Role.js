@@ -80,7 +80,7 @@ cj.getModuleJs('BackendInterfaceList')], function (MakeDG, DispatcherPanel,Backe
                     {userid: option.params.record.userid, roleids: ids}, function (data) {
                     local.trigger('MyClose');
                 }, 'json');
-            })
+            });
         }
     }
 })

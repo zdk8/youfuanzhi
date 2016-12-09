@@ -1,6 +1,6 @@
 <div>
-  <table class="easyui-datagrid-noauto"
-       data-options="
+    <table class="easyui-datagrid-noauto"
+           data-options="
                      method:'post',
                      fit:true,
                      border:false,
@@ -10,27 +10,32 @@
                      pageList:cj.getDataGridAttr('pageList'),
                      singleSelect:false,
                      pagination:!true">
-  <thead>
-    <tr>
-      <th data-options="field:'ck',checkbox:true"></th>
-      <th data-options="field:'rolename',width:100,align:'right',formatter:function(v,r,i)
+        <thead>
+        <tr>
+            <th data-options="field:'ck',checkbox:true"></th>
+            <th data-options="field:'rolename',width:100,align:'right',formatter:function(v,r,i)
                         {
                         var str='<div></div>';
                         str=$(str).append('<a action=&quot;view&quot;>'+v+'</a>');
                         return str.html();
-                        }">角色名称</th>
-      <th data-options="field:'roledesc',width:120,align:'center'">描述</th>
-      <th data-options="field:'createdate',width:100,align:'center',formatter:cj.dateFormatter(),hidden:true">创建时间</th>
-      <th data-options="field:'delete',width:100,align:'center',formatter:cj.button.MoFormatter(['delete','删除'],['grant','授权'])">操作</th>
-    </tr>
-  </thead>
-</table>
+                        }">角色名称
+            </th>
+            <th data-options="field:'roledesc',width:120,align:'center'">描述</th>
+            <th data-options="field:'createdate',width:100,align:'center',formatter:cj.dateFormatter(),hidden:true">
+                创建时间
+            </th>
+            <th data-options="field:'delete',width:100,align:'center',formatter:cj.button.MoFormatter(['delete','删除'],['grant','授权'])">
+                操作
+            </th>
+        </tr>
+        </thead>
+    </table>
 
-<div tb>
-  <input class="easyui-searchbox" data-options="prompt:'搜索角色名'"
-         type="keyword" style="width:200px" >
-  <a opt="addrole" class="opiconbg"><span><span class="icon-user icon-pl16">新增角色</span></span></a>
-</div>
+    <div tb>
+        <input class="easyui-searchbox" data-options="prompt:'搜索角色名'"
+               type="keyword" style="width:200px">
+        <a opt="addrole" class="opiconbg"><span><span class="icon-user icon-pl16">新增角色</span></span></a>
+    </div>
 </div>
 
 <div class="hvit-form-bottom-tool-bar" btns="cj.button.Mo(['close','关闭'],['save','保存','save'])"></div>
