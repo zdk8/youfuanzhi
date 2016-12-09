@@ -38,4 +38,9 @@ public class UserServiceImpl implements IUserService {
     public void addUser(Ls_User user) {
         userMapper.addUser(user);
     }
+
+    @Override
+    public UserXt getUserByid(int userid) {
+        return userxtMapper.getUserByid(userid);
+    }
 }

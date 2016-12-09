@@ -6,9 +6,10 @@
     <result column="YJNAME" property="yjname" jdbcType="VARCHAR" />
     <result column="YJPATH" property="yjpath" jdbcType="VARCHAR" />
     <result column="YJSTATUS" property="yjstatus" jdbcType="VARCHAR" />
+    <result column="REGIONID" property="regionid" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    YJID, YJNAME, YJPATH ,YJSTATUS
+    YJID, YJNAME, YJPATH ,YJSTATUS,REGIONID
   </sql>
   <select id="getResponseByCond" parameterType="java.util.HashMap" resultMap="BaseResultMap">
     <!--select-->
@@ -32,9 +33,9 @@
     from LS_EARTHQUAKERESPONSE
   </select>
   <insert id="insert" parameterType="cn.com.hvit.workspace.model.ls_earthquakeresponse" >
-    insert into LS_EARTHQUAKERESPONSE (YJID, YJNAME, YJPATH ,YJSTATUS
+    insert into LS_EARTHQUAKERESPONSE (YJID, YJNAME, YJPATH ,YJSTATUS ,REGIONID
       )
-    values (#{yjid,jdbcType=DECIMAL}, #{yjname,jdbcType=VARCHAR}, #{yjpath,jdbcType=VARCHAR}, #{yjstatus,jdbcType=VARCHAR}
+    values (#{yjid,jdbcType=DECIMAL}, #{yjname,jdbcType=VARCHAR}, #{yjpath,jdbcType=VARCHAR}, #{yjstatus,jdbcType=VARCHAR}, #{regionid,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="cn.com.hvit.workspace.model.ls_earthquakeresponse" >
@@ -52,6 +53,9 @@
       <if test="yjstatus != null" >
         YJSTATUS,
       </if>
+      <if test="regionid != null" >
+        REGIONID,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="yjid != null" >
@@ -66,6 +70,9 @@
       <if test="yjstatus != null" >
         #{yjstatus,jdbcType=VARCHAR},
       </if>
+      <if test="regionid != null" >
+        #{regionid,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
   <update id="updateEarthquake" parameterType="cn.com.hvit.workspace.model.ls_earthquakeresponse">
@@ -79,6 +86,9 @@
       </if>
       <if test="yjstatus != null" >
         yjstatus = #{yjstatus,jdbcType=DECIMAL},
+      </if>
+      <if test="regionid != null" >
+        regionid = #{regionid,jdbcType=DECIMAL},
       </if>
     </set>
     where yjid = #{yjid,jdbcType=DECIMAL}

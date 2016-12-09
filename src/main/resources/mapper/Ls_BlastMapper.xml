@@ -12,9 +12,10 @@
     <result column="WEIGHT" property="weight" jdbcType="DECIMAL" />
     <result column="APPLICANT" property="applicant" jdbcType="VARCHAR" />
     <result column="FORMDATE" property="formdate" jdbcType="TIMESTAMP" />
+    <result column="REGIONID" property="regionid" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    B_ID, BLASTTIME, DISTANCE, BLASTWAY, DESCRIPTION, APPLYUNIT, CONTACTWAY, WEIGHT, APPLICANT, FORMDATE
+    B_ID, BLASTTIME, DISTANCE, BLASTWAY, DESCRIPTION, APPLYUNIT, CONTACTWAY, WEIGHT, APPLICANT, FORMDATE,REGIONID
   </sql>
   <select id="getBlastByCond" parameterType="java.util.HashMap" resultMap="BaseResultMap">
     <!--select-->
@@ -67,6 +68,9 @@
       <if test="formdate != null" >
         FORMDATE,
       </if>
+      <if test="regionid != null" >
+        REGIONID,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="bId != null" >
@@ -95,6 +99,9 @@
       </if>
       <if test="applicant != null" >
         #{applicant,jdbcType=VARCHAR},
+      </if>
+      <if test="regionid != null" >
+        #{REGIONID,jdbcType=VARCHAR},
       </if>
       <if test="formdate != null" >
         #{formdate,jdbcType=TIMESTAMP},
@@ -127,6 +134,9 @@
       </if>
       <if test="applicant != null" >
         applicant = #{applicant,jdbcType=VARCHAR},
+      </if>
+      <if test="regionid != null" >
+        regionid = #{regionid,jdbcType=VARCHAR},
       </if>
       <if test="formdate != null" >
         formdate = #{formdate,jdbcType=TIMESTAMP},

@@ -40,6 +40,11 @@
     FROM XT_USER
     WHERE loginname = #{0} and passwd = #{1} AND useful = '1'
   </select>
+  <select id="getUserByid" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List" />
+    FROM XT_USER
+    WHERE userid = #{0}
+  </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Short">
     delete from XT_USER

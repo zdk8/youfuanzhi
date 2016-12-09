@@ -35,7 +35,7 @@ public class ResponseController {
     IResponseService responseService;
 
     /**
-     * 添加应急响应信息 (因数据只有一条，暂时不用)
+     * 添加应急响应信息
      * @param earthquake
      * @param request
      * @param response
@@ -52,7 +52,7 @@ public class ResponseController {
     }
 
     /**
-     * 应急响应信息更新  (数据信息固定，暂时不用)
+     * 应急响应信息更新
      * @param earthquake
      * @param request
      * @param response
