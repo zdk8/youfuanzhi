@@ -40,6 +40,29 @@
     delete from XT_USER
     where USERID = #{userid,jdbcType=DECIMAL}
   </delete>
+    <select id="getUserByid" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List" />
+    FROM XT_USER
+    WHERE userid = #{0}
+  </select>
+
+  <select id="findXt_user" parameterType="map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from XT_USER
+       <where>
+    <if test="username != null">
+         username = #{username}
+    </if>
+    <if test="loginname != null">
+        AND loginname = #{loginname}
+    </if>
+    <if test="passwd != null">
+        AND passwd = #{passwd}
+    </if>
+  </where>
+  </select>
+
   <insert id="insert" parameterType="cn.com.hvit.workspace.model.Xt_user">
     insert into XT_USER (USERID, PASSWD, LOGINNAME,
       DEPT, DESCRIPTION, USEFUL,
@@ -250,21 +273,9 @@
     where USERID = #{userid,jdbcType=DECIMAL}
   </update>
 
-    <select id="findXt_user" parameterType="map" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from XT_USER
-       <where> 
-    <if test="username != null">
-         username = #{username}
-    </if> 
-    <if test="loginname != null">
-        AND loginname = #{loginname}
-    </if>
-    <if test="passwd != null">
-        AND passwd = #{passwd}
-    </if>
-  </where>
+    <select id="xtuserLogin" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List" />
+    FROM XT_USER
+    WHERE loginname = #{0} and passwd = #{1} AND useful = '1'
   </select>
-
 </mapper>

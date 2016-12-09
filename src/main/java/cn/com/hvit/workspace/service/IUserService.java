@@ -1,7 +1,7 @@
 package cn.com.hvit.workspace.service;
 
 import cn.com.hvit.workspace.model.Ls_User;
-import cn.com.hvit.workspace.model.UserXt;
+import cn.com.hvit.workspace.model.Xt_user;
 
 /**
  * Created by Administrator on 2016/11/9.
@@ -11,10 +11,10 @@ public interface IUserService {
 
     Ls_User getUserByName(String useraccount);
 
-    UserXt userxtLogin(String useraccount,String userpwd);
+    Xt_user userxtLogin(String useraccount,String userpwd);
 
     void addUser(Ls_User user);
 
-    UserXt getUserByid(int userid);
+    Xt_user getUserByid(int userid);
 
 }

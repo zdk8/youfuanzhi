@@ -22,4 +22,8 @@ public interface Xt_userMapper {
     List findXt_user(Map map);
 
     List findUserByRegionId(String regionid);
+
+    Xt_user xtuserLogin(String useraccount, String userpwd);
+
+    Xt_user getUserByid(int userid);
 }
