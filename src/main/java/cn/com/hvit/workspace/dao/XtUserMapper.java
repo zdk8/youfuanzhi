@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface XtUserMapper {
-    int deleteByPrimaryKey(String userid);
+    int deleteByPrimaryKey(Short userid);
 
     int insert(XtUser record);
 

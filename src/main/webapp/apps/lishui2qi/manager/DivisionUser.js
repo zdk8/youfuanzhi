@@ -14,20 +14,49 @@ cj.getModuleJs('BackendInterfaceList')], function (MakeDG, DispatcherPanel,Backe
             var refreshGrid = function () {
                 localDataGrid.datagrid('reload');
             };
+
             var deleteUserInfo = function (record) {
-                $.post('deluserbyid', {id: record.userid}, function (data) {
-                    refreshGrid();
-                }, 'json');
+                $.messager.confirm('确认', '您真的要删除此用户吗?', function (r) {
+                    if (r) {
+                        $.ajax({
+                            url: 'sys/delete-user',
+                            data: {id: record.userid},
+                            type: 'post',
+                            success: function () {
+
+                                refreshGrid();
+                                $.messager.show({
+                                    title: '提示',
+                                    msg: '操作成功',
+                                    showType: 'show',
+                                    timeout: 500,
+                                    style: {
+                                        right: '',
+                                        bottom: ''
+                                    }
+                                });
+                            }, error: function () {
+                                $.messager.alert('错误', '操作失败', 'error');
+                            }
+                        })
+                    }
+                });
             };
-            var viewUserInfo = function (record) {
+
+            var addUser = function (record) {
                 DispatcherPanel.open('text!manager/DivisionUserForm.htm',
                     'manager/DivisionUserForm',
                     {
-                        title: '用户详细信息', ptype: DispatcherPanel.PANELLAYER,
+                        title: '用户 '+(record.username||''),
+                        height:300,
+                        ptype: DispatcherPanel.PANELLAYER,
                         record: $.extend({
                             regionid: currentNode.dvcode,
                             totalname: currentNode.totalname
-                        }, record)
+                        }, record),
+                        mycallback:function () {
+                            refreshGrid();
+                        }
                     });
             }
 
@@ -58,13 +87,15 @@ cj.getModuleJs('BackendInterfaceList')], function (MakeDG, DispatcherPanel,Backe
                 }, onLoadSuccess: function (node, data) {
                     if (!mynode) {
                         mynode = data[0];
+                        currentNode=mynode;
+                        //自动打开一次
                         $mytree.tree('expand', $mytree.tree('getRoot').target);
                     }
                 }
             });
 
             var localDataGrid = MakeDG.make(local.find('.easyui-datagrid-noauto'),
-                {delete: deleteUserInfo, addrole: addRole, view: viewUserInfo},
+                {delete: deleteUserInfo, addrole: addRole, view: addUser},
                 {
                     url: BackendInterfaceList.getUrl('query-user-by-regionid').get('url'),
 
@@ -85,8 +116,8 @@ cj.getModuleJs('BackendInterfaceList')], function (MakeDG, DispatcherPanel,Backe
             });
 
             //添加用户的弹出表单
-            local.find('[opt=adduser]').bind('click', function () {
-                viewUserInfo();
+            local.find('a[opt=adduser]').bind('click', function () {
+                addUser({});
             })
         }
     }

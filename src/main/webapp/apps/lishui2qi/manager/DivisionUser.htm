@@ -13,7 +13,7 @@
               pageSize:cj.getDataGridAttr('pageSize'),
                pageList:cj.getDataGridAttr('pageList'),
                singleSelect:true,
-               pagination:!true">
+               pagination:true">
             <thead>
             <tr>
                 <th data-options="field:'username',width:100,align:'center',formatter:function(v,r,i)
@@ -38,7 +38,7 @@
             <label class="gray7">搜索条件:</label>
             <input class="easyui-searchbox" data-options="prompt:'姓名'"
                    type="keyword" style="width:200px" >
-            <a opt="adduser" class="opiconbg"><span><span class="icon-user icon-pl16">新增用户</span></span></a>
+            <a opt="adduser" class="tool-add">新增用户</a>
             <span id="user-division-totalname"></span>
         </div>
 

@@ -17,20 +17,21 @@
 	    <environment id="development">
 	      <transactionManager type="JDBC"/>
 	      <dataSource type="POOLED">
-	        <property name="driver" value="${jdbc_driverClassName}"/>
-	        <property name="url" value="${jdbc_url}"/>
-	        <property name="username" value="${jdbc_username}"/>
-	        <property name="password" value="${jdbc_password}"/>
+	        <property name="driver" value="${framework.jdbc_driverClassName}"/>
+	        <property name="url" value="${framework.jdbc_url}"/>
+	        <property name="username" value="${framework.jdbc_username}"/>
+	        <property name="password" value="${framework.jdbc_password}"/>
 	      </dataSource>
 	    </environment>
 	  </environments>
 
 	  
 	  <mappers>
-		  <mapper resource="mapper/Xt_userMapper.xml"/>
+		  <mapper resource="mapper/XtUserMapper.xml"/>
 		  <mapper resource="mapper/DivisionMapper.xml"/>
 		  <mapper resource="mapper/Xt_combodtMapper.xml"/>
 		  <mapper resource="mapper/XtFunctionMapper.xml"/>
+		  <mapper resource="mapper/XtRoleFuncMapper.xml"/>
 		  <mapper resource="mapper/XtRoleMapper.xml"/>
 	  </mappers>
   	

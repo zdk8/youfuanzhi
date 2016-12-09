@@ -17,7 +17,7 @@ define(['jeasyui','jeasyui_zh_CN','cj'],function(jeasyui,jeasyui_zh_CN,cj){
     });
 
     if($('#main-menu-tree2').length){
-        require(['Menu',cj.getModuleJs('widget/DispatcherPanel')],function(Menu,js){
+        require(['privilege.Menu',cj.getModuleJs('widget/DispatcherPanel')],function(Menu,js){
             Menu.render($('#main-menu-tree2'), function (node) {
                 var module = node.location.replace(".", "/");
                 js.open('text!' + module + '.htm', module, {title: node.title, ptype: 0});

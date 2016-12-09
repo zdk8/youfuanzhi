@@ -84,6 +84,7 @@
             <div id="header-menu">
                 <span id="current-time"></span>
                 <span>欢迎您！</span>
+
                 <span id="current-user-name" style="cursor: pointer;"
                       isLogined="<%= (user!=null)%>"><%= user == null ? "未登录" : user.getUsername()%></span>
                 <img style="max-height: 2em;margin-bottom: -1px;" src="images/user.png">
@@ -91,8 +92,9 @@
                     <img id="header-triangle-down" style="max-height: 2em;margin-bottom: -1px;" src="images/向下箭头.png">
                     <div id="header-more-menu">
                         <ul>
-                            <%--<li><a href="framework_sysmng" target="_blank"
-                                   id="sysmng"><img src="images/icons/设置.png"><span>系统管理</span></a></li>--%>
+                            <% if(user!=null && user.getLoginname().equals("admin")){%>
+                            <li><a id="sysmng"><img src="images/icons/设置.png"><span>系统管理</span></a></li>
+                            <% }%>
                             <li><a id="persont-setting"><img src="images/icons/设置.png"><span>账户设置</span></a></li>
                             <li><a id="logout"><img src="images/icons/退出.png"><span>退出登录</span></a></li>
                         </ul>
