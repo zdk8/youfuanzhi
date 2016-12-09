@@ -135,4 +135,4 @@ z-index: 999;
 </script>
 <script src="<%=hvitFrontFWPrefix%>hvit-front-framework/baseConfig.js"></script>
 <script src="<%=hvitFrontFWPrefix%>hvit-front-framework/require.js"
-        data-main="apps/privilege/app.js?v=1"></script>
+        data-main="apps/privilege/app.js?v=12"></script>
