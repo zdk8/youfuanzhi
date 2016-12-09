@@ -28,7 +28,7 @@ public interface IResponseService {
 
     void setResponseStatus(String start);
 
-    List getEarthResponse();
+    List getEarthResponse(HashMap<String, Object> quakeMap);
 
     void deleteEarthMsg(HashMap<String, Object> condMap);
 

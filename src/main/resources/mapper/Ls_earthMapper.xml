@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.hvit.workspace.dao.Ls_EarthMapper">
+  <resultMap id="BaseResultMap" type="cn.com.hvit.workspace.model.Ls_Earth">
+    <id column="EARTHID" jdbcType="VARCHAR" property="earthid" />
+    <result column="LOCATION" jdbcType="VARCHAR" property="location" />
+    <result column="LON" jdbcType="FLOAT" property="lon" />
+    <result column="LAT" jdbcType="FLOAT" property="lat" />
+    <result column="EARTHTIME" jdbcType="TIMESTAMP" property="earthtime" />
+    <result column="ML" jdbcType="FLOAT" property="ml" />
+    <result column="DEPTH" jdbcType="FLOAT" property="depth" />
+    <result column="ISHIGH" jdbcType="DECIMAL" property="ishigh" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    EARTHID, LOCATION, LON, LAT, EARTHTIME, ML, DEPTH, ISHIGH
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from LS_EARTH
+    where EARTHID = #{earthid,jdbcType=VARCHAR}
+  </select>
+
+  <select id="getEarthData" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM LS_EARTH
+  </select>
+</mapper>

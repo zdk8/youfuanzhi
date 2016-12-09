@@ -3,6 +3,7 @@ package cn.com.hvit.workspace.util.log;
 import cn.com.hvit.workspace.model.Ls_Log;
 import cn.com.hvit.workspace.model.Ls_User;
 
+import cn.com.hvit.workspace.model.XtUser;
 import cn.com.hvit.workspace.service.ILogService;
 import cn.com.hvit.workspace.util.CommonCode;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -17,6 +18,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -39,10 +41,10 @@ public class LogAopAction {
         Ls_Log log = new Ls_Log();
         //
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-        Ls_User user = (Ls_User) request.getSession().getAttribute("user");
+        XtUser user = (XtUser) request.getSession().getAttribute("user");
         if(null != user){
-            String name = user.getUseraccount();
-            log.setUserid(user.getUserid());
+            String name = user.getLoginname();
+            log.setUserid(BigDecimal.valueOf(Long.parseLong(user.getUserid())));
         }
         //获取系统时间
         String time = new SimpleDateFormat("YYYY-MM-dd HH:mm;ss").format(new Date());

@@ -2,6 +2,7 @@ package cn.com.hvit.workspace.controller.aopController;
 
 import cn.com.hvit.framework.kon.util.PageHelper;
 import cn.com.hvit.workspace.model.Ls_Blast;
+import cn.com.hvit.workspace.model.XtUser;
 import cn.com.hvit.workspace.service.IBlastService;
 import cn.com.hvit.workspace.util.CommonCode;
 import cn.com.hvit.workspace.util.log.SystemLog;
@@ -39,6 +40,9 @@ public class BlastController {
 //    @SystemLog(module = "用户管理",methods = "新增爆破信息")
     public Map<String, Object> addBlast(Ls_Blast blast, HttpServletRequest request, HttpServletResponse response){
         Map<String,Object> userMap = new HashMap<String,Object>();
+        //将用户信息的行政区划id添加到爆破信息中
+        XtUser user = (XtUser) request.getSession().getAttribute("user");
+        blast.setRegionid(user.getRegionid());
         blastService.addBlast(blast);
 //        CommonCode.addLog(request,"新增爆破信息");             //日志信息增加
         userMap.put("success",true);
@@ -102,8 +106,10 @@ public class BlastController {
     public HashMap<String, Object> getBlast(@RequestParam int page, @RequestParam int rows, HttpServletRequest request, HttpServletResponse response){
         HashMap<String,Object> blastMap = new HashMap<String,Object>();
         HashMap<String,Object> condMap = new HashMap<String,Object>();
+        XtUser user = (XtUser) request.getSession().getAttribute("user");
         CommonCode code = new CommonCode();
         condMap = code.condMap(request);
+        condMap.put("regionid",user.getRegionid());
         PageHelper.Page<Ls_Blast> orginfo = blastService.getBlastByCond(page, rows,condMap);
         blastMap.put("total",orginfo.getTotal());
         blastMap.put("rows",orginfo.getResults());

@@ -20,6 +20,9 @@
     <include refid="Base_Column_List" />
     from LS_RESPONSEMESSAGE
     <where>
+      <if test="yjid != null">
+        and yjid = #{yjid}
+      </if>
       <if test="department != null">
         and department like CONCAT('%',CONCAT (#{department},'%'))
       </if>

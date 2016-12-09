@@ -27,10 +27,11 @@
     </where>
     ORDER BY yjid DESC
   </select>
-  <select id="getEarthResponse" resultMap="BaseResultMap">
+  <select id="getEarthResponse" parameterType="java.util.HashMap" resultMap="BaseResultMap">
     SELECT
     <include refid="Base_Column_List" />
     from LS_EARTHQUAKERESPONSE
+    WHERE regionid like CONCAT('%',CONCAT (#{regionid},'%'))
   </select>
   <insert id="insert" parameterType="cn.com.hvit.workspace.model.ls_earthquakeresponse" >
     insert into LS_EARTHQUAKERESPONSE (YJID, YJNAME, YJPATH ,YJSTATUS ,REGIONID

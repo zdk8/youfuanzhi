@@ -2,16 +2,10 @@ package cn.com.hvit.workspace.dao;
 
 import cn.com.hvit.workspace.model.Ls_Station;
 
+import java.util.List;
+
 public interface Ls_StationMapper {
-    int deleteByPrimaryKey(String stationcode);
 
-    int insert(Ls_Station record);
+    List getStation();
 
-    int insertSelective(Ls_Station record);
-
-    Ls_Station selectByPrimaryKey(String stationcode);
-
-    int updateByPrimaryKeySelective(Ls_Station record);
-
-    int updateByPrimaryKey(Ls_Station record);
 }

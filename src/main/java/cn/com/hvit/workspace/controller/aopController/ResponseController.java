@@ -2,6 +2,7 @@ package cn.com.hvit.workspace.controller.aopController;
 
 import cn.com.hvit.framework.kon.util.AttachmentNameBean;
 import cn.com.hvit.framework.kon.util.PageHelper;
+import cn.com.hvit.workspace.model.XtUser;
 import cn.com.hvit.workspace.model.ls_earthquakeresponse;
 import cn.com.hvit.workspace.model.ls_responsemessage;
 import cn.com.hvit.workspace.service.IResponseService;
@@ -45,6 +46,8 @@ public class ResponseController {
     @RequestMapping(value = "/addearthquake",method = {RequestMethod.GET,RequestMethod.POST})
     public Map<String, Object> addResponse(ls_earthquakeresponse earthquake, HttpServletRequest request, HttpServletResponse response){
         Map<String,Object> userMap = new HashMap<String,Object>();
+        XtUser user = (XtUser) request.getSession().getAttribute("user");       //获取session中user的信息
+        earthquake.setRegionid(user.getRegionid());            //将user中行政区划信息设置到应急响应信息中
         responseService.addEarthquake(earthquake);
         userMap.put("success",true);
         userMap.put("message","应急响应信息新增成功");
@@ -126,8 +129,10 @@ public class ResponseController {
     @ResponseBody
     @RequestMapping(value = "/getearthquake",method = {RequestMethod.GET,RequestMethod.POST})
     public List getBlast(HttpServletRequest request, HttpServletResponse response){
-        HashMap<String,Object> blastMap = new HashMap<String,Object>();
-        List earthResponse = responseService.getEarthResponse();
+        HashMap<String,Object> quakeMap = new HashMap<String,Object>();
+        XtUser user = (XtUser) request.getSession().getAttribute("user");
+        quakeMap.put("regionid",user.getRegionid());
+        List earthResponse = responseService.getEarthResponse(quakeMap);
         return earthResponse;
     }
 
@@ -166,7 +171,7 @@ public class ResponseController {
     }
 
     /**
-     * 应急响应信息查询（因只有一个应急预案，不以id查询）
+     * 应急响应信息查询
      * @param page
      * @param rows
      * @param request
@@ -175,11 +180,12 @@ public class ResponseController {
      */
     @ResponseBody
     @RequestMapping(value = "/getearthmsg", method = {RequestMethod.GET,RequestMethod.POST})
-    public HashMap<String,Object> getEarthmsgByyjid(@RequestParam int page, @RequestParam int rows,HttpServletRequest request,HttpServletResponse response){
+    public HashMap<String,Object> getEarthmsgByyjid(@RequestParam int yjid,@RequestParam int page, @RequestParam int rows,HttpServletRequest request,HttpServletResponse response){
         HashMap<String,Object> earthmsgMap = new HashMap<String,Object>();
         HashMap<String,Object> condMap = new HashMap<String ,Object>();
         CommonCode code = new CommonCode();
         condMap = code.condMap(request);
+        condMap.put("yjid",yjid);                             //根据应急预案id进行查询
         PageHelper.Page<ls_responsemessage> msginfo = responseService.getEarthmsgByid(page,rows,condMap);
         earthmsgMap.put("total",msginfo.getTotal());
         earthmsgMap.put("rows",msginfo.getResults());

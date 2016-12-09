@@ -73,8 +73,8 @@ public class ResponseServiceImpl implements IResponseService {
     }
 
     @Override
-    public List getEarthResponse() {
-        return earthquakeresponse.getEarthResponse();
+    public List getEarthResponse(HashMap<String, Object> quakeMap) {
+        return earthquakeresponse.getEarthResponse(quakeMap);
     }
 
     @Override

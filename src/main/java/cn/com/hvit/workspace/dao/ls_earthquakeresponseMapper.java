@@ -14,6 +14,6 @@ public interface ls_earthquakeresponseMapper {
 
     List getResponseByCond(HashMap<String, Object> condMap);
 
-    List getEarthResponse();
+    List getEarthResponse(HashMap<String, Object> quakeMap);
 
 }

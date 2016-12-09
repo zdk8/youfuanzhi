@@ -105,7 +105,7 @@ public class UserLoginController {
     }
 
     /**
-     * 新增用户，判断输入的用户名是否存在
+     * 新增用户，判断输入的用户名是否存在  (改用xtuser)
      * @param user
      * @param request
      * @param response
@@ -132,7 +132,7 @@ public class UserLoginController {
     }
 
     /**
-     * 用户信息更新，判断新输入的用户名是否存在
+     * 用户信息更新，判断新输入的用户名是否存在（改用xtuser）
      * @param userid
      * @param request
      * @param response
@@ -145,6 +145,13 @@ public class UserLoginController {
         return userXt;
     }
 
+    /**
+     * 用户更新（改用xtuser）
+     * @param user
+     * @param request
+     * @param response
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/updateuser", method = {RequestMethod.GET,RequestMethod.POST})
     public Map<String, Object> getUserByid(Ls_User user, HttpServletRequest request, HttpServletResponse response){
@@ -164,7 +171,12 @@ public class UserLoginController {
         }
     }
 
-
+    /**
+     * url测试
+     * @param request
+     * @param response
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/urltest", method = {RequestMethod.GET,RequestMethod.POST})
     public Map<String, Object> testURL(HttpServletRequest request, HttpServletResponse response){
@@ -175,6 +187,10 @@ public class UserLoginController {
         return userMap;
     }
 
+    /**
+     * 页面返回测试
+     * @return
+     */
     @RequestMapping(value = {"/testjkpage"}, method = RequestMethod.GET)
     public String home() {
         return "testjkpage";

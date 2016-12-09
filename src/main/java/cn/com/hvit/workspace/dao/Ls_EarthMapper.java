@@ -2,16 +2,10 @@ package cn.com.hvit.workspace.dao;
 
 import cn.com.hvit.workspace.model.Ls_Earth;
 
+import java.util.List;
+
 public interface Ls_EarthMapper {
-    int deleteByPrimaryKey(String earthid);
 
-    int insert(Ls_Earth record);
+    List getEarthData();
 
-    int insertSelective(Ls_Earth record);
-
-    Ls_Earth selectByPrimaryKey(String earthid);
-
-    int updateByPrimaryKeySelective(Ls_Earth record);
-
-    int updateByPrimaryKey(Ls_Earth record);
 }
