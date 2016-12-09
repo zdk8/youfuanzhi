@@ -2,7 +2,7 @@ package cn.com.hvit.framework.kon.util;
 
 
 
-import cn.com.hvit.workspace.model.Xt_user;
+import cn.com.hvit.workspace.model.XtUser;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
@@ -18,8 +18,8 @@ public class Global {
      * @param request
      * @return
      */
-    public static Xt_user getCurrentUser(HttpServletRequest request) {
-        Xt_user xt_user = (Xt_user) request.getSession().getAttribute("user");
+    public static XtUser getCurrentUser(HttpServletRequest request) {
+        XtUser xt_user = (XtUser) request.getSession().getAttribute("user");
         return xt_user;
     }
 

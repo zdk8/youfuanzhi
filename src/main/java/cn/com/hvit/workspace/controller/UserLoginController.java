@@ -2,7 +2,7 @@ package cn.com.hvit.workspace.controller;
 
 
 import cn.com.hvit.workspace.model.Ls_User;
-import cn.com.hvit.workspace.model.Xt_user;
+import cn.com.hvit.workspace.model.XtUser;
 import cn.com.hvit.workspace.service.ILogService;
 import cn.com.hvit.workspace.service.IUserService;
 import cn.com.hvit.workspace.util.CommonCode;
@@ -64,7 +64,7 @@ public class UserLoginController {
 //            return userMap;
 //        }
 
-        Xt_user xtUser = userService.userxtLogin(useraccount, userpwd);
+        XtUser xtUser = userService.userxtLogin(useraccount, userpwd);
         if (xtUser != null){
             //保存登录结果
             userMap.put("success", true);
@@ -140,8 +140,8 @@ public class UserLoginController {
      */
     @ResponseBody
     @RequestMapping(value = "/getuserbyid", method = {RequestMethod.GET,RequestMethod.POST})
-    public Xt_user updateUser(@RequestParam int userid, HttpServletRequest request, HttpServletResponse response){
-        Xt_user userXt = userService.getUserByid(userid);
+    public XtUser updateUser(@RequestParam int userid, HttpServletRequest request, HttpServletResponse response){
+        XtUser userXt = userService.getUserByid(userid);
         return userXt;
     }
 

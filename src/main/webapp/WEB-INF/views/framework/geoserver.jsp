@@ -1,6 +1,6 @@
-<%@ page import="cn.com.hvit.workspace.model.Xt_user" %>
+<%@ page import="cn.com.hvit.workspace.model.XtUser" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<% Xt_user user = (Xt_user) session.getAttribute("user");%>
+<% XtUser user = (XtUser) session.getAttribute("user");%>
 <% boolean dev=true;%>
 <% String devText=dev?"":"";%>
 <% String hvitFrontFWPrefix=dev?"http://120.55.65.150:8080/hvit-front/":"http://10.33.44.22:8080/hvit-front/";%>

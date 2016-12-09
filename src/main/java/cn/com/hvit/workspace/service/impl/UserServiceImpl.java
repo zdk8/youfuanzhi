@@ -1,9 +1,9 @@
 package cn.com.hvit.workspace.service.impl;
 
 import cn.com.hvit.workspace.dao.Ls_UserMapper;
-import cn.com.hvit.workspace.dao.Xt_userMapper;
+import cn.com.hvit.workspace.dao.XtUserMapper;
 import cn.com.hvit.workspace.model.Ls_User;
-import cn.com.hvit.workspace.model.Xt_user;
+import cn.com.hvit.workspace.model.XtUser;
 import cn.com.hvit.workspace.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ public class UserServiceImpl implements IUserService {
     private Ls_UserMapper userMapper;
 
     @Autowired
-    private Xt_userMapper xtUserMapper;
+    private XtUserMapper xtUserMapper;
 
     @Override
     public Ls_User userLogin(String useraccount, String userpwd) {
@@ -30,7 +30,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public Xt_user userxtLogin(String useraccount, String userpwd) {
+    public XtUser userxtLogin(String useraccount, String userpwd) {
         return xtUserMapper.xtuserLogin(useraccount,userpwd);
     }
 
@@ -40,7 +40,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public Xt_user getUserByid(int userid) {
+    public XtUser getUserByid(int userid) {
         return xtUserMapper.getUserByid(userid);
     }
 }

@@ -4,7 +4,7 @@ package cn.com.hvit.workspace.service;
 
 import cn.com.hvit.workspace.model.XtFunction;
 import cn.com.hvit.workspace.model.XtRole;
-import cn.com.hvit.workspace.model.Xt_user;
+import cn.com.hvit.workspace.model.XtUser;
 
 import java.util.List;
 import java.util.Map;
@@ -34,7 +34,7 @@ public interface SystemManagerService {
 
     void delFunctionById(String functionid);
 
-    void saveUser(Xt_user user);
+    void saveUser(XtUser user);
 
     void deleteUserById(String userid);
 

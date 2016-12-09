@@ -4,7 +4,7 @@ package cn.com.hvit.workspace.controller;
 import cn.com.hvit.framework.kon.util.Global;
 import cn.com.hvit.workspace.model.XtFunction;
 import cn.com.hvit.workspace.model.XtRole;
-import cn.com.hvit.workspace.model.Xt_user;
+import cn.com.hvit.workspace.model.XtUser;
 import cn.com.hvit.workspace.service.SystemManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -164,7 +164,7 @@ public class SystemManagerController {
      */
     @ResponseBody
     @RequestMapping(value = "sys/save-user", method = {RequestMethod.POST})
-    public Map saveuser(Xt_user xt_user,
+    public Map saveuser(XtUser xt_user,
                                       HttpServletRequest request, HttpServletResponse response) throws Exception {
         systemManagerService.saveUser(xt_user);
         Map resultMap=new HashMap();

@@ -18,7 +18,7 @@ import java.util.*;
 public class SystemManagerServiceImpl implements SystemManagerService {
 
     @Autowired
-    private Xt_userMapper userMapper;
+    private XtUserMapper userMapper;
 
     @Autowired
     private DivisionMapper divisionMapper;
@@ -151,7 +151,7 @@ public class SystemManagerServiceImpl implements SystemManagerService {
 
 
     @Override
-    public void saveUser(Xt_user user) {
+    public void saveUser(XtUser user) {
         if (user.getUserid() != null && user.getUserid().trim().length() != 0) {
             userMapper.updateByPrimaryKey(user);
         } else {

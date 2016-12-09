@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.com.hvit.workspace.dao.Xt_userMapper">
-    <resultMap id="BaseResultMap" type="cn.com.hvit.workspace.model.Xt_user">
+<mapper namespace="cn.com.hvit.workspace.dao.XtUserMapper">
+    <resultMap id="BaseResultMap" type="cn.com.hvit.workspace.model.XtUser">
     <id column="USERID" jdbcType="DECIMAL" property="userid" />
     <result column="PASSWD" jdbcType="VARCHAR" property="passwd" />
     <result column="LOGINNAME" jdbcType="VARCHAR" property="loginname" />
@@ -63,7 +63,7 @@
   </where>
   </select>
 
-  <insert id="insert" parameterType="cn.com.hvit.workspace.model.Xt_user">
+  <insert id="insert" parameterType="cn.com.hvit.workspace.model.XtUser">
     insert into XT_USER (USERID, PASSWD, LOGINNAME,
       DEPT, DESCRIPTION, USEFUL,
       REGIONID, USERNAME, OWNER,
@@ -79,7 +79,7 @@
       #{station,jdbcType=VARCHAR}, #{persontype,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="cn.com.hvit.workspace.model.Xt_user">
+  <insert id="insertSelective" parameterType="cn.com.hvit.workspace.model.XtUser">
     insert into XT_USER
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="userid != null">
@@ -194,7 +194,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.com.hvit.workspace.model.Xt_user">
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.hvit.workspace.model.XtUser">
     update XT_USER
     <set>
       <if test="passwd != null">
@@ -251,7 +251,7 @@
     </set>
     where USERID = #{userid,jdbcType=DECIMAL}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.com.hvit.workspace.model.Xt_user">
+  <update id="updateByPrimaryKey" parameterType="cn.com.hvit.workspace.model.XtUser">
     update XT_USER
     set PASSWD = #{passwd,jdbcType=VARCHAR},
       LOGINNAME = #{loginname,jdbcType=VARCHAR},

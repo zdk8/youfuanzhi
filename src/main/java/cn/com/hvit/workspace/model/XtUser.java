@@ -2,7 +2,7 @@ package cn.com.hvit.workspace.model;
 
 import java.util.Date;
 
-public class Xt_user {
+public class XtUser {
     private String userid;
 
     private String passwd;
