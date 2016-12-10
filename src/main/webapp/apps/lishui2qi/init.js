@@ -179,5 +179,25 @@ define(['jeasyui','jeasyui_zh_CN','cj','underscore', 'mapviews/initMap'],
         require(['mapviews/FastMenu'], function (FastMenu) {
             FastMenu.render();
         });
+        
+        //历史地震按钮点击
+        var historyEqBtn=$('#show-history-earth-quake');
+        historyEqBtn.bind('click',function () {
+            var me = $(this);
+            require(['mapviews/ShowHistoryQuake'], function (action) {
+                    if(me.attr('showed')=="true" || me.attr('showed')==true) {
+                        action.hide();
+                        me.attr('showed', false);
+                    }else{
+                        action.start();
+                        me.attr('showed', true);
+                    }
+                });
+        });
+
+        //加载最后一个历史地震信息
+        require(['mapviews/OneHistoryQuake'],function (OneHistoryQuake) {
+            //OneHistoryQuake.initLastQuake();
+        });
     };
 });

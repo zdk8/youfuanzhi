@@ -239,10 +239,17 @@ ul#map-menu span.checkbox.selected {
 }
 
 #history-earthquake {
-    padding: 30px 20px;
+    padding: 10px;
     font-size: 10px;
     color: #333;
-    line-height: 20px;
+    /*line-height: 20px;*/
+}
+#history-earthquake table {
+    border-spacing: 0;
+    font-size: larger;
+}
+#history-earthquake table td.my-form-label {
+
 }
 
 #station-dg-wrapper {

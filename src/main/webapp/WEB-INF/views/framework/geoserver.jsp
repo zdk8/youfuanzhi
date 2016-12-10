@@ -49,6 +49,7 @@
         .leaflet-control-layers-base input.menu{
             display: none;
         }
+
     </style>
 
     <script>
@@ -118,10 +119,12 @@
     <div id="earth-panel">
         <div class="ep-title">
             <span class="title">地震信息</span>
-            <a class="btn">历史地震</a>
+            <a class="btn" id="show-history-earth-quake">历史地震</a>
         </div>
         <div class="ep-body">
-            <div id="history-earthquake">历史地震历史地震<br>历史地震历史地震历史地震历史地震历史地震历史地震<br>历史地震历史地震历史地震</div>
+            <div id="history-earthquake">
+                暂无地震
+            </div>
         </div>
         <div class="ep-title">
             <span class="title">台站信息</span>
