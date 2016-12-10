@@ -137,7 +137,7 @@ define(['jeasyui','jeasyui_zh_CN','cj','underscore', 'mapviews/initMap'],
         var $currentTime = $('#current-time');
         var flashTime = function () {
             var date = new Date();
-            var currentTimeString = date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
+            var currentTimeString = date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
             $currentTime.text(currentTimeString);
         };
         window.setInterval(flashTime, 1000);
@@ -157,7 +157,8 @@ define(['jeasyui','jeasyui_zh_CN','cj','underscore', 'mapviews/initMap'],
         //水库列表
         require(['text!mapviews/ShuiKuList-template.htm'], function (htm) {
             var tpl = _.template(htm);
-            $.get('data-json/test/datagrid_data1.json', function (resp) {
+            $.get('data-json/test/datagrid_data1.json',
+                function (resp) {
                 $('#shuiku-list').append(tpl({children: resp.rows}));
             })
         });
@@ -178,6 +179,26 @@ define(['jeasyui','jeasyui_zh_CN','cj','underscore', 'mapviews/initMap'],
         //快速菜单
         require(['mapviews/FastMenu'], function (FastMenu) {
             FastMenu.render();
+        });
+        
+        //历史地震按钮点击
+        var historyEqBtn=$('#show-history-earth-quake');
+        historyEqBtn.bind('click',function () {
+            var me = $(this);
+            require(['mapviews/ShowHistoryQuake'], function (action) {
+                    if(me.attr('showed')=="true" || me.attr('showed')==true) {
+                        action.hide();
+                        me.attr('showed', false);
+                    }else{
+                        action.start();
+                        me.attr('showed', true);
+                    }
+                });
+        });
+
+        //加载最后一个历史地震信息
+        require(['mapviews/OneHistoryQuake'],function (OneHistoryQuake) {
+            //OneHistoryQuake.initLastQuake();
         });
     };
 });

@@ -4,8 +4,15 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
         var mydelete = function () {
 
         }
-        var view = function () {
-
+        var view = function (record,dg) {
+            DispatcherPanel.open('text!mapviews/StationView.htm', 'mapviews/StationView',
+                {
+                    ptype: DispatcherPanel.PANELLAYER,
+                    title: ' 查看台站信息 ' ,
+                    record: record,
+                    dg: dg,
+                    height:250
+                });
         }
 
         return {
@@ -18,7 +25,8 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                         fit: true,
                         rownumbers: false,
                         fitColumns: true,
-                        url: 'data-json/test/datagrid_data1.json'
+                        url: 'data-json/stations.json',
+                        url2:'getyqstation'
                     }
                 );
             }

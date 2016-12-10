@@ -1,0 +1,50 @@
+<div>
+    <table cellpadding="4" cellspacing="1" class="form-table" style="width:300px;">
+        <tbody>
+        <tr>
+            <td class="my-form-label">编号:</td>
+            <td>
+                <%=earthid%>
+            </td>
+        </tr>
+        <tr>
+            <td class="my-form-label">位置:</td>
+            <td><%=location%>
+            </td>
+        </tr>
+        <tr>
+            <td class="my-form-label">经纬度:</td>
+            <td>
+                <%=lon %>,<%=lat%>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="my-form-label">发震时间:</td>
+            <td>
+                <%=new Date(earthtime).pattern('yyyy-MM-dd HH:mm')%>
+            </td>
+        </tr>
+        <tr>
+            <td class="my-form-label">说明:</td>
+            <td>
+                <%=mytype%>
+            </td>
+        </tr>
+<!--        <tr>
+            <td class="my-form-label">ml :</td>
+            <td>
+                <%=ml%>
+            </td>
+        </tr>-->
+        <tr>
+            <td class="my-form-label">深度:</td>
+            <td>
+                <%=depth%>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+
+</div>

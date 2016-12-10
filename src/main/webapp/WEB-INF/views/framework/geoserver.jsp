@@ -49,6 +49,7 @@
         .leaflet-control-layers-base input.menu{
             display: none;
         }
+
     </style>
 
     <script>
@@ -118,10 +119,12 @@
     <div id="earth-panel">
         <div class="ep-title">
             <span class="title">地震信息</span>
-            <a class="btn">历史地震</a>
+            <a class="btn" id="show-history-earth-quake">历史地震</a>
         </div>
         <div class="ep-body">
-            <div id="history-earthquake">历史地震历史地震<br>历史地震历史地震历史地震历史地震历史地震历史地震<br>历史地震历史地震历史地震</div>
+            <div id="history-earthquake">
+                暂无地震
+            </div>
         </div>
         <div class="ep-title">
             <span class="title">台站信息</span>
@@ -133,11 +136,14 @@
                        data-options="method:'get'">
                     <thead>
                     <tr>
-                        <th data-options="field:'itemid',width:80">台站名称</th>
-                        <th data-options="field:'productid',width:80">状态</th>
-                        <th data-options="field:'listprice',width:80,align:'center'">其他</th>
-                        <th data-options="field:'unitcost',width:80,align:'center',
-                        formatter:cj.button.OnlyIconFormatter(['update','编辑','update'],['mydelete','删除','trash'])">快捷操作</th>
+                        <th data-options="field:'stationname',width:120">台站名称</th>
+                        <th data-options="field:'flag',width:60,formatter:function(v,r,i){
+                        if(v==true||v=='true'){return '<span style=&quot;color:green;&quot;>正常</span>';}
+                        else{return '<span style=&quot;color:red;&quot;>异常</span>';}
+                        }">状态</th>
+                        <th data-options="field:'linetype',width:60,align:'center'">类型</th>
+                        <th data-options="field:'unitcost',width:60,align:'center',
+                        formatter:cj.button.OnlyIconFormatter(['update','查看','update'])">操作</th>
                     </tr>
                     </thead>
                 </table>
