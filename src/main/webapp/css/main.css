@@ -190,7 +190,7 @@ ul#map-menu span.checkbox.selected {
     position: fixed;
     min-height: 20px;
     right: 20px;
-    top: 70px;
+    top: 100px;
     width: 300px;
     overflow-y: auto;
 }
@@ -204,7 +204,7 @@ ul#map-menu span.checkbox.selected {
 }
 
 .ep-title {
-    background-color: #f5f5f5;
+    background-image: url(../images/背景填充.png);
     border-bottom: 1px solid #e6e6e6;
     height: 35px;
     padding: 0 10px;
@@ -217,7 +217,7 @@ ul#map-menu span.checkbox.selected {
 }
 
 .ep-title .title {
-    color: #129be2;
+    color: white;
 }
 
 .ep-title .btn {
@@ -272,12 +272,14 @@ ul#map-menu span.checkbox.selected {
     height: 20px;
     background-color: white;
     cursor: pointer;
+    /*background-size: contain;*/
     background-size: 40px 20px;
-    background: url(../images/icons/pull.png) no-repeat;
+    background-repeat: no-repeat;
+    background-image: url(../images/icons/pull.png);
 }
 
 #earth-panel-hander > div.down {
-    background: url(../images/icons/down.png) no-repeat;
+    background-image: url(../images/icons/down.png);
 }
 
 /*右侧面板结束*/
@@ -291,32 +293,27 @@ ul#map-menu span.checkbox.selected {
 
 #lishui-map-button > div {
     font-size: 14px;
-    background-color: white;
+    background-color: #dbeafa;
+    color: #2a5f8c;
     box-shadow: 0 2px 5px #a9a9a9;
 }
 
 #lishui-map-button a.text {
     cursor: pointer;
-    height: 30px;
-    line-height: 30px;
-    border-radius: 15px;
-    width: 85px;
-    margin: 5px 10px;
+    height: 40px;
+    line-height: 40px;
+    width: 106px;
     text-align: center;
     display: inline-block;
-    border-width: 1px;
-    border-style: solid;
-    border-color: white;
+    background-image: url(../images/left-top-fast-menu-normal.png);
 }
 
 #lishui-map-button a.text:hover {
-    background-color: #f5eb93;
-    border-color: #f5eb93;
+    background-image: url(../images/left-top-fast-menu-selected.png);
 }
 
 #lishui-map-button a.text.selected {
-    background-color: #f59436;
-    border-color: #f59436;
+    background-image: url(../images/left-top-fast-menu-selected.png);
     color: white;
 }
 
