@@ -137,7 +137,7 @@ define(['jeasyui','jeasyui_zh_CN','cj','underscore', 'mapviews/initMap'],
         var $currentTime = $('#current-time');
         var flashTime = function () {
             var date = new Date();
-            var currentTimeString = date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
+            var currentTimeString = date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
             $currentTime.text(currentTimeString);
         };
         window.setInterval(flashTime, 1000);

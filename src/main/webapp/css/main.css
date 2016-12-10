@@ -16,7 +16,7 @@ html, body {
 }
 
 #header {
-    background: #129be2;
+    background: url(../images/背景填充.png);
 }
 
 #header, #header-center, #project-name, #header-menu-wrapper, #header-menu, #project-name span {
@@ -285,8 +285,8 @@ ul#map-menu span.checkbox.selected {
 #lishui-map-button {
     position: absolute;
     z-index: 999;
-    left: 20px;
-    top: 20px;
+    width:100%;
+    top: 0;
 }
 
 #lishui-map-button > div {
