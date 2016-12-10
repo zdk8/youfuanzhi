@@ -19,6 +19,10 @@ public class YiqiController {
     @Autowired
     private IYiqiService yiqiService;
 
+    /**
+     * 查找一期历史地震信息
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/getyqquake" ,method = {RequestMethod.GET,RequestMethod.POST})
     public List getYqQuake(){
@@ -34,11 +38,27 @@ public class YiqiController {
     }
 
 
+    /**
+     * 查找一期台站信息
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/getyqstation" ,method = {RequestMethod.GET,RequestMethod.POST})
     public List getYqStation(){
         DataSourceContextHolder.setDbType("lishuidataSource");
         List stationData = yiqiService.getStationData();
         return stationData;
+    }
+
+    /**
+     * 查找一期水库信息
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/getyqreservoir" ,method = {RequestMethod.GET,RequestMethod.POST})
+    public List getYqReservoir(){
+        DataSourceContextHolder.setDbType("lishuidataSource");
+        List reservoirData = yiqiService.getReservoirData();
+        return reservoirData;
     }
 }

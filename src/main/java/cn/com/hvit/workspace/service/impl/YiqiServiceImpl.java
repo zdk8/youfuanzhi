@@ -2,6 +2,7 @@ package cn.com.hvit.workspace.service.impl;
 
 import cn.com.hvit.framework.kon.util.PageHelper;
 import cn.com.hvit.workspace.dao.Ls_EarthMapper;
+import cn.com.hvit.workspace.dao.Ls_ReservoirMapper;
 import cn.com.hvit.workspace.dao.Ls_StationMapper;
 import cn.com.hvit.workspace.model.Ls_Earth;
 import cn.com.hvit.workspace.service.IYiqiService;
@@ -22,6 +23,8 @@ public class YiqiServiceImpl implements IYiqiService {
     @Autowired
     private Ls_StationMapper stationMapper;
 
+    @Autowired
+    private Ls_ReservoirMapper reservoirMapper;
 
     @Override
     public List getEarthData() {
@@ -31,5 +34,10 @@ public class YiqiServiceImpl implements IYiqiService {
     @Override
     public List getStationData() {
         return stationMapper.getStation();
+    }
+
+    @Override
+    public List getReservoirData() {
+        return reservoirMapper.getReservior();
     }
 }

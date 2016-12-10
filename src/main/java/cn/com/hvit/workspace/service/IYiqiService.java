@@ -14,4 +14,7 @@ public interface IYiqiService {
     List getEarthData();
 
     List getStationData();
+
+    List getReservoirData();
+
 }
