@@ -61,7 +61,7 @@ html, body {
 
 #header-more-menu {
     position: absolute;
-    z-index: 999;
+    z-index: 9999;
     /*background: rgba(103, 92, 231, 0.59);*/
     background: #129be2;
     display: none;
