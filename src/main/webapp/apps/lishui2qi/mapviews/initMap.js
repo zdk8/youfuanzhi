@@ -126,8 +126,10 @@ define([
 
 
                 if (display_layers.length === 0)alert("无地图资源");
+
+                //119.92 28.45
                 var map = new L.Map('mapid', {
-                    center: [29.24281, 120.32712],
+                    center: [28.45, 119.92],
                     zoom: 10,
                     attributionControl:false,
                     zoomControl: false,
