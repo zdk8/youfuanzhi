@@ -100,11 +100,11 @@
       <if test="applicant != null" >
         #{applicant,jdbcType=VARCHAR},
       </if>
-      <if test="regionid != null" >
-        #{REGIONID,jdbcType=VARCHAR},
-      </if>
       <if test="formdate != null" >
         #{formdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="regionid != null" >
+        #{regionid,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
