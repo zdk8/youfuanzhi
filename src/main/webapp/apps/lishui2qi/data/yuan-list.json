@@ -1,1 +1,2 @@
-[{"level":1},{"level":2},{"level":3},{"level":4,"status":0},{"level":5},{"level":6}]
+[{"level":1,"yjname":"AA","status":1},{"level":2,"yjname":"BB"},{"level":3,"yjname":"CC"},
+  {"level":4,"yjname":"DD","status":0},{"level":5,"yjname":"EE","status":1},{"level":6,"yjname":"FF"}]

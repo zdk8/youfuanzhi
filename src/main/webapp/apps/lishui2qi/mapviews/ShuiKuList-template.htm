@@ -1,19 +1,23 @@
 <% _.each(children,function(item,index){ %>
 
 <p>
-    <img src=""><span><%= index+1 %>:滩坑水库</span>
+    <img src=""><span><%= index+1 %>:<%=item.reservoirname%></span>
 <p style="background: linear-gradient(to bottom,#ffffff 0%, rgba(227, 255, 243, 0.7) 100%)">
-<p>水库编号:<%=reservoirid%></p>
-<p>水库名称:<%=reservoirname%></p>
-<p>地址:<%=reservoiraddress%></p>
-<p>面积:<%=reservoirarea%></p>
-<p>时间:<%=reservoirtime%></p>
-<p>高:<%=damheight%></p>
-<p>最大水位:<%=maxwaterlevel%></p>
-<p>设计最大水位:<%=designwaterlevel%></p>
-<p>最大容量:<%=maxcapacity%></p>
-<p>长:<%=damlong%></p>
-<p>长:<%=damlong%></p>
+    <span>地址:<%=item.reservoiraddress%></span>
+    <span>水库编号:<%=item.reservoirid%></span>
+    <br>
+
+    <span>时间:<%=item.reservoirtime%></span>
+    <br>
+
+    <span>面积:<%=item.reservoirarea%></span>
+    <span>高:<%=item.damheight%></span>
+    <span>长:<%=item.damlong%></span>
+    <br>
+
+    <span>设计最大水位:<%=item.designwaterlevel%></span>
+    <span>最大水位:<%=item.maxwaterlevel%></span>
+    <span>最大容量:<%=item.maxcapacity%></span>
 
 </p>
 </p>

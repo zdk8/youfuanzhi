@@ -213,7 +213,7 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
 
 
                 //未启动预案时的状态
-                startup_jiechuStatusChange(false);
+                /*startup_jiechuStatusChange(false);
                 $.get('getearthquake',function (resp) {
                     if(resp[0]['yjstatus']=='start'){
                         startup_jiechuStatusChange(true);
@@ -223,7 +223,7 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                     $download.attr('href',resp[0]['yjpath']+'?dlname='+resp[0]['yjpath'].split('/')[1]);
                     $download.text('下载');
                     
-                });
+                });*/
 
 
                 tb.find('a[action=yuan-file-upload]').bind('click', function () {
@@ -241,6 +241,17 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                                     $download.text('下载');
                                 });
                             }
+                        });
+                });
+
+                //多预案管理
+                tb.find('a[action=multi-yuan]').bind('click', function () {
+                    DispatcherPanel.open('text!views/MultiYuanQuery.htm', 'views/MultiYuanQuery',
+                        {
+                            ptype: DispatcherPanel.PANELLAYER,
+                            width: 600,
+                            title: '预案管理',
+                            dg: dg
                         });
                 });
 

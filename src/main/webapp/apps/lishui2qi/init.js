@@ -157,9 +157,10 @@ define(['jeasyui','jeasyui_zh_CN','cj','underscore', 'mapviews/initMap'],
         //水库列表
         require(['text!mapviews/ShuiKuList-template.htm'], function (htm) {
             var tpl = _.template(htm);
-            $.get('data-json/test/datagrid_data1.json',
+            $.get(//'data-json/test/datagrid_data1.json',
+                'getyqreservoir',
                 function (resp) {
-                $('#shuiku-list').append(tpl({children: resp.rows}));
+                $('#shuiku-list').append(tpl({children: resp}));
             })
         });
 
