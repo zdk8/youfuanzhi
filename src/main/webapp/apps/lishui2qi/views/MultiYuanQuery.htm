@@ -12,8 +12,8 @@
  <th data-options="field:'yjname',width:60,formatter:function(v,r,i){
      return '<a action=view>'+v+'</a>';
  }">名称</th>
-        <th data-options="field:'预案资料',width:60,formatter:function(v,r,i){
-           return '<a href=&quot;#&quot;>下载</a>';
+        <th data-options="field:'yjpath',width:60,formatter:function(v,r,i){
+           return '<a href=&quot;'+v+'&quot;>下载</a>';
         }"> 预案资料</th>
         <th data-options="field:'ooo',width:100,align:'center',fixed:true,
                             formatter:cj.button.RoundTextFormatter(['startup','启动','startup'],['jiechu','解除','jiechu'])">
@@ -24,4 +24,7 @@
 </table>
 <div tb="toolbar" class="my-toolbar">
     <a action="create-yuan" class="tool-add">创建</a>
+    <label class="my-tool-label">级别</label>
+      <input class="easyui-combobox" type="text" opt="rmlevel"
+             data-options="width:100,prompt:'',data:cj.getEnum('rmlevel'),panelHeight:'auto'">
 </div>
