@@ -42,11 +42,16 @@ public class BlastController {
         Map<String,Object> userMap = new HashMap<String,Object>();
         //将用户信息的行政区划id添加到爆破信息中
         XtUser user = (XtUser) request.getSession().getAttribute("user");
-        blast.setRegionid(user.getRegionid());
-        blastService.addBlast(blast);
+        if(user != null){
+            blast.setRegionid(user.getRegionid());
+            blastService.addBlast(blast);
 //        CommonCode.addLog(request,"新增爆破信息");             //日志信息增加
-        userMap.put("success",true);
-        userMap.put("message","爆破信息新增成功");
+            userMap.put("success",true);
+            userMap.put("message","爆破信息新增成功");
+        }else {
+            userMap.put("success",false);
+            userMap.put("message","用户未登录");
+        }
         return userMap;
     }
 
@@ -109,7 +114,11 @@ public class BlastController {
         XtUser user = (XtUser) request.getSession().getAttribute("user");
         CommonCode code = new CommonCode();
         condMap = code.condMap(request);
-        condMap.put("regionid",user.getRegionid());
+        if(user != null){
+            condMap.put("regionid",user.getRegionid());
+        }else {
+            condMap.put("regionid","未登录");
+        }
         PageHelper.Page<Ls_Blast> orginfo = blastService.getBlastByCond(page, rows,condMap);
         blastMap.put("total",orginfo.getTotal());
         blastMap.put("rows",orginfo.getResults());

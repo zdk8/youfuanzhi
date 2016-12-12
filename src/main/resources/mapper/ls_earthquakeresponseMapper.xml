@@ -33,6 +33,9 @@
     from LS_EARTHQUAKERESPONSE
     WHERE regionid like CONCAT('%',CONCAT (#{regionid},'%'))
   </select>
+  <select id="getResponseid" resultType="map">
+      select seq_ls_earthquakeresponse.nextval as "nextid"  from dual
+  </select>
   <insert id="insert" parameterType="cn.com.hvit.workspace.model.ls_earthquakeresponse" >
     insert into LS_EARTHQUAKERESPONSE (YJID, YJNAME, YJPATH ,YJSTATUS ,REGIONID
       )

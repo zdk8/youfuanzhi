@@ -122,6 +122,8 @@ public class TdsTest {
      */
     @Test
     public void responseTest(){
+        System.out.println(responseService.addEarthquake(new ls_earthquakeresponse()).get("nextid"));
+
 //        ls_responsemessage message = new ls_responsemessage();
 //        message.setDepartment("市政府");
 //        message.setDutycontent("贯彻市指挥部的指示和部署，协调有关县级人民政府、指挥部成员单位之间、地震现场指挥部以及各级地震救援队伍的应急工作。特别重大或重大地震灾害时，承担市指挥部办公室职责。");
@@ -154,10 +156,13 @@ public class TdsTest {
 //        List earthResponse = responseService.getEarthResponse();
 //        System.out.println(earthResponse.size());
 
-        HashMap<String,Object> msgMap = new HashMap<String,Object>();
-        msgMap.put("rmid",26);
-        responseService.deleteEarthMsg(msgMap);
-        System.out.println("delete");
+//        HashMap<String,Object> msgMap = new HashMap<String,Object>();
+//        msgMap.put("rmid",26);
+//        responseService.deleteEarthMsg(msgMap);
+//        System.out.println("delete");
+
+
+
     }
 
     @Test

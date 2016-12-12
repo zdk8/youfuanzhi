@@ -27,7 +27,7 @@ public class ResponseServiceImpl implements IResponseService {
 
     @Override
     public void addEarthquake(ls_earthquakeresponse earthquake) {
-         earthquakeresponse.insertSelective(earthquake);
+          earthquakeresponse.insertSelective(earthquake);
     }
 
     @Override
