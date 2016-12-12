@@ -35,6 +35,27 @@ public class ResponseController {
     @Autowired
     IResponseService responseService;
 
+
+    private String filePath(MultipartFile[] myfile){
+        String pathstr = "";
+        for (MultipartFile file : myfile){
+            if (file.isEmpty()){
+                System.out.println("文件未上传");
+            }else {
+                String originName = file.getOriginalFilename();
+                AttachmentNameBean nameBean = new AttachmentNameBean(originName);
+                try {
+                    file.transferTo(new File(nameBean.getAbsolutePath()));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                pathstr = "responsefiledownload/" + nameBean.getNewFileNamePrefix() + nameBean.getNewFileName();
+            }
+        }
+        return pathstr;
+    }
+
+
     /**
      * 添加应急响应信息
      * @param earthquake
@@ -44,13 +65,19 @@ public class ResponseController {
      */
     @ResponseBody
     @RequestMapping(value = "/addearthquake",method = {RequestMethod.GET,RequestMethod.POST})
-    public Map<String, Object> addResponse(ls_earthquakeresponse earthquake, HttpServletRequest request, HttpServletResponse response){
+    public Map<String, Object> addResponse(ls_earthquakeresponse earthquake,@RequestParam MultipartFile[] myfile, HttpServletRequest request, HttpServletResponse response){
         Map<String,Object> userMap = new HashMap<String,Object>();
         XtUser user = (XtUser) request.getSession().getAttribute("user");       //获取session中user的信息
-        earthquake.setRegionid(user.getRegionid());            //将user中行政区划信息设置到应急响应信息中
-        responseService.addEarthquake(earthquake);
-        userMap.put("success",true);
-        userMap.put("message","应急响应信息新增成功");
+        if(user != null){
+            earthquake.setYjpath(filePath(myfile));
+            earthquake.setRegionid(user.getRegionid());            //将user中行政区划信息设置到应急响应信息中
+            responseService.addEarthquake(earthquake);
+            userMap.put("success",true);
+            userMap.put("message","应急响应信息新增成功");
+        }else {
+            userMap.put("success",false);
+            userMap.put("message","用户未登录");
+        }
         return userMap;
     }
 
@@ -63,14 +90,18 @@ public class ResponseController {
      */
     @ResponseBody
     @RequestMapping(value = "/updateearthquake",method = {RequestMethod.GET,RequestMethod.POST})
-    public Map<String, Object> updateResponse(ls_earthquakeresponse earthquake, HttpServletRequest request, HttpServletResponse response){
+    public Map<String, Object> updateResponse(ls_earthquakeresponse earthquake,@RequestParam MultipartFile[] myfile, HttpServletRequest request, HttpServletResponse response){
         Map<String,Object> userMap = new HashMap<String,Object>();
-        if(earthquake.getYjid() == null){
-            earthquake.setYjid(BigDecimal.valueOf(21));
+        XtUser user = (XtUser) request.getSession().getAttribute("user");       //获取session中user的信息
+        if (user != null){
+            earthquake.setYjpath(filePath(myfile));
+            responseService.updateEarthquake(earthquake);
+            userMap.put("success",true);
+            userMap.put("message","应急响应信息更新成功");
+        }else{
+            userMap.put("success",false);
+            userMap.put("message","用户未登录");
         }
-        responseService.updateEarthquake(earthquake);
-        userMap.put("success",true);
-        userMap.put("message","应急响应信息更新成功");
         return userMap;
     }
 
@@ -81,7 +112,7 @@ public class ResponseController {
      */
     @ResponseBody
     @RequestMapping(value = "/responsefileupload",method = {RequestMethod.GET,RequestMethod.POST})
-    public Map<String, Object> fileupload(@RequestParam MultipartFile[] myfile){
+    public Map<String, Object> fileupload(@RequestParam MultipartFile[] myfile,@RequestParam int yjid){
         Map<String,Object> userMap = new HashMap<String,Object>();
         List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
         for (MultipartFile file : myfile){
@@ -98,7 +129,7 @@ public class ResponseController {
 
                 ls_earthquakeresponse earthquakeresponse = new ls_earthquakeresponse();
                 earthquakeresponse.setYjpath("responsefiledownload/" + nameBean.getNewFileNamePrefix() + nameBean.getNewFileName());
-                earthquakeresponse.setYjid(BigDecimal.valueOf(21));
+                earthquakeresponse.setYjid(BigDecimal.valueOf(yjid));
                 responseService.updateEarthquake(earthquakeresponse);
             }
         }
@@ -131,7 +162,11 @@ public class ResponseController {
     public List getBlast(HttpServletRequest request, HttpServletResponse response){
         HashMap<String,Object> quakeMap = new HashMap<String,Object>();
         XtUser user = (XtUser) request.getSession().getAttribute("user");
-        quakeMap.put("regionid",user.getRegionid());
+        if(user != null){
+            quakeMap.put("regionid",user.getRegionid());
+        }else{
+            quakeMap.put("regionid","用户未登录");
+        }
         List earthResponse = responseService.getEarthResponse(quakeMap);
         return earthResponse;
     }

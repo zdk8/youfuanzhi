@@ -3,6 +3,7 @@ package cn.com.hvit.workspace.util;
 import cn.com.hvit.framework.kon.util.AttachmentNameBean;
 import cn.com.hvit.workspace.model.Ls_Log;
 import cn.com.hvit.workspace.model.Ls_User;
+import cn.com.hvit.workspace.model.XtUser;
 import cn.com.hvit.workspace.service.ILogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.*;
+import java.math.BigDecimal;
 import java.net.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -34,12 +36,18 @@ public class CommonCode {
      * @param message
      */
     public void addLog(ILogService logService,HttpServletRequest request, String message){
-        Ls_User user = (Ls_User) request.getSession().getAttribute("user");
+        XtUser user = (XtUser) request.getSession().getAttribute("user");
         Ls_Log log = new Ls_Log();
-        log.setUserid(user.getUserid());
-        log.setLogcontent(user.getUsername()+message);
-        log.setClientip(getClientIp(request));
-        logService.addLog(log);
+        if (user != null){
+            log.setUserid(BigDecimal.valueOf(Long.parseLong(user.getUserid())));
+            log.setLogcontent(user.getUsername()+message);
+            log.setClientip(getClientIp(request));
+            logService.addLog(log);
+        } else {
+            log.setClientip(getClientIp(request));
+            logService.addLog(log);
+        }
+
     }
 
     /**
