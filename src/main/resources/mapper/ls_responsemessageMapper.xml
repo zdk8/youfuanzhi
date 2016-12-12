@@ -42,7 +42,7 @@
     select
     <include refid="Base_Column_List" />
     from LS_RESPONSEMESSAGE
-    where rmlevel like CONCAT('%',CONCAT(#{rmlevel},'%'))
+    where rmlevel like CONCAT('%',CONCAT(#{rmlevel},'%')) AND yjid = #{yjid}
   </select>
   <insert id="insert" parameterType="cn.com.hvit.workspace.model.ls_responsemessage" >
     insert into LS_RESPONSEMESSAGE (RMID, DEPARTMENT, DUTYCONTENT, 

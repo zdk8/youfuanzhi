@@ -26,7 +26,7 @@ public interface IResponseService {
 
     PageHelper.Page<ls_responsemessage> getEarthmsgByid(int page, int rows, HashMap<String, Object> condMap);
 
-    void setResponseStatus(String start);
+    void setResponseStatus(String start,int yjid);
 
     List getEarthResponse(HashMap<String, Object> quakeMap);
 

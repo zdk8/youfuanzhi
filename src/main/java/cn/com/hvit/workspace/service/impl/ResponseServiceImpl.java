@@ -65,10 +65,10 @@ public class ResponseServiceImpl implements IResponseService {
     }
 
     @Override
-    public void setResponseStatus(String start) {
+    public void setResponseStatus(String start,int yjid) {
         ls_earthquakeresponse responseStatus = new ls_earthquakeresponse();
         responseStatus.setYjstatus(start);
-        responseStatus.setYjid(BigDecimal.valueOf(21));
+        responseStatus.setYjid(BigDecimal.valueOf(yjid));
         earthquakeresponse.updateEarthquake(responseStatus);
     }
 
