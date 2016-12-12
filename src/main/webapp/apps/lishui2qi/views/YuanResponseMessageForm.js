@@ -12,6 +12,9 @@ define([], function () {
             if (record) {
                 saveOrUpdateUrl = 'updateearthmessage';
             }
+            if(cb.params.yjid) {
+                poplocal.find('form').form('load', {yjid: cb.params.yjid});
+            }
             $(submitbtn).bind('click', function () {
                 poplocal.find('form').form('submit', {
                     url: saveOrUpdateUrl,

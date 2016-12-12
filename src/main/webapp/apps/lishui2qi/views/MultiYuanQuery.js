@@ -7,7 +7,7 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
             $.messager.confirm('确认', '您真的要解除预案吗?', function (r) {
                 if (r) {
                     $.ajax({
-                        url: 'responsestart',
+                        url: 'responsestop',
                         data: {level: record.level, yjid: record.yjid},
                         type: 'post',
                         success: function () {
@@ -36,6 +36,18 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                     ptype: DispatcherPanel.PANELLAYER,
                     title: '预案信息：'+record.yjname,
                     height:300,
+                    record: record,
+                    dg: dg
+                });
+        }
+
+        var showdetail = function (record, dg) {
+            DispatcherPanel.open('text!views/YuanResponseMessageQuery.htm', 'views/YuanResponseMessageQuery',
+                {
+                    ptype: DispatcherPanel.PANELLAYER,
+                    title: '预案信息：'+record.yjname,
+                    height:500,
+                    width:900,
                     record: record,
                     dg: dg
                 });
@@ -76,7 +88,7 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
 
                 var statusArray = [];
                 var dg = MakeDG.make(local.find('.easyui-datagrid-noauto'),
-                    {startup: startup, jiechu: jiechu,update: view, view: view},
+                    {startup: startup, jiechu: jiechu,update: view, view: view,showdetail:showdetail},
                     {
                         url:'getearthquake',
                         //url: 'apps/lishui2qi/data/yuan-list.json',
@@ -86,7 +98,7 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                             }
                         },
                         rowLoadCallBack:function (row,index) {
-                            if(row.yjstatus==1) {
+                            if(row.yjstatus=='start') {
                                 statusArray.push($.extend({index:index},row));
                             }
                         },

@@ -49,10 +49,11 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                 var tb = $(local).find('div[tb]');
                 var $yuanStatus=$('#yuan-status');
                 var startNumber=0;
+                var yjid=option.params.record.yjid;
                 var dg = MakeDG.make(local.find('.easyui-datagrid-noauto'),
                     {mydelete: mydelete, update: view, view: view},
                     {
-                        url: 'getearthmsg',
+                        url: 'getearthmsg?yjid='+yjid,
                         rowStyler: function (index, row) {
                             if (row.status ==1) {
                                 return 'background-color:#6293BB;color:rgb(179, 47, 47);';
@@ -127,6 +128,7 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                             ptype: DispatcherPanel.PANELLAYER,
                             width:600,
                             title: '新增',
+                            yjid:yjid,
                             dg: dg
                         });
                 });
