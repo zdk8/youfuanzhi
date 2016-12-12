@@ -143,10 +143,7 @@ define(['jeasyui','jeasyui_zh_CN','cj','underscore', 'mapviews/initMap'],
         window.setInterval(flashTime, 1000);
 
 
-        //历史地震信息
-        $('#history-earthquake').bind('click', function () {
 
-        });
 
         //台站列表
         require(['mapviews/StationQuery'], function (js) {
@@ -196,6 +193,7 @@ define(['jeasyui','jeasyui_zh_CN','cj','underscore', 'mapviews/initMap'],
                     }
                 });
         });
+        historyEqBtn.trigger('click');
 
         //加载最后一个历史地震信息
         require(['mapviews/OneHistoryQuake'],function (OneHistoryQuake) {
