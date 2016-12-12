@@ -74,7 +74,8 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                 var dg = MakeDG.make(local.find('.easyui-datagrid-noauto'),
                     {startup: startup, jiechu: jiechu,update: view, view: view},
                     {
-                        url: 'apps/lishui2qi/data/yuan-list.json',
+                        url:'getearthquake',
+                        //url: 'apps/lishui2qi/data/yuan-list.json',
                         rowStyler: function (index, row) {
                             if (row.status ==1) {
                                 return 'color:rgb(179, 47, 47);';

@@ -2,7 +2,8 @@ define(['text!mapviews/FastMenu-template.htm',
     cj.getModuleJs('widget/DispatcherPanel')], function (htm, DispatcherPanel) {
 
 
-    var menuList = [{name: '预案响应信息', action: 'YuanResponseMessageQuery'},
+    var menuList = [//{name: '预案响应信息', action: 'YuanResponseMessageQuery'},
+        {name: '预案响应信息', action: 'MultiYuanQuery'},
         {name: '爆破备案', action: 'BlastQuery'},
         {name: '资料上传下载', action: 'ZiliaoQuery'},
         {name: '应急数据共享', action: 'SharedQuery'},
@@ -20,8 +21,8 @@ define(['text!mapviews/FastMenu-template.htm',
             var titleName = $(this).attr('titleName');
             var winWidth=1000;
             var winHeight=0;
-            if(actionName=='YuanResponseMessageQuery'){
-                winWidth=1000;
+            if(actionName=='MultiYuanQuery'){
+                winWidth=500;
             }else if(actionName=='BlastQuery') {
                 winWidth=800;
             }else if(actionName=='ZiliaoQuery') {
