@@ -22,7 +22,8 @@ define(['text!mapviews/FastMenu-template.htm',
             var winWidth=1000;
             var winHeight=0;
             if(actionName=='MultiYuanQuery'){
-                winWidth=500;
+                winWidth=700;
+                winHeight=400;
             }else if(actionName=='BlastQuery') {
                 winWidth=800;
             }else if(actionName=='ZiliaoQuery') {
