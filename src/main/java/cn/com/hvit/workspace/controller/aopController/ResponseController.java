@@ -1,6 +1,7 @@
 package cn.com.hvit.workspace.controller.aopController;
 
 import cn.com.hvit.framework.kon.util.AttachmentNameBean;
+import cn.com.hvit.framework.kon.util.DataSourceContextHolder;
 import cn.com.hvit.framework.kon.util.PageHelper;
 import cn.com.hvit.workspace.model.XtUser;
 import cn.com.hvit.workspace.model.ls_earthquakeresponse;
@@ -261,11 +262,12 @@ public class ResponseController {
         responseMap.put("rmlevel",level);
         responseMap.put("yjid",yjid);
         CommonCode code = new CommonCode();
+        DataSourceContextHolder.setDbType("frameworkdataSource");
         List<ls_responsemessage> message = responseService.getResponsebylevel(responseMap);              //根据应急id，应急等级level，查找应急相关的应急信息
         for (int i = 0 ; i<message.size(); i++) {
            if (message.get(i).getTelephone() != null){
                try {
-                   if ("18358158536".equals(message.get(i).getTelephone())) {                                   //测试阶段使用特定电话进行测试，发送一条后退出
+                   if ("15957130557".equals(message.get(i).getTelephone())) {                                   //测试阶段使用特定电话进行测试，发送一条后退出
                        code.sendmsg2(message.get(i).getTelephone(),"[丽水地震"+level+"应急响应]" + message.get(i).getDepartment() +"-"+ message.get(i).getContact() + message.get(i).getDutycontent() +":");
                        break;
                    }
@@ -290,6 +292,7 @@ public class ResponseController {
     @RequestMapping(value = "/responsestop", method = {RequestMethod.GET,RequestMethod.POST})
     public Map<String,Object>  responseStop(@RequestParam int yjid, HttpServletRequest request, HttpServletResponse response){
         Map<String,Object> stopMap = new HashMap<String,Object>();
+        DataSourceContextHolder.setDbType("frameworkdataSource");
         responseService.setResponseStatus("stop",yjid);
         stopMap.put("success",true);
         stopMap.put("message","应急响应措施关闭成功");

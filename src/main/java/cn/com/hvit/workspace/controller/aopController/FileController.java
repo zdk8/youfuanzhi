@@ -1,6 +1,7 @@
 package cn.com.hvit.workspace.controller.aopController;
 
 import cn.com.hvit.framework.kon.util.AttachmentNameBean;
+import cn.com.hvit.framework.kon.util.DataSourceContextHolder;
 import cn.com.hvit.framework.kon.util.PageHelper;
 import cn.com.hvit.workspace.model.LS_files;
 import cn.com.hvit.workspace.service.IFileService;
@@ -60,6 +61,7 @@ public class FileController {
                 files.setFilename( nameBean.getNewFileName());
                 files.setFilepath("filedownload/" + nameBean.getNewFileNamePrefix() + nameBean.getNewFileName());
                 files.setFilesize(String.valueOf(file.getSize()));
+                DataSourceContextHolder.setDbType("frameworkdataSource");
                 fileService.addFile(files);
             }
         }
@@ -98,6 +100,7 @@ public class FileController {
         condMap = code.condMap(request);
 //        String filename = request.getParameter("filename");
 //        condMap.put("filename",filename);
+        DataSourceContextHolder.setDbType("frameworkdataSource");
         PageHelper.Page<LS_files> filesinfo = fileService.getfilesbycond(page, rows,condMap);
         fileMap.put("total",filesinfo.getTotal());
         fileMap.put("rows",filesinfo.getResults());
@@ -110,6 +113,7 @@ public class FileController {
         HashMap<String,Object> resultMap = new HashMap<String,Object>();
         HashMap<String,Object> condMap = new HashMap<String,Object>();
         condMap.put("fid",fid);
+        DataSourceContextHolder.setDbType("frameworkdataSource");
         fileService.deleteFileByid(condMap);
         resultMap.put("success",true);
         resultMap.put("message","文件删除成功");
@@ -148,6 +152,7 @@ public class FileController {
         condMap = code.condMap(request);
 //        String filename = request.getParameter("filename");
 //        condMap.put("filename",filename);
+        DataSourceContextHolder.setDbType("frameworkdataSource");
         PageHelper.Page<LS_files> filesinfo = fileService.getprovincefilesbycond(page, rows,condMap);
         fileMap.put("total",filesinfo.getTotal());
         fileMap.put("rows",filesinfo.getResults());

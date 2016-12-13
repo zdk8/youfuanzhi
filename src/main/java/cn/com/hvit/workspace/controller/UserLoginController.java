@@ -1,6 +1,7 @@
 package cn.com.hvit.workspace.controller;
 
 
+import cn.com.hvit.framework.kon.util.DataSourceContextHolder;
 import cn.com.hvit.workspace.model.Ls_User;
 import cn.com.hvit.workspace.model.XtUser;
 import cn.com.hvit.workspace.service.ILogService;
@@ -63,7 +64,7 @@ public class UserLoginController {
 //            userMap.put("message", getUser);
 //            return userMap;
 //        }
-
+        DataSourceContextHolder.setDbType("frameworkdataSource");
         XtUser xtUser = userService.userxtLogin(useraccount, userpwd);
         if (xtUser != null){
             //保存登录结果
@@ -96,7 +97,7 @@ public class UserLoginController {
 //        logService.addLog(log);
         CommonCode code = new CommonCode();
         code.addLog(logService,request,"注销登录");//增加日志信息
-
+        DataSourceContextHolder.setDbType("frameworkdataSource");
         request.getSession().removeAttribute("user");//注销session中用户信息
         logoutMap.put("success",true);
         logoutMap.put("message" , "注销成功" + request.getRemoteAddr() );
@@ -115,7 +116,7 @@ public class UserLoginController {
     @RequestMapping(value = "/adduser", method = {RequestMethod.GET,RequestMethod.POST})
     public Map<String, Object> addUser(Ls_User user, HttpServletRequest request, HttpServletResponse response){
         Map<String,Object> userMap = new HashMap<String,Object>();
-
+        DataSourceContextHolder.setDbType("frameworkdataSource");
         Ls_User checkUser = userService.getUserByName(user.getUseraccount());
         if (checkUser != null){
             userMap.put("success",false);
@@ -141,6 +142,7 @@ public class UserLoginController {
     @ResponseBody
     @RequestMapping(value = "/getuserbyid", method = {RequestMethod.GET,RequestMethod.POST})
     public XtUser updateUser(@RequestParam int userid, HttpServletRequest request, HttpServletResponse response){
+        DataSourceContextHolder.setDbType("frameworkdataSource");
         XtUser userXt = userService.getUserByid(userid);
         return userXt;
     }
@@ -156,13 +158,14 @@ public class UserLoginController {
     @RequestMapping(value = "/updateuser", method = {RequestMethod.GET,RequestMethod.POST})
     public Map<String, Object> getUserByid(Ls_User user, HttpServletRequest request, HttpServletResponse response){
         Map<String,Object> userMap = new HashMap<String,Object>();
-
+        DataSourceContextHolder.setDbType("frameworkdataSource");
         Ls_User checkUser = userService.getUserByName(user.getUseraccount());
         if (checkUser != null){
             userMap.put("success",false);
             userMap.put("message","该用户名已经存在");
             return userMap;
         }else {
+            DataSourceContextHolder.setDbType("frameworkdataSource");
             userService.addUser(user);
 //            CommonCode.addLog(request,"更新用户");//增加日志信息
             userMap.put("success",true);
