@@ -17,4 +17,6 @@ public interface ls_earthquakeresponseMapper {
     List getEarthResponse(HashMap<String, Object> quakeMap);
 
     HashMap getResponseid();
+
+    ls_earthquakeresponse getResponseByid(int yjid);
 }

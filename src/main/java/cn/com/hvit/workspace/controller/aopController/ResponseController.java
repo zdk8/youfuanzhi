@@ -219,7 +219,7 @@ public class ResponseController {
      * @param request
      * @param response
      * @return
-     */
+    */
     @ResponseBody
     @RequestMapping(value = "/getearthmsg", method = {RequestMethod.GET,RequestMethod.POST})
     public HashMap<String,Object> getEarthmsgByyjid(@RequestParam int yjid,@RequestParam int page, @RequestParam int rows,HttpServletRequest request,HttpServletResponse response){
@@ -272,13 +272,20 @@ public class ResponseController {
         CommonCode code = new CommonCode();
         DataSourceContextHolder.setDbType("frameworkdataSource");
         List<ls_responsemessage> message = responseService.getResponsebylevel(responseMap);              //根据应急id，应急等级level，查找应急相关的应急信息
+        DataSourceContextHolder.setDbType("frameworkdataSource");
+        ls_earthquakeresponse earthquakeresponse = responseService.getResponseByid(yjid);
         for (int i = 0 ; i<message.size(); i++) {
            if (message.get(i).getTelephone() != null){
                try {
-                   if ("15957130557".equals(message.get(i).getTelephone())) {                                   //测试阶段使用特定电话进行测试，发送一条后退出
-                       code.sendmsg2(message.get(i).getTelephone(),"[丽水地震"+level+"应急响应]" + message.get(i).getDepartment() +"-"+ message.get(i).getContact() + message.get(i).getDutycontent() +":");
-                       break;
-                   }
+//                   if ("15957130557".equals(message.get(i).getTelephone())) {                                   //测试阶段使用特定电话进行测试，发送一条后退出
+//                       String messageValue =  "[丽水市地震局]"+ earthquakeresponse.getYjname() + level +"级预案启动:"
+//                               +message.get(i).getDepartment() + message.get(i).getContact()+":" + message.get(i).getDutycontent();
+//                       code.sendmsg2(message.get(i).getTelephone(),messageValue);
+//                       break;
+//                   }
+                   String messageValue =  "[丽水市地震局]"+ earthquakeresponse.getYjname() + level +"级预案启动,"
+                               +message.get(i).getDepartment() + message.get(i).getContact()+":" + message.get(i).getDutycontent();
+                  code.sendmsg2(message.get(i).getTelephone(),messageValue);
                } catch (IOException e) {
                    e.printStackTrace();
                }

@@ -122,7 +122,7 @@ public class TdsTest {
      */
     @Test
     public void responseTest(){
-        System.out.println(responseService.addEarthquake(new ls_earthquakeresponse()).get("nextid"));
+        System.out.println(responseService.getResponseByid(46).getYjname());
 
 //        ls_responsemessage message = new ls_responsemessage();
 //        message.setDepartment("市政府");

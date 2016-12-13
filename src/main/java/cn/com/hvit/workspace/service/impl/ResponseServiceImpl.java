@@ -81,4 +81,9 @@ public class ResponseServiceImpl implements IResponseService {
     public void deleteEarthMsg(HashMap<String, Object> condMap) {
         responsemessage.deleteEarthMsg(condMap);
     }
+
+    @Override
+    public ls_earthquakeresponse getResponseByid(int yjid) {
+        return earthquakeresponse.getResponseByid(yjid);
+    }
 }

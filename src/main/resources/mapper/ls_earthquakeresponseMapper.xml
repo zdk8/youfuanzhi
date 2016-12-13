@@ -36,6 +36,12 @@
   <select id="getResponseid" resultType="map">
       select seq_ls_earthquakeresponse.nextval as "nextid"  from dual
   </select>
+  <select id="getResponseByid" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    from LS_EARTHQUAKERESPONSE
+    WHERE yjid = #{0}
+  </select>
   <insert id="insert" parameterType="cn.com.hvit.workspace.model.ls_earthquakeresponse" >
     insert into LS_EARTHQUAKERESPONSE (YJID, YJNAME, YJPATH ,YJSTATUS ,REGIONID
       )

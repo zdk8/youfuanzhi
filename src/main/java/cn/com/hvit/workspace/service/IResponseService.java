@@ -32,4 +32,6 @@ public interface IResponseService {
 
     void deleteEarthMsg(HashMap<String, Object> condMap);
 
+    ls_earthquakeresponse getResponseByid(int yjid);
+
 }
