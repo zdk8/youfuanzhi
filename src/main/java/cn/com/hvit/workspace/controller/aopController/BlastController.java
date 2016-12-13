@@ -1,5 +1,6 @@
 package cn.com.hvit.workspace.controller.aopController;
 
+import cn.com.hvit.framework.kon.util.DataSourceContextHolder;
 import cn.com.hvit.framework.kon.util.PageHelper;
 import cn.com.hvit.workspace.model.Ls_Blast;
 import cn.com.hvit.workspace.model.XtUser;
@@ -44,6 +45,7 @@ public class BlastController {
         XtUser user = (XtUser) request.getSession().getAttribute("user");
         if(user != null){
             blast.setRegionid(user.getRegionid());
+            DataSourceContextHolder.setDbType("frameworkdataSource");
             blastService.addBlast(blast);
 //        CommonCode.addLog(request,"新增爆破信息");             //日志信息增加
             userMap.put("success",true);
@@ -68,6 +70,7 @@ public class BlastController {
     public Map<String, Object> updateBlast(Ls_Blast blast,@RequestParam int b_id, HttpServletRequest request, HttpServletResponse response){
         Map<String,Object> userMap = new HashMap<String,Object>();
         blast.setbId(BigDecimal.valueOf(b_id));
+        DataSourceContextHolder.setDbType("frameworkdataSource");
         blastService.updateBlast(blast);
 //        CommonCode.addLog(request,"更新爆破信息");         //日志信息增加
         userMap.put("success",true);
@@ -90,6 +93,7 @@ public class BlastController {
         Ls_Blast blast = new Ls_Blast();
         blast.setIsdel("1");
         blast.setbId(BigDecimal.valueOf(b_id));
+        DataSourceContextHolder.setDbType("frameworkdataSource");
         blastService.updateBlast(blast);                  //更新爆破删除标识信息
 //        CommonCode.addLog(request,"删除爆破信息");         //日志信息增加
         userMap.put("success",true);
@@ -119,6 +123,7 @@ public class BlastController {
         }else {
             condMap.put("regionid","未登录");
         }
+        DataSourceContextHolder.setDbType("frameworkdataSource");
         PageHelper.Page<Ls_Blast> orginfo = blastService.getBlastByCond(page, rows,condMap);
         blastMap.put("total",orginfo.getTotal());
         blastMap.put("rows",orginfo.getResults());
