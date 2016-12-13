@@ -130,7 +130,7 @@ define([
                 //119.92 28.45
                 var map = new L.Map('mapid', {
                     center: [28.45, 119.92],
-                    zoom: 10,
+                    zoom: 7,
                     attributionControl:false,
                     zoomControl: false,
                     crs: L.CRS.EPSG4326,
