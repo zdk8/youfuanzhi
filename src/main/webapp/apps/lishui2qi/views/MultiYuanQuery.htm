@@ -10,13 +10,13 @@
     <thead>
     <tr>
  <th data-options="field:'yjname',width:60,formatter:function(v,r,i){
-     return '<a action=view >'+v+'</a>';
+     return '<a action=view style=&quot;text-decoration: underline;&quot;>'+v+'</a>';
  }">名称</th>
         <th data-options="field:'yjpath',width:60,formatter:function(v,r,i){
            return '<a href=&quot;'+v+'&quot;>下载</a>';
         }"> 预案资料</th>
         <th data-options="field:'yjid',width:60,formatter:function(v,r,i){
-           return '<a action=&quot;showdetail&quot;>详细</a>';
+           return '<a action=&quot;showdetail&quot; style=&quot;text-decoration: underline;&quot;>详细</a>';
         }"> 详细</th>
         <th data-options="field:'ooo',width:100,align:'center',fixed:true,
                             formatter:cj.button.RoundTextFormatter(['startup','启动','startup'],['jiechu','解除','jiechu'])">
