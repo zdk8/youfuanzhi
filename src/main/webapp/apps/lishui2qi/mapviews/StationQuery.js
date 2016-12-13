@@ -25,8 +25,8 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                         fit: true,
                         rownumbers: false,
                         fitColumns: true,
-                        url: 'data-json/stations.json',
-                        url2:'getyqstation'
+                        url2: 'data-json/stations.json',
+                        url:'getyqstation'
                     }
                 );
             }
