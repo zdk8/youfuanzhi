@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.hvit.workspace.dao.StationMapper">
+  <resultMap id="BaseResultMap" type="cn.com.hvit.workspace.model.Station">
+    <id column="STATIONID" jdbcType="DECIMAL" property="stationid" />
+    <result column="STATIONNAME" jdbcType="VARCHAR" property="stationname" />
+    <result column="STATIONCODE" jdbcType="VARCHAR" property="stationcode" />
+    <result column="ADDRESS" jdbcType="VARCHAR" property="address" />
+    <result column="GATEWAY" jdbcType="VARCHAR" property="gateway" />
+    <result column="IP" jdbcType="VARCHAR" property="ip" />
+    <result column="FLAG" jdbcType="VARCHAR" property="flag" />
+    <result column="BGTIME" jdbcType="TIMESTAMP" property="bgtime" />
+    <result column="ENDTIME" jdbcType="TIMESTAMP" property="endtime" />
+    <result column="LINECODE" jdbcType="VARCHAR" property="linecode" />
+    <result column="LINETYPE" jdbcType="VARCHAR" property="linetype" />
+    <result column="LINETIME" jdbcType="VARCHAR" property="linetime" />
+    <result column="LAT" jdbcType="FLOAT" property="lat" />
+    <result column="LON" jdbcType="FLOAT" property="lon" />
+    <result column="STORENAME" jdbcType="VARCHAR" property="storename" />
+    <result column="FILENAME" jdbcType="VARCHAR" property="filename" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    STATIONID, STATIONNAME, STATIONCODE, ADDRESS, GATEWAY, IP, FLAG, BGTIME, ENDTIME, 
+    LINECODE, LINETYPE, LINETIME, LAT, LON, STORENAME, FILENAME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.math.BigDecimal" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from STATION
+    where STATIONID = #{stationid,jdbcType=DECIMAL}
+  </select>
+  <select id="getStation" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from STATION
+  </select>
+</mapper>

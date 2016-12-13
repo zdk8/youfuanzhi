@@ -95,8 +95,8 @@ public class UserLoginController {
 //        log.setUserid(user.getUserid());
 //        log.setLogcontent(user.getUsername()+"注销登录");
 //        logService.addLog(log);
-        CommonCode code = new CommonCode();
-        code.addLog(logService,request,"注销登录");//增加日志信息
+//        CommonCode code = new CommonCode();
+//        code.addLog(logService,request,"注销登录");//增加日志信息
         DataSourceContextHolder.setDbType("frameworkdataSource");
         request.getSession().removeAttribute("user");//注销session中用户信息
         logoutMap.put("success",true);
@@ -123,6 +123,7 @@ public class UserLoginController {
             userMap.put("message","该用户名已经存在");
             return userMap;
         }else {
+            DataSourceContextHolder.setDbType("frameworkdataSource");
             userService.addUser(user);
 //            CommonCode.addLog(request,"新增用户");//增加日志信息
             userMap.put("success",true);

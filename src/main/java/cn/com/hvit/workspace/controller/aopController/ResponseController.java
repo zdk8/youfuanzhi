@@ -72,6 +72,7 @@ public class ResponseController {
         if(user != null){
             earthquake.setYjpath(filePath(myfile));
             earthquake.setRegionid(user.getRegionid());            //将user中行政区划信息设置到应急响应信息中
+            DataSourceContextHolder.setDbType("frameworkdataSource");
             responseService.addEarthquake(earthquake);
             userMap.put("success",true);
             userMap.put("message","应急响应信息新增成功");
@@ -96,6 +97,7 @@ public class ResponseController {
         XtUser user = (XtUser) request.getSession().getAttribute("user");       //获取session中user的信息
         if (user != null){
             earthquake.setYjpath(filePath(myfile));
+            DataSourceContextHolder.setDbType("frameworkdataSource");
             responseService.updateEarthquake(earthquake);
             userMap.put("success",true);
             userMap.put("message","应急响应信息更新成功");
@@ -131,6 +133,7 @@ public class ResponseController {
                 ls_earthquakeresponse earthquakeresponse = new ls_earthquakeresponse();
                 earthquakeresponse.setYjpath("responsefiledownload/" + nameBean.getNewFileNamePrefix() + nameBean.getNewFileName());
                 earthquakeresponse.setYjid(BigDecimal.valueOf(yjid));
+                DataSourceContextHolder.setDbType("frameworkdataSource");
                 responseService.updateEarthquake(earthquakeresponse);
             }
         }
@@ -168,6 +171,7 @@ public class ResponseController {
         }else{
             quakeMap.put("regionid","用户未登录");
         }
+        DataSourceContextHolder.setDbType("frameworkdataSource");
         List earthResponse = responseService.getEarthResponse(quakeMap);
         return earthResponse;
     }
@@ -183,6 +187,7 @@ public class ResponseController {
     @RequestMapping(value = "/addearthmessage", method = {RequestMethod.GET,RequestMethod.POST})
     public Map<String,Object> addEarthMessage(ls_responsemessage message, HttpServletRequest request, HttpServletResponse response){
         Map<String,Object> userMap = new HashMap<String,Object>();
+        DataSourceContextHolder.setDbType("frameworkdataSource");
         responseService.addEarthMessage(message);
         userMap.put("success",true);
         userMap.put("message","应急响应措施新增成功");
@@ -200,6 +205,7 @@ public class ResponseController {
     @RequestMapping(value = "/updateearthmessage", method = {RequestMethod.GET,RequestMethod.POST})
     public Map<String,Object>  updateEarthMessage(ls_responsemessage message,HttpServletRequest request, HttpServletResponse response){
         Map<String,Object> userMap = new HashMap<String,Object>();
+        DataSourceContextHolder.setDbType("frameworkdataSource");
         responseService.updateEarthmessage(message);
         userMap.put("success",true);
         userMap.put("message","应急响应措施更新成功");
@@ -222,6 +228,7 @@ public class ResponseController {
         CommonCode code = new CommonCode();
         condMap = code.condMap(request);
         condMap.put("yjid",yjid);                             //根据应急预案id进行查询
+        DataSourceContextHolder.setDbType("frameworkdataSource");
         PageHelper.Page<ls_responsemessage> msginfo = responseService.getEarthmsgByid(page,rows,condMap);
         earthmsgMap.put("total",msginfo.getTotal());
         earthmsgMap.put("rows",msginfo.getResults());
@@ -241,6 +248,7 @@ public class ResponseController {
         HashMap<String,Object> earthmsgMap = new HashMap<String,Object>();
         HashMap<String,Object> condMap = new HashMap<String ,Object>();
         condMap.put("rmid",rmid);
+        DataSourceContextHolder.setDbType("frameworkdataSource");
         responseService.deleteEarthMsg(condMap);
         earthmsgMap.put("success",true);
         earthmsgMap.put("message","应急响应消息删除成功");
@@ -276,6 +284,7 @@ public class ResponseController {
                }
            }
         }
+        DataSourceContextHolder.setDbType("frameworkdataSource");
         responseService.setResponseStatus("start",yjid);             //更新预案启动状态
         userMap.put("success",true);
         userMap.put("message","应急响应措施启动成功");

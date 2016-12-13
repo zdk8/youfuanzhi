@@ -1,15 +1,12 @@
 package cn.com.hvit.workspace.service.impl;
 
-import cn.com.hvit.framework.kon.util.PageHelper;
 import cn.com.hvit.workspace.dao.Ls_EarthMapper;
 import cn.com.hvit.workspace.dao.Ls_ReservoirMapper;
-import cn.com.hvit.workspace.dao.Ls_StationMapper;
-import cn.com.hvit.workspace.model.Ls_Earth;
+import cn.com.hvit.workspace.dao.StationMapper;
 import cn.com.hvit.workspace.service.IYiqiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -21,7 +18,7 @@ public class YiqiServiceImpl implements IYiqiService {
     private Ls_EarthMapper earthMapper;
 
     @Autowired
-    private Ls_StationMapper stationMapper;
+    private StationMapper stationMapper;
 
     @Autowired
     private Ls_ReservoirMapper reservoirMapper;
