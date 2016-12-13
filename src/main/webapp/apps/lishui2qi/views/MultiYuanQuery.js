@@ -3,32 +3,6 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
 
 
 
-        var jiechu = function (record, datagrid) {
-            $.messager.confirm('确认', '您真的要解除预案吗?', function (r) {
-                if (r) {
-                    $.ajax({
-                        url: 'responsestop',
-                        data: {level: record.level, yjid: record.yjid},
-                        type: 'post',
-                        success: function () {
-                            $.messager.show({
-                                title: '提示',
-                                msg: '操作成功',
-                                showType: 'show',
-                                timeout: 500,
-                                style: {
-                                    right: '',
-                                    //top:document.body.scrollTop+document.documentElement.scrollTop,
-                                    bottom: ''
-                                }
-                            });
-                        }, error: function () {
-                            $.messager.alert('错误', '操作失败', 'error');
-                        }
-                    });
-                }
-            });
-        }
 
         var view = function (record, dg) {
             DispatcherPanel.open('text!views/MultiYuanForm.htm', 'views/MultiYuanForm',
@@ -57,6 +31,36 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
         var module = {
             render: function (local, option) {
                 var tb = $(local).find('div[tb]');
+                tb.find('[opt=rmlevel]').combobox('setValue', 2);
+
+                        var jiechu = function (record, datagrid) {
+            $.messager.confirm('确认', '您真的要解除预案吗?', function (r) {
+                if (r) {
+                    $.ajax({
+                        url: 'responsestop',
+                        data: {level: record.level, yjid: record.yjid},
+                        type: 'post',
+                        success: function () {
+                            datagrid.datagrid('reload');
+                            $.messager.show({
+                                title: '提示',
+                                msg: '操作成功',
+                                showType: 'show',
+                                timeout: 500,
+                                style: {
+                                    right: '',
+                                    //top:document.body.scrollTop+document.documentElement.scrollTop,
+                                    bottom: ''
+                                }
+                            });
+                        }, error: function () {
+                            $.messager.alert('错误', '操作失败', 'error');
+                        }
+                    });
+                }
+            });
+        };
+
                         var startup = function (record, datagrid) {
             $.messager.confirm('确认', '您真的要启动预案吗?', function (r) {
                 var level = tb.find('[opt=rmlevel]').combobox('getValue');
@@ -66,6 +70,7 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                         data: {level:(level||3),yjid:record.yjid},
                         type: 'post',
                         success: function () {
+                            datagrid.datagrid('reload');
                             $.messager.show({
                                 title: '提示',
                                 msg: '操作成功',
@@ -86,7 +91,7 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
         };
 
 
-                var statusArray = [];
+                var startArray = [];
                 var dg = MakeDG.make(local.find('.easyui-datagrid-noauto'),
                     {startup: startup, jiechu: jiechu,update: view, view: view,showdetail:showdetail},
                     {
@@ -99,16 +104,19 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                         },
                         rowLoadCallBack:function (row,index) {
                             if(row.yjstatus=='start') {
-                                statusArray.push($.extend({index:index},row));
+                                startArray.push($.extend({index:index},row));
                             }
                         },
                         afterLoadSuccessCallback:function () {
                             local.find('li[action="jiechu"]').hide();
-                            for(var i=0;i<statusArray.length;i++) {
-                                var myRow = statusArray[i];
+                            for(var i=0;i<startArray.length;i++) {
+                                var myRow = startArray[i];
                                 local.find('li[action="startup"]').eq(myRow['index']).hide();
                                 local.find('li[action="jiechu"]').eq(myRow['index']).show();
                             }
+
+                            //清空
+                            startArray = [];
                         },
                         toolbar: tb
                     }

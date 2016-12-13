@@ -50,6 +50,10 @@
             display: none;
         }
 
+        .round-text-jiechu{
+            color:red;
+        }
+
     </style>
 
     <script>
