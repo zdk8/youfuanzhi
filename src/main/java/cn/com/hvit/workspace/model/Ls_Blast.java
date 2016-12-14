@@ -30,6 +30,14 @@ public class Ls_Blast {
 
     private String regionid;
 
+    private String review;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date reviewtime;
+
+    private String reviewstatus;
+
+    private String bpcomment;
+
     public BigDecimal getbId() {
         return bId;
     }
@@ -124,5 +132,37 @@ public class Ls_Blast {
 
     public void setRegionid(String regionid) {
         this.regionid = regionid;
+    }
+
+    public String getReview() {
+        return review;
+    }
+
+    public void setReview(String review) {
+        this.review = review;
+    }
+
+    public Date getReviewtime() {
+        return reviewtime;
+    }
+
+    public void setReviewtime(Date reviewtime) {
+        this.reviewtime = reviewtime;
+    }
+
+    public String getReviewstatus() {
+        return reviewstatus;
+    }
+
+    public void setReviewstatus(String reviewstatus) {
+        this.reviewstatus = reviewstatus;
+    }
+
+    public String getBpcomment() {
+        return bpcomment;
+    }
+
+    public void setBpcomment(String bpcomment) {
+        this.bpcomment = bpcomment;
     }
 }

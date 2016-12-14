@@ -32,6 +32,7 @@
     <include refid="Base_Column_List" />
     from LS_EARTHQUAKERESPONSE
     WHERE regionid like CONCAT('%',CONCAT (#{regionid},'%'))
+    ORDER  by regionid
   </select>
   <select id="getResponseid" resultType="map">
       select seq_ls_earthquakeresponse.nextval as "nextid"  from dual

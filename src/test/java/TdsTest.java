@@ -50,19 +50,23 @@ public class TdsTest {
 
     @Test
     public void TestJava(){
-//        ls_responsemessage msg = new ls_responsemessage();
-//        msg.setTelephone("18358158536");
-//        System.out.println(msg.getTelephone() == "18358158536");
+        ls_responsemessage msg = new ls_responsemessage();
+        msg.setTelephone("18358158536");
+        System.out.println(msg.getTelephone() == "18358158536");
 
-         String str = "1,3,4,2";
-        String result = "";
-        String[] split = str.split(",");
-        Arrays.sort(split);
-        for (String str1 : split){
-            result = result + str1 + ",";
-        }
-        System.out.println(result);
+        //字符串分割
+//         String str = "1,3,4,2";
+//        String result = "";
+//        String[] split = str.split(",");
+//        Arrays.sort(split);
+//        for (String str1 : split){
+//            result = result + str1 + ",";
+//        }
+//        System.out.println(result);
 
+        //去除尾部0
+//        String str2 = "3311200";
+//        System.out.println(str2.replaceAll("0*$",""));
     }
 
     /**

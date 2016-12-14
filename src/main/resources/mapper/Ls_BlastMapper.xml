@@ -13,9 +13,13 @@
     <result column="APPLICANT" property="applicant" jdbcType="VARCHAR" />
     <result column="FORMDATE" property="formdate" jdbcType="TIMESTAMP" />
     <result column="REGIONID" property="regionid" jdbcType="VARCHAR" />
+    <result column="REVIEW" property="review" jdbcType="VARCHAR" />
+    <result column="REVIEWTIME" property="reviewtime" jdbcType="TIMESTAMP" />
+    <result column="REVIEWSTATUS" property="reviewstatus" jdbcType="VARCHAR" />
+    <result column="BPCOMMENT" property="bpcomment" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    B_ID, BLASTTIME, DISTANCE, BLASTWAY, DESCRIPTION, APPLYUNIT, CONTACTWAY, WEIGHT, APPLICANT, FORMDATE,REGIONID
+    B_ID, BLASTTIME, DISTANCE, BLASTWAY, DESCRIPTION, APPLYUNIT, CONTACTWAY, WEIGHT, APPLICANT, FORMDATE,REGIONID,REVIEW,REVIEWTIME,REVIEWSTATUS,BPCOMMENT
   </sql>
   <select id="getBlastByCond" parameterType="java.util.HashMap" resultMap="BaseResultMap">
     <!--select-->
@@ -26,7 +30,7 @@
     SELECT
     <include refid="Base_Column_List" />
     from LS_BLAST
-    WHERE isdel is NULL  and regionid =  #{regionid}
+    WHERE isdel is NULL  and regionid like CONCAT('%',CONCAT (#{regionid},'%'))
     <if test="applicant != null">
       and applicant like CONCAT('%',CONCAT (#{applicant},'%'))
     </if>
@@ -71,6 +75,18 @@
       <if test="regionid != null" >
         REGIONID,
       </if>
+      <if test="review != null" >
+        REVIEW,
+      </if>
+      <if test="reviewtime != null" >
+        REVIEWTIME,
+      </if>
+      <if test="reviewstatus != null" >
+        REVIEWSTATUS,
+      </if>
+      <if test="bpcomment != null" >
+        BPCOMMENT,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="bId != null" >
@@ -105,6 +121,18 @@
       </if>
       <if test="regionid != null" >
         #{regionid,jdbcType=VARCHAR},
+      </if>
+      <if test="review != null" >
+        #{review,jdbcType=VARCHAR},
+      </if>
+      <if test="reviewtime != null" >
+        #{reviewtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reviewstatus != null" >
+        #{reviewstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="bpcomment != null" >
+        #{bpcomment,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -143,6 +171,18 @@
       </if>
       <if test="isdel != null" >
         isdel = #{isdel,jdbcType=VARCHAR},
+      </if>
+      <if test="review != null" >
+        review = #{review,jdbcType=VARCHAR},
+      </if>
+      <if test="reviewtime != null" >
+        reviewtime = #{reviewtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reviewstatus != null" >
+        reviewstatus = #{reviewstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="bpcomment != null" >
+        bpcomment = #{bpcomment,jdbcType=VARCHAR},
       </if>
     </set>
     where B_ID = #{bId,jdbcType=DECIMAL}
