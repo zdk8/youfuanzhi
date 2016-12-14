@@ -199,5 +199,10 @@ define(['jeasyui','jeasyui_zh_CN','cj','underscore', 'mapviews/initMap'],
         require(['mapviews/OneHistoryQuake'],function (OneHistoryQuake) {
             //OneHistoryQuake.initLastQuake();
         });
+        
+        //初始化最新地震查询功能
+        require(['mapviews/LastestEarthQuake'],function (LastestEarthQuake) {
+            //LastestEarthQuake
+        });
     };
 });
