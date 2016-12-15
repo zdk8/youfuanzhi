@@ -8,6 +8,7 @@ import cn.com.hvit.workspace.service.IBlastService;
 import cn.com.hvit.workspace.util.CommonCode;
 import cn.com.hvit.workspace.util.log.SystemLog;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,6 +29,9 @@ public class BlastController {
 
     @Autowired
     IBlastService blastService;
+
+    @Autowired
+    private SimpMessagingTemplate template;
 
     /**
      * 爆破信息的增加
@@ -148,6 +152,7 @@ public class BlastController {
     @RequestMapping(value = "/blastreview", method = {RequestMethod.GET,RequestMethod.POST})
     public HashMap<String, Object> BlastReview(Ls_Blast blast,@RequestParam int b_id,@RequestParam String issuccess,HttpServletRequest request,HttpServletResponse response){
         HashMap<String,Object> blastMap = new HashMap<String,Object>();
+        CommonCode code = new CommonCode();
         blast.setbId(BigDecimal.valueOf(b_id));
         if ("1".equals(issuccess)) {
             blast.setReviewstatus("3");             //审核通过，审核状态为y
@@ -155,6 +160,7 @@ public class BlastController {
             blastMap.put("message","爆破信息审核通过");
             DataSourceContextHolder.setDbType("frameworkdataSource");
             blastService.updateBlast(blast);
+            code.sendClientMessafe(template,"爆破信息审核通过");
         }else if ("0".equals(issuccess)){
             blast.setReviewstatus("4");            //审核不通过，审核状态为n
             blastMap.put("success",true);

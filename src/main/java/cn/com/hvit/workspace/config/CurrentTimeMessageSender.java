@@ -22,7 +22,7 @@ public class CurrentTimeMessageSender {
     this.messaging = messaging;
   }
   //15秒执行一次
-  @Scheduled(fixedRate=150000)
+//  @Scheduled(fixedRate=150000)
   public void sendRandomNumber() {
     System.out.println("每150秒向前台推送当前时间");
     Shout random = new Shout();

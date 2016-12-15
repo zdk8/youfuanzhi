@@ -1,25 +1,30 @@
 package cn.com.hvit.workspace.util;
 
 import cn.com.hvit.framework.kon.util.AttachmentNameBean;
+import cn.com.hvit.workspace.config.Shout;
 import cn.com.hvit.workspace.model.Ls_Log;
-import cn.com.hvit.workspace.model.Ls_User;
 import cn.com.hvit.workspace.model.XtUser;
 import cn.com.hvit.workspace.service.ILogService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.math.BigDecimal;
 import java.net.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -327,5 +332,16 @@ public class CommonCode {
         }
         return new ResponseEntity(FileCopyUtils.copyToByteArray(file),headers, HttpStatus.OK);
     }
+
+
+
+    public void sendClientMessafe(SimpMessagingTemplate messaging,String msg){
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        System.out.println(df.format(new Date()));// new Date()为获取当前系统时间
+        Shout shout = new Shout();
+        shout.setMessage("blast最新消息【"+ df.format(new Date())+"】：" + msg);
+        messaging.convertAndSend("/topic/marco", shout);
+    }
+
 
 }

@@ -20,10 +20,8 @@ import java.math.BigDecimal;
 import java.net.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -50,9 +48,13 @@ public class TdsTest {
 
     @Test
     public void TestJava(){
-        ls_responsemessage msg = new ls_responsemessage();
-        msg.setTelephone("18358158536");
-        System.out.println(msg.getTelephone() == "18358158536");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        System.out.println(df.format(new Date()));// new Date()为获取当前系统时间
+
+          //对象内容比较最好用equals
+//        ls_responsemessage msg = new ls_responsemessage();
+//        msg.setTelephone("18358158536");
+//        System.out.println(msg.getTelephone() == "18358158536");
 
         //字符串分割
 //         String str = "1,3,4,2";

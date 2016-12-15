@@ -18,7 +18,7 @@ public class RandomNumberMessageSender {
     this.messaging = messaging;
   }
   
-  @Scheduled(fixedRate=100000)
+//  @Scheduled(fixedRate=100000)
   public void sendRandomNumber() {
     System.out.println("每100秒向前台推送随机数字");
     Shout random = new Shout();

@@ -2,12 +2,14 @@ package cn.com.hvit.workspace.controller;
 
 
 import cn.com.hvit.framework.kon.util.DataSourceContextHolder;
+import cn.com.hvit.workspace.config.CurrentTimeMessageSender;
 import cn.com.hvit.workspace.model.Ls_User;
 import cn.com.hvit.workspace.model.XtUser;
 import cn.com.hvit.workspace.service.ILogService;
 import cn.com.hvit.workspace.service.IUserService;
 import cn.com.hvit.workspace.util.CommonCode;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -175,6 +177,8 @@ public class UserLoginController {
         }
     }
 
+    @Autowired
+    private SimpMessagingTemplate template;
     /**
      * url测试
      * @param request
@@ -186,6 +190,8 @@ public class UserLoginController {
     public Map<String, Object> testURL(HttpServletRequest request, HttpServletResponse response){
         Map<String,Object> userMap = new HashMap<String,Object>();
 
+        CommonCode code = new CommonCode();
+        code.sendClientMessafe(template,"test");
         userMap.put("success",true);
         userMap.put("message","接口测试");
         return userMap;
