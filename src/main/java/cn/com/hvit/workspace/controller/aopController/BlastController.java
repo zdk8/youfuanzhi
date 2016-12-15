@@ -160,13 +160,14 @@ public class BlastController {
             blastMap.put("message","爆破信息审核通过");
             DataSourceContextHolder.setDbType("frameworkdataSource");
             blastService.updateBlast(blast);
-            code.sendClientMessafe(template,"爆破信息审核通过");
+            code.sendClientMessafe(template,blast.getApplyunit() + "爆破信息审核通过");
         }else if ("0".equals(issuccess)){
             blast.setReviewstatus("4");            //审核不通过，审核状态为n
             blastMap.put("success",true);
             blastMap.put("message","爆破信息审核不通过");
             DataSourceContextHolder.setDbType("frameworkdataSource");
             blastService.updateBlast(blast);
+            code.sendClientMessafe(template,blast.getApplyunit() +"爆破信息审核不通过");
         }else{                                     //未提交审核标记，不做任何操作
             blastMap.put("success",false);
             blastMap.put("message","审核参数传递失败");
@@ -185,11 +186,14 @@ public class BlastController {
     @RequestMapping(value = "/blastcommit",method = {RequestMethod.GET,RequestMethod.POST})
     public HashMap<String,Object > BlastCommit(@RequestParam int b_id,HttpServletRequest request,HttpServletResponse response){
         HashMap<String,Object> blastMap = new HashMap<String,Object>();
+        CommonCode code = new CommonCode();
         Ls_Blast blast = new Ls_Blast();
+        String applyunit = request.getParameter("applyunit");
         blast.setbId(BigDecimal.valueOf(b_id));
         blast.setReviewstatus("2");    //提交时状态更改为2
         DataSourceContextHolder.setDbType("frameworkdataSource");
         blastService.updateBlast(blast);
+        code.sendClientMessafe(template,applyunit + "爆破申请信息提交");
         blastMap.put("success",false);
         blastMap.put("message","爆破信息提交成功");
         return blastMap;
