@@ -42,9 +42,34 @@
         div.window-thinborder .my-toolbar a.easyui-linkbutton[action="close"]{
             display: none;
         }
-.leaflet-control-layers label {
-    margin-left: 1.5em;
-}
+
+        div.panel>div.panel-header{
+            background: url(images/背景填充.png);
+        }
+
+        /*修改弹出框底部按钮*/
+        ul.hvit-pretty-buttons {
+            text-align: right;
+            padding-right: 15px;
+            list-style-type: none;
+        }
+        .panel-footer {
+            background: #ffffff;
+        }
+
+        ul.hvit-pretty-buttons li > a.mo-ren {
+            text-decoration: none;
+            background: #f0f0f0;
+            padding: 5px 10px;
+            border-radius: 10px;
+        }
+        ul.hvit-pretty-buttons li > a.mo-ren:hover{
+            background: cornflowerblue;
+        }
+
+        .leaflet-control-layers label {
+            margin-left: 1.5em;
+        }
 
         .leaflet-control-layers-base input.menu{
             display: none;

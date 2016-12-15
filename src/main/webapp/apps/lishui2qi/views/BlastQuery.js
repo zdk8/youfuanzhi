@@ -45,11 +45,21 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                     datagrid.datagrid('reload');
                 });
         };
-        var view = function (record, dg) {
+        var update = function (record, dg) {
             DispatcherPanel.open('text!views/BlastForm.htm', 'views/BlastForm',
                 {
                     ptype: DispatcherPanel.PANELLAYER,
                     title: '更新 爆破备案',
+                    record: record,
+                    dg: dg,
+                    height: 490
+                });
+        };
+        var view = function (record, dg) {
+            DispatcherPanel.open('text!views/BlastFormViewOnly.htm', 'views/BlastForm',
+                {
+                    ptype: DispatcherPanel.PANELLAYER,
+                    title: '查看 爆破备案',
                     record: record,
                     dg: dg,
                     height: 490
@@ -74,7 +84,7 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                 var tb = $(local).find('div[tb]');
 
                 var dg = MakeDG.make(local.find('.easyui-datagrid-noauto'),
-                    {mydelete: mydelete, update: view, view: view,mycommit:mycommit,shenhe:shenhe},
+                    {mydelete: mydelete, view: view, update: update,mycommit:mycommit,shenhe:shenhe},
                     {
                         url: 'getblast',
                         rowLoadCallBack:function (row,index) {
