@@ -167,7 +167,12 @@ public class ResponseController {
         HashMap<String,Object> quakeMap = new HashMap<String,Object>();
         XtUser user = (XtUser) request.getSession().getAttribute("user");
         if(user != null){
-            quakeMap.put("regionid",user.getRegionid());
+            if ("331100".equals(user.getRegionid())){             //去掉丽水市行政区划的0
+                quakeMap.put("regionid","3311");
+            }else{
+                quakeMap.put("regionid",user.getRegionid());
+            }
+
         }else{
             quakeMap.put("regionid","用户未登录");
         }
