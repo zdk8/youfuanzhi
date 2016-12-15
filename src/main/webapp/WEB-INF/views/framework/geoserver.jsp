@@ -166,6 +166,9 @@
     </div>
 </div>
 
+<div id="tip-manager">
+    <div>消息<a class="close">X</a></div>
+</div>
 </body>
 </html>
 <script>

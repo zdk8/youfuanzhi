@@ -204,5 +204,9 @@ define(['jeasyui','jeasyui_zh_CN','cj','underscore', 'mapviews/initMap'],
         require(['mapviews/LastestEarthQuake'],function (LastestEarthQuake) {
             //LastestEarthQuake
         });
+
+        require(['views/TipManager'],function (TipManager) {
+            TipManager.render();
+        });
     };
 });

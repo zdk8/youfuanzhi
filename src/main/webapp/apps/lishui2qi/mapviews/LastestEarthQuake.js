@@ -1,4 +1,4 @@
-define(['underscore','text!mapviews/LastestEarthQuake-template.htm'],function (_,htm) {
+define(['underscore','text!mapviews/LastestEarthQuake-template.htm','views/TipManager'],function (_,htm,TipManager) {
     infoSample = {lat:30,lon:120,location:'XXXXXXXXXXXXXXx',stime:'2012-09-09',time:'2012-09-09 12:11:10',
         M:9,Ms:10,depth:20.99,cname:'国家台网',code:'CD'};
     var wsUri = "ws://10.33.5.242:3001/lumprj/";
@@ -53,7 +53,8 @@ define(['underscore','text!mapviews/LastestEarthQuake-template.htm'],function (_
     };
 
     websocket.onopen = function (evt) {
-        $.messager.show({
+        TipManager.addTip('提示', '最新地震服务器连接正常');
+/*        $.messager.show({
             title: '提示',
             msg: '最新地震服务器连接正常',
             showType: 'show',
@@ -62,11 +63,12 @@ define(['underscore','text!mapviews/LastestEarthQuake-template.htm'],function (_
                 right: '',
                 bottom: ''
             }
-        });
+        });*/
     };
 
     websocket.onclose = function (evt) {
-        $.messager.show({
+        TipManager.addTip('提示', '连接断开，正在尝试建立连接。。。');
+/*        $.messager.show({
             title: '提示',
             msg: '连接断开，正在尝试建立连接。。。',
             showType: 'show',
@@ -75,7 +77,7 @@ define(['underscore','text!mapviews/LastestEarthQuake-template.htm'],function (_
                 right: '',
                 bottom: ''
             }
-        });
+        });*/
     };
 
     websocket.onmessage = function (evt) {
@@ -83,6 +85,9 @@ define(['underscore','text!mapviews/LastestEarthQuake-template.htm'],function (_
     };
 
     websocket.onerror = function (evt) {
-        alert("连接error！");
+        TipManager.addTip('提示', '连接error！');
+//        alert("连接error！");
     };
+
+    TipManager.addTip('提示', '加载中');
 });
