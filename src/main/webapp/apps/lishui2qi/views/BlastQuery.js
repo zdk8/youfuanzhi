@@ -1,6 +1,13 @@
-define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'), 'backbone'],
-    function (MakeDG, DispatcherPanel, Backbone) {
+define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'), 'backbone','MyConfirm'],
+    function (MakeDG, DispatcherPanel, Backbone,MyConfirm) {
 
+        //审核状态枚举
+        var reviewStatus={
+            NORMAL:1,
+            COMMITED:2,
+            REVIEWED:3,
+            FAILED:4
+        };
         var mydelete = function (record, datagrid) {
             $.messager.confirm('确认', '您真的要删除此备案信息吗?<br>' + record.applyunit, function (r) {
                 if (r) {
@@ -28,6 +35,16 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
             });
         };
 
+        var mycommit = function (record, datagrid) {
+            MyConfirm.confirm('确认', '您真的要提交此备案信息吗?<br>' + record.applyunit,
+                {
+                    url: 'blastcommit',
+                    type: 'post',
+                    data: $.extend({reviewstatus: reviewStatus.COMMITED, b_id: record.bId}, record),
+                }, function () {
+                    datagrid.datagrid('reload');
+                });
+        };
         var view = function (record, dg) {
             DispatcherPanel.open('text!views/BlastForm.htm', 'views/BlastForm',
                 {
@@ -35,18 +52,55 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                     title: '更新 爆破备案',
                     record: record,
                     dg: dg,
-                    height: 480
+                    height: 490
+                });
+        };
+
+        var shenhe = function (record, dg) {
+            DispatcherPanel.open('text!views/BlastFormShenHe.htm', 'views/BlastFormShenHe',
+                {
+                    ptype: DispatcherPanel.PANELLAYER,
+                    title: '审核 爆破备案',
+                    record: record,
+                    dg: dg,
+                    height: 550
                 });
         };
 
 
         var module = {
             render: function (local, option) {
+                var reviewstatusArray=[];
                 var tb = $(local).find('div[tb]');
+
                 var dg = MakeDG.make(local.find('.easyui-datagrid-noauto'),
-                    {mydelete: mydelete, update: view, view: view},
+                    {mydelete: mydelete, update: view, view: view,mycommit:mycommit,shenhe:shenhe},
                     {
                         url: 'getblast',
+                        rowLoadCallBack:function (row,index) {
+                            reviewstatusArray.push($.extend({index: index}, row));
+                        },
+                        afterLoadSuccessCallback:function () {
+                            local.find('li[action="update"]').hide();
+                            local.find('li[action="mycommit"]').hide();
+                            local.find('li[action="shenhe"]').hide();
+
+                            for(var i=0;i<reviewstatusArray.length;i++) {
+                                var record = reviewstatusArray[i];
+                                if(record.reviewstatus==reviewStatus.NORMAL) {
+                                    local.find('li[action="mycommit"]').eq(record.index).show();
+                                }else if(record.reviewstatus==reviewStatus.COMMITED) {
+                                    local.find('li[action="shenhe"]').eq(record.index).show();
+                                }else if(record.reviewstatus==reviewStatus.FAILED) {
+                                    local.find('li[action="update"]').eq(record.index).show();
+                                    local.find('li[action="mycommit"]').eq(record.index).show();
+                                }
+                            }
+
+
+                            //清空
+                            reviewstatusArray=[];
+                        },
                         toolbar: tb
                     }
                 );

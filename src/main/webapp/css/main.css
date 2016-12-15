@@ -333,6 +333,12 @@ ul#map-menu span.checkbox.selected {
 .icon-trash{
     background: url(../images/icons/删除.png) no-repeat;
 }
+.icon-mycommit{
+    background: url(../images/icons/commit.png) no-repeat;
+}
+.icon-shenhe{
+    background: url(../images/icons/shenhe.gif) no-repeat;
+}
 /*表格操作图标*/
 
 

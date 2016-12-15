@@ -1,4 +1,5 @@
-define(['underscore'], function (_) {
+define([], function () {
+
     //审核状态枚举
         var reviewStatus={
             NORMAL:1,
@@ -6,31 +7,24 @@ define(['underscore'], function (_) {
             REVIEWED:3,
             FAILED:4
         };
-    var data=cj.getEnum('reviewstatus');
-    var getReviewStatusChinese=function (value) {
-        for(var i in data) {
-            if(value==data[i]['value']){
-                return data[i];
-            }
-        }
-    };
-    var tpl = _.template('<a><%=reviewstatus%></a>&nbsp;意见:<a><%=review%></a>');
+
     return {
 
         render: function (local, cb) {
             var poplocal = local;
             var submitbtn = local.find('[action=save]');
+            var failbtn = local.find('[action=fail]');
             var record = cb.params.record;
 
-            var saveOrUpdateUrl = 'addblast';
+            var saveOrUpdateUrl =null;// 'addblast';
             if (record) {
-                saveOrUpdateUrl = 'updateblast';
+                saveOrUpdateUrl = 'blastreview';
             }
-            $(submitbtn).bind('click', function () {
+
+            var submitForm=function () {
                 poplocal.find('form').form('submit', {
                     url: saveOrUpdateUrl,
                     onSubmit: function (param) {
-
                         var isValid = $(this).form('validate');
                         if (!isValid) {
                             $.messager.progress('close');
@@ -48,6 +42,19 @@ define(['underscore'], function (_) {
                         }
                     }
                 })
+            };
+
+            //审核不通过
+            failbtn.bind('click',function () {
+                local.find('input[name=reviewstatus]').val(reviewStatus.FAILED);
+                local.find('input[name=issuccess]').val(0);
+                submitForm();
+            });
+            //审核通过
+            $(submitbtn).bind('click', function () {
+                local.find('input[name=reviewstatus]').val(reviewStatus.REVIEWED);
+                local.find('input[name=issuccess]').val(1);
+                submitForm();
             });
 
 
@@ -62,20 +69,10 @@ define(['underscore'], function (_) {
                 });
                 poplocal.find('form').form('load', record);
 
-                var mytr=local.find('tr[opt=shenhe-tr]');
-                mytr.hide();
-                if(reviewStatus.NORMAL<record.reviewstatus) {
-                    mytr.show();
-                    mytr.find('[opt=shenhe-result]').append(tpl({reviewstatus:getReviewStatusChinese(record.reviewstatus)['text'],review:record.review||'无'}));
+                var inputDisabledArray = [""];
+                for(var i in inputDisabledArray) {
+                    
                 }
-            } else {
-                //新增时初始化时间控件
-                var currentTime = new Date().pattern('yyyy-MM-dd HH:mm:ss');
-                poplocal.find('[opt=blasttime]').datetimebox('setValue', currentTime);
-                poplocal.find('[opt=formdate]').datetimebox('setValue', currentTime);
-
-                //初始化  爆破方法 选择1
-                poplocal.find('form').form('load', {blastway: 1});
             }
         }
 
