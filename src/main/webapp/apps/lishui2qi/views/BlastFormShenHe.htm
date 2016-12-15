@@ -1,18 +1,19 @@
 <div>
     <form method="post">
         <input type="hidden" name="b_id">
-        <input type="hidden" name="reviewstatus" value="1">
+        <input type="hidden" name="reviewstatus" value="3">
+        <input type="hidden" name="issuccess" value="0">
         <table cellpadding="4" cellspacing="1" class="form-table" style="width:400px;">
             <tbody>
             <tr>
                 <td class="my-form-label">申请爆破单位 :</td>
-                <td><input type="text" name="applyunit" class="input-text">
+                <td><input type="text" name="applyunit" class="input-text" readonly>
                 </td>
             </tr>
             <tr>
                 <td class="my-form-label">爆破时间 :</td>
                 <td><input type="text" opt="blasttime" name="blasttime" class="easyui-datetimebox"
-                           data-options="required:true">
+                           data-options="required:true" readonly>
 
                 </td>
             </tr>
@@ -20,45 +21,45 @@
             <tr>
                 <td class="my-form-label">离台站的距离（米） :</td>
                 <td><input type="text" name="distance" class="input-text easyui-validatebox"
-                           data-options="required:true,validType:'isNumber'"></td>
+                           data-options="required:true,validType:'isNumber'" readonly></td>
             </tr>
             <tr>
                 <td class="my-form-label">爆破方法 :</td>
                 <td><input type="text" name="blastway" class="input-text easyui-combobox"
-                           data-options="required:true,data:cj.getEnum('blastway'),panelHeight:'auto'"></td>
+                           data-options="required:true,data:cj.getEnum('blastway'),panelHeight:'auto'" readonly></td>
             </tr>
 
             <tr>
                 <td class="my-form-label">联系方式 :</td>
-                <td><input type="text" name="contactway" class="input-text">
+                <td><input type="text" name="contactway" class="input-text" readonly>
                 </td>
             </tr>
 
             <tr>
                 <td class="my-form-label">炸药用量 :</td>
-                <td><input type="text" name="weight" class="input-text">
+                <td><input type="text" name="weight" class="input-text" readonly>
                 </td>
             </tr>
             <tr>
                 <td class="my-form-label">填表人 :</td>
-                <td><input type="text" name="applicant" class="input-text">
+                <td><input type="text" name="applicant" class="input-text" readonly>
                 </td>
             </tr>
 
             <tr>
                 <td class="my-form-label">填表时间 :</td>
-                <td><input type="text" opt="formdate" name="formdate" class="easyui-datetimebox">
+                <td><input type="text" opt="formdate" name="formdate" class="easyui-datetimebox" readonly>
                 </td>
             </tr>
             <tr>
                 <td class="my-form-label">描述 :</td>
-                <td><textarea style="width: 243px;height: 72px;"  name="description" ></textarea>
+                <td><textarea style="width: 243px;height: 72px;"  name="description" disabled="disabled"></textarea>
                 </td>
             </tr>
 
-            <tr opt="shenhe-tr" style="display: none;">
-                <td class="my-form-label">审核结果 :</td>
-                <td opt="shenhe-result">
+             <tr>
+                <td class="my-form-label">审核意见 :</td>
+                <td><textarea style="width: 243px;height: 72px;"  name="review" ></textarea>
                 </td>
             </tr>
 
@@ -68,4 +69,4 @@
 </div>
 
 
-<div class="hvit-form-bottom-tool-bar" btns="cj.button.Mo(['close','关闭'],['save','保存','save'])"></div>
+<div class="hvit-form-bottom-tool-bar" btns="cj.button.Mo(['fail','审核不通过'],['save','审核通过','save'])"></div>

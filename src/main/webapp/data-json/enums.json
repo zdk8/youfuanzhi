@@ -1,5 +1,10 @@
 [
 
+  {"enumeratetype":"reviewstatus","enumeratevalue":"1","enumeratelabel":"未提交"},
+  {"enumeratetype":"reviewstatus","enumeratevalue":"2","enumeratelabel":"已提交"},
+  {"enumeratetype":"reviewstatus","enumeratevalue":"3","enumeratelabel":"审核通过"},
+  {"enumeratetype":"reviewstatus","enumeratevalue":"4","enumeratelabel":"审核不通过"},
+
   {"enumeratetype":"rmlevel","enumeratevalue":"1","enumeratelabel":"1级"},
   {"enumeratetype":"rmlevel","enumeratevalue":"2","enumeratelabel":"2级"},
   {"enumeratetype":"rmlevel","enumeratevalue":"3","enumeratelabel":"3级"},
