@@ -373,10 +373,12 @@ ul#map-menu span.checkbox.selected {
 #tip-manager .tip-close{
     cursor: pointer;
     display: inline-block;
-    float: right;
     width: 16px;
     height: 16px;
     background-image: url(../images/icons/删除.png);
+}
+#tip-manager a.clear{
+    clear: both;
 }
 #tip-manager>div.header{
     background-image: url(../images/背景填充.png);
@@ -399,6 +401,11 @@ ul#map-menu span.checkbox.selected {
     width: 20px;
     text-align: center;
     border-radius: 10px;
+}
+.tip-item-body{
+    display: inline-block;
+    width: 240px;
+    line-height: 1.5;
 }
 .tip-title,.tip-text{
     color: black;

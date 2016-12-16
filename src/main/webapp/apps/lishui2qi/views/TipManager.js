@@ -1,6 +1,6 @@
 define(['underscore'], function (_) {
 
-    var tpl = _.template('<a class="tip-index" title="<%=cuurtime.pattern(\'HH:mm:ss\')%>"><%=index%></a><a class="tip-title"><%=title%></a>:<a class="tip-text"><%=text%></a><a class="tip-close"></a>');
+    var tpl = _.template('<a class="tip-index" title="<%=cuurtime.pattern(\'HH:mm:ss\')%>"><%=index%></a><a class="tip-item-body"><span class="tip-title"><%=title%></span>:<span class="tip-text"><%=text%></span></a><a class="tip-close"></a><a class="clear"></a>');
     var TipIndex = 1;
     //模型
     var Tip = Backbone.Model.extend({
@@ -41,7 +41,14 @@ define(['underscore'], function (_) {
         },
         initialize: function () {
             this.listenTo(this.model, "change", this.render);
-            this.listenTo(this.model, "remove", this.remove);
+            this.listenTo(this.model, "remove", this.myRemvoe);
+        },
+        myRemvoe:function () {
+            var me=this;
+            this.$el.hide('slow',function () {
+                me.remove();
+            });
+            //this.remove();
         },
         closeMe: function () {
             tipList.remove(this.model);
@@ -79,7 +86,7 @@ define(['underscore'], function (_) {
             this.$el.prepend(tipView.$el);
         },
         onAddTip: function (model, collection, options) {
-            $('#tip-manager').show();
+            $('#tip-manager').show('slow');
             var tip = model;
             tip.set({index: TipIndex++});
             this.renderItem(tip);
@@ -99,7 +106,7 @@ define(['underscore'], function (_) {
     tipManagerView.render();
     $('#tip-manager').append(tipManagerView.$el);
     $('#tip-manager>div>a.close').bind('click',function () {
-        $('#tip-manager').hide();
+        $('#tip-manager').hide('slow');
     });
     return {
         render: function () {
