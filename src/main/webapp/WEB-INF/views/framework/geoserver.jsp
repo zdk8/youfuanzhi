@@ -34,8 +34,8 @@
 
         .leaflet-control-layers-toggle {
             background-image: url(images/layers.png);
-            width: 36px;
-            height: 36px;
+            width: 26px;
+            height: 26px;
         }
 
         /*去除自定义的关闭按钮,原先在无tab的tab中是有用 的，现在使用window自己的关闭*/
