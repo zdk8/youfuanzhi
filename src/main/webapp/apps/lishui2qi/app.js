@@ -33,7 +33,7 @@
             var args = 'v=0';
             var prefixPath = baseUrl;
             if (url.substr(0, prefixPath.length) == prefixPath) {
-                if(url.indexOf('..')>0){
+                if(url.indexOf('..')>0||url.indexOf('10.33.44.22')>0){
                     return '';
                 }
                 args = '?v=2' + new Date().getTime();
