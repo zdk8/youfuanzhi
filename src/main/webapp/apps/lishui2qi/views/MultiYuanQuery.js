@@ -127,7 +127,7 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                 );
 
 
-                _.each(['applicant', 'applyunit'], function (item) {
+                _.each(['yjname', 'applyunit'], function (item) {
                     tb.find('.easyui-textbox[opt=' + item + ']').textbox({
                         onChange: function (newValue, oldValue) {
                             dg.datagrid('reload',{
@@ -143,14 +143,9 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
 
                 var getSearchParams = function () {
                     var searchParams = [];
-                    var applicant = tb.find('[opt=applicant]').textbox('getValue');
-                    if (applicant) {
-                        searchParams.push({name: 'applicant', operate: "like", value: "%" + applicant + "%"});
-                    }
-
-                    var applyunit = tb.find('[opt=applyunit]').textbox('getValue');
-                    if (applyunit) {
-                        searchParams.push({name: 'applyunit', operate: "like", value: "%" + applyunit + "%"});
+                    var yjname = tb.find('[opt=yjname]').textbox('getValue');
+                    if (yjname) {
+                        searchParams.push({name: 'yjname', operate: "like", value: "%" + yjname + "%"});
                     }
                     return searchParams;
                 };

@@ -27,7 +27,11 @@
 </table>
 <div tb="toolbar" class="my-toolbar">
     <a action="create-yuan" class="tool-add">创建预案</a>
-    <label class="my-tool-label">级别</label>
+    <label class="my-tool-label">名称</label>
+    <input class="easyui-textbox" type="text" opt="yjname" data-options="width:100,prompt:''">
+    <a action="search" class="tool-search">搜索</a>
+
+    <label class="my-tool-label">启动级别</label>
       <input class="easyui-combobox" type="text" opt="rmlevel"
              data-options="width:100,prompt:'',data:cj.getEnum('rmlevel'),panelHeight:'auto'">
 </div>
