@@ -6,14 +6,9 @@ import cn.com.hvit.framework.kon.util.PageHelper;
 import cn.com.hvit.workspace.model.LS_files;
 import cn.com.hvit.workspace.service.IFileService;
 import cn.com.hvit.workspace.util.CommonCode;
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 

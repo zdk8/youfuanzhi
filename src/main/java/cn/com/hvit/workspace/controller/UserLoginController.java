@@ -2,7 +2,6 @@ package cn.com.hvit.workspace.controller;
 
 
 import cn.com.hvit.framework.kon.util.DataSourceContextHolder;
-import cn.com.hvit.workspace.config.CurrentTimeMessageSender;
 import cn.com.hvit.workspace.model.Ls_User;
 import cn.com.hvit.workspace.model.XtUser;
 import cn.com.hvit.workspace.service.ILogService;
