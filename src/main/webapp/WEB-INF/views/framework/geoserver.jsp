@@ -78,6 +78,12 @@
         .round-text-jiechu{
             color:red;
         }
+        .window {
+    overflow: hidden;
+     padding: 0;
+     border-width: 1px;
+    border-style: solid;
+}
 
     </style>
 
