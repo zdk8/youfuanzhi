@@ -6,7 +6,6 @@ import cn.com.hvit.workspace.model.Ls_Blast;
 import cn.com.hvit.workspace.model.XtUser;
 import cn.com.hvit.workspace.service.IBlastService;
 import cn.com.hvit.workspace.util.CommonCode;
-import cn.com.hvit.workspace.util.log.SystemLog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;

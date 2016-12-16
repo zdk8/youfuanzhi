@@ -9,12 +9,8 @@ import cn.com.hvit.workspace.model.ls_responsemessage;
 import cn.com.hvit.workspace.service.IResponseService;
 import cn.com.hvit.workspace.util.CommonCode;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 

@@ -6,6 +6,9 @@ apply plugin: 'war'
 
 sourceCompatibility = 1.7
 
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
 repositories {
 
     maven { url 'http://120.55.65.150:8081/nexus/content/repositories/thirdparty/' }
