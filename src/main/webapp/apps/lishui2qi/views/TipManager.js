@@ -1,6 +1,6 @@
 define(['underscore'], function (_) {
 
-    var tpl = _.template('<a class="tip-index" title="<%=cuurtime.pattern(\'HH:mm:ss\')%>"><%=index%></a><a class="tip-title"><%=title%></a>:<a class="tip-text"><%=text%></a><a class="tip-close">x</a>');
+    var tpl = _.template('<a class="tip-index" title="<%=cuurtime.pattern(\'HH:mm:ss\')%>"><%=index%></a><a class="tip-title"><%=title%></a>:<a class="tip-text"><%=text%></a><a class="tip-close"></a>');
     var TipIndex = 1;
     //模型
     var Tip = Backbone.Model.extend({
@@ -90,7 +90,7 @@ define(['underscore'], function (_) {
         render: function () {
             //初始化时添加5个
             for (var i = 0; i < 5; i++) {
-                tipList.add(new Tip({title: 'Title' + i, text: 'text' + i * 5}));
+                //tipList.add(new Tip({title: 'Title' + i, text: 'text' + i * 5}));
             }
         }
     });

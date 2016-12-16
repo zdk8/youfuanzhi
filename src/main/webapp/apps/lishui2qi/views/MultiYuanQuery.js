@@ -115,6 +115,10 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                                 local.find('li[action="jiechu"]').eq(myRow['index']).show();
                             }
 
+                            //hack背景设置
+                            local.find('ul.hvit-pretty-buttons a.round-text-jiechu').css("background-image","url(images/icons/解除.png)");
+                            local.find('ul.hvit-pretty-buttons a.round-text-startup').css("background-image","url(images/icons/启动.png)");
+                            local.find('ul.hvit-pretty-buttons a.round-text').css('color', "white").css('text-decoration','none');
                             //清空
                             startArray = [];
                         },

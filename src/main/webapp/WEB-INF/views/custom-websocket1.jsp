@@ -3,9 +3,9 @@
 <html>
 <head>
     <title>Home</title>
-    <script src="//cdn.bootcss.com/sockjs-client/1.1.1/sockjs.min.js"></script>
-    <script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
-    <script src="//cdn.bootcss.com/stomp.js/2.3.3/stomp.min.js"></script>
+    <script src="js/libs/sockjs-client/1.1.1/sockjs.min.js"></script>
+    <script src="js/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="js/libs/stomp.js/2.3.3/stomp.min.js"></script>
 </head>
 <body>
 <button id="stop">Stop</button>

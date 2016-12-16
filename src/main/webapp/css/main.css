@@ -345,7 +345,7 @@ ul#map-menu span.checkbox.selected {
 #tip-manager {
     width: 300px;
     max-height: 300px;
-    border: 1px solid red;
+    border: 1px solid #ceb9b9;
     z-index: 99;
     position: absolute;
     bottom: 2px;
@@ -353,10 +353,9 @@ ul#map-menu span.checkbox.selected {
     padding: 0 2px;
     overflow: auto;
 
-    background-color: #f5f5f5;
-    line-height: 30px;
+    background-color: #ffffff;
+    line-height: 25px;
     font-size: 12px;
-    padding-left: 20px;
     color: blue;
     /*display: none;*/
 }
@@ -365,9 +364,44 @@ ul#map-menu span.checkbox.selected {
     padding: 0;
     margin: 0;
     list-style: none;
+    border-bottom: 1px solid #d6cbcb;
 }
+ #tip-manager li{
+     margin:0 4px;
+ }
+
 #tip-manager .tip-close{
-    color:red;
     cursor: pointer;
+    display: inline-block;
+    float: right;
+    width: 16px;
+    height: 16px;
+    background-image: url(../images/icons/删除.png);
+}
+#tip-manager>div.header{
+    background-image: url(../images/背景填充.png);
+    margin:4px;
+    color:white;
+    padding-left: 1em;
+}
+#tip-manager>div.header>.close {
+    width: 16px;
+    height: 16px;
+    float: right;
+    margin: 5px;
+    background-image: url(../images/icons/关闭.png);
+}
+.tip-index{
+    display: inline-block;
+    background-color: #55a0f3;
+    color:white;
+    height: 20px;
+    width: 20px;
+    text-align: center;
+    border-radius: 10px;
+}
+.tip-title,.tip-text{
+    color: black;
+    margin-left: 5px;
 }
 /*tip 结束*/

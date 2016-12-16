@@ -192,8 +192,11 @@
 </div>
 
 <div id="tip-manager">
-    <div>消息<a class="close">X</a></div>
+    <div class="header">消息<a class="close"></a></div>
 </div>
+
+<%--<iframe width=0 height=0 frameborder=0 src="framework_lishuimessage"></iframe>--%>
+
 </body>
 </html>
 <script>
@@ -202,7 +205,11 @@
     getPageSize=function () {
         return [10, 15, 20];
     }
+
+    //websocket
+    webSocketUrl='<%= request.getContextPath()%>/marcopolo';
+    window.TipManager;
 </script>
 <script src="<%=hvitFrontFWPrefix%>hvit-front-framework/baseConfig.js"></script>
 <script src="<%=hvitFrontFWPrefix%>hvit-front-framework/require.js"
-        data-main="apps/lishui2qi/app.js?v=1"></script>
+        data-main="apps/lishui2qi/app.js?v=112"></script>
