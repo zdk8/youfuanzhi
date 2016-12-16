@@ -19,6 +19,8 @@
     //添加地图库leaflet
     //baseConfig.paths['leaflet']='http://cdn.bootcss.com/leaflet/1.0.1/leaflet';
     baseConfig.paths['leaflet']='../../js/libs/leafletjs/leaflet';
+    //baseConfig.paths['socketjs']='../../js/libs/sockjs-client/1.1.1/sockjs.min';
+    //baseConfig.paths['stompjs']='../../js/libs/stomp.js/2.3.3/stomp.min';
 
     //以上为固定写法，复制即可。
 

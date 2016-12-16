@@ -1,7 +1,7 @@
 <%@ page import="cn.com.hvit.workspace.model.XtUser" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <% XtUser user = (XtUser) session.getAttribute("user");%>
-<% boolean dev=true;%>
+<% boolean dev=!true;%>
 <% String devText=dev?"":"";%>
 <% String hvitFrontFWPrefix=dev?"http://120.55.65.150:8080/hvit-front/":"http://10.33.44.22:8080/hvit-front/";%>
 <!DOCTYPE html>
@@ -34,8 +34,8 @@
 
         .leaflet-control-layers-toggle {
             background-image: url(images/layers.png);
-            width: 36px;
-            height: 36px;
+            width: 26px;
+            height: 26px;
         }
 
         /*去除自定义的关闭按钮,原先在无tab的tab中是有用 的，现在使用window自己的关闭*/
@@ -78,6 +78,12 @@
         .round-text-jiechu{
             color:red;
         }
+        .window {
+    overflow: hidden;
+     padding: 0;
+     border-width: 1px;
+    border-style: solid;
+}
 
     </style>
 
@@ -192,8 +198,11 @@
 </div>
 
 <div id="tip-manager">
-    <div>消息<a class="close">X</a></div>
+    <div class="header">消息<a class="close"></a></div>
 </div>
+
+<%--<iframe width=0 height=0 frameborder=0 src="framework_lishuimessage"></iframe>--%>
+
 </body>
 </html>
 <script>
@@ -202,7 +211,15 @@
     getPageSize=function () {
         return [10, 15, 20];
     }
+
+    //websocket
+    webSocketUrl='<%= request.getContextPath()%>/marcopolo';
+    window.TipManager;
+    <%if(user!=null){%>
+    USERREGIONID='<%=user.getRegionid()%>';
+    <%}%>
+
 </script>
 <script src="<%=hvitFrontFWPrefix%>hvit-front-framework/baseConfig.js"></script>
 <script src="<%=hvitFrontFWPrefix%>hvit-front-framework/require.js"
-        data-main="apps/lishui2qi/app.js?v=1"></script>
+        data-main="apps/lishui2qi/app.js?v=112"></script>

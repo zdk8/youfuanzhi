@@ -205,8 +205,27 @@ define(['jeasyui','jeasyui_zh_CN','cj','underscore', 'mapviews/initMap'],
             //LastestEarthQuake
         });
 
-        require(['views/TipManager'],function (TipManager) {
+
+        //初始化tip功能
+        require(['views/TipManager'], function (TipManager) {
             TipManager.render();
+            window.TipManager = TipManager;
+
+            //添加iframe
+            if (true) {
+                $('body').append('<iframe width=0 height=0 frameborder=0 src="framework_lishuimessage"></iframe>');
+            } else {
+                require([cj.getModuleJs('widget/DispatcherPanel')], function (DispatcherPanel) {
+                    DispatcherPanel.open('text!views/IframeOnly.htm', 'views/IframeOnly',
+                        {
+                            ptype: DispatcherPanel.PANELLAYER,
+                            title: '查看: '
+                        });
+                });
+            }
         });
+
+
+
     };
 });

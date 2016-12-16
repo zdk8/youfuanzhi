@@ -53,7 +53,7 @@ define(['underscore','text!mapviews/LastestEarthQuake-template.htm','views/TipMa
     };
 
     websocket.onopen = function (evt) {
-        TipManager.addTip('提示', '最新地震服务器连接正常');
+        TipManager.addTip('最新地震', '服务器连接正常');
 /*        $.messager.show({
             title: '提示',
             msg: '最新地震服务器连接正常',
@@ -67,7 +67,7 @@ define(['underscore','text!mapviews/LastestEarthQuake-template.htm','views/TipMa
     };
 
     websocket.onclose = function (evt) {
-        TipManager.addTip('提示', '连接断开，正在尝试建立连接。。。');
+        TipManager.addTip('最新地震', '连接断开，正在尝试建立连接。。。');
 /*        $.messager.show({
             title: '提示',
             msg: '连接断开，正在尝试建立连接。。。',
@@ -85,9 +85,9 @@ define(['underscore','text!mapviews/LastestEarthQuake-template.htm','views/TipMa
     };
 
     websocket.onerror = function (evt) {
-        TipManager.addTip('提示', '连接error！');
+        TipManager.addTip('最新地震', '服务器连接异常！');
 //        alert("连接error！");
     };
 
-    TipManager.addTip('提示', '加载中');
+    TipManager.addTip('最新地震', '初始化加载中');
 });
