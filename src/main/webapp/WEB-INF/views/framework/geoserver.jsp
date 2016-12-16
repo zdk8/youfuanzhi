@@ -215,6 +215,10 @@
     //websocket
     webSocketUrl='<%= request.getContextPath()%>/marcopolo';
     window.TipManager;
+    <%if(user!=null){%>
+    USERREGIONID='<%=user.getRegionid()%>';
+    <%}%>
+
 </script>
 <script src="<%=hvitFrontFWPrefix%>hvit-front-framework/baseConfig.js"></script>
 <script src="<%=hvitFrontFWPrefix%>hvit-front-framework/require.js"

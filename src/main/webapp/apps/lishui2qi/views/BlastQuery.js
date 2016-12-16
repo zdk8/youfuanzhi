@@ -100,7 +100,10 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                                 if(record.reviewstatus==reviewStatus.NORMAL) {
                                     local.find('li[action="mycommit"]').eq(record.index).show();
                                 }else if(record.reviewstatus==reviewStatus.COMMITED) {
-                                    local.find('li[action="shenhe"]').eq(record.index).show();
+                                    //丽水市，或者是当前条目的上级才可以做审核
+                                    if(USERREGIONID.length>=6 && (USERREGIONID=='331100'||USERREGIONID.length<record.regionid.length)){
+                                        local.find('li[action="shenhe"]').eq(record.index).show();
+                                    }
                                 }else if(record.reviewstatus==reviewStatus.FAILED) {
                                     local.find('li[action="update"]').eq(record.index).show();
                                     local.find('li[action="mycommit"]').eq(record.index).show();
