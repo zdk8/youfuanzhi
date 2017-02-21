@@ -132,7 +132,7 @@ define([cj.getModuleJs('widget/MakeDG'), cj.getModuleJs('widget/DispatcherPanel'
                         onChange: function (newValue, oldValue) {
                             dg.datagrid('reload',{
                              intelligentsearch:[
-                             {name:item,operate:"like",value:"%"+newValue+"%"}
+                             {name:item,operate:"like",value:newValue}
                              ]
                              });
                             tb.find('a[action=search]').trigger('click');

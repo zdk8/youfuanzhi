@@ -159,22 +159,29 @@ public class ResponseController {
      */
     @ResponseBody
     @RequestMapping(value = "/getearthquake",method = {RequestMethod.GET,RequestMethod.POST})
-    public List getBlast(HttpServletRequest request, HttpServletResponse response){
+    public HashMap<String, Object> getBlast(@RequestParam int page, @RequestParam int rows, HttpServletRequest request, HttpServletResponse response){
         HashMap<String,Object> quakeMap = new HashMap<String,Object>();
+        HashMap<String,Object> condMap = new HashMap<String,Object>();
         XtUser user = (XtUser) request.getSession().getAttribute("user");
+        CommonCode code = new CommonCode();
+        condMap = code.condMap(request);
         if(user != null){
             if ("331100".equals(user.getRegionid())){             //去掉丽水市行政区划的0
-                quakeMap.put("regionid","3311");
+                condMap.put("regionid","3311");
             }else{
-                quakeMap.put("regionid",user.getRegionid());
+                condMap.put("regionid",user.getRegionid());
             }
 
         }else{
-            quakeMap.put("regionid","用户未登录");
+            condMap.put("regionid","用户未登录");
         }
         DataSourceContextHolder.setDbType("frameworkdataSource");
-        List earthResponse = responseService.getEarthResponse(quakeMap);
-        return earthResponse;
+        PageHelper.Page<ls_earthquakeresponse> earthResponse = responseService.getresponseByCond(page,rows,condMap);
+        quakeMap.put("total",earthResponse.getTotal());
+        quakeMap.put("rows",earthResponse.getResults());
+        return quakeMap;
+
+
     }
 
     /**

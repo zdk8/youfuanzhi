@@ -20,19 +20,21 @@
     SELECT
     <include refid="Base_Column_List" />
     from LS_EARTHQUAKERESPONSE
-    <where>
-      <if test="yjname != null">
-        yjname like CONCAT('%',CONCAT (#{yjname},'%'))
-      </if>
-    </where>
-    ORDER BY yjid DESC
+    WHERE regionid like CONCAT('%',CONCAT (#{regionid},'%'))
+    <if test="yjname != null">
+      AND yjname like CONCAT('%',CONCAT (#{yjname},'%'))
+    </if>
+    ORDER BY regionid DESC
   </select>
   <select id="getEarthResponse" parameterType="java.util.HashMap" resultMap="BaseResultMap">
     SELECT
     <include refid="Base_Column_List" />
     from LS_EARTHQUAKERESPONSE
     WHERE regionid like CONCAT('%',CONCAT (#{regionid},'%'))
-    ORDER  by regionid
+    <if test="yjname != null">
+      AND yjname like CONCAT('%',CONCAT (#{yjname},'%'))
+    </if>
+    ORDER  by regionid DESC
   </select>
   <select id="getResponseid" resultType="map">
       select seq_ls_earthquakeresponse.nextval as "nextid"  from dual
