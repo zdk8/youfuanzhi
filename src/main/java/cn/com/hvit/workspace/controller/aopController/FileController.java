@@ -1,12 +1,7 @@
 package cn.com.hvit.workspace.controller.aopController;
 
 import cn.com.hvit.framework.kon.util.AttachmentNameBean;
-import cn.com.hvit.framework.kon.util.DataSourceContextHolder;
-import cn.com.hvit.framework.kon.util.PageHelper;
-import cn.com.hvit.workspace.model.LS_files;
-import cn.com.hvit.workspace.service.IFileService;
 import cn.com.hvit.workspace.util.CommonCode;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -26,8 +21,7 @@ import java.util.Map;
  */
 @Controller
 public class FileController {
-    @Autowired
-    IFileService fileService;
+
 
     /**
      * 文件上传并保存文件信息
@@ -51,13 +45,6 @@ public class FileController {
                     e.printStackTrace();
                 }
 
-                LS_files files = new LS_files();
-                files.setOriginname(originName);
-                files.setFilename( nameBean.getNewFileName());
-                files.setFilepath("filedownload/" + nameBean.getNewFileNamePrefix() + nameBean.getNewFileName());
-                files.setFilesize(String.valueOf(file.getSize()));
-                DataSourceContextHolder.setDbType("frameworkdataSource");
-                fileService.addFile(files);
             }
         }
         resultMap.put("success",true);
@@ -95,10 +82,6 @@ public class FileController {
         condMap = code.condMap(request);
 //        String filename = request.getParameter("filename");
 //        condMap.put("filename",filename);
-        DataSourceContextHolder.setDbType("frameworkdataSource");
-        PageHelper.Page<LS_files> filesinfo = fileService.getfilesbycond(page, rows,condMap);
-        fileMap.put("total",filesinfo.getTotal());
-        fileMap.put("rows",filesinfo.getResults());
         return fileMap;
     }
 
@@ -108,8 +91,6 @@ public class FileController {
         HashMap<String,Object> resultMap = new HashMap<String,Object>();
         HashMap<String,Object> condMap = new HashMap<String,Object>();
         condMap.put("fid",fid);
-        DataSourceContextHolder.setDbType("frameworkdataSource");
-        fileService.deleteFileByid(condMap);
         resultMap.put("success",true);
         resultMap.put("message","文件删除成功");
         return  resultMap;
@@ -147,10 +128,6 @@ public class FileController {
         condMap = code.condMap(request);
 //        String filename = request.getParameter("filename");
 //        condMap.put("filename",filename);
-        DataSourceContextHolder.setDbType("frameworkdataSource");
-        PageHelper.Page<LS_files> filesinfo = fileService.getprovincefilesbycond(page, rows,condMap);
-        fileMap.put("total",filesinfo.getTotal());
-        fileMap.put("rows",filesinfo.getResults());
         return fileMap;
     }
 }

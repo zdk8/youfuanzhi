@@ -2,9 +2,7 @@ package cn.com.hvit.workspace.util;
 
 import cn.com.hvit.framework.kon.util.AttachmentNameBean;
 import cn.com.hvit.workspace.config.Shout;
-import cn.com.hvit.workspace.model.Ls_Log;
 import cn.com.hvit.workspace.model.XtUser;
-import cn.com.hvit.workspace.service.ILogService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -40,20 +38,6 @@ public class CommonCode {
      * @param request
      * @param message
      */
-    public void addLog(ILogService logService,HttpServletRequest request, String message){
-        XtUser user = (XtUser) request.getSession().getAttribute("user");
-        Ls_Log log = new Ls_Log();
-        if (user != null){
-            log.setUserid(BigDecimal.valueOf(Long.parseLong(user.getUserid())));
-            log.setLogcontent(user.getUsername()+message);
-            log.setClientip(getClientIp(request));
-            logService.addLog(log);
-        } else {
-            log.setClientip(getClientIp(request));
-            logService.addLog(log);
-        }
-
-    }
 
     /**
      * ping IP是否通畅的方法
